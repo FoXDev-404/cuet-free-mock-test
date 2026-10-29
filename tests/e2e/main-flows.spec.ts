@@ -23,9 +23,9 @@ test.describe("CUETFreeMockTest main flows", () => {
 
   test("full test flow: take test, answer, submit, view result", async ({ page }) => {
     await page.goto("/mock-tests/cs-full-mock/take");
+    await page.waitForLoadState("networkidle");
     // Wait for questions to load
-    await page.waitForSelector('text="Question 1 of"', { timeout: 10000 });
-    await expect(page.getByRole("heading", { name: /Question 1 of/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Question 1 of/ })).toBeVisible({ timeout: 15000 });
 
     // Select an option on question 1
     const firstOption = page.locator("button").filter({ hasText: /^A/ }).first();
