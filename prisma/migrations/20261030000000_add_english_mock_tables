@@ -1,0 +1,47 @@
+-- Migration: Add English mock test tables and Question fields
+-- Tables: Passage, EnglishMockConfig
+-- Question additions: passageId, passageKey, sourceCorrectOptionOrder, sourceAnswerLabel, answerReviewStatus, dataQualityNote, sourcePageStart, sourcePageEnd
+
+PRAGMA foreign_keys = OFF;
+
+-- Create Passage table
+CREATE TABLE IF NOT EXISTS "Passage" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "examId" TEXT NOT NULL,
+  "passageKey" TEXT NOT NULL,
+  "title" TEXT NOT NULL,
+  "content" TEXT NOT NULL,
+  "sourcePageStart" INTEGER,
+  "sourcePageEnd" INTEGER,
+  "createdAt" TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create EnglishMockConfig table
+CREATE TABLE IF NOT EXISTS "EnglishMockConfig" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "examId" TEXT NOT NULL UNIQUE,
+  "durationMinutes" INTEGER NOT NULL DEFAULT 60,
+  "marksCorrect" INTEGER NOT NULL DEFAULT 1,
+  "marksIncorrect" INTEGER NOT NULL DEFAULT 0,
+  "totalQuestions" INTEGER NOT NULL DEFAULT 50,
+  "isActive" INTEGER NOT NULL DEFAULT 1,
+  "createdAt" TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Add English mock test fields to Question table
+ALTER TABLE "Question" ADD COLUMN "passageId" TEXT;
+ALTER TABLE "Question" ADD COLUMN "passageKey" TEXT;
+ALTER TABLE "Question" ADD COLUMN "sourceCorrectOptionOrder" INTEGER;
+ALTER TABLE "Question" ADD COLUMN "sourceAnswerLabel" TEXT;
+ALTER TABLE "Question" ADD COLUMN "answerReviewStatus" TEXT NOT NULL DEFAULT 'source_key_recorded';
+ALTER TABLE "Question" ADD COLUMN "dataQualityNote" TEXT;
+ALTER TABLE "Question" ADD COLUMN "sourcePageStart" INTEGER;
+ALTER TABLE "Question" ADD COLUMN "sourcePageEnd" INTEGER;
+
+-- Add indexes
+CREATE INDEX IF NOT EXISTS "Question_passageId_idx" ON "Question"("passageId");
+CREATE INDEX IF NOT EXISTS "Passage_examId_idx" ON "Passage"("examId");
+CREATE UNIQUE INDEX IF NOT EXISTS "Passage_examId_passageKey_key" ON "Passage"("examId", "passageKey");
+
+PRAGMA foreign_keys = ON;

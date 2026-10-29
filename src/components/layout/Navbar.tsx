@@ -6,7 +6,7 @@ import { useSession, signOut } from "next-auth/react";
 import {
   Menu, X, Sun, Moon, BookOpen, LayoutDashboard,
   FlaskConical, History, FolderOpen, Bookmark, XCircle,
-  TrendingUp, Settings, LogOut, User, ChevronDown,
+  TrendingUp, Settings, LogOut, User, ChevronDown, GraduationCap,
   Target,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
@@ -45,13 +45,7 @@ const userMenuItems = [
 ] as const;
 
 function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
   const { resolvedTheme, setTheme } = useTheme();
-
-  if (!mounted) {
-    return <div className="h-9 w-9" aria-hidden="true" />;
-  }
 
   return (
     <button
@@ -73,6 +67,7 @@ export function Navbar() {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -91,9 +86,20 @@ export function Navbar() {
   }, [drawerOpen]);
 
   useEffect(() => {
-    setDrawerOpen(false);
-    setUserMenuOpen(false);
-  }, [pathname]);
+    if (!drawerOpen) return;
+
+    const menuButton = mobileMenuButtonRef.current;
+    drawerRef.current?.querySelector<HTMLButtonElement>("[data-drawer-close]")?.focus();
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setDrawerOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      menuButton?.focus();
+    };
+  }, [drawerOpen]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -105,21 +111,25 @@ export function Navbar() {
       {/* Mobile drawer */}
       <aside
         ref={drawerRef}
+        id="mobile-navigation-drawer"
+        role="dialog"
+        aria-modal={drawerOpen}
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 shadow-xl",
+          "fixed inset-y-0 left-0 z-50 w-80 max-w-[88vw] border-r border-neutral-200 bg-white shadow-2xl dark:border-neutral-800 dark:bg-neutral-900",
           "transform transition-transform duration-300 ease-in-out lg:hidden",
           drawerOpen ? "translate-x-0" : "-translate-x-full"
         )}
         aria-label="Navigation menu"
         aria-hidden={!drawerOpen}
+        inert={!drawerOpen}
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
-            <Link href="/" className="flex items-center gap-2 whitespace-nowrap" aria-label="CUET Mock Test home">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-sm font-bold text-white">CF</span>
-              <span className="text-sm font-bold tracking-tight text-neutral-900 dark:text-white sm:text-base">
-                CUET<span className="font-extrabold text-secondary-500 dark:text-secondary-400">FreeMockTest</span>
-                <span className="font-medium text-neutral-400 dark:text-neutral-500">.com</span>
+          <div className="flex h-[4.5rem] items-center justify-between border-b border-neutral-200 px-5 dark:border-neutral-800">
+            <Link href="/" onClick={() => setDrawerOpen(false)} className="flex min-w-0 items-center gap-2.5" aria-label="CUETFreeMockTest home">
+              <span className="home-brand-mark"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
+              <span className="min-w-0">
+                <span className="block whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white">CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest</span></span>
+                <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 dark:text-neutral-500">Practice with purpose</span>
               </span>
             </Link>
             <button
@@ -127,6 +137,7 @@ export function Navbar() {
               onClick={() => setDrawerOpen(false)}
               className="rounded-lg p-2 text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800"
               aria-label="Close menu"
+              data-drawer-close
             >
               <X className="h-5 w-5" />
             </button>
@@ -137,8 +148,10 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setDrawerOpen(false)}
+                aria-current={isActive(item.href) ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-3 whitespace-nowrap rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                  "flex items-center gap-3 whitespace-nowrap rounded-xl px-3.5 py-3 text-sm font-medium transition-colors",
                   isActive(item.href)
                     ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
                     : "text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
@@ -150,7 +163,7 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="border-t border-neutral-200 p-4 dark:border-neutral-800">
+          <div className="border-t border-neutral-200 p-5 dark:border-neutral-800">
             {session?.user ? (
               <>
                 <div className="mb-3 flex items-center gap-3 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800/60">
@@ -190,14 +203,14 @@ export function Navbar() {
         />
       )}
 
-      <header className="sticky top-0 z-30 w-full border-b border-neutral-200/80 bg-white/85 backdrop-blur-md dark:border-neutral-800/80 dark:bg-neutral-950/85">
+      <header className="sticky top-0 z-30 w-full border-b border-neutral-200/75 bg-white/90 shadow-[0_1px_12px_rgba(15,23,42,0.035)] backdrop-blur-xl dark:border-neutral-800/75 dark:bg-neutral-950/90">
         <div className="container-page">
-          <div className="flex h-16 items-center justify-between gap-4">
-            <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="CUETFreeMockTest.com home">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-sm font-bold text-white">CF</span>
-              <span className="whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white sm:text-base lg:text-lg">
-                CUET<span className="font-extrabold text-secondary-500 dark:text-secondary-400">FreeMockTest</span>
-                <span className="font-medium text-neutral-400 dark:text-neutral-500">.com</span>
+          <div className="flex h-[4.5rem] items-center justify-between gap-4">
+            <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="CUETFreeMockTest home">
+              <span className="home-brand-mark"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
+              <span className="hidden min-[390px]:block">
+                <span className="block whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white sm:text-base">CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest</span></span>
+                <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 dark:text-neutral-500">Practice with purpose</span>
               </span>
             </Link>
 
@@ -208,7 +221,7 @@ export function Navbar() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    "whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors",
                     isActive(item.href)
                       ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
                       : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white"
@@ -222,12 +235,20 @@ export function Navbar() {
             <div className="flex shrink-0 items-center gap-1.5">
               <ThemeToggle />
 
+              {!session?.user && (
+                <Link href="/mock-tests" className="hidden rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 lg:inline-flex">
+                  Start a mock
+                </Link>
+              )}
+
               <button
                 type="button"
+                ref={mobileMenuButtonRef}
                 onClick={() => setDrawerOpen(true)}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 lg:hidden"
                 aria-label="Open menu"
                 aria-expanded={drawerOpen}
+                aria-controls="mobile-navigation-drawer"
               >
                 <Menu className="h-5 w-5" />
               </button>
@@ -258,6 +279,7 @@ export function Navbar() {
                           <Link
                             key={item.href}
                             href={item.href}
+                            onClick={() => setUserMenuOpen(false)}
                             role="menuitem"
                             className="flex items-center gap-2.5 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
                           >

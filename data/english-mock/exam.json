@@ -1,0 +1,2207 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "description": "Extracted from the user-provided PDF. Do not silently rewrite the source answer key.",
+    "sourcePdf": "source/English_2025-05-20_Shift_1.pdf",
+    "questionCount": 50,
+    "optionCount": 200,
+    "passageCount": 3,
+    "answerReviewQuestions": [
+      8,
+      32,
+      41
+    ]
+  },
+  "exam": {
+    "id": "63bd7582-96b1-5eef-bbfc-803ac5c6d8ed",
+    "name": "CUET UG English - 20 May 2025 Shift 1",
+    "examCode": "CUET-UG",
+    "subject": "English",
+    "examDate": "2025-05-20",
+    "shift": "1",
+    "sourceFile": "English_2025-05-20_Shift_1.pdf",
+    "sourcePageCount": 60,
+    "sourceQuestionCount": 50
+  },
+  "passages": [
+    {
+      "id": "3031020d-ba2a-59d4-9ee6-47bef7407933",
+      "examId": "63bd7582-96b1-5eef-bbfc-803ac5c6d8ed",
+      "key": "michael_van_rescue",
+      "title": "Michael in the stranded van",
+      "content": "Thanks to the angle of the van and the injuries Michael had sustained, just opening a door and clambering out of the vehicle seemed an insurmountable challenge, never mind climbing up 145 feet of steep, rugged terrain. He'd have to rely on being rescued. But that wouldn't be easy. Michael could hear cars whizzing past on the road above, but even if passersby happened to glimpse his vehicle amid the shoulder-high brush, apparently abandoned, they wouldn't be able to see anyone inside. He had no cellphones-Michael had never seen the point of getting one. No one knew he'd had taken an unplanned drive out of Victoria, so they'd have no reason to look for him here. And he couldn't honk to get the attention of drivers on the highway. In the 19years that he'd owned his van, the horn had never worked. On the plus side, he was dry, at least for the most part. It was cold in the van, but he had an extra fleece-ironically, emblazoned with 'Live the adventure, live the dream.\" To sustain himself, he had scattered roasted veggies, the bread which was now inedible, but he had a bag of mini chocolate bars. To drink he had one water bottle. He apportioned out his stash and switched on his hazard lights, hoping someone would spot him from the highway above. It was a false hope. He didn't realize that his off road descent had ripped the wires off the van's undercarriage.",
+      "sourcePageStart": 1,
+      "sourcePageEnd": 2
+    },
+    {
+      "id": "c2a0325d-2c64-599f-a647-b4dccf0d1aa2",
+      "examId": "63bd7582-96b1-5eef-bbfc-803ac5c6d8ed",
+      "key": "nutrition_guidelines",
+      "title": "Indian nutrition guidelines",
+      "content": "The INTERNET is flooded with wisdom on nutrition, be it weight-loss diets, intermittent fasting, veganism, giving up carbohydrates or taking supplements. The truth is, it is difficult to find a balanced meal that works for you from the information swirling around you. That's why the National Institute of Nutrition (NIN), under the aegis of the Indian Council of Medical Research (ICMR), has released a comprehensive guideline on how Indians should be eating clean with easily accessible resources and, most importantly, what suits their body type. Complete with an ideal plate, diet charts, recipes and advisories on how you should be cooking and in what cookware, this is an essential handbook that all of us would find convenient to incorporate into our daily lives. Given India's growing burden of non- communicable diseases, these guidelines are significant as they lay down the template of foundational nutrition in children, beginning with pregnant women. The report says that proper nutrition for a mother and child is linked not only to proper growth and development but also to the risk of diabetes, hypertension and heart attack later in life. Over 56 percent of all non-communicable diseases can be attributed to an unhealthy diet. As the reports show, a healthy diet can prevent 80 percent of type 2 diabetes and significantly reduce the burden of heart disease, high blood pressure and prevent premature deaths. It has even warned against taking supplements for building body mass and recommended restricting salt intake, minimizing sugar and ultra-processed foods and reading information on food labels correctly.",
+      "sourcePageStart": 10,
+      "sourcePageEnd": 11
+    },
+    {
+      "id": "fa6e4a77-676d-56f0-a8fa-7728356b9f82",
+      "examId": "63bd7582-96b1-5eef-bbfc-803ac5c6d8ed",
+      "key": "indian_english_literature",
+      "title": "Indian Writing in English",
+      "content": "The seed of Indian Writing in English was sown during the period of the British rule in India. Now the seed has blossomed into an evergreen tree, with fragrant flowers and ripe fruits. The fruits are being tasted not only by the native people, but they are also being 'chewed and digested' by the foreigners. It happened only after constant care, pruning and feeding. Indian English Literature is an honest enterprise to demonstrate the ever rare gems of Indian Writing in English. From being a singular and exceptional, rather gradual native flare - up of geniuses, Indian Writing has turned out to be a new form of Indian culture and voice in which India converses regularly. Indian writers - poets, novelists, essayists, and dramatists have been making momentous and considerable contributions to world literature since the Pre - Independence era. The past few years have witnessed a gigantic prospering and thriving of Indian English Writing in the global market. Indian English Literature has attained an independent status in the realm of world literature. Wide ranges of themes are dealt with by Indian writing in English. While this literature continues to reflect Indian culture, tradition, social values and even Indian history through the depiction of life in India and Indians living elsewhere, recent Indian English fiction has been trying to give expression to the Indian experience of modern predicaments.",
+      "sourcePageStart": 19,
+      "sourcePageEnd": 20
+    }
+  ],
+  "questions": [
+    {
+      "id": "292bc7b8-5521-5da5-b7e0-031e35e2c751",
+      "questionNumber": 1,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "Michael didn't have much hope of being rescued by the passers-by because of ____.",
+      "passageId": "3031020d-ba2a-59d4-9ee6-47bef7407933",
+      "passageKey": "michael_van_rescue",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "the rugged terrain",
+          "sourceText": "the rugged terrain"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "the high foliage which obstructed the view",
+          "sourceText": "the high foliage which obstructed the view"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "the injuries that he had sustained",
+          "sourceText": "the injuries that he had sustained"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "the angle of the vehicle",
+          "sourceText": "the angle of the vehicle"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The passage states that even if passersby happened to glimpse the vehicle, it was amid \"shoulder-high\nbrush,\" which means the high foliage was the direct obstruction preventing them from spotting the van\neasily or seeing Michael inside.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 1,
+      "sourcePageEnd": 3,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "ebcfa325-0acc-54fa-a336-bb45cbf81662",
+      "questionNumber": 2,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "'He apportioned out his stash..', what does the word stash as mentioned in the passage refer to:-",
+      "passageId": "3031020d-ba2a-59d4-9ee6-47bef7407933",
+      "passageKey": "michael_van_rescue",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Money",
+          "sourceText": "Money"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Food",
+          "sourceText": "Food"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Injuries",
+          "sourceText": "Injuries"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Fleece",
+          "sourceText": "Fleece"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "Stash (as a noun, which is how it's used in the sentence \"He apportioned out his stash...\") means a secret\nstore or hidden supply of something.\n\nIn the context of the passage, Michael's \"stash\" refers to his hidden supply of food and drink.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 3,
+      "sourcePageEnd": 5,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "a241d577-5290-5566-ac4a-f927f343b904",
+      "questionNumber": 3,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "Michael thinks that nobody would look for him because ___.",
+      "passageId": "3031020d-ba2a-59d4-9ee6-47bef7407933",
+      "passageKey": "michael_van_rescue",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "the trip was unplanned",
+          "sourceText": "the trip was unplanned"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "he had no friends",
+          "sourceText": "he had no friends"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "he never liked any attention",
+          "sourceText": "he never liked any attention"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "his horn was not working",
+          "sourceText": "his horn was not working"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "The passage states: \"He had no cellphones-Michael had never seen the point of getting one. No one knew\nhe'd taken an unplanned drive out of Victoria, so they'd have no reason to look for him here.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 5,
+      "sourcePageEnd": 7,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "d5bd352c-4b5b-547b-805e-71eea055c6a3",
+      "questionNumber": 4,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "The slogan on the soft blanket was ironical as _____.",
+      "passageId": "3031020d-ba2a-59d4-9ee6-47bef7407933",
+      "passageKey": "michael_van_rescue",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "he was living the adventure in reality.",
+          "sourceText": "he was living the adventure in reality."
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "his dream had come true.",
+          "sourceText": "his dream had come true."
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "he had always dreamed of being in an accident.",
+          "sourceText": "he had always dreamed of being in an accident."
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "he was confronting a near-fatal situation.",
+          "sourceText": "he was confronting a near-fatal situation."
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "\"Live the adventure, live the dream\" is a slogan that suggests excitement, happiness, and a highly\ndesirable, positive experience.\nThe Reality (The Irony): Michael is injured, trapped in an angled van, in a difficult location, with no\nway to call for help, facing an \"insurmountable challenge\" just to get out, and confronting a situation\nthat is potentially fatal. This is the opposite of a desirable \"adventure\" or \"dream.\"",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 7,
+      "sourcePageEnd": 9,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "5ee8a982-a8bc-58c7-8367-e16eda79c922",
+      "questionNumber": 5,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "The guidelines on how Indians should eat were released because:-",
+      "passageId": "c2a0325d-2c64-599f-a647-b4dccf0d1aa2",
+      "passageKey": "nutrition_guidelines",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "NIN was flooded with requests from people for some guidelines.",
+          "sourceText": "NIN was flooded with requests from people for some guidelines."
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "It was becoming difficult to find a balanced meal from the information available.",
+          "sourceText": "It was becoming difficult to find a balanced meal from the information available."
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "ICMR pressured NIN to release the guidelines on what people should eat.",
+          "sourceText": "ICMR pressured NIN to release the guidelines on what people should eat."
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "ICMR wanted to take over the responsibility for the health of an average Indian.",
+          "sourceText": "ICMR wanted to take over the responsibility for the health of an average Indian."
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The passage clearly states that the internet is \"flooded with wisdom on nutrition,\" but that this information\nmakes it \"difficult to find a balanced meal that works for you.\" The National Institute of Nutrition (NIN)\nreleased the guidelines specifically to give people a \"comprehensive\" and clear handbook on healthy eating\nto reduce this confusion and solve the information overload problem.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 9,
+      "sourcePageEnd": 12,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "890f9317-b274-5943-9b19-01f31c1fe1b5",
+      "questionNumber": 6,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "Identify the word closest in meaning to the word aegis as used in the passage:-",
+      "passageId": "c2a0325d-2c64-599f-a647-b4dccf0d1aa2",
+      "passageKey": "nutrition_guidelines",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "control",
+          "sourceText": "control"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "support",
+          "sourceText": "support"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "foundation",
+          "sourceText": "foundation"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "enforcement",
+          "sourceText": "enforcement"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "In the phrase, \"under the aegis of the Indian Council of Medical Research (ICMR),\" aegis means support,\nsponsorship, or protection. It clarifies that the National Institute of Nutrition (NIN) released the guidelines\nwith the official backing and authority of the ICMR, which is the main medical research body in India.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 12,
+      "sourcePageEnd": 14,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "57371476-d002-578f-9d32-81cf6fb05290",
+      "questionNumber": 7,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "NIN recommends reading the information on labels correctly as:-",
+      "passageId": "c2a0325d-2c64-599f-a647-b4dccf0d1aa2",
+      "passageKey": "nutrition_guidelines",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "People's knowledge of nutritional facts will increase.",
+          "sourceText": "People's knowledge of nutritional facts will increase."
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "The marketing strategy of manufacturers goes hand in hand with the NIN guidelines.",
+          "sourceText": "The marketing strategy of manufacturers goes hand in hand with the NIN guidelines."
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "The endorsement by the celebrities makes the product more salable.",
+          "sourceText": "The endorsement by the celebrities makes the product more salable."
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "The claims made by manufacturers about the product can be deceptive.",
+          "sourceText": "The claims made by manufacturers about the product can be deceptive."
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "NIN recommends reading labels because the claims made by manufacturers about the product can be\ndeceptive. This ensures consumers can look past marketing and know the actual ingredients to make healthy\nchoices",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 14,
+      "sourcePageEnd": 16,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "5f4568ea-a199-55bd-b312-086203b804dc",
+      "questionNumber": 8,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "The guidelines on how Indians should eat issued by NIN are important as:-",
+      "passageId": "c2a0325d-2c64-599f-a647-b4dccf0d1aa2",
+      "passageKey": "nutrition_guidelines",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "They lay down the structure of the basic nutrition needs of an average Indian.",
+          "sourceText": "They lay down the structure of the basic nutrition needs of an average Indian."
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "They focus on how to prevent non-communicable diseases among Indians",
+          "sourceText": "They focus on how to prevent non-communicable diseases among Indians"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "They provide guidance on how to live our lives.",
+          "sourceText": "They provide guidance on how to live our lives."
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "They direct parents on how to bring up their children.",
+          "sourceText": "They direct parents on how to bring up their children."
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "The passage emphasizes the significance of the guidelines because of \"India's growing burden of non-\ncommunicable diseases\" (NCDs). The report specifically notes that a healthy diet based on these guidelines\ncan prevent 80% of type 2 diabetes and significantly reduce the burden of heart disease, highlighting their\nprimary goal is disease prevention.",
+      "answerReviewStatus": "needs_manual_review",
+      "dataQualityNote": "Printed answer key says A (choice 1), but the solution says disease prevention is the primary goal, which aligns with choice 2. Source conflict; answer not silently changed.",
+      "sourcePageStart": 16,
+      "sourcePageEnd": 18,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "c7814ab8-71e2-518d-85d7-44efd1af89fc",
+      "questionNumber": 9,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "Choose the word that is opposite in meaning of the underlined word :- Indian writers-poets, novelists ,essayists, and dramatists have been making ‘momentous’ and considerable contributions to world literature.",
+      "passageId": "fa6e4a77-676d-56f0-a8fa-7728356b9f82",
+      "passageKey": "indian_english_literature",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "consequential",
+          "sourceText": "consequential"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "insignificant",
+          "sourceText": "2. insignificant"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "pivotal",
+          "sourceText": "pivotal"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "mediocre",
+          "sourceText": "mediocre"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The word momentous means of great importance. Its opposite is insignificant, meaning unimportant.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 19,
+      "sourcePageEnd": 21,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "6077db7b-6889-553c-be91-0310a4d5cf19",
+      "questionNumber": 10,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "Indian writers have been making considerable contributions to world literature since:-",
+      "passageId": "fa6e4a77-676d-56f0-a8fa-7728356b9f82",
+      "passageKey": "indian_english_literature",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Indian English Writing has entered the global market.",
+          "sourceText": "Indian English Writing has entered the global market."
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "it attained an independent status in the realm of World Literature.",
+          "sourceText": "it attained an independent status in the realm of World Literature."
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Pre-Independence era",
+          "sourceText": "Pre-Independence era"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "the past few years",
+          "sourceText": "the past few years"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "The passage explicitly states that Indian writers have been making contributions to world literature \"since the\nPre-Independence era.\"",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 21,
+      "sourcePageEnd": 23,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "1c81b527-4da6-514b-88f6-5185536cd84f",
+      "questionNumber": 11,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "What does the enterprise of Indian English Literature exhibit?",
+      "passageId": "fa6e4a77-676d-56f0-a8fa-7728356b9f82",
+      "passageKey": "indian_english_literature",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "How Indian writing in English enjoys foreign readership.",
+          "sourceText": "How Indian writing in English enjoys foreign readership."
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Its attainment of an independent status in the realm of world Literature",
+          "sourceText": "Its attainment of an independent status in the realm of world Literature"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "How it is prospering and thriving in the global market",
+          "sourceText": "How it is prospering and thriving in the global market"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "The ever rare gems of Indian Writing in English",
+          "sourceText": "The ever rare gems of Indian Writing in English"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "The text defines Indian English Literature as \"an honest enterprise to demonstrate the ever rare gems of\nIndian Writing in English.\"",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 23,
+      "sourcePageEnd": 25,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "1cde9bf9-22df-5ed3-870e-7c1fe1655891",
+      "questionNumber": 12,
+      "type": "single_choice",
+      "category": "reading_comprehension",
+      "questionText": "According to the passage, Indian Writing in English dealt with the themes of:- (A) how the seed of Indian writing in English was sown during colonial rule. (B) Indian culture, tradition and social values (C) Indian history through the depiction of life in India and Indians living elsewhere (D) Indian experience of modern predicaments.",
+      "passageId": "fa6e4a77-676d-56f0-a8fa-7728356b9f82",
+      "passageKey": "indian_english_literature",
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A), (B) and (D) only",
+          "sourceText": "(A), (B) and (D) only"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(B), (C) and (D) only",
+          "sourceText": "(B), (C) and (D) only"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(B) and (D) only",
+          "sourceText": "(B) and (D) only"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C) and (D) only",
+          "sourceText": "(C) and (D) only"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The final paragraph lists the themes: Indian culture, tradition, social values (B), Indian history (C), and\nthe Indian experience of modern predicaments (D). Option (A) refers to the history of the writing, not its\nthemes.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 25,
+      "sourcePageEnd": 27,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "2693a7ea-a886-59ac-bce5-36874549cbb1",
+      "questionNumber": 13,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the given parts to form a meaningful sentence:-\n\n(A) people still struggle to balance their personal\n\n(B) despite the advancements in technology, many\n\n(C) often leading to stress and burnout\n\n(D) live with their professional commitments",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(D), (B), (C), (A)",
+          "sourceText": "(D), (B), (C), (A)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A), (B), (C), (D)",
+          "sourceText": "(A), (B), (C), (D)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(B), (A), (D), (C)",
+          "sourceText": "(B), (A), (D), (C)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (B), (D), (A)",
+          "sourceText": "(C), (B), (D), (A)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "The full, coherent sentence is: Despite the advancements in technology, many people still struggle to\nbalance their personal live with their professional commitments, often leading to stress and burnout.\n\nTherefore, the correct option is 3. (B), (A), (D), (C).",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 27,
+      "sourcePageEnd": 28,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "0739daeb-4134-5b35-b24e-589b4a694fdf",
+      "questionNumber": 14,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the following parts to form a meaningful sentence:-\n\n(A) the role of sound sleep in memory consolidation and\n\n(B) sleep disruption increases the level of stress hormone cortisol\n\n(C) research has demonstrated overwhelming evidence of\n\n(D) our ability to generate innovative solutions to complex problems\nwhile",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(D), (B), (C), (A)",
+          "sourceText": "(D), (B), (C), (A)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(C), (A), (B), (D)",
+          "sourceText": "(C), (A), (B), (D)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A), (C), (D), (B)",
+          "sourceText": "(A), (C), (D), (B)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (A), (D), (B)",
+          "sourceText": "(C), (A), (D), (B)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "The coherent sentence formed :\n\nResearch has demonstrated overwhelming evidence of the role of sound sleep in memory consolidation and\nour ability to generate innovative solutions to complex problems while sleep disruption increases the level of\nstress hormone cortisol.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 28,
+      "sourcePageEnd": 29,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "340e1765-0479-519b-9be8-d774286838fe",
+      "questionNumber": 15,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the given parts to form a meaningful sentence:-\n\n(A) disturbances, and decreased productivity\n\n(B) although mobile phones have revolutionized\n\n(C) communication, excessive usage can lead to\n\n(D) various health issues, including eye strain, sleep",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(D), (A), (B), (C)",
+          "sourceText": "(D), (A), (B), (C)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(B), (C), (D), (A)",
+          "sourceText": "(B), (C), (D), (A)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(B), (A), (D), (C)",
+          "sourceText": "(B), (A), (D), (C)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (B), (D), (A)",
+          "sourceText": "(C), (B), (D), (A)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The coherent sentence formed is :\n\nAlthough mobile phones have revolutionized communication, excessive usage can lead to various health\nissues, including eye strain, sleep disturbances, and decreased productivity.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 29,
+      "sourcePageEnd": 30,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "c7133958-0409-533c-aa61-5fa75fd84f71",
+      "questionNumber": 16,
+      "type": "single_choice",
+      "category": "verb_form_matching",
+      "questionText": "Fill in the blanks in the sentences given in List-I with the verb forms\nin List-Il :-\n\nList-I (Sentences) List-II (Verb Forms)\n(A) Ravi _______ the whole syllabus and is prepared for the exam. (I) has been studying\n(B) Ravi _______ since morning. (II) will be studying\n(C) Ravi _______ with my son in London from next year. (III) study\n(D) Ravi has no choice but to _______ in a school close to his house. (IV) has studied",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)",
+          "sourceText": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
+          "sourceText": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (I), (B) - (IV), (C) - (III), (D) - (II)",
+          "sourceText": "(A) - (I), (B) - (IV), (C) - (III), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 30,
+      "sourcePageEnd": 31,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "a1cc03b6-250f-5bad-844e-c627960f43d1",
+      "questionNumber": 17,
+      "type": "single_choice",
+      "category": "prepositional_phrase_matching",
+      "questionText": "Fill in the blanks in the given sentences in List-I with the\nappropriate prepositional phrases in List-Il :-\n\nList-II (Prepositional\nList-I (Sentences)\nPhrases)\n(A) I drive to work, but I'd never do it _______ if I could avoid it. (I) at once\n(B) You should take the dessert out of the freezer and serve it\n(II) by choice\n____________.\n(C) I thought I understood the equation but ____________ I realized it was\n(III) at the very least\ncomplicated.\n(D) The store should give me my money back or ____________ offer to\n(IV) on reflection\nexchange the shoes.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (IV), (B) - (II), (C) - (III), (D) - (I)",
+          "sourceText": "(A) - (IV), (B) - (II), (C) - (III), (D) - (I)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)",
+          "sourceText": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 31,
+      "sourcePageEnd": 32,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "328a32e7-d92e-55ef-9b76-e8a6a810bf3c",
+      "questionNumber": 18,
+      "type": "single_choice",
+      "category": "phrasal_verb_matching",
+      "questionText": "Fill in the blanks in the sentences given in List-I with the\nappropriate phrasal verbs from List-Il :-\n\nList-II (Phrasal\nList-I (Sentences)\nVerbs)\n(A) He has not been able to ________ the sudden demise of his mother. (I) get off\n(B) I hate to ________ so early. (II) get on\n(C) After you ________ the bus, you will reach your destination within five\n(III) get up\nminutes.\n(D) Leave early for the station if you want to ________ the train. (IV) get over",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)",
+          "sourceText": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (I), (B) - (IV), (C) - (II), (D) - (III)",
+          "sourceText": "(A) - (I), (B) - (IV), (C) - (II), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (IV), (B) - (III), (C) - (I), (D) - (II)",
+          "sourceText": "(A) - (IV), (B) - (III), (C) - (I), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "(A) - (IV), (B) - (III), (C) - (I), (D) - (II)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 32,
+      "sourcePageEnd": 33,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "2b755634-5015-50fd-be94-02b0414433a3",
+      "questionNumber": 19,
+      "type": "single_choice",
+      "category": "vocabulary_meaning",
+      "questionText": "Select the most appropriate option to fill in the blank in the\nfollowing sentence:-\n\nA person who eats too much is a/an_________",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "glutton",
+          "sourceText": "glutton"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "epicure",
+          "sourceText": "epicure"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "gourmand",
+          "sourceText": "gourmand"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "pagan",
+          "sourceText": "pagan"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "A glutton is a person who consumes excessively or habitually, especially of food and drink.\n\nThe term often carries a negative connotation, implying greed or overindulgence.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 33,
+      "sourcePageEnd": 34,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "30fed7bb-f7ca-5a0c-a2f2-c5f03a838625",
+      "questionNumber": 20,
+      "type": "single_choice",
+      "category": "vocabulary_in_context",
+      "questionText": "Choose the most appropriate word to fill in the blank in the\nfollowing sentence:-\n\nThe unprecedented display of remarkable innovation and creativity\n_______ him into an enviable position.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "catapulted",
+          "sourceText": "catapulted"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "capsized",
+          "sourceText": "capsized"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "condemned",
+          "sourceText": "condemned"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "commemorated",
+          "sourceText": "commemorated"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "Catapulted (meaning to hurl or launch suddenly) is the best fit, as the innovation propelled him into a\ngood position.\nCapsized means to overturn (a boat);\nCondemned means to officially declare unfit or to express strong disapproval;\nCommemorated means to recall and show respect for.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 34,
+      "sourcePageEnd": 34,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "dea968f6-b8a1-54c6-ad02-7cc3d2e8f281",
+      "questionNumber": 21,
+      "type": "single_choice",
+      "category": "vocabulary_synonym",
+      "questionText": "Identify the word closest in meaning to the underlined word:-\n\nWhat are you trying to ‘insinuate’ through this message?",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Express",
+          "sourceText": "Express"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Affirm",
+          "sourceText": "Affirm"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Allude",
+          "sourceText": "Allude"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Propagate",
+          "sourceText": "Propagate"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "To insinuate means to suggest or hint at something bad or derogatory in an indirect and unpleasant way.\n\nThe closest synonym is Allude, which means to hint at.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 35,
+      "sourcePageEnd": 35,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "358bc918-2f94-5fcf-8ba2-a1b0e0525544",
+      "questionNumber": 22,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the given parts to form a meaningful sentence:-\n\n(A) while their white coats provide camouflage from\n\n(B) predators and help them silently approach prey\n\n(C) stay warm with thick fur, insulated feet, and fluffy tails,\n\n(D) arctic foxes, adapted to the harsh Arctic winter,",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A), (D), (C), (B)",
+          "sourceText": "(A), (D), (C), (B)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(D), (A), (C), (B)",
+          "sourceText": "(D), (A), (C), (B)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(D), (C), (A), (B)",
+          "sourceText": "(D), (C), (A), (B)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (B), (D), (A)",
+          "sourceText": "(C), (B), (D), (A)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "The coherent sentence formed is :\nArctic foxes, adapted to the harsh Arctic winter, stay warm with thick fur, insulated feet, and fluffy\ntails, while their white coats provide camouflage from predators and help them silently approach prey .",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 35,
+      "sourcePageEnd": 36,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "ed6b484e-7ddd-5519-ae96-de0d668870ff",
+      "questionNumber": 23,
+      "type": "single_choice",
+      "category": "vocabulary_synonym",
+      "questionText": "Select the word closest in meaning to the word: Petulant",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Placid",
+          "sourceText": "Placid"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Patient",
+          "sourceText": "Patient"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Irritable",
+          "sourceText": "Irritable"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Insignificant",
+          "sourceText": "Insignificant"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "Petulant means easily irritated or annoyed, especially over minor issues; childishly sulky or bad-tempered.\n\nThe closest synonym is Irritable.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 36,
+      "sourcePageEnd": 37,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "90a2643c-7a9b-560e-bdc7-920d5aa9f193",
+      "questionNumber": 24,
+      "type": "single_choice",
+      "category": "grammar_completion",
+      "questionText": "Select the most appropriate word or phrase to complete the\nfollowing sentence:-\n\nOnce you ___into the routine, you will find the work is quite easy.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "are settled",
+          "sourceText": "are settled"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "had settled",
+          "sourceText": "had settled"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "settled",
+          "sourceText": "settled"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "will settle",
+          "sourceText": "will settle"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "When a sentence uses a future result (\"you will find...\") and starts with a time conjunction like\n\"Once\" (or if, when, as soon as), the verb in the \"Once\" clause must be in the Simple Present tense.\n\"are settled\" is the grammatically correct Simple Present (in the passive voice) needed here. The other\noptions are incorrect tenses (past perfect, simple past, simple future).",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 37,
+      "sourcePageEnd": 37,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "0b8caa4e-b310-5090-9388-8421e24e2e2c",
+      "questionNumber": 25,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the following parts to form a meaningful sentence:-\n\n(A) surviving written literature from ancient Mesopotamia because\nof\n\n(B) through the ages, including the Iliad and the Odyssey\n\n(C) the Epic of Gilgamesh is often cited as the earliest\n\n(D) its significantly enduring impact on ancient literary works",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(C), (A), (D), (B)",
+          "sourceText": "(C), (A), (D), (B)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(B), (D), (A), (C)",
+          "sourceText": "(B), (D), (A), (C)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(C), (A), (B), (D)",
+          "sourceText": "(C), (A), (B), (D)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(B), (C), (A), (D)",
+          "sourceText": "(B), (C), (A), (D)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "The coherent sentence formed by the sequence (C), (A), (D), (B) is:\n\nThe Epic of Gilgamesh is often cited as the earliest surviving written literature from ancient Mesopotamia\nbecause of its significantly enduring impact on ancient literary works through the ages, including the Iliad\n\nand the Odyssey.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 38,
+      "sourcePageEnd": 38,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "b0e22704-0957-5b9f-96ad-c6ccc8df8de2",
+      "questionNumber": 26,
+      "type": "single_choice",
+      "category": "vocabulary_synonym",
+      "questionText": "From the given options, choose the word that best expresses the\nmeaning of the given word: Grisly",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "gloomy",
+          "sourceText": "gloomy"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "greasy",
+          "sourceText": "greasy"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "disgusting",
+          "sourceText": "disgusting"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "boorish",
+          "sourceText": "boorish"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "The word grisly means causing horror or disgust; gruesome.\n\nThe closest synonym is disgusting.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 39,
+      "sourcePageEnd": 39,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "6ae9ce90-6bc4-597d-9c78-37dfdde9c895",
+      "questionNumber": 27,
+      "type": "single_choice",
+      "category": "phrasal_verb_matching",
+      "questionText": "Match the phrasal verbs given in List-I with their correct meanings\nin List-Il :-\n\nList-I (Phrasal Verbs) List-II (Meanings)\n(A) Nod off (III) Fall asleep\n(B) Jack up (I) Raise prices\n(C) Look up to (IV) To respect\n(D) Wrap up (II) Finish something",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)",
+          "sourceText": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)",
+          "sourceText": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (IV), (C) - (II), (D) - (I)",
+          "sourceText": "(A) - (III), (B) - (IV), (C) - (II), (D) - (I)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 39,
+      "sourcePageEnd": 40,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "77b44f14-e0d2-539f-b773-a642b439e20e",
+      "questionNumber": 28,
+      "type": "single_choice",
+      "category": "word_substitution",
+      "questionText": "Choose the correct word from the options given below to substitute\nthe highlighted words:-\n\nA careful ‘preservation and protection’ of the flora and fauna is the\nneed of the hour.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Conservation",
+          "sourceText": "Conservation"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Promotion",
+          "sourceText": "Promotion"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Enhancement",
+          "sourceText": "Enhancement"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Management",
+          "sourceText": "Management"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "The single word that means the careful preservation and protection of natural resources, including flora and\nfauna, is Conservation. (Note: Option 1 is spelled as 'Consevation', but it clearly refers to 'Conservation').",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 40,
+      "sourcePageEnd": 41,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "cb1fec36-21b9-57e6-822f-a6a968cf7464",
+      "questionNumber": 29,
+      "type": "single_choice",
+      "category": "vocabulary_word_choice",
+      "questionText": "Select the most appropriate word to fill in the blank in the following\nsentence:-\n\nThe oppressive regime continued to ______ anyone who spoke out\nagainst its injustices.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "prosecute",
+          "sourceText": "prosecute"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "perpetuate",
+          "sourceText": "perpetuate"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "persecute",
+          "sourceText": "persecute"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "provoke",
+          "sourceText": "provoke"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "The sentence describes an oppressive regime's actions against people who spoke out against injustices.\n\nPersecute means to subject someone to hostility and ill-treatment, especially because of their political\nor religious beliefs.\nProsecute means to conduct legal proceedings against. Perpetuate means to make something continue\nindefinitely.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 41,
+      "sourcePageEnd": 42,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "5b4cf470-168d-5c23-ae40-97db2f8465b6",
+      "questionNumber": 30,
+      "type": "single_choice",
+      "category": "vocabulary_word_choice",
+      "questionText": "Select the most appropriate expression to fill in the blank in the\nfollowing sentence:-\n\nGiven her fearful and timid nature in unfamiliar situations, we can\nsay that she is ____",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "audacious",
+          "sourceText": "audacious"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "timorous",
+          "sourceText": "timorous"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "reckless",
+          "sourceText": "reckless"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "intrepid",
+          "sourceText": "intrepid"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The sentence describes a fearful and timid nature in unfamiliar situations.\n\nTimorous means showing or suffering from nervousness, fear, or a lack of confidence; timid.\nAudacious and intrepid mean brave/fearless. Reckless means without thought for danger.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 42,
+      "sourcePageEnd": 43,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "88f32b13-3303-51ca-8d43-39b08dee0b4c",
+      "questionNumber": 31,
+      "type": "single_choice",
+      "category": "idiom_matching",
+      "questionText": "Match the idioms in List-I with their correct meanings in List-Il :-\n\nList-I (Idioms) List-II (Meanings)\n(A) To be at loggerheads (I) To talk in an ambiguous manner\n(B) To beat about the (II) To give credit to someone for their good qualities after they have done\nbush something wrong\n(C) To give the devil his\n(III) To prevent a problem by stopping it as soon as it starts\ndue\n(D) To nip in the bud (IV) To disagree strongly",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)",
+          "sourceText": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)",
+          "sourceText": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
+          "sourceText": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 43,
+      "sourcePageEnd": 44,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "429cbb98-2894-5a8b-afaa-4dcd2b0cc862",
+      "questionNumber": 32,
+      "type": "single_choice",
+      "category": "vocabulary_antonym",
+      "questionText": "Select the most appropriate antonym of the underlined word in the\ngiven sentence:-\n\nIt seemed a perfectly ‘innocuous’ remark.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "harmless",
+          "sourceText": "harmless"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "insane",
+          "sourceText": "insane"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "pernicious",
+          "sourceText": "pernicious"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "permissible",
+          "sourceText": "permissible"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "The word innocuous means harmless or inoffensive.\n\nHarmless is a synonym.\nPernicious means having a harmful effect, especially in a gradual or subtle way.\nTherefore, pernicious is the most appropriate antonym.",
+      "answerReviewStatus": "needs_manual_review",
+      "dataQualityNote": "Printed answer key says A (choice 1, harmless), but the solution identifies pernicious (choice 3) as the antonym of innocuous. Source conflict; answer not silently changed.",
+      "sourcePageStart": 44,
+      "sourcePageEnd": 44,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "9c8c1677-b4fb-5bf6-b20e-dcedd6e024cc",
+      "questionNumber": 33,
+      "type": "single_choice",
+      "category": "expression_matching",
+      "questionText": "Fill in the blanks in the sentences in List-I with the appropriate\nexpressions in List-II:\n\nList-I (Sentences) List-II (Expressions)\n(A) Akhira has a/an ___________, so ask her to check the report. (I) foot the bill\n(B) Although others were also responsible for the problem, Alice decided to\n(II) eye for detail\n___________.\n(C) Choose what you like from the menu – the company is going to ___________. (III) on her toes\n(IV) shoulder the\n(D) Having three kids under the age of five keeps Janki ________.\nblame",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)",
+          "sourceText": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)",
+          "sourceText": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)",
+          "sourceText": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 45,
+      "sourcePageEnd": 46,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "d92dadaf-a8cb-50a9-bc7b-5b1986af9beb",
+      "questionNumber": 34,
+      "type": "single_choice",
+      "category": "vocabulary_word_choice",
+      "questionText": "Fill in the blank with the most appropriate word:-\n\nHe is so _____ that he hates to get up to even open the door.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "immobile",
+          "sourceText": "immobile"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "lethargic",
+          "sourceText": "lethargic"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "resolute",
+          "sourceText": "resolute"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "alert",
+          "sourceText": "alert"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The blank needs a word that describes someone so lazy or lacking energy that they won't even move to open\na door.\n\nLethargic means sluggish and apathetic; lacking energy.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 46,
+      "sourcePageEnd": 46,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "ac12d37c-7ec4-579c-9cec-aa1ae197f78c",
+      "questionNumber": 35,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the following parts to form a meaningful sentence:-\n\n(A) each country by creating new words to describe indigenous\nfeatures and\n\n(B) shared across dialects, forming what is known as World English\n\n(C) over the last 400 years, English has spread globally, evolving\nuniquely in\n\n(D) absorbing words from local languages, yet the majority of its\nvocabulary remains",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(C), (A), (B), (D)",
+          "sourceText": "(C), (A). B). (D)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(C), (A), (D), (B)",
+          "sourceText": "(C), (A), (D), (B)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(B), (A), (C), (D)",
+          "sourceText": "(B). (A). (C). (D)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (D), (B), (A)",
+          "sourceText": "(C). (D). (B), (A)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "The coherent sentence formed is ;\n\nOver the last 400 years , English has spread globally, evolving uniquely in each country by creating new\nwords to describe indigenous features and absorbing words from local languages, yet the majority of its\nvocabulary remains shared across dialects , forming what bis known as World English.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 47,
+      "sourcePageEnd": 47,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "4a164318-e3f7-5038-9da8-c162ce8ccba5",
+      "questionNumber": 36,
+      "type": "single_choice",
+      "category": "vocabulary_synonym",
+      "questionText": "Select the word closest in meaning to the word: Postulate",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Highlight",
+          "sourceText": "Highlight"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Disprove",
+          "sourceText": "Disprove"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Refute",
+          "sourceText": "Refute"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Hypothesize",
+          "sourceText": "Hypothesize"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "Postulate (suggest or assume the truth of something as a basis for reasoning) and Hypothesize means to\npropose an explanation or assumption.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 48,
+      "sourcePageEnd": 48,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "845ee8ac-42f9-5199-a0f8-81feea027a18",
+      "questionNumber": 37,
+      "type": "single_choice",
+      "category": "word_meaning_matching",
+      "questionText": "Match the words given in List-I with the appropriate meanings\ngiven in List-II\n\nList-I (Words) List-II (Meanings)\n(A) Centrifugal (I) Anything tending to move away from the centre\n(B) Effeminate (II) Words inscribed on the tomb\n(C) Ambidextrous (III) Womanish in habits\n(D) Epitaph (IV) One who can use either hand without any problem",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (I), (B) - (IV), (C) - (III), (D) - (II)",
+          "sourceText": "(A) - (I), (B) - (IV), (C) - (III), (D) - (II)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (IV), (B) - (II), (C) - (III), (D) - (I)",
+          "sourceText": "(A) - (IV), (B) - (II), (C) - (III), (D) - (I)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)",
+          "sourceText": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)",
+          "sourceText": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "(A)-I , (B)-III , (C)-IV, (D)-II",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 48,
+      "sourcePageEnd": 49,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "31a01e8b-be9d-54b5-8da7-bb6a933c95ac",
+      "questionNumber": 38,
+      "type": "single_choice",
+      "category": "grammar_completion",
+      "questionText": "Select the word or phrase that best completes the following\nsentence:-\n\nDesert flowers can be invisible for years__________ appear\nsuddenly after heavy rain.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "alternatively or",
+          "sourceText": "alternatively or"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "consequently and",
+          "sourceText": "consequently and"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "nevertheless, so",
+          "sourceText": "nevertheless, so"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "actually, but",
+          "sourceText": "actually, but"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "The first blank requires an adverb that acts as a transition or intensifier, introducing a surprising fact about\ntheir invisibility: \"actually\" fits this.\n\n1. The second blank requires a coordinating conjunction to connect two contrasting actions (being\ninvisible vs. appearing suddenly): \"but\" is the correct choice to express this contrast.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 49,
+      "sourcePageEnd": 50,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "062ac410-06d4-56f2-b367-a1fec2c92b92",
+      "questionNumber": 39,
+      "type": "single_choice",
+      "category": "vocabulary_synonym",
+      "questionText": "Identify the word that is closest in meaning to the word-Relegate",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Elevate",
+          "sourceText": "Elevate"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Demote",
+          "sourceText": "Demote"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Acknowledge",
+          "sourceText": "Acknowledge"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Celebrate",
+          "sourceText": "Celebrate"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "Relegate (means to assign to a lower position) & Demote means to move to a less important position, which\nis the direct meaning of relegate.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 50,
+      "sourcePageEnd": 51,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "936039f9-6410-58a6-b46a-4793f0465c90",
+      "questionNumber": 40,
+      "type": "single_choice",
+      "category": "word_usage_matching",
+      "questionText": "Complete the sentences given in List-I with the appropriate words\nfrom List-II:\n\nList-I (Sentences) List-II (Words)\n(A) ________ people often get deceived. (I) creditable\n(B) She gave a ________ first performance at the theatre. (II) conscious\n(C) My ________ made me confess my guilt. (III) credulous\n(D) We soon became ________ of the presence of an intruder. (IV) conscience",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)",
+          "sourceText": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 51,
+      "sourcePageEnd": 52,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "c79d8886-dbfb-57be-84cc-083d6f143e8f",
+      "questionNumber": 41,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Rearrange the following parts to form a meaningful sentence:-\n\n(A) into simpler molecules that can be absorbed into the\nbloodstream\n(B) digestion is an intricate process that begins in the mouth\n\n(C) where food is broken down mechanically and chemically\n\n(D) and continues in the stomach and intestines",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(B), (C), (A), (D)",
+          "sourceText": "(B), (C). (A). (D)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(B), (D), (C), (A)",
+          "sourceText": "(B). (D). (C). (A)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(B), (A), (C), (D)",
+          "sourceText": "(B), (A). (C). (D)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (B), (A), (D)",
+          "sourceText": "(C). (B). (A). (D)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "Coherent Sentence:\n\nDigestion is an intricate process that begins in the mouth where food is broken down mechanically and\nchemically and continues in the stomach and intestines into simpler molecules that can be absorbed into the\nbloodstream. (BCDA should be the correct sequence)",
+      "answerReviewStatus": "needs_manual_review",
+      "dataQualityNote": "Printed answer key says B (choice 2), while the solution states sequence BCDA, which is not among the listed choices; its reconstructed sentence also appears internally inconsistent. Manual verification required.",
+      "sourcePageStart": 52,
+      "sourcePageEnd": 53,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "d72a1ce3-bc25-52d8-8208-99c5d0da268f",
+      "questionNumber": 42,
+      "type": "single_choice",
+      "category": "vocabulary_antonym",
+      "questionText": "Select the word opposite in meaning to the word: Stoic",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Serene",
+          "sourceText": "Serene"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Complaining",
+          "sourceText": "Complaining"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Resigned",
+          "sourceText": "Resigned"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "stolid",
+          "sourceText": "stolid"
+        }
+      ],
+      "sourceCorrectOptionOrder": 2,
+      "sourceAnswerLabel": "B",
+      "solution": "Stoic (enduring pain without complaining) and thus complaining is its antonym.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 53,
+      "sourcePageEnd": 53,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "71a779f4-9da8-59f7-905f-09fa245a11d6",
+      "questionNumber": 43,
+      "type": "single_choice",
+      "category": "vocabulary_antonym",
+      "questionText": "Select the word opposite in meaning to the word: Presumptuous",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Pretentious",
+          "sourceText": "Pretentious"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Brash",
+          "sourceText": "Brash"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Bountiful",
+          "sourceText": "Bountiful"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Unassuming",
+          "sourceText": "Unassuming"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "Presumptuous (overly confident; forward) & Unassuming means modest and not pretentious, the opposite\nof being presumptuous.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 54,
+      "sourcePageEnd": 54,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "8b8dfe5d-41c7-5c28-877e-001a9278b432",
+      "questionNumber": 44,
+      "type": "single_choice",
+      "category": "phrasal_verb_completion",
+      "questionText": "Fill in the blank with the most appropriate option in the following\nsentence:-\n\nThough Sharon complained and cried bitterly, Mom did not ____ on\nher.",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "let in",
+          "sourceText": "let in"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "let off",
+          "sourceText": "let off"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "let out",
+          "sourceText": "let out"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "let up",
+          "sourceText": "let up"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "The phrasal verb let up means to lessen or stop, or to relax one's effort or pressure. The sentence means Mom\ndid not ease the pressure despite the crying.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 54,
+      "sourcePageEnd": 55,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "40a1bc6f-652a-5eaf-af67-c0f9615d222c",
+      "questionNumber": 45,
+      "type": "single_choice",
+      "category": "vocabulary_antonym",
+      "questionText": "Select the word opposite in meaning to the word: Resonant",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Resounding",
+          "sourceText": "Resounding"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Cacophonous",
+          "sourceText": "Cacophonous"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Smothered",
+          "sourceText": "Smothered"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Pulsating",
+          "sourceText": "Pulsating"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "Resonant (deep, continuing sound) & Smothered means muffled or suppressed (of sound), which is the\nopposite of a clear, continuing sound.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 55,
+      "sourcePageEnd": 56,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "fcb8ce7b-11db-5ac8-ae71-bbeb76bd480f",
+      "questionNumber": 46,
+      "type": "single_choice",
+      "category": "idiom_matching",
+      "questionText": "Complete the sentences given in List-I with suitable idioms in List-\nII:\n\nList-I (Sentences) List-II (Idioms)\n(A) He wants a superior post not to serve people but to ________. (I) add fuel to the fire\n(B) The arrest of the Union head only served to ________. (II) cut no ice\n(C) He is a miser. To seek donations from him is to ________. (III) feather his own nest\n(D) She pleaded that she was not guilty but her appeals ________. (IV) flog a dead horse",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)",
+          "sourceText": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)",
+          "sourceText": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 56,
+      "sourcePageEnd": 57,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "f4217b18-e4d1-5824-b894-725151c20e09",
+      "questionNumber": 47,
+      "type": "single_choice",
+      "category": "vocabulary_synonym",
+      "questionText": "Select the word similar in meaning to the word: Scrutiny",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Ignorance",
+          "sourceText": "Ignorance"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Objectivity",
+          "sourceText": "Objectivity"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Oversight",
+          "sourceText": "Oversight"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Examination",
+          "sourceText": "Examination"
+        }
+      ],
+      "sourceCorrectOptionOrder": 4,
+      "sourceAnswerLabel": "D",
+      "solution": "Scrutiny (critical observation or examination) & Examination is the closest synonym for critical\nobservation.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 57,
+      "sourcePageEnd": 57,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "f1abd7ca-41e0-5faf-ba62-9de27a602698",
+      "questionNumber": 48,
+      "type": "single_choice",
+      "category": "homonym_matching",
+      "questionText": "Fill in the blanks in the sentences given in List-I with appropriate\nhomonyms from List-II:\n\nList-I (Sentences) List-II (Homonyms)\n(A) He believes in the ________ of justice. (I) censor\n(B) The ______ board has awarded 'U' certificate to the film. (II) censure\n(C) His unseemly behaviour is open to ______. (III) cannons\n(D) The ______ of ancient times are placed near the railway station. (IV) canons",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
+          "sourceText": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)",
+          "sourceText": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(A) - (III), (B) - (II), (C) - (IV), (D) - (I)",
+          "sourceText": "(A) - (III), (B) - (II), (C) - (IV), (D) - (I)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+          "sourceText": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 58,
+      "sourcePageEnd": 58,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "4f3afcbf-d41f-5290-b15b-2360f77b948e",
+      "questionNumber": 49,
+      "type": "single_choice",
+      "category": "vocabulary_antonym",
+      "questionText": "Select the word opposite in meaning to the word: Insufferable",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "Painful",
+          "sourceText": "Painful"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "Deficient",
+          "sourceText": "Deficient"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "Endurable",
+          "sourceText": "Endurable"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "Suppressible",
+          "sourceText": "Suppressible"
+        }
+      ],
+      "sourceCorrectOptionOrder": 3,
+      "sourceAnswerLabel": "C",
+      "solution": "Insufferable (too extreme or unpleasant to bear) & Endurable means able to be tolerated, the opposite of\ninsufferable (intolerable).",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 59,
+      "sourcePageEnd": 59,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    },
+    {
+      "id": "a032a8d1-8ac6-5a22-b534-8e9693291eb9",
+      "questionNumber": 50,
+      "type": "single_choice",
+      "category": "sentence_rearrangement",
+      "questionText": "Re-arrange the following phrases to form a meaningful sentence:-\n\n(A) a great buzzard was\n\n(B) and scorching sun.\n\n(C) blob against the blinding\n\n(D) circling high overhead a",
+      "passageId": null,
+      "passageKey": null,
+      "options": [
+        {
+          "order": 1,
+          "sourceOptionLabel": "1",
+          "text": "(A), (D), (C), (B)",
+          "sourceText": "(A). (D). (C). (B)"
+        },
+        {
+          "order": 2,
+          "sourceOptionLabel": "2",
+          "text": "(A), (C), (B), (D)",
+          "sourceText": "(A), (C), (B), (D)"
+        },
+        {
+          "order": 3,
+          "sourceOptionLabel": "3",
+          "text": "(B), (A), (D), (C)",
+          "sourceText": "(B). (A). (D). (C)"
+        },
+        {
+          "order": 4,
+          "sourceOptionLabel": "4",
+          "text": "(C), (B), (D), (A)",
+          "sourceText": "(C), (B). (D). (A)"
+        }
+      ],
+      "sourceCorrectOptionOrder": 1,
+      "sourceAnswerLabel": "A",
+      "solution": "The coherent sentence formed is :\n\nA great buzzard was circling high overhead, a blob against the blinding and scorching sun.",
+      "answerReviewStatus": "source_key_recorded",
+      "dataQualityNote": null,
+      "sourcePageStart": 59,
+      "sourcePageEnd": 60,
+      "sourcePdfFilename": "English_2025-05-20_Shift_1.pdf"
+    }
+  ]
+}

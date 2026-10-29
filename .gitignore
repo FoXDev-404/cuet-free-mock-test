@@ -49,3 +49,6 @@ prisma/*.db
 prisma/*.db-journal
 dev.log
 start-server.bat
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/

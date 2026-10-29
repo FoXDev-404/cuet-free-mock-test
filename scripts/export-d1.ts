@@ -5,6 +5,7 @@ function sqlLiteral(v: unknown): string {
   if (v === null || v === undefined) return "NULL";
   if (typeof v === "boolean") return v ? "1" : "0";
   if (typeof v === "number") return String(v);
+  if (v instanceof Date) return `'${v.toISOString()}'`;
   const str = String(v).replace(/'/g, "''");
   return `'${str}'`;
 }

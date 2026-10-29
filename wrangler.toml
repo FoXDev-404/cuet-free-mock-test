@@ -1,5 +1,6 @@
 name = "cuet-free-mock-test"
 compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
 
 [assets]
@@ -13,8 +14,8 @@ database_id = "1248d1b3-e3d4-4815-99dc-1587a26d25f7"
 migrations_dir = "prisma/migrations"
 
 [vars]
-NEXTAUTH_URL = "https://your-cf-domain.workers.dev"
-NEXT_PUBLIC_APP_URL = "https://your-cf-domain.workers.dev"
+NEXTAUTH_URL = "https://cuet-free-mock-test.cuet-platform.workers.dev"
+NEXT_PUBLIC_APP_URL = "https://cuet-free-mock-test.cuet-platform.workers.dev"
 NEXT_PUBLIC_ADSENSE_CLIENT_ID = ""
 NEXT_PUBLIC_ADSENSE_SLOT_BANNER = ""
 NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR = ""

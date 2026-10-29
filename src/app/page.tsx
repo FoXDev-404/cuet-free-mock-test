@@ -1,206 +1,250 @@
-"use client";
-
 import Link from "next/link";
 import {
-  CheckCircle, ArrowRight, BarChart3, BookOpen, FlaskConical,
-  Target, Zap, Shield, Star,
+  ArrowRight,
+  BarChart3,
+  BookOpen,
+  BookOpenCheck,
+  Check,
+  ChevronRight,
+  Clock3,
+  GraduationCap,
+  Sparkles,
+  Target,
+  Timer,
 } from "lucide-react";
 
-const features = [
-  { icon: FlaskConical, title: "Realistic Mock Tests", description: "Full-length CUET mock tests with authentic exam interface, timer, and negative marking simulation.", href: "/mock-tests" },
-  { icon: BookOpen, title: "Topic-wise Practice", description: "Practice chapter-wise with 4,800+ questions across all CUET subjects with instant feedback.", href: "/practice" },
-  { icon: BarChart3, title: "Performance Analytics", description: "Detailed analytics with weak topic identification, accuracy tracking, and progress charts.", href: "/analytics" },
-  { icon: Target, title: "PYQ Practice", description: "Previous year questions with detailed solutions and year-wise analysis for better preparation.", href: "/pyq" },
-  { icon: Zap, title: "Daily Goals & Streaks", description: "Build consistency with daily practice goals, streak tracking, and achievement badges.", href: "/dashboard" },
-  { icon: Shield, title: "Exam-like Environment", description: "Real exam interface with timer, mark-for-review, clear response, and question palette.", href: "/mock-tests" },
+const studySteps = [
+  {
+    number: "01",
+    icon: BookOpen,
+    label: "Build your base",
+    title: "Practice one topic at a time.",
+    description:
+      "Work through focused questions, get comfortable with the concepts, and keep your study sessions manageable.",
+    href: "/practice",
+    action: "Start practicing",
+    tone: "violet",
+  },
+  {
+    number: "02",
+    icon: Timer,
+    label: "Get exam-ready",
+    title: "Try a timed mock test.",
+    description:
+      "Settle into an exam-style flow with a timer, question review, and a clear finish to each attempt.",
+    href: "/mock-tests",
+    action: "Browse mock tests",
+    tone: "mint",
+  },
+  {
+    number: "03",
+    icon: BarChart3,
+    label: "Learn from each try",
+    title: "Turn results into a plan.",
+    description:
+      "Review your performance, spot topics to revisit, and make your next practice session count.",
+    href: "/analytics",
+    action: "View analytics",
+    tone: "amber",
+  },
 ];
 
-const stats = [
-  { value: "4,800+", label: "Questions" },
-  { value: "50+", label: "Subjects" },
-  { value: "100+", label: "Mock Tests" },
-  { value: "50K+", label: "Students" },
-];
-
-const subjects = [
-  { name: "Computer Science", code: "CS", questions: 800 },
-  { name: "Physics", code: "PHY", questions: 750 },
-  { name: "Chemistry", code: "CHE", questions: 700 },
-  { name: "Mathematics", code: "MATH", questions: 750 },
-  { name: "Biology", code: "BIO", questions: 700 },
-  { name: "English", code: "EN", questions: 600 },
-  { name: "General Test", code: "GT", questions: 800 },
-  { name: "Economics", code: "ECO", questions: 400 },
-];
-
-const testimonials = [
-  { title: "Priya Sharma", role: "CUET 2024 Topper", content: "The mock tests were exactly like the real exam. The analytics helped me identify my weak areas and improve my score by 40%.", score: "98.5 percentile", date: "2024" },
-  { title: "Rahul Verma", role: "CUET 2024 Aspirant", content: "The daily practice questions and detailed explanations helped me understand concepts deeply. Highly recommended!", score: "95.2 percentile", date: "2024" },
-  { title: "Anjali Singh", role: "CUET 2024 Aspirant", content: "The mock test interface is exactly like the real CUET exam. The analytics helped me track my progress perfectly.", score: "96.8 percentile", date: "2024" },
+const quickLinks = [
+  { icon: Clock3, label: "Timed mock tests", detail: "Practice the exam flow", href: "/mock-tests" },
+  { icon: BookOpenCheck, label: "Topic practice", detail: "Build confidence by doing", href: "/practice" },
+  { icon: Target, label: "Previous year questions", detail: "Revise with PYQs", href: "/pyq" },
+  { icon: BarChart3, label: "Progress insights", detail: "Know what to work on", href: "/analytics" },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-b from-primary-50 via-white to-white dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-900">
-        <div className="container-page pt-16 pb-0 lg:pt-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-8 animate-fade-in">
-              <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" aria-hidden="true" />
-              <span>New: Full CUET 2025 Syllabus Coverage</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-6 animate-slide-up">
-              Prepare Smarter.{" "}
-              <span className="text-primary-600 dark:text-primary-400">Practice Better.</span>{" "}
-              Crack CUET (UG).
-            </h1>
-            <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-300 mb-10 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: "100ms" }}>
-              Free CUET (UG) mock tests, chapter-wise practice, PYQs and performance analytics.
-              Build your own subject combination and track progress with detailed analytics.
+      <section className="home-hero relative overflow-hidden">
+        <div className="home-hero-grid" aria-hidden="true" />
+        <div className="container-page relative z-10 grid items-center gap-12 py-14 sm:py-20 lg:min-h-[650px] lg:grid-cols-[1.02fr_0.98fr] lg:gap-14 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="home-eyebrow mb-6">
+              <span className="home-eyebrow-dot" aria-hidden="true" />
+              CUET UG preparation, made clearer
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: "200ms" }}>
-              <Link href="/mock-tests" className="group btn-brand px-8 py-3.5 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+            <h1 className="max-w-xl text-4xl font-extrabold leading-[1.08] tracking-[-0.045em] text-neutral-950 dark:text-white sm:text-5xl lg:text-[3.75rem]">
+              Prepare Smarter.
+              <span className="mt-2 block text-gradient">Practice with purpose.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-8">
+              Make your next study session count with CUET mock tests, focused practice, previous year questions, and useful progress reviews—all in one place.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/mock-tests" className="btn-brand home-hero-button group">
                 Start a Mock Test
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
-              <Link href="/practice" className="btn-outline px-8 py-3.5 text-lg font-semibold rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors">
-                Browse Practice Questions
+              <Link href="/practice" className="btn-outline home-hero-button">
+                <BookOpen className="h-4 w-4" aria-hidden="true" />
+                Explore Practice
               </Link>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="mt-16 animate-fade-in" style={{ animationDelay: "300ms" }}>
-              <div className="flex flex-wrap items-center justify-center gap-8 text-neutral-500 dark:text-neutral-400 text-sm">
-                <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" aria-hidden="true" />Free forever - No credit card required</span>
-                <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-secondary-500" />4,800+ questions with solutions</span>
-                <span className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-secondary-500" />Real exam interface simulation</span>
-              </div>
+            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-neutral-600 dark:text-neutral-300">
+              <span className="inline-flex items-center gap-2">
+                <Check className="h-4 w-4 text-secondary-600 dark:text-secondary-400" aria-hidden="true" />
+                Learn at your own pace
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Check className="h-4 w-4 text-secondary-600 dark:text-secondary-400" aria-hidden="true" />
+                Pick up where you left off
+              </span>
             </div>
           </div>
-        </div>
 
-        {/* Stats */}
-        <div className="container-page pb-16 lg:pb-20">
-          <div className="mx-auto mt-14 max-w-5xl animate-slide-up" style={{ animationDelay: "400ms" }}>
-            <div className="card p-6 shadow-xl lg:p-8">
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-8">
-                {stats.map((stat, i) => (
-                  <div key={stat.label} className="text-center animate-slide-up" style={{ animationDelay: `${500 + i * 100}ms` }}>
-                    <div className="mb-1 text-3xl font-extrabold text-primary-600 dark:text-primary-400 sm:text-4xl lg:text-5xl">{stat.value}</div>
-                    <div className="font-medium text-neutral-600 dark:text-neutral-400">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-20 lg:py-28">
-        <div className="container-page">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white mb-4">Everything you need to crack CUET (UG)</h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-300">Comprehensive preparation platform with everything you need to succeed in CUET (UG) 2025.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {features.map((feature, i) => (
-              <article key={feature.title} className="group relative card p-6 lg:p-8 card-hover animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
-                <div className="absolute -top-3 -right-3 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="h-6 w-6 text-primary-600 dark:text-primary-400" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-3">{feature.title}</h3>
-                  <p className="text-neutral-600 dark:text-neutral-300 mb-6 leading-relaxed">{feature.description}</p>
-                  <Link href={feature.href} className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
-                    Learn more <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Subjects */}
-      <section className="py-20 lg:py-28 bg-neutral-50 dark:bg-neutral-900/50">
-        <div className="container-page">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white mb-4">Cover All CUET Subjects</h2>
-            <p className="text-neutral-600 dark:text-neutral-400">50+ subjects across Section IA, IB, II, and III with chapter-wise coverage.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {subjects.map((subject, i) => (
-              <Link key={subject.code} href={`/practice?subject=${subject.code}`} className="group relative card p-5 lg:p-6 card-hover animate-slide-up" style={{ animationDelay: `${i * 50}ms` }}>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{subject.code}</span>
-                  <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">{subject.questions} Qs</span>
-                </div>
-                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{subject.name}</h3>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-xs font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded">
-                    {subject.code === "CS" || subject.code === "PHY" || subject.code === "CHE" || subject.code === "MATH" || subject.code === "BIO" ? "Section II" : subject.code === "EN" || subject.code === "GT" ? "Section IA/IB/III" : "Section II"}
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 lg:py-28 bg-white dark:bg-neutral-950">
-        <div className="container-page">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white mb-4">Trusted by CUET aspirants</h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-300">See how students used free mock tests and analytics to improve their scores.</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure key={t.title} className="card flex flex-col p-6">
-                <div className="flex items-center gap-0.5 text-amber-400" aria-label="5 out of 5 stars">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" aria-hidden="true" />
-                  ))}
-                </div>
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-                  “{t.content}”
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-neutral-100 pt-5 dark:border-neutral-800">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700 dark:bg-primary-900/40 dark:text-primary-300">
-                    {t.title.split(" ").map((n) => n[0]).join("")}
+          <div className="home-preview-wrap mx-auto w-full max-w-[560px] lg:ml-auto">
+            <div className="home-preview-glow" aria-hidden="true" />
+            <div className="home-preview-card card">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="home-preview-mark">
+                    <GraduationCap className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-neutral-900 dark:text-white">{t.title}</div>
-                    <div className="truncate text-xs text-neutral-500 dark:text-neutral-400">{t.role}</div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">Practice preview</p>
+                    <p className="mt-0.5 truncate text-sm font-semibold text-neutral-900 dark:text-white">Computer Science</p>
                   </div>
-                  <span className="badge badge-success ml-auto shrink-0">{t.score}</span>
-                </figcaption>
-              </figure>
+                </div>
+                <span className="badge badge-primary shrink-0">Sample</span>
+              </div>
+
+              <div className="home-preview-rule my-5" />
+
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">SAMPLE QUESTION</span>
+                <span className="text-xs font-medium text-neutral-400 dark:text-neutral-500">Concept check</span>
+              </div>
+              <h2 className="mt-3 text-lg font-bold leading-7 text-neutral-900 dark:text-white sm:text-xl">
+                In a stack, which item is removed first?
+              </h2>
+
+              <div className="mt-5 space-y-2.5" aria-label="Sample answer choices">
+                <div className="home-preview-option"><span className="home-option-letter">A</span><span>The oldest item</span></div>
+                <div className="home-preview-option"><span className="home-option-letter">B</span><span>A randomly chosen item</span></div>
+                <div className="home-preview-option home-preview-option-correct">
+                  <span className="home-option-letter">C</span>
+                  <span className="flex-1">The most recently added item</span>
+                  <span className="home-option-check"><Check className="h-3.5 w-3.5" aria-hidden="true" /></span>
+                </div>
+                <div className="home-preview-option"><span className="home-option-letter">D</span><span>The highest-priority item</span></div>
+              </div>
+
+              <div className="home-preview-feedback mt-5 flex items-start gap-2.5">
+                <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary-600 dark:text-primary-300" aria-hidden="true" />
+                <p className="text-xs leading-5 text-neutral-600 dark:text-neutral-300">
+                  A quick example of the focused, question-by-question practice experience.
+                </p>
+              </div>
+            </div>
+            <p className="mt-3 text-center text-xs text-neutral-500 dark:text-neutral-400">Illustrative preview · not a live test</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page -mt-1 pb-16 pt-8 sm:pb-20 lg:pt-12" aria-label="Study tools">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {quickLinks.map((item) => (
+            <Link key={item.label} href={item.href} className="home-quick-link group">
+              <span className="home-quick-icon"><item.icon className="h-5 w-5" aria-hidden="true" /></span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-semibold text-neutral-900 dark:text-white">{item.label}</span>
+                <span className="mt-0.5 block text-xs text-neutral-500 dark:text-neutral-400">{item.detail}</span>
+              </span>
+              <ChevronRight className="h-4 w-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary-600" aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20 lg:py-28">
+        <div className="container-page">
+          <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-12 sm:flex-row sm:items-end">
+            <div className="max-w-2xl">
+              <p className="home-section-kicker">A simple study rhythm</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
+                Small steps add up to stronger preparation.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-neutral-600 dark:text-neutral-300 sm:text-base">
+              Move from learning to exam practice, then use what you learned to plan the next session.
+            </p>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
+            {studySteps.map((step) => (
+              <Link key={step.number} href={step.href} className={`home-step-card home-step-${step.tone} card card-hover group`}>
+                <div className="flex items-start justify-between gap-4">
+                  <span className="home-step-icon"><step.icon className="h-5 w-5" aria-hidden="true" /></span>
+                  <span className="home-step-number">{step.number}</span>
+                </div>
+                <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400">{step.label}</p>
+                <h3 className="mt-2 text-xl font-bold leading-snug text-neutral-900 dark:text-white">{step.title}</h3>
+                <p className="mt-3 min-h-[72px] text-sm leading-6 text-neutral-600 dark:text-neutral-300">{step.description}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-700 transition-colors group-hover:text-primary-600 dark:text-primary-300">
+                  {step.action}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2F200%2F200%22%3E%3Ccircle%20cx%3D20%20cy%3D20%20r%3D20%20fill%3D%22white%22%20opacity%3D%22.03%22%2F%3E%3C%2Fsvg%3E')] opacity-20" />
-        <div className="relative container-page text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Crack CUET (UG) 2025?</h2>
-            <p className="text-lg text-primary-100 mb-10 max-w-2xl mx-auto">Join 50,000+ students who trust CUETFreeMockTest for their preparation. Start your free mock test today.</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/mock-tests" className="group w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-xl bg-white text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-50 shadow-xl hover:shadow-2xl transition-all duration-300">Start Free Mock Test <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" /></Link>
-              <Link href="/practice" className="group w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-xl border-2 border-white/30 text-white hover:bg-white/10 dark:hover:bg-white/5 transition-all duration-300">Browse Practice Questions</Link>
-            </div>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-8 text-primary-100/80 text-sm">
-              <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4" />No credit card required</span>
-              <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4" />Cancel anytime</span>
-              <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4" />Free forever</span>
+      <section className="home-tools-section py-16 sm:py-20 lg:py-24">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+          <div className="max-w-xl">
+            <p className="home-section-kicker">Made for your next session</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
+              Less guesswork. More focused practice.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-300">
+              Find the right place to begin, take a mock when you are ready, and revisit the areas that need another look.
+            </p>
+            <Link href="/categories" className="btn-outline mt-7 inline-flex">
+              Browse subjects and categories
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              { icon: Timer, title: "Exam-style sessions", body: "Use a timer and question navigation to practise staying on pace.", href: "/mock-tests" },
+              { icon: BookOpen, title: "Focused question sets", body: "Spend a session working through practice questions at your own pace.", href: "/practice" },
+              { icon: Target, title: "Past-year revision", body: "Bring previous year questions into your regular revision routine.", href: "/pyq" },
+              { icon: BarChart3, title: "A clearer review", body: "Use your results to decide what to strengthen next.", href: "/analytics" },
+            ].map((item) => (
+              <Link key={item.title} href={item.href} className="home-tool-card group">
+                <span className="home-tool-icon"><item.icon className="h-5 w-5" aria-hidden="true" /></span>
+                <span className="mt-4 block text-base font-semibold text-neutral-900 dark:text-white">{item.title}</span>
+                <span className="mt-1.5 block text-sm leading-5 text-neutral-600 dark:text-neutral-300">{item.body}</span>
+                <ArrowRight className="mt-4 h-4 w-4 text-primary-600 transition-transform group-hover:translate-x-1 dark:text-primary-300" aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page py-16 sm:py-20 lg:py-24">
+        <div className="home-final-cta relative overflow-hidden rounded-[2rem] px-6 py-12 text-center sm:px-10 sm:py-16 lg:px-16">
+          <div className="home-final-cta-orb" aria-hidden="true" />
+          <div className="relative mx-auto max-w-2xl">
+            <span className="home-cta-icon"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl">Start with one good session.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-indigo-100 sm:text-base sm:leading-7">
+              Choose a mock test or jump into practice. Your CUET preparation can move forward one question at a time.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/mock-tests" className="home-cta-primary group">
+                Choose a mock test
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <Link href="/practice" className="home-cta-secondary">Explore Practice</Link>
             </div>
           </div>
         </div>

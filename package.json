@@ -12,7 +12,7 @@
     "cf:wrapper": "opennextjs-cloudflare",
     "cf:d1:create": "wrangler d1 create cuet-mock-db",
     "cf:d1:migrate": "npx prisma migrate deploy --target-d1 cuet-mock-db --local",
-    "cf:deploy": "npm run build && npx opennextjs-cloudflare && npx wrangler deploy"
+    "cf:deploy": "npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@prisma/adapter-d1": "^5.22.0",

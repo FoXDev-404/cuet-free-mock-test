@@ -96,28 +96,41 @@ model Chapter {
 }
 
 model Question {
-  id            String   @id @default(cuid())
-  subjectId     String
-  chapterId     String?
-  type          String   @default("MCQ")
-  stemEn        String
-  stemHi        String?
-  optionsEn     String   // JSON string: [{id, text}]
-  optionsHi     String?  // JSON string: [{id, text}]
-  correctAnswer String
-  explanationEn String?
-  explanationHi String?
-  year          Int?
-  source        String   @default("sample")
-  difficulty    String   @default("medium")
-  marks         Int      @default(5)
-  negativeMarks Int      @default(1)
-  isActive      Boolean  @default(true)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                   String   @id @default(cuid())
+  subjectId            String
+  chapterId            String?
+  type                 String   @default("MCQ")
+  stemEn               String
+  stemHi               String?
+  optionsEn            String   // JSON string: [{id, text}]
+  optionsHi            String?  // JSON string: [{id, text}]
+  correctAnswer        String
+  explanationEn        String?
+  explanationHi        String?
+  year                 Int?
+  source               String   @default("sample")
+  difficulty           String   @default("medium")
+  marks                Int      @default(5)
+  negativeMarks        Int      @default(1)
+  isActive             Boolean  @default(true)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  // English mock test specific fields
+  questionNumber        Int?
+  passageId             String?
+  passageKey            String?
+  sourceCorrectOptionOrder Int?
+  sourceAnswerLabel     String?
+  answerReviewStatus    String   @default("source_key_recorded") // source_key_recorded | needs_manual_review
+  dataQualityNote       String?
+  sourcePageStart       Int?
+  sourcePageEnd         Int?
+  sourcePdfFilename     String?
 
   subject   Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   chapter   Chapter?  @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  passage   Passage?  @relation(fields: [passageId], references: [id], onDelete: SetNull)
   attempts  QuestionAttempt[]
   reviews   QuestionReview[]
   bookmarks Bookmark[]
@@ -127,6 +140,7 @@ model Question {
   @@index([chapterId])
   @@index([year])
   @@index([source])
+  @@index([passageId])
 }
 
 model Test {
@@ -232,4 +246,32 @@ model QuestionReview {
   question  Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+model Passage {
+  id            String   @id @default(cuid())
+  examId        String
+  passageKey    String
+  title         String
+  content       String
+  sourcePageStart Int?
+  sourcePageEnd   Int?
+  createdAt     DateTime @default(now())
+
+  questions Question[]
+
+  @@index([examId])
+  @@unique([examId, passageKey])
+}
+
+model EnglishMockConfig {
+  id            String   @id @default(cuid())
+  examId        String   @unique
+  durationMinutes Int     @default(60)
+  marksCorrect   Int      @default(1)
+  marksIncorrect Int      @default(0)
+  totalQuestions Int      @default(50)
+  isActive       Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
