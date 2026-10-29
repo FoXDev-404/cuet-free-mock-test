@@ -6,6 +6,16 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const subjectId = searchParams.get("subjectId");
     const type = searchParams.get("type");
+    const slug = searchParams.get("slug");
+
+    if (slug) {
+      const test = await prisma.test.findUnique({
+        where: { slug },
+        include: { subject: true, questions: { include: { question: true } } },
+      });
+      if (!test) return NextResponse.json({ error: "Test not found" }, { status: 404 });
+      return NextResponse.json([test]);
+    }
 
     const tests = await prisma.test.findMany({
       where: {

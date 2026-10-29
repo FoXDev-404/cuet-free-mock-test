@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 
 const submitSchema = z.object({
-  testId: z.string(),
+  testId: z.string().optional(),
+  slug: z.string().optional(),
   sessionId: z.string().optional(),
   answers: z.array(
     z.object({
@@ -19,13 +20,21 @@ export async function POST(req: Request) {
     const body = await req.json();
     const parsed = submitSchema.parse(body);
 
-    // Fetch test config and questions for scoring
-    const test = await prisma.test.findUnique({
+    // Resolve test by id or slug
+    let test = await prisma.test.findUnique({
       where: { id: parsed.testId },
       include: {
         questions: { include: { question: true } },
       },
     });
+    if (!test && parsed.slug) {
+      test = await prisma.test.findUnique({
+        where: { slug: parsed.slug },
+        include: {
+          questions: { include: { question: true } },
+        },
+      });
+    }
     if (!test) {
       return NextResponse.json({ error: "Test not found" }, { status: 404 });
     }
@@ -65,7 +74,7 @@ export async function POST(req: Request) {
     const attempt = await prisma.attempt.create({
       data: {
         sessionId: parsed.sessionId ?? `anon-${Date.now()}`,
-        testId: parsed.testId,
+        testId: test.id,
         status: "SUBMITTED",
         submittedAt: new Date(),
         timeSpentSec: parsed.timeSpentSec,
