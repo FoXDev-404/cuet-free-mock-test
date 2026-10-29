@@ -1,5 +1,4 @@
 import { withAuth } from "next-auth/middleware";
-import { NextResponse } from "next/server";
 
 export default withAuth({
   callbacks: {
@@ -25,7 +24,12 @@ export default withAuth({
         return true;
       }
       // Protected routes require a token
-      return !!token;
+      if (!token) return false;
+      // Admin routes require ADMIN role
+      if (pathname.startsWith("/admin")) {
+        return (token as any).role === "ADMIN";
+      }
+      return true;
     },
   },
   pages: {
@@ -34,5 +38,5 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/mock-tests/:path*/take"],
+  matcher: ["/dashboard/:path*", "/mock-tests/:path*/take", "/admin/:path*"],
 };
