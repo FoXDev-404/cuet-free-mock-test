@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdSlot } from "@/components/ads/AdSlot";
 
 export default function MockTestsPage() {
   const subjects = [
@@ -64,6 +65,10 @@ export default function MockTestsPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mt-12">
+        <AdSlot adSlot="mock-tests-banner" adFormat="leaderboard" style={{ margin: "0 auto", maxWidth: "728px" }} />
       </div>
     </section>
   );

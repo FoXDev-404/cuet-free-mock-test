@@ -1,3 +1,5 @@
+import { AdSlot } from "@/components/ads/AdSlot";
+
 export default function BlogPage() {
   const posts = [
     { title: "How to use CUET mock tests effectively", excerpt: "A strategy for combining subject-wise practice with full-length mocks.", date: "Oct 2026" },
@@ -21,6 +23,10 @@ export default function BlogPage() {
             <p className="text-neutral-600 dark:text-neutral-300 text-sm">{p.excerpt}</p>
           </article>
         ))}
+      </div>
+
+      <div className="mt-12">
+        <AdSlot adSlot="blog-banner" adFormat="leaderboard" style={{ margin: "0 auto", maxWidth: "728px" }} />
       </div>
     </section>
   );
