@@ -1,0 +1,264 @@
+// CUETFreeMockTest.com — Database Schema (Prisma)
+// Structure inferred from prepwithpro.in reverse-engineering (07-DATABASE-SCHEMA.md).
+// Original schema — no content copied from reference site.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Exam sections per CUET UG: Section IA/IB (Languages), Section II (Domain), Section III (General Test)
+enum SectionType {
+  LANGUAGE
+  DOMAIN
+  GENERAL_TEST
+}
+
+// Test types
+enum TestType {
+  FULL_LENGTH
+  SUBJECT_WISE
+  CHAPTER_WISE
+  PYQ_YEAR_WISE
+  GENERAL_TEST
+}
+
+// Test status
+enum TestStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// Attempt status
+enum AttemptStatus {
+  IN_PROGRESS
+  SUBMITTED
+  AUTO_SUBMITTED
+  ABANDONED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?
+  role          String    @default("USER") // USER | ADMIN
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts   Account[]
+  sessions   Session[]
+  attempts   Attempt[]
+  bookmarks  Bookmark[]
+  reviews    QuestionReview[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Subject {
+  id          String   @id @default(cuid())
+  name        String   // e.g. Computer Science, Physics, English
+  code        String   @unique // e.g. CS, PHY, EN
+  sectionType SectionType
+  description String?
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  chapters   Chapter[]
+  tests      Test[]
+  questions  Question[]
+}
+
+model Chapter {
+  id          String   @id @default(cuid())
+  name        String   // e.g. Number System, Operating System
+  subjectId   String
+  description String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+
+  subject    Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  questions  Question[]
+
+  @@index([subjectId])
+}
+
+model Question {
+  id            String   @id @default(cuid())
+  subjectId     String
+  chapterId     String?
+  type          String   @default("MCQ") // MCQ | CODE | IMAGE | LIST | TABLE
+  stemEn        String   // question text English
+  stemHi        String?  // question text Hindi (bilingual from day 1)
+  optionsEn     Json     // [{id, text}] 
+  optionsHi     Json?    // [{id, text}]
+  correctAnswer String   // option id
+  explanationEn String?
+  explanationHi String?
+  year          Int?     // PYQ year if applicable
+  source        String   @default("sample") // sample | pyq | mock
+  difficulty    String   @default("medium") // easy | medium | hard
+  marks         Int      @default(5)       // CUET: +5 correct
+  negativeMarks Int      @default(1)       // CUET: -1 incorrect
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  subject   Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  chapter   Chapter? @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  attempts  QuestionAttempt[]
+  reviews   QuestionReview[]
+  testLinks TestQuestionLink[]
+
+  @@index([subjectId])
+  @@index([chapterId])
+  @@index([year])
+  @@index([source])
+}
+
+model Test {
+  id            String     @id @default(cuid())
+  title         String     // e.g. "Computer Science Full Mock 2026"
+  slug          String     @unique
+  type          TestType
+  status        TestStatus @default(DRAFT)
+  subjectId     String?
+  chapterId     String?
+  year          Int?       // for PYQ tests
+  config        Json       // { totalQuestions, durationMinutes, markingScheme, perSection: [...] }
+  totalQuestions Int       @default(0)
+  durationMinutes Int      @default(60)
+  isPublic      Boolean    @default(true)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  subject   Subject?   @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+  chapter   Chapter? @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  questions TestQuestionLink[]
+  attempts  Attempt[]
+}
+
+model TestQuestionLink {
+  id        String @id @default(cuid())
+  testId    String
+  questionId String
+  order     Int    @default(0)
+
+  test      Test     @relation(fields: [testId], references: [id], onDelete: Cascade)
+  question  Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([testId, questionId])
+  @@index([testId])
+}
+
+model Attempt {
+  id             String     @id @default(cuid())
+  userId         String?
+  testId         String
+  sessionId      String     @unique // anonymous attempts tracked by session
+  status         AttemptStatus @default(IN_PROGRESS)
+  startedAt      DateTime   @default(now())
+  submittedAt    DateTime?
+  timeSpentSec   Int        @default(0)
+  score          Int        @default(0)
+  maxScore       Int        @default(0)
+  correctCount   Int        @default(0)
+  incorrectCount Int        @default(0)
+  attemptedCount Int        @default(0)
+  percentile     Float?     // estimated percentile
+  configSnapshot Json         // config used for this attempt
+
+  user     User    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  test     Test    @relation(fields: [testId], references: [id], onDelete: Cascade)
+  answers  QuestionAttempt[]
+
+  @@index([userId])
+  @@index([testId])
+  @@index([sessionId])
+  @@index([status])
+}
+
+model QuestionAttempt {
+  id            String   @id @default(cuid())
+  attemptId     String
+  questionId    String
+  selectedOption String?   // option id selected
+  isCorrect     Boolean?   // computed
+  timeSpentSec  Int        @default(0)
+  markedForReview Boolean @default(false)
+  cleared       Boolean    @default(false) // clear response used
+
+  attempt  Attempt   @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, questionId])
+  @@index([attemptId])
+  @@index([questionId])
+}
+
+model Bookmark {
+  id        String @id @default(cuid())
+  userId    String
+  questionId String
+
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question  Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+  @@index([userId])
+}
+
+model QuestionReview {
+  id        String @id @default(cuid())
+  userId    String
+  questionId String
+  note      String?
+  createdAt DateTime @default(now())
+
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question  Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
