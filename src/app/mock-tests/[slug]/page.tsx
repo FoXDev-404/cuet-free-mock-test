@@ -1,10 +1,7 @@
-"use client";
-
-export const dynamic = "force-dynamic";
-
-import { useEffect, useState } from "react";
+import { prisma } from "@/lib/prisma";
+import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default async function TestDetailPage({
@@ -13,50 +10,12 @@ export default async function TestDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [test, setTest] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const test = await prisma.test.findUnique({
+    where: { slug, status: "PUBLISHED" },
+    include: { subject: true },
+  });
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch(`/api/tests?slug=${slug}`);
-        if (!res.ok) throw new Error("Failed to load test");
-        const data = await res.json();
-        const t = data.find((x: any) => x.slug === slug);
-        if (!t) throw new Error("Test not found");
-        setTest(t);
-      } catch (e: any) {
-        setError(e.message || "Failed to load test");
-      } finally {
-        setLoading(false);
-      }
-      return () => { cancelled = true; };
-    })();
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-xl mx-auto">
-        <div className="card text-center py-20">
-          <div className="animate-spin mx-auto h-12 w-12 border-4 border-brand-200 border-t-brand-600 rounded-full" />
-          <p className="mt-6 text-neutral-600 dark:text-neutral-400">Loading test…</p>
-        </div>
-      </section>
-    );
-  }
-
-  if (error || !test) {
-    return (
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-xl mx-auto">
-        <div className="card text-center py-20">
-          <h2 className="text-lg font-semibold text-red-700 dark:text-red-400">{error || "Test not found"}</h2>
-          <Button onClick={() => window.history.back()} variant="brand">Back to tests</Button>
-        </div>
-      </section>
-    );
-  }
+  if (!test) notFound();
 
   const config = typeof test.config === "string" ? JSON.parse(test.config) : test.config;
 
@@ -94,7 +53,7 @@ export default async function TestDetailPage({
             <div className="text-xs text-neutral-500 dark:text-neutral-400">Marking</div>
           </div>
           <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
-            <div className="text-2xl font-bold text-brand-600 dark:text-brand-400">{test._count?.questions ?? 0}</div>
+            <div className="text-2xl font-bold text-brand-600 dark:text-brand-400">{0}</div>
             <div className="text-xs text-neutral-500 dark:text-neutral-400">In this test</div>
           </div>
         </div>

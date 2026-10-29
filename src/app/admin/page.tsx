@@ -1,13 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Plus, Users, FileText, BarChart3, Settings, ShieldAlert } from "lucide-react";
 import Link from "next/link";
+import { FileText, BarChart3 } from "lucide-react";
 
 export default function AdminPage() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session) router.push("/login");
+  }, [session, router]);
+
+  if (!session) return null;
+
   const [tab, setTab] = useState("overview");
 
   return (
