@@ -6,6 +6,15 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("🌱 Seeding database...");
 
+  // Clean up existing data for idempotent seeding
+  await prisma.testQuestionLink.deleteMany();
+  await prisma.questionAttempt.deleteMany();
+  await prisma.attempt.deleteMany();
+  await prisma.question.deleteMany();
+  await prisma.test.deleteMany();
+  await prisma.chapter.deleteMany();
+  await prisma.subject.deleteMany();
+
   // ---- Subjects ----
   const cs = await prisma.subject.upsert({
     where: { code: "CS" },
@@ -378,9 +387,42 @@ async function main() {
     });
   }
 
+  // Mark a subset as previous-year practice items so the PYQ section has content.
+  // Content remains original sample material; years are illustrative metadata.
+  {
+    const created = await prisma.question.findMany({ orderBy: { createdAt: "asc" } });
+    const years = [2024, 2023, 2022, 2021];
+    let pyqIndex = 0;
+    for (const q of created) {
+      if (pyqIndex % 2 === 0 && pyqIndex < 20) {
+        await prisma.question.update({
+          where: { id: q.id },
+          data: { source: "pyq", year: years[pyqIndex % years.length] },
+        });
+      }
+      pyqIndex++;
+    }
+  }
+
   // ---- Sample tests ----
-  const fullTest = await prisma.test.create({
-    data: {
+  const fullTest = await prisma.test.upsert({
+    where: { slug: "cs-full-mock" },
+    update: {
+      title: "Computer Science Full-Length Mock",
+      type: "FULL_LENGTH",
+      status: "PUBLISHED",
+      subjectId: cs.id,
+      config: JSON.stringify({
+        totalQuestions: 10,
+        durationMinutes: 60,
+        markingScheme: { correct: 5, incorrect: 1, unattempted: 0 },
+        bilingual: true,
+      }),
+      totalQuestions: 10,
+      durationMinutes: 60,
+      isPublic: true,
+    },
+    create: {
       title: "Computer Science Full-Length Mock",
       slug: "cs-full-mock",
       type: "FULL_LENGTH",
@@ -406,8 +448,24 @@ async function main() {
     });
   }
 
-  const gtTest = await prisma.test.create({
-    data: {
+  const gtTest = await prisma.test.upsert({
+    where: { slug: "gt-full-mock" },
+    update: {
+      title: "General Test Full-Length Mock",
+      type: "GENERAL_TEST",
+      status: "PUBLISHED",
+      subjectId: gt.id,
+      config: JSON.stringify({
+        totalQuestions: 10,
+        durationMinutes: 60,
+        markingScheme: { correct: 5, incorrect: 1, unattempted: 0 },
+        bilingual: true,
+      }),
+      totalQuestions: 10,
+      durationMinutes: 60,
+      isPublic: true,
+    },
+    create: {
       title: "General Test Full-Length Mock",
       slug: "gt-full-mock",
       type: "GENERAL_TEST",

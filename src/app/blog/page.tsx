@@ -11,14 +11,14 @@ export default function BlogPage() {
 
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-neutral-900 dark:text-brand-50 mb-2">Blog</h1>
+      <h1 className="text-3xl font-bold text-neutral-900 dark:text-primary-50 mb-2">Blog</h1>
       <p className="text-neutral-600 dark:text-neutral-400 mb-8">
-        Original preparation guides and strategy articles. (Sample drafts — fact-check before publishing.)
+        Original preparation guides and strategy articles to help you plan your CUET preparation.
       </p>
       <div className="grid gap-4">
         {posts.map((p) => (
-          <article key={p.title} className="card">
-            <div className="text-xs text-neutral-400 mb-1">{p.date}</div>
+          <article key={p.title} className="card p-6">
+            <div className="text-xs font-medium text-neutral-400 mb-1">{p.date}</div>
             <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-1">{p.title}</h3>
             <p className="text-neutral-600 dark:text-neutral-300 text-sm">{p.excerpt}</p>
           </article>

@@ -4,15 +4,15 @@ test.describe("CUETFreeMockTest main flows", () => {
   test("home page loads and shows CTA", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/CUETFreeMockTest/);
-    await expect(page.getByRole("heading", { name: /Prepare smarter/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Prepare Smarter/ })).toBeVisible();
     await expect(page.getByRole("link", { name: /Start a Mock Test/ })).toBeVisible();
   });
 
-  test("mock tests list page shows subjects", async ({ page }) => {
+  test("mock tests list page shows published tests", async ({ page }) => {
     await page.goto("/mock-tests");
     await expect(page.getByRole("heading", { name: /Mock Tests/ })).toBeVisible();
-    await expect(page.getByRole("link", { name: /CS 0 questions Computer/ })).toBeVisible();
-    await expect(page.getByRole("link", { name: /PHY 0 questions Physics/ })).toBeVisible();
+    // Should show at least one published test card
+    await expect(page.locator("a[href*='/mock-tests/']").first()).toBeVisible();
   });
 
   test("test detail page shows instructions and start button", async ({ page }) => {

@@ -12,20 +12,17 @@ import { FileText, BarChart3 } from "lucide-react";
 export default function AdminPage() {
   const { data: session } = useSession();
   const router = useRouter();
+  const [tab, setTab] = useState("overview");
 
   useEffect(() => {
     if (!session) router.push("/login");
   }, [session, router]);
 
-  if (!session) return null;
-
-  const [tab, setTab] = useState("overview");
-
   return (
     <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-neutral-900 dark:text-brand-50">Admin Panel</h1>
+          <h1 className="text-2xl font-bold text-neutral-900 dark:text-primary-50">Admin Panel</h1>
           <p className="text-neutral-600 dark:text-neutral-400">Manage subjects, questions, tests, and users.</p>
         </div>
         <Link href="/mock-tests" className="btn-brand">View Site</Link>
@@ -136,7 +133,7 @@ function BulkImport() {
             Import Questions
           </Button>
           {result && (
-            <div className={`p-3 rounded ${result.ok ? "bg-brand-50 text-brand-700 border border-brand-100" : "bg-red-50 text-red-700 border border-red-100"}`}>
+            <div className={`p-3 rounded ${result.ok ? "bg-primary-50 text-primary-700 border border-primary-100" : "bg-red-50 text-red-700 border border-red-100"}`}>
               {result.message}
             </div>
           )}

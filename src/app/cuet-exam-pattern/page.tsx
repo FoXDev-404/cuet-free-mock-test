@@ -1,11 +1,11 @@
 export default function ExamPatternPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-neutral-900 dark:text-brand-50 mb-2">CUET (UG) Exam Pattern</h1>
+      <h1 className="text-3xl font-bold text-neutral-900 dark:text-primary-50 mb-2">CUET (UG) Exam Pattern</h1>
       <p className="text-neutral-600 dark:text-neutral-400 mb-8">
         Marking scheme, durations, and question counts used across our practice tests.
       </p>
-      <div className="card">
+      <div className="card overflow-x-auto p-6 sm:p-8">
         <table className="w-full text-left text-sm border-collapse">
           <thead>
             <tr className="border-b border-neutral-200 dark:border-neutral-800">

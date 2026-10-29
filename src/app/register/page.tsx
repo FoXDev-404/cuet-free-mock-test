@@ -41,9 +41,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-md mx-auto">
-      <div className="card">
-        <h1 className="text-2xl font-bold text-neutral-900 dark:text-brand-50 mb-1">Create account</h1>
+    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12 sm:px-6">
+      <div className="card w-full max-w-md p-6 sm:p-8">
+        <h1 className="text-2xl font-bold text-neutral-900 dark:text-white mb-1">Create account</h1>
         <p className="text-neutral-600 dark:text-neutral-400 mb-6">Your personal workspace starts here.</p>
         {error && (
           <div className="mb-4 p-3 rounded bg-red-50 text-red-700 text-sm border border-red-100">
@@ -51,7 +51,7 @@ export default function RegisterPage() {
           </div>
         )}
         {success && (
-          <div className="mb-4 p-3 rounded bg-brand-50 text-brand-700 text-sm border border-brand-100">
+          <div className="mb-4 p-3 rounded bg-primary-50 text-primary-700 text-sm border border-primary-100">
             {success}
           </div>
         )}
@@ -65,10 +65,10 @@ export default function RegisterPage() {
               type="checkbox"
               checked={terms}
               onChange={(e) => setTerms(e.target.checked)}
-              className="rounded text-brand-600 focus:ring-brand-500"
+              className="rounded text-primary-600 focus:ring-primary-500"
             />
-            I agree to the <Link href="/terms" className="text-brand-600 hover:underline dark:text-brand-400">Terms</Link> and{" "}
-            <Link href="/privacy-policy" className="text-brand-600 hover:underline dark:text-brand-400">Privacy Policy</Link>
+            I agree to the <Link href="/terms" className="text-primary-600 hover:underline dark:text-primary-400">Terms</Link> and{" "}
+            <Link href="/privacy-policy" className="text-primary-600 hover:underline dark:text-primary-400">Privacy Policy</Link>
           </label>
           <Button variant="brand" className="w-full" disabled={loading || !terms} type="submit">
             {loading ? "Creating…" : "Create account"}
@@ -76,7 +76,7 @@ export default function RegisterPage() {
         </form>
         <p className="mt-6 text-sm text-neutral-600 dark:text-neutral-400 text-center">
           Already have an account?{" "}
-          <Link href="/login" className="text-brand-600 hover:underline dark:text-brand-400 font-medium">Log in</Link>
+          <Link href="/login" className="text-primary-600 hover:underline dark:text-primary-400 font-medium">Log in</Link>
         </p>
       </div>
     </section>

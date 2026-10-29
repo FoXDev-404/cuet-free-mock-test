@@ -41,9 +41,9 @@ export default function LoginPage() {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-md mx-auto">
-      <div className="card">
-        <h1 className="text-2xl font-bold text-neutral-900 dark:text-brand-50 mb-1">Log in</h1>
+    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12 sm:px-6">
+      <div className="card w-full max-w-md p-6 sm:p-8">
+        <h1 className="text-2xl font-bold text-neutral-900 dark:text-white mb-1">Log in</h1>
         <p className="text-neutral-600 dark:text-neutral-400 mb-6">Continue to your workspace.</p>
         {error && (
           <div className="mb-4 p-3 rounded bg-red-50 text-red-700 text-sm border border-red-100">
@@ -55,10 +55,10 @@ export default function LoginPage() {
           <Input label="Password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <div className="flex items-center justify-between">
             <label className="text-xs text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
-              <input type="checkbox" className="rounded text-brand-600 focus:ring-brand-500" />
+              <input type="checkbox" className="rounded text-primary-600 focus:ring-primary-500" />
               Remember me
             </label>
-            <Link href="/forgot-password" className="text-xs text-brand-600 hover:underline dark:text-brand-400">Forgot password?</Link>
+            <Link href="/forgot-password" className="text-xs text-primary-600 hover:underline dark:text-primary-400">Forgot password?</Link>
           </div>
           <Button variant="brand" className="w-full" type="submit" disabled={loading}>
             {loading ? "Signing in…" : "Log in"}
@@ -66,7 +66,7 @@ export default function LoginPage() {
         </form>
         <p className="mt-6 text-sm text-neutral-600 dark:text-neutral-400 text-center">
           New to CUETFreeMockTest?{" "}
-          <Link href="/register" className="text-brand-600 hover:underline dark:text-brand-400 font-medium">Create an account</Link>
+          <Link href="/register" className="text-primary-600 hover:underline dark:text-primary-400 font-medium">Create an account</Link>
         </p>
       </div>
     </section>

@@ -12,9 +12,9 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-md mx-auto">
-      <div className="card">
-        <h1 className="text-2xl font-bold text-neutral-900 dark:text-brand-50 mb-1">Contact us</h1>
+    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12 sm:px-6">
+      <div className="card w-full max-w-md p-6 sm:p-8">
+        <h1 className="text-2xl font-bold text-neutral-900 dark:text-white mb-1">Contact us</h1>
         <p className="text-neutral-600 dark:text-neutral-400 mb-6">Have a question or feedback? Reach us at support@cuetfreemocktest.com.</p>
         <form onSubmit={(e) => { e.preventDefault(); setSubmitting(true); setTimeout(() => setSubmitting(false), 800); }} className="space-y-4">
           <Input label="Name" value={name} onChange={(e) => setName(e.target.value)} />
