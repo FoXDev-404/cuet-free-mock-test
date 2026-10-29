@@ -9,7 +9,7 @@ binding = "ASSETS"
 [[d1_databases]]
 binding = "DB"
 database_name = "cuet-mock-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "1248d1b3-e3d4-4815-99dc-1587a26d25f7"
 migrations_dir = "prisma/migrations"
 
 [vars]
