@@ -39,10 +39,10 @@ test.describe("CUETFreeMockTest main flows", () => {
       await nextBtn.click();
     }
 
-    // Submit test
-    await page.getByRole("button", { name: /Submit Test/ }).click();
-    await page.waitForSelector('text="Score"', { timeout: 10000 });
-    await expect(page.getByText(/Score out of/)).toBeVisible();
+    // Submit test (click the bottom submit button on the last question)
+    await page.getByRole("button", { name: /^Submit Test$/ }).last().click();
+    await page.waitForLoadState("networkidle");
+    await expect(page.getByText(/Score out of/)).toBeVisible({ timeout: 15000 });
   });
 
   test("dashboard page loads", async ({ page }) => {
