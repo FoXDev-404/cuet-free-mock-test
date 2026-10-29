@@ -12,7 +12,7 @@ export default function TermsPage() {
         </p>
         <p>
           We may suspend accounts for abuse, automated access, or violations. The service is provided
-          "as is" without warranty of accuracy or exam outcomes.
+          &quot;as is&quot; without warranty of accuracy or exam outcomes.
         </p>
         <p className="mt-4">Contact: support@cuetfreemocktest.com</p>
       </div>

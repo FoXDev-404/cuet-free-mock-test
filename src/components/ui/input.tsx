@@ -9,7 +9,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 export function Input({ className, label, error, id, ...props }: InputProps) {
-  const inputId = id || React.useId();
+  const generatedId = React.useId();
+  const inputId = id || generatedId;
   return (
     <div className="w-full">
       {label && <label htmlFor={inputId} className="label">{label}</label>}
@@ -29,7 +30,8 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 }
 
 export function Textarea({ className, label, error, id, ...props }: TextareaProps) {
-  const textareaId = id || React.useId();
+  const generatedId = React.useId();
+  const textareaId = id || generatedId;
   return (
     <div className="w-full">
       {label && <label htmlFor={textareaId} className="label">{label}</label>}

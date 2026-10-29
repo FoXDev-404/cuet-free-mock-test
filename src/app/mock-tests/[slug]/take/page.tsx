@@ -124,6 +124,10 @@ export default function TakeTestPage({
   const isAnswered = answers[currentQuestion?.id] != null && answers[currentQuestion?.id] !== "";
   const isMarked = markedForReview.has(currentQuestion?.id ?? "");
 
+  const autoSubmit = async () => {
+    await submitTest();
+  };
+
   const selectOption = (optionId: string) => {
     setAnswers((prev) => ({ ...prev, [currentQuestion.id]: optionId }));
   };
@@ -145,11 +149,7 @@ export default function TakeTestPage({
     if (index >= 0 && index < questions.length) setCurrentIndex(index);
   };
 
-  const autoSubmit = async () => {
-    await submitTest(true);
-  };
-
-  const submitTest = async (auto = false) => {
+  const submitTest = async () => {
     if (submitted || submitting) return;
     setSubmitting(true);
     try {

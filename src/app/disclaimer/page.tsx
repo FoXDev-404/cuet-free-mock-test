@@ -6,7 +6,7 @@ export default function DisclaimerPage() {
       <div className="card text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
         <p>
           CUETFreeMockTest is not affiliated with, endorsed by, or connected to the National Testing
-          Agency (NTA) or any participating university. "CUET" is a trademark of NTA.
+          Agency (NTA) or any participating university. &quot;CUET&quot; is a trademark of NTA.
         </p>
         <p className="mt-4">
           All questions, answers, explanations, scores, and percentiles on this site are for practice

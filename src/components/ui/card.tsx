@@ -23,13 +23,11 @@ export function Card({ className, variant = "default", padded = true, children, 
   );
 }
 
-export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
-export function CardHeader({ className, children, ...props }: CardHeaderProps) {
+export function CardHeader({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("mb-4", className)} {...props}>{children}</div>;
 }
 
-export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
-export function CardTitle({ className, children, ...props }: CardTitleProps) {
+export function CardTitle({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3 className={cn("text-xl font-semibold text-neutral-900 dark:text-brand-100", className)} {...props}>
       {children}
@@ -37,7 +35,6 @@ export function CardTitle({ className, children, ...props }: CardTitleProps) {
   );
 }
 
-export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-export function CardContent({ className, children, ...props }: CardContentProps) {
+export function CardContent({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("text-neutral-600 dark:text-neutral-300", className)} {...props}>{children}</div>;
 }
