@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:e2e": "playwright test",
-    "e2e:ci": "start-server-and-test dev http://localhost:3000 playwright test"
+    "e2e:ci": "start-server-and-test dev http://localhost:3000 test:e2e"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

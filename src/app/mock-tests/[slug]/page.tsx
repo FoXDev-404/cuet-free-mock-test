@@ -4,17 +4,15 @@ export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Clock } from "lucide-react";
 
-export default function TestDetailPage({
+export default async function TestDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const router = useRouter();
+  const { slug } = await params;
   const [test, setTest] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -23,10 +21,10 @@ export default function TestDetailPage({
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch(`/api/tests?slug=${params.slug}`);
+        const res = await fetch(`/api/tests?slug=${slug}`);
         if (!res.ok) throw new Error("Failed to load test");
         const data = await res.json();
-        const t = data.find((x: any) => x.slug === params.slug);
+        const t = data.find((x: any) => x.slug === slug);
         if (!t) throw new Error("Test not found");
         setTest(t);
       } catch (e: any) {
@@ -36,7 +34,7 @@ export default function TestDetailPage({
       }
       return () => { cancelled = true; };
     })();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -54,7 +52,7 @@ export default function TestDetailPage({
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-xl mx-auto">
         <div className="card text-center py-20">
           <h2 className="text-lg font-semibold text-red-700 dark:text-red-400">{error || "Test not found"}</h2>
-          <Button onClick={() => router.back()} variant="brand">Back to tests</Button>
+          <Button onClick={() => window.history.back()} variant="brand">Back to tests</Button>
         </div>
       </section>
     );

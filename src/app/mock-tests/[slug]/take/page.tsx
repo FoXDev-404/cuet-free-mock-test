@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { computeScore } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, Clock, X, Circle, RefreshCw } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, X, RefreshCw } from "lucide-react";
 
 interface Question {
   id: string;
@@ -27,11 +27,12 @@ interface TestConfig {
   markingScheme: { correct: number; incorrect: number; unattempted: number };
 }
 
-export default function TakeTestPage({
+export default async function TakeTestPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const router = useRouter();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [config, setConfig] = useState<TestConfig | null>(null);
@@ -56,7 +57,7 @@ export default function TakeTestPage({
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch(`/api/questions?slug=${params.slug}&limit=100`);
+        const res = await fetch(`/api/questions?slug=${slug}&limit=100`);
         if (!res.ok) throw new Error("Failed to load questions");
         const data = await res.json();
         setQuestions(data);
@@ -67,18 +68,22 @@ export default function TakeTestPage({
       }
       return () => { cancelled = true; };
     })();
-  }, [params.slug]);
+  }, [slug]);
 
   // Persist answers to localStorage on change
   useEffect(() => {
     if (!sessionIdRef.current) return;
     try {
       localStorage.setItem(
-        `cuet_answers_${params.slug}`,
+        `cuet_answers_${slug}`,
         JSON.stringify({ answers, markedForReview: Array.from(markedForReview) })
       );
     } catch {}
-  }, [answers, markedForReview, params.slug]);
+  }, [answers, markedForReview, slug]);
+
+  const autoSubmit = async () => {
+    await submitTest();
+  };
 
   // Timer
   useEffect(() => {
@@ -96,7 +101,7 @@ export default function TakeTestPage({
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [timerRunning, config, params.slug]);
+  }, [timerRunning, config, slug]);
 
   // Initialize timer and restore answers from localStorage
   useEffect(() => {
@@ -104,14 +109,14 @@ export default function TakeTestPage({
     setTimeLeft(config.durationMinutes * 60);
     setTimerRunning(true);
     try {
-      const raw = localStorage.getItem(`cuet_answers_${params.slug}`);
+      const raw = localStorage.getItem(`cuet_answers_${slug}`);
       if (raw) {
         const parsed = JSON.parse(raw);
         if (parsed.answers) setAnswers(parsed.answers);
         if (parsed.markedForReview) setMarkedForReview(new Set(parsed.markedForReview));
       }
     } catch {}
-  }, [config, params.slug]);
+  }, [config, slug]);
 
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
@@ -123,10 +128,6 @@ export default function TakeTestPage({
   const currentQuestion = questions[currentIndex];
   const isAnswered = answers[currentQuestion?.id] != null && answers[currentQuestion?.id] !== "";
   const isMarked = markedForReview.has(currentQuestion?.id ?? "");
-
-  const autoSubmit = async () => {
-    await submitTest();
-  };
 
   const selectOption = (optionId: string) => {
     setAnswers((prev) => ({ ...prev, [currentQuestion.id]: optionId }));
@@ -161,7 +162,7 @@ export default function TakeTestPage({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          slug: params.slug,
+          slug,
           sessionId: sessionIdRef.current,
           answers: answerArray,
           timeSpentSec: config.durationMinutes * 60 - timeLeft,
@@ -172,8 +173,7 @@ export default function TakeTestPage({
       setSubmitted(true);
       setShowResult(true);
       if (timerRef.current) clearInterval(timerRef.current);
-      // clear localStorage
-      try { localStorage.removeItem(`cuet_answers_${params.slug}`); } catch {}
+      try { localStorage.removeItem(`cuet_answers_${slug}`); } catch {}
     } catch (e: any) {
       setError(e.message || "Submit failed");
     } finally {
@@ -198,7 +198,7 @@ export default function TakeTestPage({
         <div className="card text-center py-20">
           <h2 className="text-lg font-semibold text-red-700 dark:text-red-400">Error</h2>
           <p className="mt-2 text-neutral-600 dark:text-neutral-400">{error}</p>
-          <Button onClick={() => router.back()} variant="outline">Back</Button>
+          <Button onClick={() => router.back()} variant="brand">Back</Button>
         </div>
       </section>
     );
@@ -217,27 +217,9 @@ export default function TakeTestPage({
   }
 
   if (showResult && submitted) {
-    return (
-      <ResultSummary
-        questions={questions}
-        answers={answers}
-        config={config}
-        timeSpent={config.durationMinutes * 60 - timeLeft}
-        onRetry={() => {
-          setShowResult(false);
-          setSubmitted(false);
-          setAnswers({});
-          setMarkedForReview(new Set());
-          setCurrentIndex(0);
-          setTimeLeft(config.durationMinutes * 60);
-          setTimerRunning(true);
-        }}
-        onReview={() => setShowResult(false)}
-      />
-    );
+    return <ResultSummary questions={questions} answers={answers} config={config} timeSpent={config.durationMinutes * 60 - timeLeft} onRetry={() => { setShowResult(false); setSubmitted(false); setAnswers({}); setMarkedForReview(new Set()); setCurrentIndex(0); setTimeLeft(config.durationMinutes * 60); setTimerRunning(true); }} onReview={() => setShowResult(false)} />;
   }
 
-  const correctCount = Object.values(answers).filter((a) => a != null).length; // placeholder
   const attemptedCount = Object.values(answers).filter((a) => a != null && a !== "").length;
 
   return (
@@ -245,7 +227,9 @@ export default function TakeTestPage({
       {/* Header bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
-          <LinkBack testSlug={params.slug} />
+          <button onClick={() => router.back()} className="inline-flex items-center gap-1 text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300">
+            <ChevronLeft className="h-4 w-4" /> Back
+          </button>
           <h1 className="text-xl font-bold text-neutral-900 dark:text-white">Test in Progress</h1>
         </div>
         <div className="flex items-center gap-3">
@@ -253,7 +237,7 @@ export default function TakeTestPage({
             <Clock className="h-4 w-4 text-brand-600 dark:text-brand-400" />
             <span className="text-sm font-mono font-bold text-neutral-900 dark:text-brand-300">{formatTime(timeLeft)}</span>
           </div>
-          <Button variant="outline" size="sm" onClick={() => submitTest()} disabled={submitting || submitted}>
+          <Button variant="outline" size="sm" onClick={submitTest} disabled={submitting || submitted}>
             {timerRunning ? "Submit Test" : "Time's up"}
           </Button>
         </div>
@@ -321,7 +305,7 @@ export default function TakeTestPage({
                 Next <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
             ) : (
-              <Button variant="brand" size="sm" onClick={() => submitTest()} disabled={submitting || submitted}>
+              <Button variant="brand" size="sm" onClick={submitTest} disabled={submitting || submitted}>
                 Submit Test
               </Button>
             )}
@@ -374,15 +358,6 @@ export default function TakeTestPage({
         </CardContent>
       </Card>
     </section>
-  );
-}
-
-function LinkBack({ testSlug }: { testSlug: string }) {
-  const router = useRouter();
-  return (
-    <button onClick={() => router.back()} className="inline-flex items-center gap-1 text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300">
-      <ChevronLeft className="h-4 w-4" /> Back
-    </button>
   );
 }
 
