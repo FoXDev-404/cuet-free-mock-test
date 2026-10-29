@@ -1,6 +1,6 @@
-// CUETFreeMockTest.com — Database Schema (Prisma)
-// Structure inferred from prepwithpro.in reverse-engineering (07-DATABASE-SCHEMA.md).
+// CUETFreeMockTest.com — Database Schema (Prisma + SQLite)
 // Original schema — no content copied from reference site.
+// JSON fields stored as TEXT strings; enums stored as TEXT.
 
 generator client {
   provider = "prisma-client-js"
@@ -11,37 +11,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Exam sections per CUET UG: Section IA/IB (Languages), Section II (Domain), Section III (General Test)
-enum SectionType {
-  LANGUAGE
-  DOMAIN
-  GENERAL_TEST
-}
-
-// Test types
-enum TestType {
-  FULL_LENGTH
-  SUBJECT_WISE
-  CHAPTER_WISE
-  PYQ_YEAR_WISE
-  GENERAL_TEST
-}
-
-// Test status
-enum TestStatus {
-  DRAFT
-  PUBLISHED
-  ARCHIVED
-}
-
-// Attempt status
-enum AttemptStatus {
-  IN_PROGRESS
-  SUBMITTED
-  AUTO_SUBMITTED
-  ABANDONED
-}
-
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -49,7 +18,7 @@ model User {
   emailVerified DateTime?
   image         String?
   passwordHash  String?
-  role          String    @default("USER") // USER | ADMIN
+  role          String    @default("USER")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -98,9 +67,9 @@ model VerificationToken {
 
 model Subject {
   id          String   @id @default(cuid())
-  name        String   // e.g. Computer Science, Physics, English
-  code        String   @unique // e.g. CS, PHY, EN
-  sectionType SectionType
+  name        String
+  code        String   @unique
+  sectionType String   @default("DOMAIN") // LANGUAGE | DOMAIN | GENERAL_TEST
   description String?
   isActive    Boolean  @default(true)
   order       Int      @default(0)
@@ -113,7 +82,7 @@ model Subject {
 
 model Chapter {
   id          String   @id @default(cuid())
-  name        String   // e.g. Number System, Operating System
+  name        String
   subjectId   String
   description String?
   order       Int      @default(0)
@@ -129,27 +98,28 @@ model Question {
   id            String   @id @default(cuid())
   subjectId     String
   chapterId     String?
-  type          String   @default("MCQ") // MCQ | CODE | IMAGE | LIST | TABLE
-  stemEn        String   // question text English
-  stemHi        String?  // question text Hindi (bilingual from day 1)
-  optionsEn     Json     // [{id, text}] 
-  optionsHi     Json?    // [{id, text}]
-  correctAnswer String   // option id
+  type          String   @default("MCQ")
+  stemEn        String
+  stemHi        String?
+  optionsEn     String   // JSON string: [{id, text}]
+  optionsHi     String?  // JSON string: [{id, text}]
+  correctAnswer String
   explanationEn String?
   explanationHi String?
-  year          Int?     // PYQ year if applicable
-  source        String   @default("sample") // sample | pyq | mock
-  difficulty    String   @default("medium") // easy | medium | hard
-  marks         Int      @default(5)       // CUET: +5 correct
-  negativeMarks Int      @default(1)       // CUET: -1 incorrect
+  year          Int?
+  source        String   @default("sample")
+  difficulty    String   @default("medium")
+  marks         Int      @default(5)
+  negativeMarks Int      @default(1)
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  subject   Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
-  chapter   Chapter? @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  subject   Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  chapter   Chapter?  @relation(fields: [chapterId], references: [id], onDelete: SetNull)
   attempts  QuestionAttempt[]
   reviews   QuestionReview[]
+  bookmarks Bookmark[]
   testLinks TestQuestionLink[]
 
   @@index([subjectId])
@@ -159,25 +129,25 @@ model Question {
 }
 
 model Test {
-  id            String     @id @default(cuid())
-  title         String     // e.g. "Computer Science Full Mock 2026"
-  slug          String     @unique
-  type          TestType
-  status        TestStatus @default(DRAFT)
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  type          String   @default("FULL_LENGTH") // FULL_LENGTH | SUBJECT_WISE | CHAPTER_WISE | PYQ_YEAR_WISE | GENERAL_TEST
+  status        String   @default("DRAFT") // DRAFT | PUBLISHED | ARCHIVED
   subjectId     String?
-  chapterId     String?
-  year          Int?       // for PYQ tests
-  config        Json       // { totalQuestions, durationMinutes, markingScheme, perSection: [...] }
-  totalQuestions Int       @default(0)
-  durationMinutes Int      @default(60)
-  isPublic      Boolean    @default(true)
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  year          Int?
+  config        String   // JSON string: test config
+  totalQuestions Int      @default(0)
+  durationMinutes Int     @default(60)
+  isPublic      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  subject   Subject?   @relation(fields: [subjectId], references: [id], onDelete: SetNull)
-  chapter   Chapter? @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  subject   Subject?       @relation(fields: [subjectId], references: [id], onDelete: SetNull)
   questions TestQuestionLink[]
   attempts  Attempt[]
+
+  @@index([subjectId])
 }
 
 model TestQuestionLink {
@@ -194,23 +164,23 @@ model TestQuestionLink {
 }
 
 model Attempt {
-  id             String     @id @default(cuid())
+  id             String   @id @default(cuid())
   userId         String?
   testId         String
-  sessionId      String     @unique // anonymous attempts tracked by session
-  status         AttemptStatus @default(IN_PROGRESS)
-  startedAt      DateTime   @default(now())
+  sessionId      String   @unique
+  status         String   @default("IN_PROGRESS") // IN_PROGRESS | SUBMITTED | AUTO_SUBMITTED | ABANDONED
+  startedAt      DateTime @default(now())
   submittedAt    DateTime?
-  timeSpentSec   Int        @default(0)
-  score          Int        @default(0)
-  maxScore       Int        @default(0)
-  correctCount   Int        @default(0)
-  incorrectCount Int        @default(0)
-  attemptedCount Int        @default(0)
-  percentile     Float?     // estimated percentile
-  configSnapshot Json         // config used for this attempt
+  timeSpentSec   Int      @default(0)
+  score          Int      @default(0)
+  maxScore       Int      @default(0)
+  correctCount   Int      @default(0)
+  incorrectCount Int      @default(0)
+  attemptedCount Int      @default(0)
+  percentile     Float?
+  configSnapshot String   // JSON string
 
-  user     User    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user     User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
   test     Test    @relation(fields: [testId], references: [id], onDelete: Cascade)
   answers  QuestionAttempt[]
 
@@ -224,11 +194,11 @@ model QuestionAttempt {
   id            String   @id @default(cuid())
   attemptId     String
   questionId    String
-  selectedOption String?   // option id selected
-  isCorrect     Boolean?   // computed
-  timeSpentSec  Int        @default(0)
+  selectedOption String?
+  isCorrect     Boolean?
+  timeSpentSec  Int      @default(0)
   markedForReview Boolean @default(false)
-  cleared       Boolean    @default(false) // clear response used
+  cleared       Boolean  @default(false)
 
   attempt  Attempt   @relation(fields: [attemptId], references: [id], onDelete: Cascade)
   question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
@@ -243,7 +213,7 @@ model Bookmark {
   userId    String
   questionId String
 
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   question  Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@unique([userId, questionId])
@@ -257,7 +227,7 @@ model QuestionReview {
   note      String?
   createdAt DateTime @default(now())
 
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   question  Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@index([userId])
