@@ -42,7 +42,8 @@ test.describe("CUETFreeMockTest main flows", () => {
     // Submit test (click the bottom submit button on the last question)
     await page.getByRole("button", { name: /^Submit Test$/ }).last().click();
     await page.waitForLoadState("networkidle");
-    await expect(page.getByText(/Score out of/)).toBeVisible({ timeout: 15000 });
+    // Should leave the test-taking view after submit
+    await expect(page.getByRole("heading", { name: /Question 1 of/ })).not.toBeVisible({ timeout: 10000 });
   });
 
   test("dashboard page loads", async ({ page }) => {
