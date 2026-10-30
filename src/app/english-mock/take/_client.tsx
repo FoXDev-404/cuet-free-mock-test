@@ -114,7 +114,20 @@ export default function EnglishMockTake({
 }: EnglishMockTakeProps) {
   const router = useRouter();
   const autoSubmitFiredRef = useRef(false);
-  const [questions, setQuestions] = useState<QuestionData[]>(() => [initialQuestion]);
+  // P1QA 2026-10-30: seed one slot per paper question so the palette always
+  // renders the full 1..50 range (its legend promises "grey = unvisited").
+  // Unvisited slots are placeholders (id === "") that loadQuestion overwrites;
+  // goTo fetches any placeholder before switching to it.
+  const [questions, setQuestions] = useState<QuestionData[]>(() => {
+    const seeded: QuestionData[] = Array.from({ length: TOTAL_QUESTIONS }, (_, i) => ({
+      id: "",
+      questionNumber: i + 1,
+      stemEn: "",
+      optionsEn: [] as QuestionOption[],
+    }));
+    seeded[0] = initialQuestion;
+    return seeded;
+  });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string | null>>(() =>
     readPersistedAnswers(),
@@ -388,7 +401,7 @@ export default function EnglishMockTake({
 
   const goTo = async (i: number) => {
     if (i >= 0 && i < 50) {
-      if (!questions[i]) {
+      if (!questions[i] || questions[i].id === "") {
         await loadQuestion(i + 1);
       }
       setCurrentIndex(i);
@@ -468,7 +481,7 @@ export default function EnglishMockTake({
               {formatTime(timeLeft)}
             </span>
           </div>
-          <Button variant="brand" size="sm" onClick={() => submitTest()} disabled={submitting || submitted}>
+          <Button variant="brand" size="sm" className="min-h-9" onClick={() => submitTest()} disabled={submitting || submitted}>
             {submitting ? "Submitting…" : "Submit Test"}
           </Button>
         </div>
@@ -553,18 +566,18 @@ export default function EnglishMockTake({
             })}
           </div>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button variant="outline" size="sm" onClick={clearResponse} disabled={!isAnswered || submitting}>
+            <Button variant="outline" size="sm" onClick={clearResponse} disabled={!isAnswered || submitting} className="min-h-9">
               <RefreshCw className="h-4 w-4 mr-2" /> Clear
             </Button>
-            <Button variant="outline" size="sm" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0}>
+            <Button variant="outline" size="sm" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0} className="min-h-9">
               <ChevronLeft className="h-4 w-4 mr-2" /> Previous
             </Button>
             {currentIndex < 49 ? (
-              <Button variant="brand" size="sm" onClick={() => goTo(currentIndex + 1)} disabled={submitting}>
+              <Button variant="brand" size="sm" onClick={() => goTo(currentIndex + 1)} disabled={submitting} className="min-h-9">
                 Next <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
             ) : (
-              <Button variant="brand" size="sm" onClick={() => submitTest()} disabled={submitting || submitted}>
+              <Button variant="brand" size="sm" className="min-h-9" onClick={() => submitTest()} disabled={submitting || submitted}>
                 Submit Test
               </Button>
             )}
@@ -588,7 +601,7 @@ export default function EnglishMockTake({
               const flagged = REVIEW_FLAGGED_QUESTIONS.includes(q.questionNumber);
               return (
                 <button
-                  key={q.id}
+                  key={q.questionNumber}
                   onClick={() => goTo(i)}
                   className={cn(
                     "w-8 h-8 rounded text-xs font-medium transition",

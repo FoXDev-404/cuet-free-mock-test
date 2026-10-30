@@ -251,6 +251,10 @@
 
 @layer components {
   .card {
+    /* Must be block: `.card` is also used on <Link> (anchors default to
+       `display: inline`, which fragmentation-wraps its block children and
+       paints stray white fragments between them on narrow viewports). */
+    display: block;
     border-radius: var(--radius-2xl);
     border: 1px solid var(--color-neutral-200);
     background-color: #ffffff;
@@ -942,6 +946,7 @@
 }
 
 .home-tool-card {
+  display: block; /* used directly on <Link>; anchors are inline by default */
   min-height: 11.5rem;
   border: 1px solid var(--color-neutral-200);
   border-radius: 1.15rem;
