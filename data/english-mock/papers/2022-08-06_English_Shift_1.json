@@ -1,0 +1,2075 @@
+{
+  "schemaVersion": "2.0",
+  "subjectId": "REPLACE-WITH-SUBJECT-ID",
+  "exam": {
+    "id": "cuet-ug-english-2022-08-06-shift-1",
+    "title": "CUET UG English Previous Year Paper - 2022-08-06",
+    "subject": "English",
+    "subjectId": "REPLACE-WITH-SUBJECT-ID",
+    "year": 2022,
+    "examDate": "2022-08-06",
+    "shift": 1,
+    "setName": null,
+    "language": "English",
+    "sourceFile": "English_2022-08-06_Shift_1.pdf",
+    "questionCount": 50,
+    "passages": [
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "title": "Reading Passage 1",
+        "contentEn": ". There is a lovely story of a tree and a little boy who used to play in its shade. They had become friends. One day. The boy sat leaning against the hunk of the tree, crying. He was hungry. \"Eat my fruit\" said the kind tree bending down one of its branches. The boy ate the fruit and was happy. The boy grew up. One day, he sat under the tree with an anxious look on his face. \"What is the matter?\" asked the tree. \"] am going to marry and | want a house to live in,\" said the young man. “Cut down my branches and build your house.\" said the tree. The young man-built a house with the branches of the tree. The young man became a sailor. One day. He sat under the tree with a worried look. “What is the matter?\" asked the tree, \"My captain is a cruel fellow. | want a ship of my own,\" said the sailor. \"Cut down my trunk and build a ship.\" The sailor lost his ship and returned home asa helpless old man. On a cold winter's day, he stood where the tree once was leaning on his stick and trembling with cold. \"Make a fire of me, and warm yourself’ said the stump of the tree. The stump of the unselfish tree burnt in the fire, softly humming atune.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 1,
+          "to": 6
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "title": "Reading Passage 2",
+        "contentEn": "I must say that beyond occasionally exposing me to laughter, my constitutional shyness has been of no great disadvantage to me. In fact. I can see that, on the contrary, it has been all to my advantage. My hesitancy in speech, which was once an annoyance, is now a pleasure. Its greatest pleasure has been that it has taught me the economy of words. I have naturally formed the habit of restraining my thoughts. And I can now give myself the certificate that a thoughtless word hardly ever escapes of my tongue or pen. I do not recollect ever having had to regret anything in my speech or writing. I have thus been spared many a mishap and waste of time. Experience has taught me that silence is part of the spiritual discipline of a votary of truth. Proneness to exaggerate, to suppress or modify the truth, wittingly or unwittingly, is a natural weakness of man and silence is necessary in order to surmount it. A man of few words will rarely be thoughtless in his speech; he will measure every word.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 7,
+          "to": 12
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "title": "Reading Passage 3",
+        "contentEn": "Unhappiness and discontent spring not only from poverty. Man is a strange creature, fundamentally different from other animals. He has far horizons, invincible hopes, creative energies, spiritual powers. If they are left undeveloped and unsatisfied, he may have all the comforts which wealth can give, but will still feel that life is not worthwhile. The great humanist writers, Shaw and Wells, Arnold Bennett and Galsworthy, who are regarded as the prophets of the dawn, expose the foibles, inconsistencies and weaknesses of modern life, but they ignore the deeper currents and sometimes misrepresent them. At any rate, they give nothing in their place. In the void left by the removal of tradition, morality and religion, others are putting in vague sentiments of race and power. The modern mind is shaped by Rousseau's Social Contract, Marx's Capital, Darwin's on the Origin of Species and Spengler's The Decline of the West. The outward chaos and confusion of our life reflect the confusion of our hearts and minds. Constitutions, says Plato, “are but the reflections in the outside world of the values which prevail in men's minds.\" There must be a change in the ideals we cherish, in the values we adopt, before we can give social expression to them. We help to secure the future only to the extent to which we ourselves are changed. What is missing in our age is the soul: there is nothing wrong with the body. We suffer from sickness of spirit. We must discover our roots in the eternal and regain faith in the transcendent truth which will order life, discipline discordant elements, and bring unity and purpose into it. If not, when the floods come and the winds blow and beat upon our houses, it will fall.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 13,
+          "to": 18
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q01",
+        "sourceQuestionNo": 1,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match List I with List II iliac a 7a ship of his own The young man was to marry and anxious wanted a house of his own based l= and hung The stump of the | IV. | burntin the fire beautiful, kind and the selfless tree Choose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "A-IV, B-II, C-Il, D-I"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-III, B -II, C -I, D-IV"
+          },
+          {
+            "id": "opt-C",
+            "text": "A-I, B-Ill, C-II, D-IV"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-Il, B-I, C-IV, D-Ill"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match List I with List II\niliac a 7a\nship of his own\nThe young man was to marry and\nanxious wanted a house of\nhis own\nbased l=\nand hung\nThe stump of the | IV. | burntin the fire\nbeautiful, kind and the\nselfless tree\nChoose the correct answer from the options given\nbelow:\n(a) A-IV, B-II, C-Il, D-I\n(b) A-III, B -II, C -I, D-IV\n(c) A-I, B-Ill, C-II, D-IV\n(d) A-Il, B-I, C-IV, D-Ill"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q02",
+        "sourceQuestionNo": 2,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The two protagonists of the story are (Select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Both innocent and naive"
+          },
+          {
+            "id": "opt-B",
+            "text": "Oneis intelligent and the other a fool"
+          },
+          {
+            "id": "opt-C",
+            "text": "Both cunning and selfish"
+          },
+          {
+            "id": "opt-D",
+            "text": "One of them is demanding and greedy, the other always generous, sensitive and supportive"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The two protagonists of the story are (Select\nthe correct option)\n(a) Both innocent and naive\n(b) Oneis intelligent and the other a fool\n(c) Both cunning and selfish\n(d) One of them is demanding and greedy, the other\nalways generous, sensitive and supportive"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q03",
+        "sourceQuestionNo": 3,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "How were the tree and the little boy related to each other? (Select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "They were close contenders in their race to survive"
+          },
+          {
+            "id": "opt-B",
+            "text": "They were very close friends due to their very long association"
+          },
+          {
+            "id": "opt-C",
+            "text": "They were colleagues as they work together Years Paper t 2022 (Shift - 1)"
+          },
+          {
+            "id": "opt-D",
+            "text": "They were competitors in their need to fulfil their own needs."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "How were the tree and the little boy related to each\nother? (Select the correct option)\n(a) They were close contenders in their race to\nsurvive\n(b) They were very close friends due to their very\nlong association\n(c) They were colleagues as they work together\n\n\n\nYears Paper\nt 2022 (Shift - 1)\n\n(d) They were competitors in their need to fulfil\ntheir own needs."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q04",
+        "sourceQuestionNo": 4,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The story highlights a typical selfish human nature we are all familiar with. Identify it from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Compassion and benevolence"
+          },
+          {
+            "id": "opt-B",
+            "text": "Conservation of forests"
+          },
+          {
+            "id": "opt-C",
+            "text": "Mindless greed to possess more and more wealth"
+          },
+          {
+            "id": "opt-D",
+            "text": "Heartless and foolish exploitation of nature"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The story highlights a typical selfish human nature\nwe are all familiar with. Identify it from the options\ngiven below:\n\n(a) Compassion and benevolence\n\n(b) Conservation of forests\n\n(c) Mindless greed to possess more and more wealth\n\n(d) Heartless and foolish exploitation of nature"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q05",
+        "sourceQuestionNo": 5,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "\"The stump of the unselfish tree burnt in the fire, softly humming a tune.\" means: (Select the right options from the given options)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Every tree sings when itis burnt."
+          },
+          {
+            "id": "opt-B",
+            "text": "The selfless tree felt no pain even in its acute suffering while dying, caring for others."
+          },
+          {
+            "id": "opt-C",
+            "text": "The frail and wonderful tree fifed to forget its pain by humming"
+          },
+          {
+            "id": "opt-D",
+            "text": "The tree was a fool and was humming as it did not realize that it was dying."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "\"The stump of the unselfish tree burnt in the fire,\nsoftly humming a tune.\" means: (Select the right\noptions from the given options)\n\n(a) Every tree sings when itis burnt.\n\n(b) The selfless tree felt no pain even in its acute\nsuffering while dying, caring for others.\n\n(c) The frail and wonderful tree fifed to forget its\npain by humming\n\n(d) The tree was a fool and was humming as it did\nnot realize that it was dying."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q06",
+        "sourceQuestionNo": 6,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "How would you define the relationship that the story illustrates? Select the correct answer from the following options.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "It was a mutual symbiotic relationship."
+          },
+          {
+            "id": "opt-B",
+            "text": "It wasa relationship based on deceit and treachery."
+          },
+          {
+            "id": "opt-C",
+            "text": "Itwas an one sided relationship where the tree loved, cared for and supported the boy till its end."
+          },
+          {
+            "id": "opt-D",
+            "text": "It was a disguised enmity. After reading the following passage, answer the questions which follow: I must say that beyond occasionally exposing me to laughter, my constitutional shyness has been of no great disadvantage to me. In fact. I can see that, on the contrary, it has been all to my advantage. My hesitancy in speech, which was once an annoyance, is now a pleasure. Its greatest pleasure has been that it has taught me the economy of words. I have naturally formed the habit of restraining my thoughts. And I can now give myself the certificate that a thoughtless word hardly ever escapes of my tongue or pen. I do not recollect ever having had to regret anything in my speech or writing. I have thus been spared many a mishap and waste of time. Experience has taught me that silence is part of the spiritual discipline of a votary of truth. Proneness to exaggerate, to suppress or modify the truth, wittingly or unwittingly, is a natural weakness of man and silence is necessary in order to surmount it. A man of few words will rarely be thoughtless in his speech; he will measure every word."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "How would you define the relationship that the story\nillustrates? Select the correct answer from the\nfollowing options.\n\n(a) It was a mutual symbiotic relationship.\n\n(b) It wasa relationship based on deceit and\ntreachery.\n\n(c) Itwas an one sided relationship where the tree\nloved, cared for and supported the boy till its\nend.\n\n(d) It was a disguised enmity.\n\nAfter reading the following passage, answer the\n\nquestions which follow:\n\nI must say that beyond occasionally exposing me to laughter,\n\nmy constitutional shyness has been of no great disadvantage\n\nto me. In fact. I can see that, on the contrary, it has been all to\nmy advantage. My hesitancy in speech, which was once an\nannoyance, is now a pleasure. Its greatest pleasure has been\nthat it has taught me the economy of words. I have naturally\nformed the habit of restraining my thoughts. And I can now\ngive myself the certificate that a thoughtless word hardly\never escapes of my tongue or pen. I do not recollect ever\nhaving had to regret anything in my speech or writing. I have\nthus been spared many a mishap and waste of time.\n\nExperience has taught me that silence is part of the spiritual\n\ndiscipline of a votary of truth. Proneness to exaggerate, to\n\nsuppress or modify the truth, wittingly or unwittingly, is a\n\nnatural weakness of man and silence is necessary in order to\n\nsurmount it. A man of few words will rarely be thoughtless\nin his speech; he will measure every word."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q07",
+        "sourceQuestionNo": 7,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The expression, \"my constitutional shyness\" in the given passage would mean (Select the right answer from the options given below):",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Shyness mentioned in Article 1 in the Indian Constitution"
+          },
+          {
+            "id": "opt-B",
+            "text": "Shyness prescribed as a mark of our democracy in the preamble of our Constitution."
+          },
+          {
+            "id": "opt-C",
+            "text": "The innate and natural shyness in the author"
+          },
+          {
+            "id": "opt-D",
+            "text": "A shyness that the author pretends to derive some evil advantages in life."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The expression, \"my constitutional shyness\" in the\ngiven passage would mean (Select the right\nanswer from the options given below):\n\n(a) Shyness mentioned in Article 1 in the Indian\nConstitution\n\n\n\n(b) Shyness prescribed as a mark of our democracy\nin the preamble of our Constitution.\n\n(c) The innate and natural shyness in the author\n\n(d) A shyness that the author pretends to derive\nsome evil advantages in life."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q08",
+        "sourceQuestionNo": 8,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The author as a matured individual believes that his shy nature brought him (Select the right answer from the options given below):",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Great advantage in life"
+          },
+          {
+            "id": "opt-B",
+            "text": "Unmatched joy and enchantment in life"
+          },
+          {
+            "id": "opt-C",
+            "text": "Disadvantage while performing rituals"
+          },
+          {
+            "id": "opt-D",
+            "text": "Media coverage"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The author as a matured individual believes that his\nshy nature brought him (Select the right\nanswer from the options given below):\n(a) Great advantage in life\n(b) Unmatched joy and enchantment in life\n(c) Disadvantage while performing rituals\n(d) Media coverage"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q09",
+        "sourceQuestionNo": 9,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options given below, select the one which will appropriately answer the following question: The author due to his shy nature",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Would aggressively attack any and every crowd around him"
+          },
+          {
+            "id": "opt-B",
+            "text": "Worked hard to hide his stammer"
+          },
+          {
+            "id": "opt-C",
+            "text": "Naturally formed the habit of restraining his thoughts"
+          },
+          {
+            "id": "opt-D",
+            "text": "Became an ascetic."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options given below, select the one which\nwill appropriately answer the following\nquestion: The author due to his shy nature\n(a) Would aggressively attack any and every crowd\naround him\n\n(b) Worked hard to hide his stammer\n\n(c) Naturally formed the habit of restraining his\nthoughts\n\n(d) Became an ascetic."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q10",
+        "sourceQuestionNo": 10,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The author claims that (Select the right answer from the options given below):",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "He has rarely even spoken a ‘thoughtless word due to his shy nature"
+          },
+          {
+            "id": "opt-B",
+            "text": "He always speaks without thinking because he is shy"
+          },
+          {
+            "id": "opt-C",
+            "text": "Asa shy individual, he has become prone to nightmares"
+          },
+          {
+            "id": "opt-D",
+            "text": "His shy nature helped him become a great cricket player."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The author claims that (Select the right\nanswer from the options given below):\n\n(a) He has rarely even spoken a ‘thoughtless word\ndue to his shy nature\n\n(b) He always speaks without thinking because he is\nshy\n\n(c) Asa shy individual, he has become prone to\nnightmares\n\n(d) His shy nature helped him become a great\ncricket player."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q11",
+        "sourceQuestionNo": 11,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options given below, select the one which answer the following question: Experience has taught the author that",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Silence is better than laughter to stay fit"
+          },
+          {
+            "id": "opt-B",
+            "text": "Silence is part of the spiritual discipline"
+          },
+          {
+            "id": "opt-C",
+            "text": "Silence is to be avoided at all costs"
+          },
+          {
+            "id": "opt-D",
+            "text": "Silence can never be attained by man"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options given below, select the one which\nanswer the following question: Experience has taught\nthe author that\n(a) Silence is better than laughter to stay fit\n(b) Silence is part of the spiritual discipline\n(c) Silence is to be avoided at all costs\n(d) Silence can never be attained by man"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q12",
+        "sourceQuestionNo": 12,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "| Aman of few words will rarely be thoughtless in his speech bila = annoyance"
+          },
+          {
+            "id": "opt-C",
+            "text": "| Proneness to exaggerate, Is a natural modify and suppress weakness in man that truth My shyness IV. | occasionally exposed me to laughter Choose the correct answer from the options given below: (a) A-IV, B-III, C-Il, D-l"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-II, B-I, C-IV,D-III (c) A- Ill, B-IV,C-1, D-II"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-I, B -II, C -III, D-IV After reading the passage, answer the questions that follow: Unhappiness and discontent spring not only from poverty. Man is a strange creature, fundamentally different from other animals. He has far horizons, invincible hopes, creative energies, spiritual powers. If they are left undeveloped and unsatisfied, he may have all the comforts which wealth can give, but will still feel that life is not worthwhile. The great humanist writers, Shaw and Wells, Arnold Bennett and Galsworthy, who are regarded as the prophets of the dawn, expose the foibles, inconsistencies and weaknesses of modern life, but they ignore the deeper currents and sometimes misrepresent them. At any rate, they give nothing in their place. In the void left by the removal of tradition, morality and religion, others are putting in vague sentiments of race and power. The modern mind is shaped by Rousseau's Social Contract, Marx's Capital, Darwin's on the Origin of Species and Spengler's The Decline of the West. The outward chaos and confusion of our life reflect the confusion of our hearts and minds. Constitutions, says Plato, “are but the reflections in the outside world of the values which prevail in men's minds.\" There must be a change in the ideals we cherish, in the values we adopt, before we can give social expression to them. We help to secure the future only to the extent to which we ourselves are changed. What is missing in our age is the soul: there is nothing wrong with the body. We suffer from sickness of spirit. We must discover our roots in the eternal and regain faith in the transcendent truth which will order life, discipline discordant elements, and bring unity and purpose into it. If not, when the floods come and the winds blow and beat upon our houses, it will fall."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match List I with List II\n\nA. | Aman of few words will rarely be\nthoughtless in his\nspeech\n\nbila =\nannoyance\n\nC. | Proneness to exaggerate, Is a natural\n\nmodify and suppress weakness in man\n\nthat truth\n\nMy shyness IV. | occasionally\nexposed me to\nlaughter\n\nChoose the correct answer from the options given\n\nbelow:\n\n(a) A-IV, B-III, C-Il, D-l\n\n(b) A-II, B-I, C-IV,D-III\n\n(c) A- Ill, B-IV,C-1, D-II\n\n(d) A-I, B -II, C -III, D-IV\n\n\n\nAfter reading the passage, answer the questions that\nfollow:\nUnhappiness and discontent spring not only from poverty.\nMan is a strange creature, fundamentally different from\nother animals. He has far horizons, invincible hopes, creative\nenergies, spiritual powers. If they are left undeveloped and\nunsatisfied, he may have all the comforts which wealth can\ngive, but will still feel that life is not worthwhile. The great\nhumanist writers, Shaw and Wells, Arnold Bennett and\nGalsworthy, who are regarded as the prophets of the dawn,\nexpose the foibles, inconsistencies and weaknesses of\nmodern life, but they ignore the deeper currents and\nsometimes misrepresent them. At any rate, they give nothing\nin their place. In the void left by the removal of tradition,\nmorality and religion, others are putting in vague sentiments\nof race and power. The modern mind is shaped by\nRousseau's Social Contract, Marx's Capital, Darwin's on the\nOrigin of Species and Spengler's The Decline of the West. The\noutward chaos and confusion of our life reflect the confusion\nof our hearts and minds. Constitutions, says Plato, “are but\nthe reflections in the outside world of the values which\nprevail in men's minds.\" There must be a change in the ideals\nwe cherish, in the values we adopt, before we can give social\nexpression to them. We help to secure the future only to the\nextent to which we ourselves are changed. What is missing\nin our age is the soul: there is nothing wrong with the body.\nWe suffer from sickness of spirit. We must discover our roots\nin the eternal and regain faith in the transcendent truth\nwhich will order life, discipline discordant elements, and\nbring unity and purpose into it. If not, when the floods come\nand the winds blow and beat upon our houses, it will fall."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q13",
+        "sourceQuestionNo": 13,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The author implies that if the eternal values and ideals are not regained, then (Select the right option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "The world will be flooded"
+          },
+          {
+            "id": "opt-B",
+            "text": "The sky will fall"
+          },
+          {
+            "id": "opt-C",
+            "text": "The human civilization and society will be mined forever"
+          },
+          {
+            "id": "opt-D",
+            "text": "The earth Will get sucked into a black hole"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The author implies that if the eternal values and\nideals are not regained, then (Select the right\noption)\n(a) The world will be flooded\n(b) The sky will fall\n(c) The human civilization and society will be mined\nforever\n(d) The earth Will get sucked into a black hole"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q14",
+        "sourceQuestionNo": 14,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "According to the author, the humanist writers have ignored (Select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "The spiritual aspect of life"
+          },
+          {
+            "id": "opt-B",
+            "text": "Religion and rituals"
+          },
+          {
+            "id": "opt-C",
+            "text": "Cultural progress"
+          },
+          {
+            "id": "opt-D",
+            "text": "Material welfare"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "According to the author, the humanist writers have\nignored (Select the correct option)\n(a) The spiritual aspect of life\n(b) Religion and rituals\n(c) Cultural progress\n(d) Material welfare"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q15",
+        "sourceQuestionNo": 15,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "According to the author, how is man different from other animals? (Select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Because of his unique power of speech"
+          },
+          {
+            "id": "opt-B",
+            "text": "In his hopes, creative-energies and spiritual powers"
+          },
+          {
+            "id": "opt-C",
+            "text": "Inmoney and the material achievements of man"
+          },
+          {
+            "id": "opt-D",
+            "text": "In his physical prowess"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "According to the author, how is man different from\nother animals? (Select the correct option)\n(a) Because of his unique power of speech\n(b) In his hopes, creative-energies and spiritual\npowers\n(c) Inmoney and the material achievements of man\n(d) In his physical prowess"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q16",
+        "sourceQuestionNo": 16,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "According to the author, unhappiness and discontent spring from Select the right option.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Poverty alone"
+          },
+          {
+            "id": "opt-B",
+            "text": "Ignorance"
+          },
+          {
+            "id": "opt-C",
+            "text": "Poverty along with the moral and spiritual degradation of man"
+          },
+          {
+            "id": "opt-D",
+            "text": "Mental turmoil"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "According to the author, unhappiness and discontent\nspring from Select the right option.\n(a) Poverty alone\n(b) Ignorance\n(c) Poverty along with the moral and spiritual\ndegradation of man\n(d) Mental turmoil"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q17",
+        "sourceQuestionNo": 17,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match List I with List II a Fa | man Peon [ee development",
+        "optionsEn": [
+          {
+            "id": "opt-C",
+            "text": "| The famous book is fundamentally written by Rousseau different from other animals Our age is missing out | IV. | Shaw and Wells, on Arnold and Galsworthy Choose the correct answer from the options given below:"
+          },
+          {
+            "id": "opt-A",
+            "text": "A-III, B-IV, C-I, D-II"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-I, B-II, C-II, D-IV (c) A-II, B-Ill, C-IV,D-I"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-IV, B-IIl, C -II, D-1"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match List I with List II\na Fa |\nman\nPeon [ee\ndevelopment\nC. | The famous book is fundamentally\nwritten by Rousseau different from\nother animals\nOur age is missing out | IV. | Shaw and Wells,\non Arnold and\nGalsworthy\nChoose the correct answer from the options given\nbelow:\n(a) A-III, B-IV, C-I, D-II\n(b) A-I, B-II, C-II, D-IV\n(c) A-II, B-Ill, C-IV,D-I\n(d) A-IV, B-IIl, C -II, D-1"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q18",
+        "sourceQuestionNo": 18,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Despite enjoying all comforts that wealth can provide, man will still feel incomplete and unhappy if (Select the right option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "He is prevented from mingling in the society"
+          },
+          {
+            "id": "opt-B",
+            "text": "His hopes, creative energies and spiritual powers are unsatisfied"
+          },
+          {
+            "id": "opt-C",
+            "text": "He is deserted by his friends"
+          },
+          {
+            "id": "opt-D",
+            "text": "He had failed to enroll in a Central University in India"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-06-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Despite enjoying all comforts that wealth can provide,\nman will still feel incomplete and unhappy if\n(Select the right option)\n(a) He is prevented from mingling in the society\n(b) His hopes, creative energies and spiritual powers\nare unsatisfied\n(c) He is deserted by his friends\n(d) He had failed to enroll in a Central University in\nIndia"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q19",
+        "sourceQuestionNo": 19,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the pair of words which carries the same relationship to the given pair of words: Respect: Regard",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Stain: Spotless"
+          },
+          {
+            "id": "opt-B",
+            "text": "Ruin: Repair"
+          },
+          {
+            "id": "opt-C",
+            "text": "Detest: Despite"
+          },
+          {
+            "id": "opt-D",
+            "text": "Regret: Rejoice"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the pair of words which\ncarries the same relationship to the given pair of\nwords:\nRespect: Regard\n(a) Stain: Spotless\n(b) Ruin: Repair\n(c) Detest: Despite\n(d) Regret: Rejoice"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q20",
+        "sourceQuestionNo": 20,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the pair of words which carries the same relationship to the given pair of words: Dull: Bright",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Forsake: Discard"
+          },
+          {
+            "id": "opt-B",
+            "text": "Lean: Slender"
+          },
+          {
+            "id": "opt-C",
+            "text": "Fragile: Delicate"
+          },
+          {
+            "id": "opt-D",
+            "text": "Harmony: Discord"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the pair of words which\ncarries the same relationship to the given pair of\nwords:\nDull: Bright\n(a) Forsake: Discard\n(b) Lean: Slender\n(c) Fragile: Delicate\n(d) Harmony: Discord"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q21",
+        "sourceQuestionNo": 21,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the pair of words which carries the same relationship to the given pair of words: Happiness: Misery",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Violent: Wild"
+          },
+          {
+            "id": "opt-B",
+            "text": "Construct: Dismantle"
+          },
+          {
+            "id": "opt-C",
+            "text": "Deception: Fraud"
+          },
+          {
+            "id": "opt-D",
+            "text": "Tranquillity: Quietness"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the pair of words which\ncarries the same relationship to the given pair of\nwords:\nHappiness: Misery\n(a) Violent: Wild\n(b) Construct: Dismantle\n(c) Deception: Fraud\n(d) Tranquillity: Quietness"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q22",
+        "sourceQuestionNo": 22,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the pair of words which carries the same relationship to the given pair of words: Resolute: Determined",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Appease: Frighten"
+          },
+          {
+            "id": "opt-B",
+            "text": "Hinder: Assist"
+          },
+          {
+            "id": "opt-C",
+            "text": "Bustle: Motionless"
+          },
+          {
+            "id": "opt-D",
+            "text": "Miniature: Small"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the pair of words which\ncarries the same relationship to the given pair of\nwords:\nResolute: Determined\n(a) Appease: Frighten\n(b) Hinder: Assist\n(c) Bustle: Motionless\n(d) Miniature: Small"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q23",
+        "sourceQuestionNo": 23,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the given groups of words to make a meaningful sentence:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "a consumer protection drive to educate"
+          },
+          {
+            "id": "opt-B",
+            "text": "against using fraudulent means"
+          },
+          {
+            "id": "opt-C",
+            "text": "the people about their rights and to warn traders"
+          },
+          {
+            "id": "opt-D",
+            "text": "the administration will soon launch Choose the correct answer from the options given below: (a)D,A,CB (b) B,C, A,D ()CA,B,D (d) D,C,B,A"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the given groups of words to make a\nmeaningful sentence:\nA.a consumer protection drive to educate\nB. against using fraudulent means\nC. the people about their rights and to warn traders\nD. the administration will soon launch\nChoose the correct answer from the options given\nbelow:\n(a)D,A,CB\n(b) B,C, A,D\n()CA,B,D\n(d) D,C,B,A"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q24",
+        "sourceQuestionNo": 24,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the given groups of words to make a meaningful sentence:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "no part of this publication may be"
+          },
+          {
+            "id": "opt-B",
+            "text": "in any form without the written permission"
+          },
+          {
+            "id": "opt-C",
+            "text": "of the publisher of the book"
+          },
+          {
+            "id": "opt-D",
+            "text": "reproduced, stored or transmitted Choose the correct answer from the options given below: (a) B,A,C,D (b) B,D, A,C (c) A,D, B,C (d) C,D,A,B"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the given groups of words to make a\nmeaningful sentence:\nA. no part of this publication may be\nB. in any form without the written permission\nC. of the publisher of the book\nD. reproduced, stored or transmitted\nChoose the correct answer from the options given\nbelow:\n(a) B,A,C,D\n(b) B,D, A,C\n(c) A,D, B,C\n(d) C,D,A,B"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q25",
+        "sourceQuestionNo": 25,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the given groups of words to make a meaningful sentence:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "then the world will avert all future wars"
+          },
+          {
+            "id": "opt-B",
+            "text": "and agree to obey all the laws"
+          },
+          {
+            "id": "opt-C",
+            "text": "if all the nations work together"
+          },
+          {
+            "id": "opt-D",
+            "text": "for the common good of mankind Choose the correct answer from the options given below: (a) D,B,A,C (b) B,C, A,D (c) C,D,B,A (d) A, D, B, C"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the given groups of words to make a\nmeaningful sentence:\nA. then the world will avert all future wars\nB. and agree to obey all the laws\nC. if all the nations work together\nD. for the common good of mankind\nChoose the correct answer from the options given\nbelow:\n(a) D,B,A,C\n(b) B,C, A,D\n(c) C,D,B,A\n(d) A, D, B, C"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q26",
+        "sourceQuestionNo": 26,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the given groups of words to make a meaningful sentence:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "for the vehicles carrying food items"
+          },
+          {
+            "id": "opt-B",
+            "text": "the Centre has made it mandatory"
+          },
+          {
+            "id": "opt-C",
+            "text": "to display all details on the"
+          },
+          {
+            "id": "opt-D",
+            "text": "windshield and the rear screen Choose the correct answer from the options given below: (a) D,C,B,A (b) C,B,D,A (J) A,C,D,A (d) B,A,C,D"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the given groups of words to make a\nmeaningful sentence:\nA. for the vehicles carrying food items\nB. the Centre has made it mandatory\nC. to display all details on the\nD. windshield and the rear screen\nChoose the correct answer from the options given\nbelow:\n(a) D,C,B,A\n(b) C,B,D,A\n(J) A,C,D,A\n(d) B,A,C,D"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q27",
+        "sourceQuestionNo": 27,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is similar in meaning to the given word \"NOURISH\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Negate"
+          },
+          {
+            "id": "opt-B",
+            "text": "Nurture"
+          },
+          {
+            "id": "opt-C",
+            "text": "Neglect"
+          },
+          {
+            "id": "opt-D",
+            "text": "Native"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is similar\nin meaning to the given word \"NOURISH\"\n(a) Negate\n(b) Nurture\n(c) Neglect\n(d) Native"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q28",
+        "sourceQuestionNo": 28,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which is similar in meaning to the given word “Listless”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Lively"
+          },
+          {
+            "id": "opt-B",
+            "text": "Brisk"
+          },
+          {
+            "id": "opt-C",
+            "text": "Lethargic"
+          },
+          {
+            "id": "opt-D",
+            "text": "Enthusiastic"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which is similar\nin meaning to the given word\n“Listless”\n(a) Lively\n(b) Brisk\n(c) Lethargic\n(d) Enthusiastic"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q29",
+        "sourceQuestionNo": 29,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is similar in meaning to the given ‘Sophisticated’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Easy"
+          },
+          {
+            "id": "opt-B",
+            "text": "Simple (©) Naive"
+          },
+          {
+            "id": "opt-D",
+            "text": "Experienced"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is similar\nin meaning to the given ‘Sophisticated’\n(a) Easy\n(b) Simple\n(©) Naive\n(d) Experienced"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q30",
+        "sourceQuestionNo": 30,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is similar in meaning to the given word Lament",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Complain"
+          },
+          {
+            "id": "opt-B",
+            "text": "Mourn"
+          },
+          {
+            "id": "opt-C",
+            "text": "Console"
+          },
+          {
+            "id": "opt-D",
+            "text": "Celebrate"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is similar\nin meaning to the given word Lament\n(a) Complain\n(b) Mourn\n(c) Console\n(d) Celebrate"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q31",
+        "sourceQuestionNo": 31,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the correctly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Diteriorat"
+          },
+          {
+            "id": "opt-B",
+            "text": "Detiriorate"
+          },
+          {
+            "id": "opt-C",
+            "text": "Deteriorate"
+          },
+          {
+            "id": "opt-D",
+            "text": "Detriorate"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the correctly spelt\nword:\n(a) Diteriorat\n(b) Detiriorate\n(c) Deteriorate\n(d) Detriorate"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q32",
+        "sourceQuestionNo": 32,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the correctly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Pneumonia"
+          },
+          {
+            "id": "opt-B",
+            "text": "Pnenoniya"
+          },
+          {
+            "id": "opt-C",
+            "text": "Nemoniya"
+          },
+          {
+            "id": "opt-D",
+            "text": "Pnimonia"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the correctly spelt\nword:\n(a) Pneumonia\n(b) Pnenoniya\n(c) Nemoniya\n(d) Pnimonia"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q33",
+        "sourceQuestionNo": 33,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the correctly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Imergency"
+          },
+          {
+            "id": "opt-B",
+            "text": "Amergency"
+          },
+          {
+            "id": "opt-C",
+            "text": "Emergency"
+          },
+          {
+            "id": "opt-D",
+            "text": "Emorgency"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the correctly spelt\nword:\n(a) Imergency\n(b) Amergency\n(c) Emergency\n(d) Emorgency"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q34",
+        "sourceQuestionNo": 34,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the correctly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Burocrat"
+          },
+          {
+            "id": "opt-B",
+            "text": "Beaurocrat"
+          },
+          {
+            "id": "opt-C",
+            "text": "Buruekrat"
+          },
+          {
+            "id": "opt-D",
+            "text": "Bureaucrat"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the correctly spelt\nword:\n(a) Burocrat\n(b) Beaurocrat\n(c) Buruekrat\n(d) Bureaucrat"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q35",
+        "sourceQuestionNo": 35,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which most correctly explains the given expression: \"To smell a rat\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To spot rats ina dark room"
+          },
+          {
+            "id": "opt-B",
+            "text": "To misunderstand a speaker"
+          },
+          {
+            "id": "opt-C",
+            "text": "To suspect a hick or a deceit"
+          },
+          {
+            "id": "opt-D",
+            "text": "To get confused"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which most\ncorrectly explains the given expression: \"To smell a\nrat\"\n(a) To spot rats ina dark room\n(b) To misunderstand a speaker\n(c) To suspect a hick or a deceit\n(d) To get confused"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q36",
+        "sourceQuestionNo": 36,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which most correctly explains the given “To take a leap in the dark\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To perform a secret ritual"
+          },
+          {
+            "id": "opt-B",
+            "text": "To jump after the sun has set"
+          },
+          {
+            "id": "opt-C",
+            "text": "To do something without being certain of the outcome and result"
+          },
+          {
+            "id": "opt-D",
+            "text": "To be afraid of the dark"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which most\ncorrectly explains the given “To take a leap in the\ndark\"\n(a) To perform a secret ritual\n(b) To jump after the sun has set\n(c) To do something without being certain of the\n\noutcome and result\n\n(d) To be afraid of the dark"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q37",
+        "sourceQuestionNo": 37,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which most correctly explains the given “To pull one's socks up\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To depart"
+          },
+          {
+            "id": "opt-B",
+            "text": "To make an effort to improve one's performance"
+          },
+          {
+            "id": "opt-C",
+            "text": "To try something new and strange"
+          },
+          {
+            "id": "opt-D",
+            "text": "To wear a pair of new socks"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which most\ncorrectly explains the given “To pull one's socks up\"\n(a) To depart\n(b) To make an effort to improve one's performance\n(c) To try something new and strange\n(d) To wear a pair of new socks"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q38",
+        "sourceQuestionNo": 38,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which most correctly explains the given expression: \"To lose face\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To feel sad"
+          },
+          {
+            "id": "opt-B",
+            "text": "To look angry"
+          },
+          {
+            "id": "opt-C",
+            "text": "To be confused"
+          },
+          {
+            "id": "opt-D",
+            "text": "To lose respect from others"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which most\ncorrectly explains the given expression: \"To lose\nface\"\n\n\n\n(a) To feel sad\n(b) To look angry\n(c) To be confused\n(d) To lose respect from others"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q39",
+        "sourceQuestionNo": 39,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which can replace the given expression: One who is new and inexperienced ina certain job",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Versatile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Veteran"
+          },
+          {
+            "id": "opt-C",
+            "text": "Namesake"
+          },
+          {
+            "id": "opt-D",
+            "text": "Novice"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which can\nreplace the given expression: One who is new and\ninexperienced ina certain job\n(a) Versatile\n(b) Veteran\n(c) Namesake\n(d) Novice"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q40",
+        "sourceQuestionNo": 40,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which can replace the given expression: One who hates mankind",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Sadist"
+          },
+          {
+            "id": "opt-B",
+            "text": "Narcissist"
+          },
+          {
+            "id": "opt-C",
+            "text": "Misanthrope"
+          },
+          {
+            "id": "opt-D",
+            "text": "Misologist"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which can\nreplace the given expression: One who hates\nmankind\n(a) Sadist\n(b) Narcissist\n(c) Misanthrope\n(d) Misologist"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q41",
+        "sourceQuestionNo": 41,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which can replace the given expression: \"Recurring every ten years\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Centennial"
+          },
+          {
+            "id": "opt-B",
+            "text": "Biennial"
+          },
+          {
+            "id": "opt-C",
+            "text": "Decennial"
+          },
+          {
+            "id": "opt-D",
+            "text": "Quadrennial"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which can\nreplace the given expression: \"Recurring every ten\nyears\"\n(a) Centennial\n(b) Biennial\n(c) Decennial\n(d) Quadrennial"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q42",
+        "sourceQuestionNo": 42,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which can replace the given expression: \"Fear of Water\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Kleptophobia"
+          },
+          {
+            "id": "opt-B",
+            "text": "Hydrophobia"
+          },
+          {
+            "id": "opt-C",
+            "text": "Hodophobia"
+          },
+          {
+            "id": "opt-D",
+            "text": "Hedonophobia"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which can\nreplace the given expression: \"Fear of Water\"\n(a) Kleptophobia\n(b) Hydrophobia\n(c) Hodophobia\n(d) Hedonophobia"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q43",
+        "sourceQuestionNo": 43,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Poetic Device) used in the expression: \"Matthew met Michael at the mayor's moor\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-C",
+            "text": "Metaphor"
+          },
+          {
+            "id": "opt-D",
+            "text": "Alliteration"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech\n(Poetic Device) used in the expression: \"Matthew\nmet Michael at the mayor's moor\"\n(a) Simile\n(b) Personification\n(c) Metaphor\n(d) Alliteration"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q44",
+        "sourceQuestionNo": 44,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Poetic Device) used in the expression: \"Chandu's uniform fits him like a glove\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-B",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-C",
+            "text": "Metaphor"
+          },
+          {
+            "id": "opt-D",
+            "text": "Oxymoron"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech\n(Poetic Device) used in the expression: \"Chandu's\nuniform fits him like a glove\"\n(a) Personification\n(b) Simile\n(c) Metaphor\n(d) Oxymoron"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q45",
+        "sourceQuestionNo": 45,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Poetic Device) used in the expression: \"Tom and Jerry share a love-hate relationship\"",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-B",
+            "text": "Metaphor"
+          },
+          {
+            "id": "opt-C",
+            "text": "Oxymoron"
+          },
+          {
+            "id": "opt-D",
+            "text": "Simile"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech\n(Poetic Device) used in the expression: \"Tom and\nJerry share a love-hate relationship\"\n(a) Personification\n(b) Metaphor\n(c) Oxymoron\n(d) Simile"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q46",
+        "sourceQuestionNo": 46,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Poetic Device) used in the expression: \"All the world isa stage”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-B",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-C",
+            "text": "Alliteration"
+          },
+          {
+            "id": "opt-D",
+            "text": "Metaphor"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech\n(Poetic Device) used in the expression: \"All the world\nisa stage”\n(a) Personification\n(b) Simile\n(c) Alliteration\n(d) Metaphor"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q47",
+        "sourceQuestionNo": 47,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Liability”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Money"
+          },
+          {
+            "id": "opt-B",
+            "text": "Property"
+          },
+          {
+            "id": "opt-C",
+            "text": "Asset"
+          },
+          {
+            "id": "opt-D",
+            "text": "Debt"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Liability”\n(a) Money\n(b) Property\n(c) Asset\n(d) Debt"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q48",
+        "sourceQuestionNo": 48,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Stringent”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Vehement"
+          },
+          {
+            "id": "opt-B",
+            "text": "Severe"
+          },
+          {
+            "id": "opt-C",
+            "text": "General"
+          },
+          {
+            "id": "opt-D",
+            "text": "Lenient (d) Common |"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Stringent”\n(a) Vehement\n(b) Severe\n(c) General\n(d) Lenient\n(d) Common |"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q49",
+        "sourceQuestionNo": 49,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Conscientious”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Mutual"
+          },
+          {
+            "id": "opt-B",
+            "text": "Scrupulous"
+          },
+          {
+            "id": "opt-C",
+            "text": "Irresponsible"
+          },
+          {
+            "id": "opt-D",
+            "text": "Meticulous"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Conscientious”\n(a) Mutual\n(b) Scrupulous\n(c) Irresponsible\n(d) Meticulous"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-06-shift-1-q50",
+        "sourceQuestionNo": 50,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Perennial”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Incessant"
+          },
+          {
+            "id": "opt-B",
+            "text": "Seasonal"
+          },
+          {
+            "id": "opt-C",
+            "text": "Frequent |"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-06",
+        "source": "English_2022-08-06_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Perennial”\n(a) Incessant\n(b) Seasonal\n(c) Frequent\n\n|"
+      }
+    ],
+    "answerKeySourcePages": [
+      6
+    ],
+    "extractionSummary": {
+      "questionBlocksIsolated": 50,
+      "questionsWithFourOptionsDetected": 48,
+      "answerKeysIncluded": 50,
+      "expectedQuestions": 50,
+      "sourceMethod": "scanned PDF image OCR, split into columns"
+    },
+    "publicationStatus": "draft",
+    "reviewRequired": true
+  }
+}

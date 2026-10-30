@@ -1,0 +1,2060 @@
+{
+  "schemaVersion": "2.0",
+  "subjectId": "REPLACE-WITH-SUBJECT-ID",
+  "exam": {
+    "id": "cuet-ug-english-2022-08-16-shift-1",
+    "title": "CUET UG English Previous Year Paper - 2022-08-16",
+    "subject": "English",
+    "subjectId": "REPLACE-WITH-SUBJECT-ID",
+    "year": 2022,
+    "examDate": "2022-08-16",
+    "shift": 1,
+    "setName": null,
+    "language": "English",
+    "sourceFile": "English_2022-08-16_Shift_1.pdf",
+    "questionCount": 50,
+    "passages": [
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "title": "Reading Passage 1",
+        "contentEn": "The first form did not really see very much of Erica because she did not have lessons with them. But even if they met her in a passage or in the art room or gym, they looked the other way. In the common-room at night Erica had a miserable time. Not one of the second form girls also would have anything to do with her. Loud remarks about sneaks and cowards were made in her hearing. They only person who ever threw her a word at all was the bad-tempered Margery Fenworthy. Erica did not like Margery any more than the other girls did but she was so grateful to be spoken to even, by the surly first former that she almost began tolike the girl. ‘Tl’ m surprised you speak to Erica, Margery,’ said Pat, when she had heard Margery ask to borrow Erica's stationery said Margery, in her usual rude way. ‘You're none of you friendly to me, and I know what it is to have people being beastly to you.’ ‘But Margery, it’s your own fault, ‘you don’t give me a chance,” Oh, Margery, what a fib’! Cried Pat. ‘It's you who never give us a chance to be decent to you. You scowl and glower and frown all the time.’ If you’re going to pick me to pieces you can save yourself the trouble’, Said Margery, fiercely. ‘I don’t care tuppence for any of you. And if want to speak to that wretched Erica, I shall who cares for a pack of silly girls, and a crowd of stuck-up teachers? I don’t’ Pat was astonished. What a strange girl Margery was! Did she really want a chance of being friends with the others? Was she terribly shy? What was behind that funny manner of hers? Pat talked about it with her twin.’ Margery is always making enemies she said. 'I spoke to her today about it and she accused us of never giving her a chance! Do you think we out to do something about it?’",
+        "contentHi": null,
+        "questionRange": {
+          "from": 1,
+          "to": 6
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "title": "Reading Passage 2",
+        "contentEn": "She took me by the hand walked me into the lobby like a five- year old child. Didn’t she know I was pushing 15? This was the third home Nancy was placing me in-in a span of eight months! I guess she felt a little sorry for me. The bright fluorescence lights threatened to burn my skin as I walked towards a bouncy-looking lady with curly hair and a sweetly- smiling man. They called themselves Allie and Alex. Cute, I thought. After they exchanged the usual reams of paperwork, it was offin their Chevy Suburban to get situated into another new home. This time, there were no other foster children and nor another biological child. Anything could happen. Over the next few weeks, Allie, Alex and I fell into quite a nice routine. She’d make pancakes for breakfast, or he’d fry up some sausage and eggs. They sang a lot, even danced as they cooked. They must have just bought the house because, most weekends, We were either painting a living room butter yellow or staining a coffee table mocha brown. I kept waiting for the other shoe to drop. When would they start threatening a loss of pancakes if | didn’t mow the lawn? When would the sausage and eggs be replaced with unidentifiable slosh because he didn’t feel like cooking in the morning? But It never happened. They kept cooking, singing, and dancing like a couple of happy fools. It was a Saturday afternoon when Allie decided it was time to paint the brick fireplace white. As we crawled closer to the dirty old firepit, we pulled out the petrified wood and noticed a teeny-tiny treasure box! We looked at each other in wounder and excitement. She actually said,” | wonder if the leprechauns left it!”",
+        "contentHi": null,
+        "questionRange": {
+          "from": 7,
+          "to": 12
+        },
+        "sourcePages": [
+          2
+        ],
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "title": "Reading Passage 3",
+        "contentEn": "Workers and Slaves The Pharaohs may have believed that it was their links with the Gods that kept Egypt going, but really it was the hard work of the ordinary people. It was they who dug the soil, worked in the mines and quarries, sailed the boats on the river Nile, marched with the army into Syria or Nubia, cooked food and raised children. Slavery was not very important in ancient Egypt, but it did exist. Most of the slaves prisoners who had been captured during the many wars Egypt fought with their neighbors in the Near East. Slaves were usually treated well and were allowed to own property. Many Egyptian workers were serfs. This meant that their freedom was limited. They could be bought and sold along with the estates where they worked. Farmers had to be registered with the government. They have to sell crops at a fixed fields lay under water; many workers were recruited into public building projects. Punishment for those who ran away was harsh.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 13,
+          "to": 18
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q01",
+        "sourceQuestionNo": 1,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match List-I with List-II",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Loud remarks about I. in the presence of sneaks and cowards Erica. were made unpopular"
+          },
+          {
+            "id": "opt-C",
+            "text": "“Oh Margery...it’s you IL said Pat who never give us a change to be decent sister named Choose the correct answer from the options given below: (a) A+L, B-II, C-IV, D-III"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-I, B-II, C-II, D-IV (c) All, B-IV, C-III, D-I"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-IV, B-III, C-1, D-II"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match List-I with List-II\nA. Loud remarks about I. in the presence of\nsneaks and cowards Erica.\nwere made\nunpopular\nC. “Oh Margery...it’s you IL said Pat\nwho never give us a\nchange to be decent\nsister named\nChoose the correct answer from the options given\nbelow:\n(a) A+L, B-II, C-IV, D-III\n(b) A-I, B-II, C-II, D-IV\n(c) All, B-IV, C-III, D-I\n(d) A-IV, B-III, C-1, D-II"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q02",
+        "sourceQuestionNo": 2,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, choose the one which is correct according to the passage. The girls mentioned in the passage are",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Erica, Margery and Pat"
+          },
+          {
+            "id": "opt-B",
+            "text": "Erica and Pat only Years Paper st 2022 (Shift - 1)"
+          },
+          {
+            "id": "opt-C",
+            "text": "Only Patricia"
+          },
+          {
+            "id": "opt-D",
+            "text": "Joan, Erica and Patricia"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, choose the one which is\ncorrect according to the passage.\nThe girls mentioned in the passage are\n(a) Erica, Margery and Pat\n(b) Erica and Pat only\n\n\n\nYears Paper\nst 2022 (Shift - 1)\n(c) Only Patricia\n(d) Joan, Erica and Patricia"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q03",
+        "sourceQuestionNo": 3,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is right and correct according to the passage:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "“Iam surprised you speak to Margery, Erica,” said Pat"
+          },
+          {
+            "id": "opt-B",
+            "text": "“Iam surprised you speak to Erica, Pat,” said Margery"
+          },
+          {
+            "id": "opt-C",
+            "text": "“Iam surprised you speak to Margery, Pat,” said Erica"
+          },
+          {
+            "id": "opt-D",
+            "text": "“lam surprised you speak to Erica, Margery,” said Pat"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is right\nand correct according to the passage:\n(a) “Iam surprised you speak to Margery, Erica,”\nsaid Pat\n(b) “Iam surprised you speak to Erica, Pat,” said\nMargery\n(c) “Iam surprised you speak to Margery, Pat,” said\nErica\n(d) “lam surprised you speak to Erica, Margery,”\nsaid Pat"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q04",
+        "sourceQuestionNo": 4,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage Margaret Fenworthy comes across as........8elect the option which is correct according the passage.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Abad tempered, unpopular girl"
+          },
+          {
+            "id": "opt-B",
+            "text": "Heroic and a strong mountaineer"
+          },
+          {
+            "id": "opt-C",
+            "text": "Saintly and a recluse"
+          },
+          {
+            "id": "opt-D",
+            "text": "A cynical middle aged woman"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage Margaret Fenworthy comes across\nas........8elect the option which is correct according\nthe passage.\n(a) Abad tempered, unpopular girl\n(b) Heroic and a strong mountaineer\n(c) Saintly and a recluse\n(d) A cynical middle aged woman"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q05",
+        "sourceQuestionNo": 5,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage it may be concluded that Erica was very. Select the option which is correct according to the passage.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Lonely, friendless and timid"
+          },
+          {
+            "id": "opt-B",
+            "text": "Dominating and Arrogant"
+          },
+          {
+            "id": "opt-C",
+            "text": "Cunning and stupid (a) Brilliant and very popular"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage it may be concluded that Erica was\nvery.\nSelect the option which is correct according to the\npassage.\n(a) Lonely, friendless and timid\n(b) Dominating and Arrogant\n(c) Cunning and stupid\n(a) Brilliant and very popular"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q06",
+        "sourceQuestionNo": 6,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage it becomes clear that (choose the correct option). Not one of the First Form girls would have anything to do with Erica because:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "She did not have any lessons with them"
+          },
+          {
+            "id": "opt-B",
+            "text": "She used to mind her own business"
+          },
+          {
+            "id": "opt-C",
+            "text": "She was unfriendly, rude and selfish"
+          },
+          {
+            "id": "opt-D",
+            "text": "Erica was away on a holiday in Paris with her family Read the following passage to answer Question. She took me by the hand walked me into the lobby like a five- year old child. Didn’t she know I was pushing 15? This was the third home Nancy was placing me in-in a span of eight months! I guess she felt a little sorry for me. The bright fluorescence lights threatened to burn my skin as I walked towards a bouncy-looking lady with curly hair and a sweetly- smiling man. They called themselves Allie and Alex. Cute, I thought. After they exchanged the usual reams of paperwork, it was offin their Chevy Suburban to get situated into another new home. This time, there were no other foster children and nor another biological child. Anything could happen. Over the next few weeks, Allie, Alex and I fell into quite a nice routine. She’d make pancakes for breakfast, or he’d fry up some sausage and eggs. They sang a lot, even danced as they cooked. They must have just bought the house because, most weekends, We were either painting a living room butter yellow or staining a coffee table mocha brown. I kept waiting for the other shoe to drop. When would they start threatening a loss of pancakes if | didn’t mow the lawn? When would the sausage and eggs be replaced with unidentifiable slosh because he didn’t feel like cooking in the morning? But It never happened. They kept cooking, singing, and dancing like a couple of happy fools. It was a Saturday afternoon when Allie decided it was time to paint the brick fireplace white. As we crawled closer to the dirty old firepit, we pulled out the petrified wood and noticed a teeny-tiny treasure box! We looked at each other in wounder and excitement. She actually said,” | wonder if the leprechauns left it!”"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage it becomes clear that (choose the\ncorrect option).\nNot one of the First Form girls would have anything to\ndo with Erica because:\n(a) She did not have any lessons with them\n(b) She used to mind her own business\n(c) She was unfriendly, rude and selfish\n(d) Erica was away on a holiday in Paris with her\nfamily\nRead the following passage to answer Question.\nShe took me by the hand walked me into the lobby like a five-\nyear old child. Didn’t she know I was pushing 15? This was\nthe third home Nancy was placing me in-in a span of eight\nmonths! I guess she felt a little sorry for me. The bright\nfluorescence lights threatened to burn my skin as I walked\ntowards a bouncy-looking lady with curly hair and a sweetly-\nsmiling man. They called themselves Allie and Alex. Cute, I\nthought. After they exchanged the usual reams of\npaperwork, it was offin their Chevy Suburban to get situated\ninto another new home. This time, there were no other foster\nchildren and nor another biological child. Anything could\nhappen.\nOver the next few weeks, Allie, Alex and I fell into quite a nice\nroutine. She’d make pancakes for breakfast, or he’d fry up\nsome sausage and eggs. They sang a lot, even danced as they\ncooked. They must have just bought the house because, most\nweekends, We were either painting a living room butter\n\n\n\nyellow or staining a coffee table mocha brown. I kept waiting\nfor the other shoe to drop. When would they start\nthreatening a loss of pancakes if | didn’t mow the lawn?\nWhen would the sausage and eggs be replaced with\nunidentifiable slosh because he didn’t feel like cooking in the\nmorning? But It never happened. They kept cooking, singing,\nand dancing like a couple of happy fools. It was a Saturday\nafternoon when Allie decided it was time to paint the brick\nfireplace white. As we crawled closer to the dirty old firepit,\nwe pulled out the petrified wood and noticed a teeny-tiny\ntreasure box! We looked at each other in wounder and\nexcitement. She actually said,” | wonder if the leprechauns\nleft it!”"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q07",
+        "sourceQuestionNo": 7,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Over the next few weeks who all fell into a nice comfortable routine? select the correct option",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Nancy"
+          },
+          {
+            "id": "opt-B",
+            "text": "Allie and Nancy"
+          },
+          {
+            "id": "opt-C",
+            "text": "The narrator, Allie and Alex"
+          },
+          {
+            "id": "opt-D",
+            "text": "Only Alex"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Over the next few weeks who all fell into a nice\ncomfortable routine?\nselect the correct option\n(a) Nancy\n(b) Allie and Nancy\n(c) The narrator, Allie and Alex\n(d) Only Alex"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q08",
+        "sourceQuestionNo": 8,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "“She took me by the hand and walked me into the lobby...”. The ‘me’ refers to the:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Narrator and the protagonist of the passage"
+          },
+          {
+            "id": "opt-B",
+            "text": "Narrator and the footballer"
+          },
+          {
+            "id": "opt-C",
+            "text": "A film star and a villain"
+          },
+          {
+            "id": "opt-D",
+            "text": "The headmaster of an English School"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "“She took me by the hand and walked me into the\nlobby...”. The ‘me’ refers to the:\n(a) Narrator and the protagonist of the passage\n(b) Narrator and the footballer\n(c) A film star and a villain\n(d) The headmaster of an English School"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q09",
+        "sourceQuestionNo": 9,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "On a Sunday afternoon, what did Allie decide to do? select the correct option Choose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Crawl towards the dirty old garage"
+          },
+          {
+            "id": "opt-B",
+            "text": "Paint the brick firepit white"
+          },
+          {
+            "id": "opt-C",
+            "text": "Sing a song"
+          },
+          {
+            "id": "opt-D",
+            "text": "Write a letter to the President"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "On a Sunday afternoon, what did Allie decide to do?\nselect the correct option Choose the correct answer\nfrom the options given below:\n(a) Crawl towards the dirty old garage\n(b) Paint the brick firepit white\n(c) Sing a song\n(d) Write a letter to the President"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q10",
+        "sourceQuestionNo": 10,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "It appears from the passage that over the next few days the narrator and the other two characters were: Select the correct option",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Relaxed and comfortable"
+          },
+          {
+            "id": "opt-B",
+            "text": "Stressed and anxious"
+          },
+          {
+            "id": "opt-C",
+            "text": "Depressed and gloomy"
+          },
+          {
+            "id": "opt-D",
+            "text": "Plotting revenge Qui. ei Toe he was a 5-year-old child ey Vesa breakfast [c. [Alex | ll. | Fried sausages and eggs | Pere one ES home Choose the correct answer from the options given below: (a) A-L, B-II, C-III, D-IV (b) A-IV, B-III, C-II, D-I (c) A-IV, B-I, C-III, D-II (d) A-II, B-IV, C-I, D-II"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "It appears from the passage that over the next few\ndays the narrator and the other two characters were:\nSelect the correct option\n(a) Relaxed and comfortable\n(b) Stressed and anxious\n(c) Depressed and gloomy\n(d) Plotting revenge\nQui.\nei Toe\nhe was a 5-year-old child\ney Vesa\nbreakfast\n[c. [Alex | ll. | Fried sausages and eggs |\nPere one ES\nhome\nChoose the correct answer from the options given\nbelow:\n(a) A-L, B-II, C-III, D-IV\n(b) A-IV, B-III, C-II, D-I\n(c) A-IV, B-I, C-III, D-II\n(d) A-II, B-IV, C-I, D-II"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q11",
+        "sourceQuestionNo": 11,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_not_isolated_by_ocr",
+          "stem_needs_manual_review",
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": null
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q12",
+        "sourceQuestionNo": 12,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage It may be assumed that the narrator was a 15-year-old teenager without parents because the passage talks about. (select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Foster home for the narrator and other foster children"
+          },
+          {
+            "id": "opt-B",
+            "text": "Cleaning firepits"
+          },
+          {
+            "id": "opt-C",
+            "text": "Church and Chapels of Great Britian"
+          },
+          {
+            "id": "opt-D",
+            "text": "Malls ofa Metropolitan city Read the following passage to answer Question. Workers and Slaves The Pharaohs may have believed that it was their links with the Gods that kept Egypt going, but really it was the hard work of the ordinary people. It was they who dug the soil, worked in the mines and quarries, sailed the boats on the river Nile, marched with the army into Syria or Nubia, cooked food and raised children. Slavery was not very important in ancient Egypt, but it did exist. Most of the slaves prisoners who had been captured during the many wars Egypt fought with their neighbors in the Near East. Slaves were usually treated well and were allowed to own property. Many Egyptian workers were serfs. This meant that their freedom was limited. They could be bought and sold along with the estates where they worked. Farmers had to be registered with the government. They have to sell crops at a fixed fields lay under water; many workers were recruited into public building projects. Punishment for those who ran away was harsh."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage It may be assumed that the narrator\nwas a 15-year-old teenager without parents because\nthe passage talks about. (select the correct option)\n(a) Foster home for the narrator and other foster\nchildren\n(b) Cleaning firepits\n(c) Church and Chapels of Great Britian\n\n\n\n(d) Malls ofa Metropolitan city\n\nRead the following passage to answer Question.\n\nWorkers and Slaves\n\nThe Pharaohs may have believed that it was their links with\n\nthe Gods that kept Egypt going, but really it was the hard\n\nwork of the ordinary people. It was they who dug the soil,\nworked in the mines and quarries, sailed the boats on the\nriver Nile, marched with the army into Syria or Nubia,\ncooked food and raised children. Slavery was not very\nimportant in ancient Egypt, but it did exist. Most of the slaves\nprisoners who had been captured during the many wars\n\nEgypt fought with their neighbors in the Near East. Slaves\n\nwere usually treated well and were allowed to own property.\n\nMany Egyptian workers were serfs. This meant that their\n\nfreedom was limited. They could be bought and sold along\n\nwith the estates where they worked. Farmers had to be\n\nregistered with the government. They have to sell crops at a\n\nfixed fields lay under water; many workers were recruited\n\ninto public building projects. Punishment for those who ran\naway was harsh."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q13",
+        "sourceQuestionNo": 13,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage we get to know that distinct quality of ancient Egypt under the pharaohs was the fact that. Select the correct option",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Though slavery existed slaves were not treated harshly at all"
+          },
+          {
+            "id": "opt-B",
+            "text": "The pharaohs were very democratic and handsome"
+          },
+          {
+            "id": "opt-C",
+            "text": "No Egyptian working in ancient Egypt worked as aserf"
+          },
+          {
+            "id": "opt-D",
+            "text": "The river Nile would stop No flowing during the rains in Egypt"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage we get to know that distinct quality\nof ancient Egypt under the pharaohs was the fact that.\nSelect the correct option\n(a) Though slavery existed slaves were not treated\nharshly at all\n\n(b) The pharaohs were very democratic and\nhandsome\n\n(c) No Egyptian working in ancient Egypt worked as\naserf\n\n(d) The river Nile would stop No flowing during the\nrains in Egypt"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q14",
+        "sourceQuestionNo": 14,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage we get to know that in ancient Egypt many workers were known as serfs. These were people with Select the correct answer",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Workers with limited freedom in ancient - Egypt"
+          },
+          {
+            "id": "opt-B",
+            "text": "Students with limited intelligence in modern Egypt"
+          },
+          {
+            "id": "opt-C",
+            "text": "Nobility with limited power in medieval Egypt"
+          },
+          {
+            "id": "opt-D",
+            "text": "Pharaohs with limited connection with the gods of Egyptian Gods"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage we get to know that in ancient Egypt\nmany workers were known as serfs. These were\npeople with\nSelect the correct answer\n(a) Workers with limited freedom in ancient - Egypt\n(b) Students with limited intelligence in modern\n\nEgypt\n(c) Nobility with limited power in medieval Egypt\n(d) Pharaohs with limited connection with the gods\nof Egyptian Gods"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q15",
+        "sourceQuestionNo": 15,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "What according to the passage was the reason of ancient Egyptian progress and prosperity. Choose the correct answer from the options given below :",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "The link the Pharaohs claimed they had with the Gods"
+          },
+          {
+            "id": "opt-B",
+            "text": "The labour and hard work of the and ordinary men in ancient Egypt"
+          },
+          {
+            "id": "opt-C",
+            "text": "The mines and quarries full of germs armed with rockets and missiles and jewels in ancient Egypt."
+          },
+          {
+            "id": "opt-D",
+            "text": "The modern smart Egyptian army"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "What according to the passage was the reason of\nancient Egyptian progress and prosperity.\n\nChoose the correct answer from the options given\n\nbelow :\n\n(a) The link the Pharaohs claimed they had with the\nGods\n\n(b) The labour and hard work of the and ordinary\nmen in ancient Egypt\n\n(c) The mines and quarries full of germs armed with\nrockets and missiles and jewels in ancient Egypt.\n\n(d) The modern smart Egyptian army"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q16",
+        "sourceQuestionNo": 16,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given passage options, select the one which is true according to the passage. Choose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Pharaohs believed that is was their link with the Gods that favoured Egypt"
+          },
+          {
+            "id": "opt-B",
+            "text": "The ordinary people worked overtime to destroy Egypt"
+          },
+          {
+            "id": "opt-C",
+            "text": "The pharaoh’s did not believe they were connected to the Gods"
+          },
+          {
+            "id": "opt-D",
+            "text": "The Pharaoh's were the hard working salves of ancient Egypt"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given passage options, select the one which\nis true according to the passage.\n\nChoose the correct answer from the options given\n\nbelow:\n\n(a) Pharaohs believed that is was their link with the\nGods that favoured Egypt\n\n(b) The ordinary people worked overtime to destroy\nEgypt\n\n(c) The pharaoh’s did not believe they were\nconnected to the Gods\n\n(d) The Pharaoh's were the hard working salves of\nancient Egypt"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q17",
+        "sourceQuestionNo": 17,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Select the option that is incorrect according to the passage.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "In the Egypt under the Pharaob’s, slaves were allowed to own property"
+          },
+          {
+            "id": "opt-B",
+            "text": "Most of the slaves were prisoners captured in the many wars Egypt fought with its neighbours in the NEAR EAST"
+          },
+          {
+            "id": "opt-C",
+            "text": "Slaves were well treated in ancient Egypt"
+          },
+          {
+            "id": "opt-D",
+            "text": "Slavery was extremely important in ancient - Egypt"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Select the option that is incorrect according to the\npassage.\n(a) In the Egypt under the Pharaob’s, slaves were\nallowed to own property\n(b) Most of the slaves were prisoners captured in\nthe many wars Egypt fought with its neighbours\nin the NEAR EAST\n(c) Slaves were well treated in ancient Egypt\n(d) Slavery was extremely important in ancient -\nEgypt"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q18",
+        "sourceQuestionNo": 18,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match List I with List II [A. | Serfscouldbe [1 [Farmers Registered with Recruited workers the government during the rainy season",
+        "optionsEn": [
+          {
+            "id": "opt-C",
+            "text": "| Public building Bought and sold projects along with estates were they worked Pe [See punishment runawa’ Choose the correct answer from the options given below"
+          },
+          {
+            "id": "opt-A",
+            "text": "A-L, B-II, C-ITl, D-IV"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-IV, B-III, C-II, D-I (c) A-IIl, B-I, C-II, D-IV"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-II, B-III, C-IV, D-I"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match List I with List II\n[A. | Serfscouldbe [1 [Farmers\nRegistered with Recruited workers\nthe government during the rainy\nseason\nC. | Public building Bought and sold\nprojects along with estates\nwere they worked\nPe [See\npunishment runawa’\nChoose the correct answer from the options given\nbelow\n(a) A-L, B-II, C-ITl, D-IV\n(b) A-IV, B-III, C-II, D-I\n(c) A-IIl, B-I, C-II, D-IV\n(d) A-II, B-III, C-IV, D-I"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q19",
+        "sourceQuestionNo": 19,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that is opposite in meaning to the given words: “ACQUITTED”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Promoted"
+          },
+          {
+            "id": "opt-B",
+            "text": "Burdened"
+          },
+          {
+            "id": "opt-C",
+            "text": "Convicted"
+          },
+          {
+            "id": "opt-D",
+            "text": "Development"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that is opposite\nin meaning to the given words:\n“ACQUITTED”\n(a) Promoted\n(b) Burdened\n(c) Convicted\n(d) Development"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q20",
+        "sourceQuestionNo": 20,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options given below select the one that is opposite in meaning to the given word: “RELINQUISH”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Garbage"
+          },
+          {
+            "id": "opt-B",
+            "text": "Harmonize"
+          },
+          {
+            "id": "opt-C",
+            "text": "Beautify"
+          },
+          {
+            "id": "opt-D",
+            "text": "Possess"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options given below select the one that is\nopposite in meaning to the given word:\n“RELINQUISH”\n(a) Garbage\n(b) Harmonize\n(c) Beautify\n(d) Possess"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q21",
+        "sourceQuestionNo": 21,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options given below select the one which is Opposite in meaning to the given word. “CAPACIOUS”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Limited"
+          },
+          {
+            "id": "opt-B",
+            "text": "Charming"
+          },
+          {
+            "id": "opt-C",
+            "text": "Foolish"
+          },
+          {
+            "id": "opt-D",
+            "text": "Colorful"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options given below select the one which is\nOpposite in meaning to the given word.\n“CAPACIOUS”\n(a) Limited\n(b) Charming\n(c) Foolish\n(d) Colorful"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q22",
+        "sourceQuestionNo": 22,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is Opposite in meaning to the given word. “FRAUDULENT”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Candid"
+          },
+          {
+            "id": "opt-B",
+            "text": "Direct"
+          },
+          {
+            "id": "opt-C",
+            "text": "Forthright"
+          },
+          {
+            "id": "opt-D",
+            "text": "Genuine"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is\nOpposite in meaning to the given word.\n“FRAUDULENT”\n(a) Candid\n(b) Direct\n(c) Forthright\n(d) Genuine"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q23",
+        "sourceQuestionNo": 23,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select of speech or the poetic device used in expression. ‘Both wry with the laboured ease of loss”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Smile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-C",
+            "text": "Oxymoron"
+          },
+          {
+            "id": "opt-D",
+            "text": "Metaphor"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select of speech or the poetic\ndevice used in expression.\n‘Both wry with the laboured ease of loss”\n(a) Smile\n\n\n\n(b) Personification\n(c) Oxymoron\n(d) Metaphor"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q24",
+        "sourceQuestionNo": 24,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the figure of speech (Poetic Device) used in the expression. “Far Far from gusty waves”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Oxymoron"
+          },
+          {
+            "id": "opt-B",
+            "text": "Alliteration"
+          },
+          {
+            "id": "opt-C",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-D",
+            "text": "Personification"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the figure of speech\n(Poetic Device) used in the expression.\n“Far Far from gusty waves”\n(a) Oxymoron\n(b) Alliteration\n(c) Simile\n(d) Personification"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q25",
+        "sourceQuestionNo": 25,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the figure of speech (Poetic Device) used in the expression. “The smiling young tress provided a strange comfort”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-B",
+            "text": "Metaphor"
+          },
+          {
+            "id": "opt-C",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-D",
+            "text": "Oxymoron"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the figure of speech\n(Poetic Device) used in the expression.\n“The smiling young tress provided a strange comfort”\n(a) Personification\n(b) Metaphor\n(c) Simile\n(d) Oxymoron"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q26",
+        "sourceQuestionNo": 26,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the figure of speech (Poetic Device) used in the expression. “Like angels from heaven the paratrooper landed on earth”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-B",
+            "text": "Oxymoron"
+          },
+          {
+            "id": "opt-C",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-D",
+            "text": "Pun"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the figure of speech\n(Poetic Device) used in the expression.\n“Like angels from heaven the paratrooper landed on\nearth”\n(a) Personification\n(b) Oxymoron\n(c) Simile\n(d) Pun"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q27",
+        "sourceQuestionNo": 27,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which correctly explains the expression: “To be at sixes and sevens”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To bea primary school student"
+          },
+          {
+            "id": "opt-B",
+            "text": "A state of total confusion and disorder"
+          },
+          {
+            "id": "opt-C",
+            "text": "To be certain of batting well in a cricket match"
+          },
+          {
+            "id": "opt-D",
+            "text": "To give away secrets"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which correctly\nexplains the expression:\n“To be at sixes and sevens”\n(a) To bea primary school student\n(b) A state of total confusion and disorder\n(c) To be certain of batting well in a cricket match\n(d) To give away secrets"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q28",
+        "sourceQuestionNo": 28,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that rightly explains the expression: “Once in a blue moon”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Most regularly"
+          },
+          {
+            "id": "opt-B",
+            "text": "Very often"
+          },
+          {
+            "id": "opt-C",
+            "text": "Very rarely"
+          },
+          {
+            "id": "opt-D",
+            "text": "Once ina fortnight"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that rightly\nexplains the expression:\n“Once in a blue moon”\n(a) Most regularly\n(b) Very often\n(c) Very rarely\n(d) Once ina fortnight"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q29",
+        "sourceQuestionNo": 29,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which rightly explains the expression: ‘Awild goose chase’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "A Foolish and useless enterprise"
+          },
+          {
+            "id": "opt-B",
+            "text": "To hunt wild life"
+          },
+          {
+            "id": "opt-C",
+            "text": "A violent chase of criminals"
+          },
+          {
+            "id": "opt-D",
+            "text": "To speak harshly"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which rightly\nexplains the expression:\n‘Awild goose chase’\n(a) A Foolish and useless enterprise\n(b) To hunt wild life\n(c) A violent chase of criminals\n(d) To speak harshly"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q30",
+        "sourceQuestionNo": 30,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "explains the expression: ‘To burna hole in the pocket’.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To steal from someone's pocket"
+          },
+          {
+            "id": "opt-B",
+            "text": "To destroy someone else’s belongings"
+          },
+          {
+            "id": "opt-C",
+            "text": "To burn address accidentally"
+          },
+          {
+            "id": "opt-D",
+            "text": "To spend money very quickly"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "explains the expression:\n‘To burna hole in the pocket’.\n(a) To steal from someone's pocket\n(b) To destroy someone else’s belongings\n(c) To burn address accidentally\n(d) To spend money very quickly"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q31",
+        "sourceQuestionNo": 31,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Choose the word from the given options thatis closest in meaning to the given word ‘PUGNACIOUS’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Rebellious"
+          },
+          {
+            "id": "opt-B",
+            "text": "Amusing"
+          },
+          {
+            "id": "opt-C",
+            "text": "Quarrelsome"
+          },
+          {
+            "id": "opt-D",
+            "text": "Desirable"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Choose the word from the given options thatis closest\nin meaning to the given word\n‘PUGNACIOUS’\n(a) Rebellious\n(b) Amusing\n(c) Quarrelsome\n(d) Desirable"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q32",
+        "sourceQuestionNo": 32,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options choose the one which is closest in meaning to ‘CLING’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Attach"
+          },
+          {
+            "id": "opt-B",
+            "text": "Detach"
+          },
+          {
+            "id": "opt-C",
+            "text": "Release"
+          },
+          {
+            "id": "opt-D",
+            "text": "Forward"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options choose the one which is\nclosest in meaning to\n‘CLING’\n(a) Attach\n(b) Detach\n(c) Release\n(d) Forward"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q33",
+        "sourceQuestionNo": 33,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options choose the one which is closest to. “Enchanting”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Witty"
+          },
+          {
+            "id": "opt-B",
+            "text": "Pleasant"
+          },
+          {
+            "id": "opt-C",
+            "text": "Comical"
+          },
+          {
+            "id": "opt-D",
+            "text": "Harmful"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options choose the one which is\nclosest to.\n“Enchanting”\n(a) Witty\n(b) Pleasant\n(c) Comical\n(d) Harmful"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q34",
+        "sourceQuestionNo": 34,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Choose the word from the option that is closest in meaning to the given word. ‘GIGANTIC’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Miniature"
+          },
+          {
+            "id": "opt-B",
+            "text": "Monstrous"
+          },
+          {
+            "id": "opt-C",
+            "text": "Diligent"
+          },
+          {
+            "id": "opt-D",
+            "text": "Awkward"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Choose the word from the option that is closest in\nmeaning to the given word.\n‘GIGANTIC’\n(a) Miniature\n(b) Monstrous\n(c) Diligent\n(d) Awkward"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q35",
+        "sourceQuestionNo": 35,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that will rightly substitute the given expression: “Period of 10 years’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Decade"
+          },
+          {
+            "id": "opt-B",
+            "text": "Fortnight (o) Annuity"
+          },
+          {
+            "id": "opt-D",
+            "text": "Millennium"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that will rightly\nsubstitute the given expression:\n“Period of 10 years’\n(a) Decade\n(b) Fortnight\n(o) Annuity\n(d) Millennium"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q36",
+        "sourceQuestionNo": 36,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that rightly substitutes the given expression: ‘One who loves and collects books’.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Rockstar"
+          },
+          {
+            "id": "opt-B",
+            "text": "Bibliophile"
+          },
+          {
+            "id": "opt-C",
+            "text": "Bellicose"
+          },
+          {
+            "id": "opt-D",
+            "text": "Bohemian"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that rightly\nsubstitutes the given expression:\n‘One who loves and collects books’.\n(a) Rockstar\n(b) Bibliophile\n(c) Bellicose\n(d) Bohemian"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q37",
+        "sourceQuestionNo": 37,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that rightly substitutes the given expression. ‘The killing of a new born child’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Homicide"
+          },
+          {
+            "id": "opt-B",
+            "text": "Suicide"
+          },
+          {
+            "id": "opt-C",
+            "text": "Massacre"
+          },
+          {
+            "id": "opt-D",
+            "text": "Infanticide"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that rightly\nsubstitutes the given expression.\n‘The killing of a new born child’\n(a) Homicide\n(b) Suicide\n(c) Massacre\n(d) Infanticide"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q38",
+        "sourceQuestionNo": 38,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that rightly substitutes /replaces the given expression: ‘Detailed plan ofa journey’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Passport"
+          },
+          {
+            "id": "opt-B",
+            "text": "Travelogue (co) Itinerary"
+          },
+          {
+            "id": "opt-D",
+            "text": "Timetable"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that rightly\nsubstitutes /replaces the given expression:\n‘Detailed plan ofa journey’\n(a) Passport\n(b) Travelogue\n(co) Itinerary\n(d) Timetable"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q39",
+        "sourceQuestionNo": 39,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that carries the same relations as: ‘Attach: Detach’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Barren: Fertile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Timid: Coward"
+          },
+          {
+            "id": "opt-C",
+            "text": "Ridiculous: Funny"
+          },
+          {
+            "id": "opt-D",
+            "text": "Jealous : Envious"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that carries the\nsame relations as:\n‘Attach: Detach’\n(a) Barren: Fertile\n(b) Timid: Coward\n(c) Ridiculous: Funny\n(d) Jealous : Envious"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q40",
+        "sourceQuestionNo": 40,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that carries the same relations as: ‘Medley : Mixture’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Iterate : Repeat"
+          },
+          {
+            "id": "opt-B",
+            "text": "Coarse : Fine"
+          },
+          {
+            "id": "opt-C",
+            "text": "Abundance : Scarcity"
+          },
+          {
+            "id": "opt-D",
+            "text": "Triumph : Failure"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that carries the\nsame relations as:\n‘Medley : Mixture’\n(a) Iterate : Repeat\n(b) Coarse : Fine\n\n\n\n(c) Abundance : Scarcity\n(d) Triumph : Failure"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q41",
+        "sourceQuestionNo": 41,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that carries the same relation as: ‘Retreat : Advance’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Garrulous : Talkative"
+          },
+          {
+            "id": "opt-B",
+            "text": "Oblivion : Forgetfulness"
+          },
+          {
+            "id": "opt-C",
+            "text": "Savage : Civilised"
+          },
+          {
+            "id": "opt-D",
+            "text": "Obstinate : Stubborn"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that carries the\nsame relation as:\n‘Retreat : Advance’\n(a) Garrulous : Talkative\n(b) Oblivion : Forgetfulness\n(c) Savage : Civilised\n(d) Obstinate : Stubborn"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q42",
+        "sourceQuestionNo": 42,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that carries the same relations as: ‘Meek : Modest’",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Blunt : Sharp"
+          },
+          {
+            "id": "opt-B",
+            "text": "Finally : Eventually"
+          },
+          {
+            "id": "opt-C",
+            "text": "Clever : Stupid"
+          },
+          {
+            "id": "opt-D",
+            "text": "Condemn : Approve"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that carries the\nsame relations as:\n‘Meek : Modest’\n(a) Blunt : Sharp\n(b) Finally : Eventually\n(c) Clever : Stupid\n(d) Condemn : Approve"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q43",
+        "sourceQuestionNo": 43,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the rightly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Katastrophic"
+          },
+          {
+            "id": "opt-B",
+            "text": "Catestrefic"
+          },
+          {
+            "id": "opt-C",
+            "text": "Catastrophic"
+          },
+          {
+            "id": "opt-D",
+            "text": "Catostrofik"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the rightly spelt word:\n(a) Katastrophic\n(b) Catestrefic\n(c) Catastrophic\n(d) Catostrofik"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q44",
+        "sourceQuestionNo": 44,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the rightly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Kamunism"
+          },
+          {
+            "id": "opt-B",
+            "text": "Communism"
+          },
+          {
+            "id": "opt-C",
+            "text": "Cummonism"
+          },
+          {
+            "id": "opt-D",
+            "text": "Cumunism"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the rightly spelt word:\n(a) Kamunism\n(b) Communism\n(c) Cummonism\n(d) Cumunism"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q45",
+        "sourceQuestionNo": 45,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the rightly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Cooperative"
+          },
+          {
+            "id": "opt-B",
+            "text": "Cauperative"
+          },
+          {
+            "id": "opt-C",
+            "text": "Koperative"
+          },
+          {
+            "id": "opt-D",
+            "text": "Coperative"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the rightly spelt word:\n(a) Cooperative\n(b) Cauperative\n(c) Koperative\n(d) Coperative"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q46",
+        "sourceQuestionNo": 46,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the rightly spelt word:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Pnemonia"
+          },
+          {
+            "id": "opt-B",
+            "text": "Pneumonia"
+          },
+          {
+            "id": "opt-C",
+            "text": "Newmonia"
+          },
+          {
+            "id": "opt-D",
+            "text": "Nemonia"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the rightly spelt word:\n(a) Pnemonia\n(b) Pneumonia\n(c) Newmonia\n(d) Nemonia"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q47",
+        "sourceQuestionNo": 47,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the following jumbled group of words to make a meaningful sentences.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Penetrate the biological tissues"
+          },
+          {
+            "id": "opt-B",
+            "text": "Will produce unprecedented amount"
+          },
+          {
+            "id": "opt-C",
+            "text": "A large scale exchange of nuclear weapons"
+          },
+          {
+            "id": "opt-D",
+            "text": "Of radiation that can Choose the correct answer from the options given below: (A) A,B, D,C (B) C,D, A,B (C)C,B,D,A (D) A,B,C,D"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the following jumbled group of words to\nmake a meaningful sentences.\nA. Penetrate the biological tissues\nB. Will produce unprecedented amount\nC. A large scale exchange of nuclear weapons\nD. Of radiation that can\nChoose the correct answer from the options given\nbelow:\n(A) A,B, D,C\n(B) C,D, A,B\n(C)C,B,D,A\n(D) A,B,C,D"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q48",
+        "sourceQuestionNo": 48,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the following jumbled group of words to make a meaningful sentence:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "During the last few years."
+          },
+          {
+            "id": "opt-B",
+            "text": "People in this area."
+          },
+          {
+            "id": "opt-C",
+            "text": "The mission has provided D Able service to all the needy. Choose the correct answer from the options given below: (A) B, D,C,A (B) C,D,B,A (C) A,B,D,C"
+          },
+          {
+            "id": "opt-D",
+            "text": "C,B,A,D"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the following jumbled group of words to\nmake a meaningful sentence:\nA. During the last few years.\nB. People in this area.\nC. The mission has provided\nD Able service to all the needy.\nChoose the correct answer from the options given\nbelow:\n(A) B, D,C,A\n(B) C,D,B,A\n(C) A,B,D,C\n(D)C,B,A,D"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q49",
+        "sourceQuestionNo": 49,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the following jumbled group of words to make a meaningful sentence.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Him to rush to his village immediately B, An urgent telegram asking"
+          },
+          {
+            "id": "opt-C",
+            "text": "He has received"
+          },
+          {
+            "id": "opt-D",
+            "text": "No other message other than Choose the correct answer from the options given below: (a) C,D,B,A"
+          },
+          {
+            "id": "opt-B",
+            "text": "B,C, A,D (J)CGCAB (d) A,B,C,D"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the following jumbled group of words to\nmake a meaningful sentence.\nA. Him to rush to his village immediately\nB, An urgent telegram asking\nC. He has received\nD. No other message other than\nChoose the correct answer from the options given\nbelow:\n(a) C,D,B,A\n(b) B,C, A,D\n(J)CGCAB\n(d) A,B,C,D"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-16-shift-1-q50",
+        "sourceQuestionNo": 50,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the following jumbled group of words to make a meaningful sentence.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "He managed to make sense"
+          },
+          {
+            "id": "opt-B",
+            "text": "It was the first time when"
+          },
+          {
+            "id": "opt-C",
+            "text": "of the book even though"
+          },
+          {
+            "id": "opt-D",
+            "text": "He read anything on the subject Choose the correct answer the options given below: (A) D,C,A,C (B) B, A, D,C (C)A,C,B,D (D) A,B,C,D"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-16",
+        "source": "English_2022-08-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the following jumbled group of words to\nmake a meaningful sentence.\nA. He managed to make sense\nB. It was the first time when\nC. of the book even though\nD. He read anything on the subject\nChoose the correct answer the options given below:\n(A) D,C,A,C\n(B) B, A, D,C\n(C)A,C,B,D\n(D) A,B,C,D"
+      }
+    ],
+    "answerKeySourcePages": [
+      6
+    ],
+    "extractionSummary": {
+      "questionBlocksIsolated": 49,
+      "questionsWithFourOptionsDetected": 46,
+      "answerKeysIncluded": 50,
+      "expectedQuestions": 50,
+      "sourceMethod": "scanned PDF image OCR, split into columns"
+    },
+    "publicationStatus": "draft",
+    "reviewRequired": true
+  }
+}

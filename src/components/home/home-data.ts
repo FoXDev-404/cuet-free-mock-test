@@ -15,6 +15,14 @@ export interface HomeTest {
   config: string;
   subject: { id: string; name: string; code: string } | null;
   _count: { questions: number; attempts: number };
+  /** Present on repo-backed 2022 draft papers. */
+  localPaper?: boolean;
+  draft?: boolean;
+  sourceQuestionCount?: number;
+  recoveredQuestionCount?: number;
+  omittedQuestionCount?: number;
+  scorableQuestionCount?: number;
+  pendingReviewCount?: number;
 }
 
 export interface HomeSubject {

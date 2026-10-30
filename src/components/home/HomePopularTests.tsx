@@ -11,6 +11,9 @@ import {
 
 function PopularRow({ test }: { test: HomeTest }) {
   const { questions, duration, attempts } = getTestMeta(test);
+  const recovered = test.recoveredQuestionCount ?? questions;
+  const sourceTotal = test.sourceQuestionCount;
+  const isPracticeOnly = test.localPaper === true && test.scorableQuestionCount === 0;
 
   return (
     <Link
@@ -23,6 +26,8 @@ function PopularRow({ test }: { test: HomeTest }) {
         <span className="home-popular-meta">
           {test.subject ? <span className="badge badge-primary">{test.subject.name}</span> : null}
           <span className="badge badge-neutral">{getTestTypeLabel(test.type)}</span>
+          {test.draft ? <span className="badge badge-warning">Draft OCR</span> : null}
+          {isPracticeOnly ? <span className="badge badge-warning">Practice only</span> : null}
           {attempts > 0 ? (
             <span className="badge badge-warning home-popular-attempts">
               <Flame className="h-3 w-3" aria-hidden="true" />
@@ -33,7 +38,11 @@ function PopularRow({ test }: { test: HomeTest }) {
       </span>
       <span className="home-popular-side">
         <span className="home-popular-side-primary">
-          {questions > 0 ? `${questions} questions` : "Question set"}
+          {questions > 0
+            ? test.localPaper && sourceTotal
+              ? `${recovered} of ${sourceTotal} questions`
+              : `${questions} questions`
+            : "Question set"}
         </span>
         <span className="home-popular-side-secondary">{duration > 0 ? `${duration} min` : "Timed"}</span>
       </span>

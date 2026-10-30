@@ -1,0 +1,2051 @@
+{
+  "schemaVersion": "2.0",
+  "subjectId": "REPLACE-WITH-SUBJECT-ID",
+  "exam": {
+    "id": "cuet-ug-english-2022-08-18",
+    "title": "CUET UG English Previous Year Paper - 2022-08-18",
+    "subject": "English",
+    "subjectId": "REPLACE-WITH-SUBJECT-ID",
+    "year": 2022,
+    "examDate": "2022-08-18",
+    "shift": null,
+    "setName": null,
+    "language": "English",
+    "sourceFile": "English_2022-08-18.pdf",
+    "questionCount": 50,
+    "passages": [
+      {
+        "id": "cuet-ug-english-2022-08-18-passage-1",
+        "title": "Reading Passage 1",
+        "contentEn": "and then answer the questions given below: : YEVGRAF IVANOVITCH SHIRYAEYV, a small farmer, who father, a parish priest, now deceased, had received a gift of thr hundred acres of land from Madame Kuyshinikoy, a genera window, was standing in a corner before a copper washin stand, washing his hands. As usual, his looked anxious a1 ill-humoured, and his beard was uncombed. “What weather!” he said, “It is not laid upon us, It’s raini again!” He grumbled on, while his family sat waiting at table for hi to have finished washing his hands before beginning dinn Fedosya Semyonova, his wife, his son Pyotr, a student, h eldest daughter Varvaram and three small boys, has been sittir waiting a long time. The boys — Kolka, Vanka and Arhipka grubby, snub-nosed little fellows with chubby faces and tous hair that wanted cutting, moved their chairs impatiently, whi their elders sat without stirring and apparently did not ca whether they ate their dinner or waited...",
+        "contentHi": null,
+        "questionRange": {
+          "from": 1,
+          "to": 6
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-18.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-passage-2",
+        "title": "Reading Passage 2",
+        "contentEn": "and then answer the questions given below: The Hindu, English-language daily newspaper published in he Chennai (Madras), is generally regarded as one of India’s most influential dailies. Established in 1878 as a weekly. The Hindu became a daily in 1889. While India was under British Rule, the paper spoke out for independence — but in a moderate vein. After India achieved independence in 1947, The Hindu built a network of foreign ‘TS bureaus while extending its coverage of India. The Hindu is distinguished for its comprehensive coverage of national and international political news and for its emphasis ed on accuracy and balanced coverage. Although it is published in a provincial capital. The Hindu’s reportage and editorials are read carefully and taken seriously in the national capital. At the beginning of the 21st century, its daily circulation exceeded 900,000, The newspaper’s parent company, Hindu Group Publications, also publishes the Hindu Business Line, a daily business paper, and popular magazines such as Frontline ab and Sports Star. cr",
+        "contentHi": null,
+        "questionRange": {
+          "from": 7,
+          "to": 12
+        },
+        "sourcePages": null,
+        "source": "English_2022-08-18.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-passage-3",
+        "title": "Reading Passage 3",
+        "contentEn": "and then answer the questions given below: Karnad has gone significantly back to Indian tradition and culture to write his plays. He has recreated the rich and dynamic picture of Indian society, culture and its people. He often takes a theme, a historical event of Indian history and present it in a modernized way. Majority of his plays employ narratives of myths, history and folklore to evoke an ancient or pre-modern era in the image of present. He has also adopted the oral tale of ET English Solved Paper-2022 (Held on 18 Aug. 2022) d the people and present it in myths and folk forms in his plays. e Thus, he creates a synthesis between the ancient and the modern to serve his purpose of using the past to illuminate the present. is Most of the playwrights in India have either written in such e 4 traditional manner that it has lost relevance to their urban existence, or they have written in such an urbanized manner : that it lost its relevance to the traditional part of personality, In Sy this regard, Karnad comments “we keep acerbating between the traditional and the modern, perhaps we would not hit upon © a form which could balance both.” He attempts to balance a __ both in his plays. He does not take myths in their entirety, but st _ he takes them only in parts that are useful to him and the rest e he supplements with his imagination. Basically, he has given a new interpretation to the historical, oral and mythical tales.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 13,
+          "to": 18
+        },
+        "sourcePages": [
+          2
+        ],
+        "source": "English_2022-08-18.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_transcription_requires_human_review"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "cuet-ug-english-2022-08-18-q01",
+        "sourceQuestionNo": 1,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage, it may be assumed that the time of th day when the incident is described is:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Early morning before the rise of the Sun"
+          },
+          {
+            "id": "opt-B",
+            "text": "The Sun had set and it was late evening"
+          },
+          {
+            "id": "opt-C",
+            "text": "The Sun is overhead and the day time is near noo lunch time"
+          },
+          {
+            "id": "opt-D",
+            "text": "Early evening time for family tea"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage, it may be assumed that the time of th\nday when the incident is described is:\n(a) Early morning before the rise of the Sun\n(b) The Sun had set and it was late evening\n(c) The Sun is overhead and the day time is near noo\nlunch time\n(d) Early evening time for family tea"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q02",
+        "sourceQuestionNo": 2,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Choose the option which is correct according to th passage. Yevgraf Ivanovitch Shiryaev’s fathers was",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "A farmer and now is on the move"
+          },
+          {
+            "id": "opt-B",
+            "text": "Abanker earlier and on retirement"
+          },
+          {
+            "id": "opt-C",
+            "text": "A farmer earlier and now educated the fellow farmer on scientific farming"
+          },
+          {
+            "id": "opt-D",
+            "text": "A parish priest"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Choose the option which is correct according to th\npassage.\nYevgraf Ivanovitch Shiryaev’s fathers was\n(a) A farmer and now is on the move\n(b) Abanker earlier and on retirement\n(c) A farmer earlier and now educated the fellow farmer\non scientific farming\n(d) A parish priest"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q03",
+        "sourceQuestionNo": 3,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The General’s widow huge gifted a hug land of 3 hundre acres",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Y.I Shryaev"
+          },
+          {
+            "id": "opt-B",
+            "text": "The late wife of Y.I. Shiryaev"
+          },
+          {
+            "id": "opt-C",
+            "text": "To the unborn son of Y.I. Shryaev"
+          },
+          {
+            "id": "opt-D",
+            "text": "The parish priest who has died"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "The General’s widow huge gifted a hug land of 3 hundre\nacres\n(a) Y.I Shryaev\n(b) The late wife of Y.I. Shiryaev\n(c) To the unborn son of Y.I. Shryaev\n(d) The parish priest who has died"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q04",
+        "sourceQuestionNo": 4,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "— It appears from the passage that the character of ‘Yevgral Ivanovitch Shiryaev was: (Choose the correct answe from option given below)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Very Friendly, jovial and attractive"
+          },
+          {
+            "id": "opt-B",
+            "text": "Aristocratic, disdainful and aloof"
+          },
+          {
+            "id": "opt-C",
+            "text": "Sad, morose, timid but cunning"
+          },
+          {
+            "id": "opt-D",
+            "text": "Grumpy and complaining Set solved Paper-2022 4 ing 5. From the given option choose the one which is correct Paved according to the passage. ose The family described in the Passage is a: ree (a) Small time agrarian family al’s (b) Small trader’s family ng; (c) Highly educated scholarly family ae (d) Aristocratic and noble ine 6. Match List-I with List-II List-I List-II fin A. Yevgraf Ivanovitch I. The boys of Ivanovitch ler. Shiryaev family his B. Madame Kuvshinnikov II. A General’s widow ing General’s wife a— C. Fedosya Semynovna III. Yevgraf Ivanovitch’s wife led D. Kolka, Vanka, and IV. Son of Parish priest ile Athipka are Choose the correct answer from the options given below: (a) A-I,B-1,C-1,D-IV he (b) A-IV,B-I,C-IL,D-1 (c) A-IV,B-I,C-I,D-I @d@) A-I,B-Il,C-I,D-Iv on DIRECTIONS (Q. 7-12): Read carefully the following Passage and then answer the questions given below: The Hindu, English-language daily newspaper published in he Chennai (Madras), is generally regarded as one of India’s most influential dailies. Established in 1878 as a weekly. The Hindu became a daily in 1889. While India was under British Rule, the paper spoke out for independence — but in a moderate vein. After India achieved independence in 1947, The Hindu built a network of foreign ‘TS bureaus while extending its coverage of India. The Hindu is distinguished for its comprehensive coverage of national and international political news and for its emphasis ed on accuracy and balanced coverage. Although it is published in a provincial capital. The Hindu’s reportage and editorials are read carefully and taken seriously in the national capital. At the beginning of the 21st century, its daily circulation exceeded 900,000, The newspaper’s parent company, Hindu Group Publications, also publishes the Hindu Business Line, a daily business paper, and popular magazines such as Frontline ab and Sports Star. cr 7° The Hindwisa. (a) Daily newspaper published in China (b) Old newspaper published in India (c) Hindi language newspaper (d) English language daily newspaper, published in Chennai E-120 CUE"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "— It appears from the passage that the character of ‘Yevgral\nIvanovitch Shiryaev was: (Choose the correct answe\nfrom option given below)\n(a) Very Friendly, jovial and attractive\n(b) Aristocratic, disdainful and aloof\n(c) Sad, morose, timid but cunning\n(d) Grumpy and complaining\n\n\n\nSet\nsolved Paper-2022 4\ning 5. From the given option choose the one which is correct\nPaved according to the passage.\nose The family described in the Passage is a:\nree (a) Small time agrarian family\nal’s (b) Small trader’s family\nng; (c) Highly educated scholarly family\nae (d) Aristocratic and noble\nine 6. Match List-I with List-II\nList-I List-II\nfin A. Yevgraf Ivanovitch I. The boys of Ivanovitch\nler. Shiryaev family\nhis B. Madame Kuvshinnikov II. A General’s widow\ning General’s wife\na— C. Fedosya Semynovna III. Yevgraf Ivanovitch’s wife\nled D. Kolka, Vanka, and IV. Son of Parish priest\nile Athipka\nare Choose the correct answer from the options given below:\n(a) A-I,B-1,C-1,D-IV\nhe (b) A-IV,B-I,C-IL,D-1\n(c) A-IV,B-I,C-I,D-I\n@d@) A-I,B-Il,C-I,D-Iv\non DIRECTIONS (Q. 7-12): Read carefully the following\nPassage and then answer the questions given below:\nThe Hindu, English-language daily newspaper published in\nhe Chennai (Madras), is generally regarded as one of India’s most\ninfluential dailies.\nEstablished in 1878 as a weekly. The Hindu became a daily in\n1889. While India was under British Rule, the paper spoke out\nfor independence — but in a moderate vein. After India achieved\nindependence in 1947, The Hindu built a network of foreign\n‘TS bureaus while extending its coverage of India.\nThe Hindu is distinguished for its comprehensive coverage of\nnational and international political news and for its emphasis\ned on accuracy and balanced coverage. Although it is published\nin a provincial capital. The Hindu’s reportage and editorials\nare read carefully and taken seriously in the national capital.\nAt the beginning of the 21st century, its daily circulation\nexceeded 900,000, The newspaper’s parent company, Hindu\nGroup Publications, also publishes the Hindu Business Line, a\ndaily business paper, and popular magazines such as Frontline\nab and Sports Star.\ncr 7° The Hindwisa.\n(a) Daily newspaper published in China\n(b) Old newspaper published in India\n(c) Hindi language newspaper\n(d) English language daily newspaper, published in\nChennai\n\n\n\nE-120 CUE"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q05",
+        "sourceQuestionNo": 5,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "From thelstline of the passage, itcan be easily deduce P that the family was small time agrarian family."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "stem_needs_manual_review",
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "(a) From thelstline of the passage, itcan be easily deduce\n\nP that the family was small time agrarian family."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q06",
+        "sourceQuestionNo": 6,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [
+          {
+            "id": "opt-C",
+            "text": "Elimination method will save a lot of time here. Step 1: Let’s try to match fragment with the fragmer in the List IJ. A matches with iv. Step. 2 Now let’s.find out the option/options whic! has/have A matching with IV . There are two : B and C Step 3: Now let’s see if B matches with III or II t eliminate one of the options. B matches II. Henc the answer is (c)."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "stem_needs_manual_review",
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "(c) Elimination method will save a lot of time here.\n\nStep 1: Let’s try to match fragment with the fragmer\nin the List IJ. A matches with iv.\n\nStep. 2 Now let’s.find out the option/options whic!\nhas/have A matching with IV . There are two : B and C\nStep 3: Now let’s see if B matches with III or II t\neliminate one of the options. B matches II. Henc\nthe answer is (c)."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q07",
+        "sourceQuestionNo": 7,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "The answer lies in the 7th, 8th, 9th and 10th line of ed the passage. vas 15."
+          },
+          {
+            "id": "opt-B",
+            "text": "The answer is clearly mentioned in the second paragraph. 11."
+          },
+          {
+            "id": "opt-C",
+            "text": "_ In the second paragraph it says that The Hindu talkec about Indian independence at the time of British rule which must have been difficult at that time but it shows The Hindu’s dedication towards the true principles of a good media. Hence"
+          },
+          {
+            "id": "opt-D",
+            "text": "_ Step 1: Read the passage once to remember the centra idea and the key words of each paragraph. The answer of this question lies in the Ist line of the passage. 8."
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "stem_needs_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "(d)_ Step 1: Read the passage once to remember the centra\nidea and the key words of each paragraph. The answer\nof this question lies in the Ist line of the passage.\n\n8. (c)_ In the second paragraph it says that The Hindu talkec\nabout Indian independence at the time of British rule\nwhich must have been difficult at that time but it shows\nThe Hindu’s dedication towards the true principles of a\ngood media. Hence (c) is the answer.\n\n9. (c) From the passage we can deduce that The Hindu\nis a free and popular newspaper agency and it\ngains information from all over the world. In the\nlast sentence of the second paragraph it says that\nThe Hindu has spread a network of national and\ninternational bureaus. Hence (c) is the answer.\n\n10. (b) The answer is clearly mentioned in the second\nparagraph.\n\n11. (c) The answer is clearly stated in the last paragraph.\n\n12. (b) Here elimination method can save a lot of time.\nStep 1: Let’s try to match fragment A with the\nfragments in list II. A matches with I.\n\nStep 2: Let’s see which option/options has/have A\nmatching with I. It’s only one b. Hence the answer is b.\n\n\n\nAug. 2022) E-123\n\nSEES EE\n\nExplanations 7)\n\ndea 13. (c) Step 1: Let’s read the Passage once to remember the\ncentral idea and the key words.\n\nthe Step 2: Let’s try to match the fragment A with the\n\nhed fragments of list II. A matches with I.\n\nver. Step 3: Let’s see which option/options has/have A\nmatching with I. It’s only one: c. Hence the answer\n\n1ed is (c).\n\n14. (a) The answer lies in the 7th, 8th, 9th and 10th line of\n\ned the passage.\n\nvas 15. (d) The answer lies in the first five lines of the passage.\n\nV's 16. (a) The answer lies in the sentence “Thus .....present in\nthe 6th line of the passage.\n\nBa 17. (c) The pronoun “both” in this sentence refers to the two\n\nia nouns. “the traditional” and “the modern” mentioned\n\na in the previous sentence “in this regard. ..both”\n\n3 18. (a) The answer lies in the last three lines of the passage.\n\n19. (c) The sound/b/has been repeated seven times in the\ned sentence for poetic effect. This is an example of\n\nAlliteration. :\n20. (c) Dead wings have been compared to a paper kite and\nthe comparison has been stated very clearly. It is an\nwe example of Simile.\n\n21. (b) The inanimate object, lighting has been given\nch attributes of a human bring, like, dancing. Hence it\nC. is an example of Personification.\neo (d)_A person is being described using two opposite\nbe qualities put together. “saint” and “cunning”\n\n(because we do not generally assume saints to be\nal cunning. They are generally known as naive people).\nor It is an example of Oxymoron.\n\n23. (c) Usage: The day I first set foot in Delhi will always\nd be a red-letter day for me.\nle 24. (d) It means hidden enemy.\n\nIS My colleague said, ‘Don’t look at her smiling face.\na She can’t be trusted. She is a snake in the grass”.\n25. (c) usage: Charul earned a good name in the company.\nu Her financial dealings were always above board,\nit 26. (c) Usage: All I wanted was to watch the movie\ne peacefully but the person besides me was always on\nt her phone and she talked my head off.\nd 27. (c) Step 1: Let’s try to arrange the sentence according to\nthe options. Option a is wrong because the nonfinite\ni clause “dividing their booty” cannot meaningfully\nmodify the pronoun “they”. It will be a dangling\nmodifier. Option b is wrong because to put the\nfragment C after fragment B we need a conjunction\n: or a punctuation. Option d is wrong because it\né would erroneously mean the police were dividing\n: the booty. The correct option is (c).\nSequence : The police came upon the robbers when\nthey were in the lonely place dividing their booty."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q08",
+        "sourceQuestionNo": 8,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Good media is media that is free, fair and uninfluenced by the Government. The Hindu according to the passage will qualify as a good newspaper because:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Ithad successfully built a network of Indian bureaus"
+          },
+          {
+            "id": "opt-B",
+            "text": "Its daily circulation had crossed only 2 lakh at the beginning of the 21st century"
+          },
+          {
+            "id": "opt-C",
+            "text": "Itspoke for the Indian Independence when Britishers were ruling over India."
+          },
+          {
+            "id": "opt-D",
+            "text": "It was influenced by the power and glamour of Europe"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Good media is media that is free, fair and uninfluenced\nby the Government. The Hindu according to the passage\nwill qualify as a good newspaper because:\n(a) Ithad successfully built a network of Indian bureaus\n(b) Its daily circulation had crossed only 2 lakh at the\nbeginning of the 21st century\n(c) Itspoke for the Indian Independence when Britishers\nwere ruling over India.\n(d) It was influenced by the power and glamour of Europe"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q09",
+        "sourceQuestionNo": 9,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "After reading the passage, it becomes obvious that, for a : newspaper to become popular, it has to be free, and gather information from all over. For this it is important for the agency to builda...........",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Network of computers"
+          },
+          {
+            "id": "opt-B",
+            "text": "Network of Village Panchayat"
+          },
+          {
+            "id": "opt-C",
+            "text": "Network of national and international bureaus"
+          },
+          {
+            "id": "opt-D",
+            "text": "Network of powerful politicians and businessmen"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "After reading the passage, it becomes obvious that, for a\n: newspaper to become popular, it has to be free, and gather\ninformation from all over. For this it is important for the\nagency to builda...........\n(a) Network of computers\n(b) Network of Village Panchayat\n(c) Network of national and international bureaus\n(d) Network of powerful politicians and businessmen"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q10",
+        "sourceQuestionNo": 10,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "When did “The Hindu” become a daily? From the given options, choose the one which is correct according to the passage:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "1878"
+          },
+          {
+            "id": "opt-B",
+            "text": "1889"
+          },
+          {
+            "id": "opt-C",
+            "text": "1989"
+          },
+          {
+            "id": "opt-D",
+            "text": "1949"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "When did “The Hindu” become a daily?\nFrom the given options, choose the one which is correct\naccording to the passage:\n(a) 1878 (b) 1889\n(c) 1989 (d) 1949"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q11",
+        "sourceQuestionNo": 11,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Select the Parent company of the daily newspaper “The Hindu” from the following given options:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Indian Business Line"
+          },
+          {
+            "id": "opt-B",
+            "text": "Frontline and Sports Star"
+          },
+          {
+            "id": "opt-C",
+            "text": "Hindu Group Publications"
+          },
+          {
+            "id": "opt-D",
+            "text": "The Group of Publications, India"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Select the Parent company of the daily newspaper “The\nHindu” from the following given options:\n(a) Indian Business Line\n(b) Frontline and Sports Star\n(c) Hindu Group Publications\n(d) The Group of Publications, India"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q12",
+        "sourceQuestionNo": 12,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match list I with list IT List I List IT A.In 1878 : I. The Hindu was established as a weekly B. In Colonial India Il. The Hindu spoke of Indian Independence C, The Hindu Til. Built a network of foreign bureaus while still spreading its national coverage. D.900,000 IV. Daily circulation of The Hindu at the beginning of the 21st century Choose the correct answer from the option given below :",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "A-IV, B-IIl, C-I, D-II"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-I, B-II, C-II, D-IV i"
+          },
+          {
+            "id": "opt-C",
+            "text": "A-II, B-IIl, C-IV, D-I"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-IV, B-III, C-II, D-I DIRECTIONS (Q. 13-18): Read carefully the following passage and then answer the questions given below: Karnad has gone significantly back to Indian tradition and culture to write his plays. He has recreated the rich and dynamic picture of Indian society, culture and its people. He often takes a theme, a historical event of Indian history and present it in a modernized way. Majority of his plays employ narratives of myths, history and folklore to evoke an ancient or pre-modern era in the image of present. He has also adopted the oral tale of ET English Solved Paper-2022 (Held on 18 Aug. 2022) d the people and present it in myths and folk forms in his plays. e Thus, he creates a synthesis between the ancient and the modern to serve his purpose of using the past to illuminate the present. is Most of the playwrights in India have either written in such e 4 traditional manner that it has lost relevance to their urban existence, or they have written in such an urbanized manner : that it lost its relevance to the traditional part of personality, In Sy this regard, Karnad comments “we keep acerbating between the traditional and the modern, perhaps we would not hit upon © a form which could balance both.” He attempts to balance a __ both in his plays. He does not take myths in their entirety, but st _ he takes them only in parts that are useful to him and the rest e he supplements with his imagination. Basically, he has given a new interpretation to the historical, oral and mythical tales."
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match list I with list IT\nList I List IT\nA.In 1878 : I. The Hindu was established\nas a weekly\nB. In Colonial India Il. The Hindu spoke of Indian\nIndependence\nC, The Hindu Til. Built a network of foreign\nbureaus while still\nspreading its national\ncoverage.\nD.900,000 IV. Daily circulation of The\nHindu at the beginning of\nthe 21st century\nChoose the correct answer from the option given below :\n(a) A-IV, B-IIl, C-I, D-II (b) A-I, B-II, C-II, D-IV\ni (c) A-II, B-IIl, C-IV, D-I (d) A-IV, B-III, C-II, D-I\nDIRECTIONS (Q. 13-18): Read carefully the following\npassage and then answer the questions given below:\nKarnad has gone significantly back to Indian tradition and\nculture to write his plays. He has recreated the rich and dynamic\npicture of Indian society, culture and its people. He often takes\na theme, a historical event of Indian history and present it in\na modernized way. Majority of his plays employ narratives of\nmyths, history and folklore to evoke an ancient or pre-modern\nera in the image of present. He has also adopted the oral tale of\n\n\n\nET English Solved Paper-2022 (Held on 18 Aug. 2022)\nd the people and present it in myths and folk forms in his plays.\ne Thus, he creates a synthesis between the ancient and the modern\nto serve his purpose of using the past to illuminate the present.\nis Most of the playwrights in India have either written in such\ne 4 traditional manner that it has lost relevance to their urban\nexistence, or they have written in such an urbanized manner\n: that it lost its relevance to the traditional part of personality, In\nSy this regard, Karnad comments “we keep acerbating between\nthe traditional and the modern, perhaps we would not hit upon\n© a form which could balance both.” He attempts to balance\na __ both in his plays. He does not take myths in their entirety, but\nst _ he takes them only in parts that are useful to him and the rest\ne he supplements with his imagination. Basically, he has given\na new interpretation to the historical, oral and mythical tales."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q13",
+        "sourceQuestionNo": 13,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match list I with list IT List I List IT",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Karnad is an I. Indian playwright"
+          },
+          {
+            "id": "opt-B",
+            "text": "Oral tales of India are II. Wonderfully dramatized by Karnad. t C. Karnad’s plays and _II.. Given anew drama interpretation to the historical, mythical and oral tales and stories"
+          },
+          {
+            "id": "opt-D",
+            "text": "The uncanny ability IV. His capability to remake : of Karnad is the past in the image of the present Choose the correct answer from the option given below : (a) A-II, B-IV, C-III, D-I (6) A-IIL, B-IV, C-I, D-II"
+          },
+          {
+            "id": "opt-C",
+            "text": "A-I, B-Il, C-I, D-IV. (d) A-IV, B-I, C-II, D-II"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Match list I with list IT\nList I List IT\nA. Karnad is an I. Indian playwright\nB. Oral tales of India are II. Wonderfully dramatized by\nKarnad.\nt C. Karnad’s plays and _II.. Given anew\ndrama interpretation to the\nhistorical, mythical and\noral tales and stories\nD.The uncanny ability IV. His capability to remake\n: of Karnad is the past in the image of the\npresent\nChoose the correct answer from the option given below :\n(a) A-II, B-IV, C-III, D-I (6) A-IIL, B-IV, C-I, D-II\n(c) A-I, B-Il, C-I, D-IV. (d) A-IV, B-I, C-II, D-II"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q14",
+        "sourceQuestionNo": 14,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the option that is correct according to the passage:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Most of the Indian playwrights have failed to bring 1 out the relevance of our past, our culture and tradition to our current or urban life and audience. n"
+          },
+          {
+            "id": "opt-B",
+            "text": "Most of the playwrights are only concerned with science. n"
+          },
+          {
+            "id": "opt-C",
+            "text": "Most of the playwrights in India are concerned with the problems of village panchayats. ;"
+          },
+          {
+            "id": "opt-D",
+            "text": "Most of the playwrights in India are illiterate and ignorant."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the option that is correct\naccording to the passage:\n(a) Most of the Indian playwrights have failed to bring\n1 out the relevance of our past, our culture and tradition\nto our current or urban life and audience.\nn (b) Most of the playwrights are only concerned with\nscience.\nn (c) Most of the playwrights in India are concerned with\nthe problems of village panchayats. ;\n(d) Most of the playwrights in India are illiterate and\nignorant."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q15",
+        "sourceQuestionNo": 15,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the passage we realize that Karnad explores the following in his themes.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Events of Asian History :"
+          },
+          {
+            "id": "opt-B",
+            "text": "Events of British History"
+          },
+          {
+            "id": "opt-C",
+            "text": "Only folklores from Maharashtra and Goa."
+          },
+          {
+            "id": "opt-D",
+            "text": "Indian tradition, culture, milestone historical events ~ and folk tales of our country. ="
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the passage we realize that Karnad explores the\nfollowing in his themes.\n(a) Events of Asian History\n: (b) Events of British History\n(c) Only folklores from Maharashtra and Goa.\n(d) Indian tradition, culture, milestone historical events\n~ and folk tales of our country.\n="
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q16",
+        "sourceQuestionNo": 16,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options, select the one which is true according i to the passage:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Karnad asa playwright often uses events from Indian c history and presents them in a modernized manner : that is suitable for the viewers and theatre goers of f our times. o"
+          },
+          {
+            "id": "opt-B",
+            "text": "Karnad tries to justify India’s ignorance and f superstitions as just and correct. CUET English Solved Paper-2022 (Held on 18, at-bats eredsnien eb etait"
+          },
+          {
+            "id": "opt-C",
+            "text": "Karnad promotes gender biased culture. :"
+          },
+          {
+            "id": "opt-D",
+            "text": "Karnad depicts India as a backward looking glo« country."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options, select the one which is true according\ni to the passage:\n(a) Karnad asa playwright often uses events from Indian\nc history and presents them in a modernized manner\n: that is suitable for the viewers and theatre goers of\nf our times.\no (b) Karnad tries to justify India’s ignorance and\nf superstitions as just and correct.\n\n\n\nCUET English Solved Paper-2022 (Held on 18,\n\nat-bats eredsnien eb etait\n(c) Karnad promotes gender biased culture. :\n\n(d) Karnad depicts India as a backward looking glo«\ncountry."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q17",
+        "sourceQuestionNo": 17,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Karnad attempts to balance both.. Here, ‘both’ signi: (Identify the option that is correct according to passage)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Plays and poetry of the world :"
+          },
+          {
+            "id": "opt-B",
+            "text": "History and freedom struggle of India and Sc Africa"
+          },
+          {
+            "id": "opt-C",
+            "text": "The traditional and the modern"
+          },
+          {
+            "id": "opt-D",
+            "text": "War and Peace"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Karnad attempts to balance both.. Here, ‘both’ signi:\n(Identify the option that is correct according to\npassage)\n\n(a) Plays and poetry of the world :\n\n(b) History and freedom struggle of India and Sc\nAfrica\n\n(c) The traditional and the modern\n\n(d) War and Peace"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q18",
+        "sourceQuestionNo": 18,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "In the passage, we get to the know that as a gl playwright Karnad (Select the option which is correct according to passage and fill in the blanks)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Does not use myths in their entirety but uses th artfully to suit his modern themes that are apt for times."
+          },
+          {
+            "id": "opt-B",
+            "text": "Loves stories from Irish folktales."
+          },
+          {
+            "id": "opt-C",
+            "text": "_ Loves to discuss political blunders of ancient Ind"
+          },
+          {
+            "id": "opt-D",
+            "text": "Compares policies of the ancient and the mod world."
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-08-18-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "In the passage, we get to the know that as a gl\nplaywright Karnad\n(Select the option which is correct according to\npassage and fill in the blanks)\n\n(a) Does not use myths in their entirety but uses th\nartfully to suit his modern themes that are apt for\ntimes.\n\n(b) Loves stories from Irish folktales.\n\n(c)_ Loves to discuss political blunders of ancient Ind\n\n(d) Compares policies of the ancient and the mod\nworld."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q19",
+        "sourceQuestionNo": 19,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Pox Device) used in the expression: A big black bug bit a big black dog :",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Metaphor"
+          },
+          {
+            "id": "opt-C",
+            "text": "Alliteration"
+          },
+          {
+            "id": "opt-D",
+            "text": "Oxymoron"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech (Pox\n\nDevice) used in the expression:\n\nA big black bug bit a big black dog :\n\n(a) Simile (b) Metaphor\n\n(c) Alliteration (d) Oxymoron"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q20",
+        "sourceQuestionNo": 20,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Poe Device) used in the expression: Dead wings carried like a paper kite",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-B",
+            "text": "Metaphor"
+          },
+          {
+            "id": "opt-C",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-D",
+            "text": "Pun"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech (Poe\n\nDevice) used in the expression:\n\nDead wings carried like a paper kite\n\n(a) Personification (b) Metaphor\n(c) Simile (d) Pun"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q21",
+        "sourceQuestionNo": 21,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Fromthe given options, select the Figure of Speech (Poe Device) used in the expression: The lightning, danced across the sky",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Oxymoron"
+          },
+          {
+            "id": "opt-B",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-C",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-D",
+            "text": "Pun"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Fromthe given options, select the Figure of Speech (Poe\nDevice) used in the expression:\nThe lightning, danced across the sky\n(a) Oxymoron (b) Personification\n(c) Simile (d) Pun"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q22",
+        "sourceQuestionNo": 22,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the Figure of Speech (Poe Device) used in the expression. The cunning saint cheated the devotees",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Pun"
+          },
+          {
+            "id": "opt-B",
+            "text": "Personification"
+          },
+          {
+            "id": "opt-C",
+            "text": "Simile"
+          },
+          {
+            "id": "opt-D",
+            "text": "Oxymoron"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the Figure of Speech (Poe\nDevice) used in the expression.\nThe cunning saint cheated the devotees\n(a) Pun (b) Personification\n(c) Simile (d) Oxymoron"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q23",
+        "sourceQuestionNo": 23,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that right explains the given expression: Ared letter day",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "When the sun looks red"
+          },
+          {
+            "id": "opt-B",
+            "text": "Hectic and boring day"
+          },
+          {
+            "id": "opt-C",
+            "text": "Significant and special day"
+          },
+          {
+            "id": "opt-D",
+            "text": "Holiday"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that right\nexplains the given expression:\nAred letter day\n(a) When the sun looks red\n(b) Hectic and boring day\n(c) Significant and special day\n(d) Holiday"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q24",
+        "sourceQuestionNo": 24,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that right! explains the given expression: A snake in the grass",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Ajealous"
+          },
+          {
+            "id": "opt-B",
+            "text": "A lazy person"
+          },
+          {
+            "id": "opt-C",
+            "text": "A hungry person"
+          },
+          {
+            "id": "opt-D",
+            "text": "Ahidden enemy | Aug. 2022) E-121 SSaauSRATER ESR re ceed"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that right!\nexplains the given expression:\nA snake in the grass\n(a) Ajealous (b) A lazy person\n(c) A hungry person (d) Ahidden enemy\n\n\n\n| Aug. 2022) E-121\nSSaauSRATER ESR re ceed"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q25",
+        "sourceQuestionNo": 25,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that rightly omy explains the given expression: : To be above board ifies:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To have a good height ) the"
+          },
+          {
+            "id": "opt-B",
+            "text": "To have a big black board 2"
+          },
+          {
+            "id": "opt-C",
+            "text": "To be honest in any business deal :"
+          },
+          {
+            "id": "opt-D",
+            "text": "To become boastful oud"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that rightly\nomy explains the given expression: :\nTo be above board\nifies: (a) To have a good height\n) the (b) To have a big black board 2\n(c) To be honest in any business deal\n: (d) To become boastful\noud"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q26",
+        "sourceQuestionNo": 26,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that tightly explains the given expression: To talk one’s head off",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "To scream and shout"
+          },
+          {
+            "id": "opt-B",
+            "text": "To whisper : reat"
+          },
+          {
+            "id": "opt-C",
+            "text": "To talk excessively"
+          },
+          {
+            "id": "opt-D",
+            "text": "Totalk to one’s ownself"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that tightly\nexplains the given expression:\nTo talk one’s head off\n(a) To scream and shout (b) To whisper :\nreat (c) To talk excessively  (d) Totalk to one’s ownself"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q27",
+        "sourceQuestionNo": 27,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Re-arrange the given jumbled groups of words to » the make a meaningful sentence h A. The robbers when : a B. They were in the lonely place C. The police come upon D. Dividing their booty dias",
+        "optionsEn": [
+          {
+            "id": "opt-C",
+            "text": "The police come upon"
+          },
+          {
+            "id": "opt-D",
+            "text": "Dividing their booty dias (a) D,B,C,A (b) B,C,A,D is (©) C,A,B,D (dD, C,B,A."
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Re-arrange the given jumbled groups of words to\n» the\nmake a meaningful sentence\nh A. The robbers when\n: a B. They were in the lonely place\nC. The police come upon\nD. Dividing their booty\ndias (a) D,B,C,A (b) B,C,A,D\nis (©) C,A,B,D (dD, C,B,A."
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q28",
+        "sourceQuestionNo": 28,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the jumbled groups of words to make a Jetic meaningful sentence",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "On the tools you had been taught"
+          },
+          {
+            "id": "opt-B",
+            "text": "The problem you face become more constructured"
+          },
+          {
+            "id": "opt-C",
+            "text": "In management as you rise higher"
+          },
+          {
+            "id": "opt-D",
+            "text": "And you can’t afford to fall back etic (a) B,A,C,D 0) CADE (c) C,B,D,A (d) A,B,C,D"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the jumbled groups of words to make a\nJetic meaningful sentence\nA. On the tools you had been taught\nB. The problem you face become more constructured\nC. In management as you rise higher\nD. And you can’t afford to fall back\netic (a) B,A,C,D 0) CADE\n(c) C,B,D,A (d) A,B,C,D"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q29",
+        "sourceQuestionNo": 29,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the jumbled groups of words to make a meaningful sentence : A. The spirit of residents etic B. Could dampen C. Nor the subsequent fire D. Neither the earthquake Choose the correct answer from the options given below: =",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "D,B,G,A"
+          },
+          {
+            "id": "opt-B",
+            "text": "D,C,B,A"
+          },
+          {
+            "id": "opt-C",
+            "text": "A,B, D,C"
+          },
+          {
+            "id": "opt-D",
+            "text": "A,D,A,B,E"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the jumbled groups of words to make a\nmeaningful sentence\n: A. The spirit of residents\netic B. Could dampen\nC. Nor the subsequent fire\nD. Neither the earthquake\nChoose the correct answer from the options given below:\n= (a) D,B,G,A (b) D,C,B,A\n(c) A,B, D,C (d) A,D,A,B,E"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q30",
+        "sourceQuestionNo": 30,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Rearrange the jumbled groups of words to make a meaningful sentence A. Take interest in the affairs tly B. Of the company is not correct : C. Investor does not understand or D. the presumption that the average Choose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "D,A,C,B"
+          },
+          {
+            "id": "opt-B",
+            "text": "D,C,A,B"
+          },
+          {
+            "id": "opt-C",
+            "text": "D,B,A,C"
+          },
+          {
+            "id": "opt-D",
+            "text": "C,A,B,D"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "Rearrange the jumbled groups of words to make a\nmeaningful sentence\nA. Take interest in the affairs\ntly B. Of the company is not correct :\nC. Investor does not understand or\nD. the presumption that the average\nChoose the correct answer from the options given below:\n(a) D,A,C,B (b) D,C,A,B\n(c) D,B,A,C (d) C,A,B,D"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q31",
+        "sourceQuestionNo": 31,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one that carried the tly same relation as: Subsequent : Prior",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Durable : Fragile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Pristine : Unspoiled"
+          },
+          {
+            "id": "opt-C",
+            "text": "Remittance: Payment"
+          },
+          {
+            "id": "opt-D",
+            "text": "Rekindle: Reawaken E-122 CUET"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one that carried the\ntly same relation as:\nSubsequent : Prior\n(a) Durable : Fragile (b) Pristine : Unspoiled\n(c) Remittance: Payment (d) Rekindle: Reawaken\n\n\n\nE-122 CUET"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q32",
+        "sourceQuestionNo": 32,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that carries same relation as Relagate : Promote 2",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Fright : Dread"
+          },
+          {
+            "id": "opt-B",
+            "text": "Apprehension : Confidence"
+          },
+          {
+            "id": "opt-C",
+            "text": "Perilous : Risky"
+          },
+          {
+            "id": "opt-D",
+            "text": "Delicious : Tasty"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that carries same\nrelation as\nRelagate : Promote 2\n(a) Fright : Dread\n(b) Apprehension : Confidence\n(c) Perilous : Risky\n(d) Delicious : Tasty"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q33",
+        "sourceQuestionNo": 33,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that carries same relation as Manufacture : Produce",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Competence : Capability"
+          },
+          {
+            "id": "opt-B",
+            "text": "Generous : Greedy"
+          },
+          {
+            "id": "opt-C",
+            "text": ". Frank : Shy"
+          },
+          {
+            "id": "opt-D",
+            "text": "Feeble : Strong"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that carries same\nrelation as\nManufacture : Produce\n(a) Competence : Capability\n(b) Generous : Greedy\n(c). Frank : Shy\n(d) Feeble : Strong"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q34",
+        "sourceQuestionNo": 34,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one that carries same relation as Severe : Harsh",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Conceal : Reveal"
+          },
+          {
+            "id": "opt-B",
+            "text": "Companion : Comrade"
+          },
+          {
+            "id": "opt-C",
+            "text": "Deny : Accept"
+          },
+          {
+            "id": "opt-D",
+            "text": "Blunt: Sharp"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one that carries same\nrelation as\nSevere : Harsh\n(a) Conceal : Reveal (b) Companion : Comrade\n(c) Deny : Accept (d) Blunt: Sharp"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q35",
+        "sourceQuestionNo": 35,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one word which is opposite in meaning to the given word ; Elated",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Restful"
+          },
+          {
+            "id": "opt-B",
+            "text": "Jubilant"
+          },
+          {
+            "id": "opt-C",
+            "text": "Dejected"
+          },
+          {
+            "id": "opt-D",
+            "text": "Harmonious"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one word which is\nopposite in meaning to the given word ;\nElated\n(a) Restful (b) Jubilant\n(c) Dejected (d) Harmonious"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q36",
+        "sourceQuestionNo": 36,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is opposite in meaning to the given word- ‘Listless",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Agile"
+          },
+          {
+            "id": "opt-B",
+            "text": "Lazy"
+          },
+          {
+            "id": "opt-C",
+            "text": "Spiritual"
+          },
+          {
+            "id": "opt-D",
+            "text": "Moisture"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is opposite\nin meaning to the given word-\n‘Listless\n(a) Agile (b) Lazy\n(c) Spiritual (d) Moisture"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q37",
+        "sourceQuestionNo": 37,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is opposite in meaning to the given Modest",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Humble"
+          },
+          {
+            "id": "opt-B",
+            "text": "Arrogant"
+          },
+          {
+            "id": "opt-C",
+            "text": "Exterminate"
+          },
+          {
+            "id": "opt-D",
+            "text": "Reserved"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is opposite\nin meaning to the given\nModest\n(a) Humble (b) Arrogant\n(c) Exterminate (d) Reserved"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q38",
+        "sourceQuestionNo": 38,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the one which is opposite in meaning to the given word Arduous",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Different"
+          },
+          {
+            "id": "opt-B",
+            "text": "Liquid"
+          },
+          {
+            "id": "opt-C",
+            "text": "Easy"
+          },
+          {
+            "id": "opt-D",
+            "text": "Beautiful"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options, select the one which is opposite\nin meaning to the given word\nArduous\n(a) Different (b) Liquid\n(c) Easy (d) Beautiful"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q39",
+        "sourceQuestionNo": 39,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which is similar in meaning to the given. WARRIOR",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Soldier"
+          },
+          {
+            "id": "opt-B",
+            "text": "Sailor"
+          },
+          {
+            "id": "opt-C",
+            "text": "Pirate"
+          },
+          {
+            "id": "opt-D",
+            "text": "Spy"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which is similar in\nmeaning to the given.\nWARRIOR\n(a) Soldier (b) Sailor\n(c) Pirate (d) Spy"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q40",
+        "sourceQuestionNo": 40,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which is similar in meaning to the given word: HARBINGER",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Postman."
+          },
+          {
+            "id": "opt-B",
+            "text": "Host"
+          },
+          {
+            "id": "opt-C",
+            "text": "Forerunner"
+          },
+          {
+            "id": "opt-D",
+            "text": "Artist t English Solved Paper-2022 (Held on 18 Aug. 2022)"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which is similar in\nmeaning to the given word:\nHARBINGER\n(a) Postman. (b) Host\n(c) Forerunner (d) Artist\n\n\n\nt English Solved Paper-2022 (Held on 18 Aug. 2022)"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q41",
+        "sourceQuestionNo": 41,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which is similar in meaning to the given word: TIMID",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Angry (b) Beautiful"
+          },
+          {
+            "id": "opt-C",
+            "text": "Medium (@) Meek"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "options_need_manual_review",
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which is similar in\nmeaning to the given word:\nTIMID\n(a) Angry (b) Beautiful\n(c) Medium (@) Meek"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q42",
+        "sourceQuestionNo": 42,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which is similar in meaning to the given word: ABUNDANT",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Inexpensive"
+          },
+          {
+            "id": "opt-B",
+            "text": "Plenty"
+          },
+          {
+            "id": "opt-C",
+            "text": "Insufficient"
+          },
+          {
+            "id": "opt-D",
+            "text": "Daring"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which is similar in\nmeaning to the given word:\nABUNDANT\n(a) Inexpensive (b) Plenty\n(c) Insufficient (d) Daring"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q43",
+        "sourceQuestionNo": 43,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which can rightly substitute the given expression: Anursery where children are cared for while their parents are at work",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Home"
+          },
+          {
+            "id": "opt-B",
+            "text": "Creche"
+          },
+          {
+            "id": "opt-C",
+            "text": "School"
+          },
+          {
+            "id": "opt-D",
+            "text": "Shelter"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which can rightly\nsubstitute the given expression:\nAnursery where children are cared for while their parents\nare at work\n(a) Home (b) Creche\n(c) School (d) Shelter"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q44",
+        "sourceQuestionNo": 44,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which can rightly substitute the given expression: An excessive desire to steal",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Kleptomania"
+          },
+          {
+            "id": "opt-B",
+            "text": "Hydrophobia"
+          },
+          {
+            "id": "opt-C",
+            "text": "Anonymous"
+          },
+          {
+            "id": "opt-D",
+            "text": "Synonymous"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which can rightly\nsubstitute the given expression:\nAn excessive desire to steal\n(a) Kleptomania (b) Hydrophobia\n(c) Anonymous (d) Synonymous"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q45",
+        "sourceQuestionNo": 45,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which can rightly substitute the given expression: One who is indifferent to joy or pain",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Stoic"
+          },
+          {
+            "id": "opt-B",
+            "text": "Innocent"
+          },
+          {
+            "id": "opt-C",
+            "text": "Tolerant"
+          },
+          {
+            "id": "opt-D",
+            "text": "Intelligent"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which can rightly\nsubstitute the given expression:\nOne who is indifferent to joy or pain\n(a) Stoic (b) Innocent\n(c) Tolerant (d) Intelligent"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q46",
+        "sourceQuestionNo": 46,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which can rightly substitute the given expression: Fear of confined places",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Acrolat"
+          },
+          {
+            "id": "opt-B",
+            "text": "Athletics"
+          },
+          {
+            "id": "opt-C",
+            "text": "Claustrophobia"
+          },
+          {
+            "id": "opt-D",
+            "text": "Algophobia"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which can rightly\nsubstitute the given expression:\nFear of confined places\n(a) Acrolat (b) Athletics\n(c) Claustrophobia (d) Algophobia"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q47",
+        "sourceQuestionNo": 47,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options given below, select the one with the correct spelling.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Atmosphere"
+          },
+          {
+            "id": "opt-B",
+            "text": "Atmosfear"
+          },
+          {
+            "id": "opt-C",
+            "text": "Atmostfear"
+          },
+          {
+            "id": "opt-D",
+            "text": "Atmosphare"
+          }
+        ],
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options given below, select the one with the\ncorrect spelling.\n(a) Atmosphere (b) Atmosfear\n(c) Atmostfear (d) Atmosphare"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q48",
+        "sourceQuestionNo": 48,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options select the one which is spelt correctly",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Hermonium"
+          },
+          {
+            "id": "opt-B",
+            "text": "Hermoneeus"
+          },
+          {
+            "id": "opt-C",
+            "text": "Harmonius"
+          },
+          {
+            "id": "opt-D",
+            "text": "Harmonious"
+          }
+        ],
+        "correctAnswer": "D",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the given options select the one which is spelt\ncorrectly\n(a) Hermonium (b) Hermoneeus\n(c) Harmonius (d) Harmonious"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q49",
+        "sourceQuestionNo": 49,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options give below, select the one with the correct spelling",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Deeviation"
+          },
+          {
+            "id": "opt-B",
+            "text": "Deviation 7"
+          },
+          {
+            "id": "opt-C",
+            "text": "Divation"
+          },
+          {
+            "id": "opt-D",
+            "text": "Diveeation"
+          }
+        ],
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options give below, select the one with the\ncorrect spelling\n(a) Deeviation (b) Deviation\n7 (c) Divation (d) Diveeation"
+      },
+      {
+        "id": "cuet-ug-english-2022-08-18-q50",
+        "sourceQuestionNo": 50,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the options given below, select the one with the correct spelling;",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Aerticulation"
+          },
+          {
+            "id": "opt-B",
+            "text": "Artikulation"
+          },
+          {
+            "id": "opt-C",
+            "text": "Articulation"
+          },
+          {
+            "id": "opt-D",
+            "text": "Articulasion CUET English Solved Paper-2022 (Held on 18 A ————— ee eee A Hints & | 1,"
+          }
+        ],
+        "correctAnswer": "C",
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-08-18",
+        "source": "English_2022-08-18.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "ocr_content_requires_human_review"
+        ],
+        "sourceText": "From the options given below, select the one with the\ncorrect spelling;\n(a) Aerticulation (b) Artikulation\n(c) Articulation (d) Articulasion\n\n\n\nCUET English Solved Paper-2022 (Held on 18 A\n————— ee eee\nA Hints & |\n1, (b) Read the passage once to remember the central id\nand the key words of each paragraph.\nIn the second paragraph it is mentioned that t\nfamily was waiting for Yevgra having finish\nwashing his hands so that they could have dinn\nHence, we can assume that the time was night.\n\n2. (d) In the 2nd sentence of the Passages it is mention\nthat Yevgarf’s father was a parish priest.\n\n3. (d) In the first sentences of the passage, it is mention\nthat Yevgarf’s father, who was a parish priest, w:\ngifted three hundred acres of land by the general\nwidow, Madame Kuvshinnikov.\n\n4. (d) From the last sentence of the first paragraph an\nthe first sentence of the second paragraph we ca\n\n‘f deduce that Yevgraf Was grumpy and complainin;\n“To grumble” means “to complain”. He wa\ncomplaining about the bad weather."
+      }
+    ],
+    "answerKeySourcePages": [
+      5,
+      6
+    ],
+    "extractionSummary": {
+      "questionBlocksIsolated": 50,
+      "questionsWithFourOptionsDetected": 46,
+      "answerKeysIncluded": 50,
+      "expectedQuestions": 50,
+      "sourceMethod": "scanned PDF image OCR, split into columns"
+    },
+    "publicationStatus": "draft",
+    "reviewRequired": true
+  }
+}

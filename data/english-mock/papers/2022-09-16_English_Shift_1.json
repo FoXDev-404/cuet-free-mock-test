@@ -1,0 +1,1654 @@
+{
+  "schemaVersion": "2.0",
+  "subjectId": "REPLACE-WITH-SUBJECT-ID",
+  "exam": {
+    "id": "cuet-ug-english-2022-09-16-shift-1",
+    "title": "CUET UG English Previous Year Paper - 2022-09-16",
+    "subject": "English",
+    "subjectId": "REPLACE-WITH-SUBJECT-ID",
+    "year": 2022,
+    "examDate": "2022-09-16",
+    "shift": 1,
+    "setName": "SET 42",
+    "language": "English",
+    "sourceFile": "English_2022-09-16_Shift_1.pdf",
+    "questionCount": 50,
+    "passages": [
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "title": "Reading Passage 1",
+        "contentEn": ". There is a lovely story of a tree and a little boy who used to play in its shade. They had become friends. One day. The boy sat leaning against the hunk of the tree, crying. He was hungry. \"Eat my fruit\" said the kind tree bending down one of its branches. The boy ate the fruit and was happy. The boy grew up. One day, he sat under the tree with an anxious look on his face. \"What is the matter?\" asked the tree. \"] am going to marry and | want a house to live in,\" said the young man. “Cut down my branches and build your house.\" said the tree. The young man-built a house with the branches of the tree. The young man became a sailor. One day. He sat under the tree with a worried look. “What is the matter?\" asked the tree, \"My captain is a cruel fellow. | want a ship of my own,\" said the sailor. \"Cut down my trunk and build a ship.\" The sailor lost his ship and returned home asa helpless old man. On a cold winter's day, he stood where the tree once was leaning on his stick and trembling with cold. \"Make a fire of me, and warm yourself’ said the stump of the tree. The stump of the unselfish tree burnt in the fire, softly humming atune.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 1,
+          "to": 6
+        },
+        "sourcePages": null,
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "possible_duplicate_of_2022_08_06_passage_verify_full_text",
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "title": "Reading Passage 2",
+        "contentEn": "I must say that beyond occasionally exposing me to laughter, my constitutional shyness has been of no great disadvantage to me. In fact. I can see that, on the contrary, it has been all to my advantage. My hesitancy in speech, which was once an annoyance, is now a pleasure. Its greatest pleasure has been that it has taught me the economy of words. I have naturally formed the habit of restraining my thoughts. And I can now give myself the certificate that a thoughtless word hardly ever escapes of my tongue or pen. I do not recollect ever having had to regret anything in my speech or writing. I have thus been spared many a mishap and waste of time. Experience has taught me that silence is part of the spiritual discipline of a votary of truth. Proneness to exaggerate, to suppress or modify the truth, wittingly or unwittingly, is a natural weakness of man and silence is necessary in order to surmount it. A man of few words will rarely be thoughtless in his speech; he will measure every word.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 7,
+          "to": 12
+        },
+        "sourcePages": null,
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "possible_duplicate_of_2022_08_06_passage_verify_full_text",
+          "ocr_transcription_requires_human_review"
+        ]
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "title": "Reading Passage 3",
+        "contentEn": "Unhappiness and discontent spring not only from poverty. Man is a strange creature, fundamentally different from other animals. He has far horizons, invincible hopes, creative energies, spiritual powers. If they are left undeveloped and unsatisfied, he may have all the comforts which wealth can give, but will still feel that life is not worthwhile. The great humanist writers, Shaw and Wells, Arnold Bennett and Galsworthy, who are regarded as the prophets of the dawn, expose the foibles, inconsistencies and weaknesses of modern life, but they ignore the deeper currents and sometimes misrepresent them. At any rate, they give nothing in their place. In the void left by the removal of tradition, morality and religion, others are putting in vague sentiments of race and power. The modern mind is shaped by Rousseau's Social Contract, Marx's Capital, Darwin's on the Origin of Species and Spengler's The Decline of the West. The outward chaos and confusion of our life reflect the confusion of our hearts and minds. Constitutions, says Plato, “are but the reflections in the outside world of the values which prevail in men's minds.\" There must be a change in the ideals we cherish, in the values we adopt, before we can give social expression to them. We help to secure the future only to the extent to which we ourselves are changed. What is missing in our age is the soul: there is nothing wrong with the body. We suffer from sickness of spirit. We must discover our roots in the eternal and regain faith in the transcendent truth which will order life, discipline discordant elements, and bring unity and purpose into it. If not, when the floods come and the winds blow and beat upon our houses, it will fall.",
+        "contentHi": null,
+        "questionRange": {
+          "from": 13,
+          "to": 18
+        },
+        "sourcePages": null,
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "possible_duplicate_of_2022_08_06_passage_verify_full_text",
+          "ocr_transcription_requires_human_review"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q01",
+        "sourceQuestionNo": 1,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "Match List I with List II iliac a 7a ship of his own The young man was to marry and anxious wanted a house of his own based l= and hung The stump of the | IV. | burntin the fire beautiful, kind and the selfless tree Choose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "A-IV, B-II, C-Il, D-I"
+          },
+          {
+            "id": "opt-B",
+            "text": "A-III, B -II, C -I, D-IV"
+          },
+          {
+            "id": "opt-C",
+            "text": "A-I, B-Ill, C-II, D-IV"
+          },
+          {
+            "id": "opt-D",
+            "text": "A-Il, B-I, C-IV, D-Ill"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "Match List I with List II\niliac a 7a\nship of his own\nThe young man was to marry and\nanxious wanted a house of\nhis own\nbased l=\nand hung\nThe stump of the | IV. | burntin the fire\nbeautiful, kind and the\nselfless tree\nChoose the correct answer from the options given\nbelow:\n(a) A-IV, B-II, C-Il, D-I\n(b) A-III, B -II, C -I, D-IV\n(c) A-I, B-Ill, C-II, D-IV\n(d) A-Il, B-I, C-IV, D-Ill",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "externalQuestionId": "164091"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q02",
+        "sourceQuestionNo": 2,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The two protagonists of the story are (Select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Both innocent and naive"
+          },
+          {
+            "id": "opt-B",
+            "text": "Oneis intelligent and the other a fool"
+          },
+          {
+            "id": "opt-C",
+            "text": "Both cunning and selfish"
+          },
+          {
+            "id": "opt-D",
+            "text": "One of them is demanding and greedy, the other always generous, sensitive and supportive"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "The two protagonists of the story are (Select\nthe correct option)\n(a) Both innocent and naive\n(b) Oneis intelligent and the other a fool\n(c) Both cunning and selfish\n(d) One of them is demanding and greedy, the other\nalways generous, sensitive and supportive",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "externalQuestionId": "164092"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q03",
+        "sourceQuestionNo": 3,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "How were the tree and the little boy related to each other? (Select the correct option)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "They were close contenders in their race to survive"
+          },
+          {
+            "id": "opt-B",
+            "text": "They were very close friends due to their very long association"
+          },
+          {
+            "id": "opt-C",
+            "text": "They were colleagues as they work together Years Paper t 2022 (Shift - 1)"
+          },
+          {
+            "id": "opt-D",
+            "text": "They were competitors in their need to fulfil their own needs."
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "How were the tree and the little boy related to each\nother? (Select the correct option)\n(a) They were close contenders in their race to\nsurvive\n(b) They were very close friends due to their very\nlong association\n(c) They were colleagues as they work together\n\n\n\nYears Paper\nt 2022 (Shift - 1)\n\n(d) They were competitors in their need to fulfil\ntheir own needs.",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "externalQuestionId": "164093"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q04",
+        "sourceQuestionNo": 4,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "The story highlights a typical selfish human nature we are all familiar with. Identify it from the options given below:",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Compassion and benevolence"
+          },
+          {
+            "id": "opt-B",
+            "text": "Conservation of forests"
+          },
+          {
+            "id": "opt-C",
+            "text": "Mindless greed to possess more and more wealth"
+          },
+          {
+            "id": "opt-D",
+            "text": "Heartless and foolish exploitation of nature"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "The story highlights a typical selfish human nature\nwe are all familiar with. Identify it from the options\ngiven below:\n\n(a) Compassion and benevolence\n\n(b) Conservation of forests\n\n(c) Mindless greed to possess more and more wealth\n\n(d) Heartless and foolish exploitation of nature",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "externalQuestionId": "164094"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q05",
+        "sourceQuestionNo": 5,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "\"The stump of the unselfish tree burnt in the fire, softly humming a tune.\" means: (Select the right options from the given options)",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Every tree sings when itis burnt."
+          },
+          {
+            "id": "opt-B",
+            "text": "The selfless tree felt no pain even in its acute suffering while dying, caring for others."
+          },
+          {
+            "id": "opt-C",
+            "text": "The frail and wonderful tree fifed to forget its pain by humming"
+          },
+          {
+            "id": "opt-D",
+            "text": "The tree was a fool and was humming as it did not realize that it was dying."
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "\"The stump of the unselfish tree burnt in the fire,\nsoftly humming a tune.\" means: (Select the right\noptions from the given options)\n\n(a) Every tree sings when itis burnt.\n\n(b) The selfless tree felt no pain even in its acute\nsuffering while dying, caring for others.\n\n(c) The frail and wonderful tree fifed to forget its\npain by humming\n\n(d) The tree was a fool and was humming as it did\nnot realize that it was dying.",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "externalQuestionId": "164095"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q06",
+        "sourceQuestionNo": 6,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "How would you define the relationship that the story illustrates? Select the correct answer from the following options.",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "It was a mutual symbiotic relationship."
+          },
+          {
+            "id": "opt-B",
+            "text": "It wasa relationship based on deceit and treachery."
+          },
+          {
+            "id": "opt-C",
+            "text": "Itwas an one sided relationship where the tree loved, cared for and supported the boy till its end."
+          },
+          {
+            "id": "opt-D",
+            "text": "It was a disguised enmity. After reading the following passage, answer the questions which follow: I must say that beyond occasionally exposing me to laughter, my constitutional shyness has been of no great disadvantage to me. In fact. I can see that, on the contrary, it has been all to my advantage. My hesitancy in speech, which was once an annoyance, is now a pleasure. Its greatest pleasure has been that it has taught me the economy of words. I have naturally formed the habit of restraining my thoughts. And I can now give myself the certificate that a thoughtless word hardly ever escapes of my tongue or pen. I do not recollect ever having had to regret anything in my speech or writing. I have thus been spared many a mishap and waste of time. Experience has taught me that silence is part of the spiritual discipline of a votary of truth. Proneness to exaggerate, to suppress or modify the truth, wittingly or unwittingly, is a natural weakness of man and silence is necessary in order to surmount it. A man of few words will rarely be thoughtless in his speech; he will measure every word."
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-1",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "How would you define the relationship that the story\nillustrates? Select the correct answer from the\nfollowing options.\n\n(a) It was a mutual symbiotic relationship.\n\n(b) It wasa relationship based on deceit and\ntreachery.\n\n(c) Itwas an one sided relationship where the tree\nloved, cared for and supported the boy till its\nend.\n\n(d) It was a disguised enmity.\n\nAfter reading the following passage, answer the\n\nquestions which follow:\n\nI must say that beyond occasionally exposing me to laughter,\n\nmy constitutional shyness has been of no great disadvantage\n\nto me. In fact. I can see that, on the contrary, it has been all to\nmy advantage. My hesitancy in speech, which was once an\nannoyance, is now a pleasure. Its greatest pleasure has been\nthat it has taught me the economy of words. I have naturally\nformed the habit of restraining my thoughts. And I can now\ngive myself the certificate that a thoughtless word hardly\never escapes of my tongue or pen. I do not recollect ever\nhaving had to regret anything in my speech or writing. I have\nthus been spared many a mishap and waste of time.\n\nExperience has taught me that silence is part of the spiritual\n\ndiscipline of a votary of truth. Proneness to exaggerate, to\n\nsuppress or modify the truth, wittingly or unwittingly, is a\n\nnatural weakness of man and silence is necessary in order to\n\nsurmount it. A man of few words will rarely be thoughtless\nin his speech; he will measure every word.",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "externalQuestionId": "164096"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q07",
+        "sourceQuestionNo": 7,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "164097",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q08",
+        "sourceQuestionNo": 8,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "164098",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q09",
+        "sourceQuestionNo": 9,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "164099",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q10",
+        "sourceQuestionNo": 10,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640910",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q11",
+        "sourceQuestionNo": 11,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640911",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q12",
+        "sourceQuestionNo": 12,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-2",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640912",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q13",
+        "sourceQuestionNo": 13,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640913",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q14",
+        "sourceQuestionNo": 14,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640914",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q15",
+        "sourceQuestionNo": 15,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640915",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q16",
+        "sourceQuestionNo": 16,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640916",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q17",
+        "sourceQuestionNo": 17,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640917",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q18",
+        "sourceQuestionNo": 18,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": "cuet-ug-english-2022-09-16-shift-1-passage-3",
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640918",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q19",
+        "sourceQuestionNo": 19,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640919",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q20",
+        "sourceQuestionNo": 20,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640920",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q21",
+        "sourceQuestionNo": 21,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640921",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q22",
+        "sourceQuestionNo": 22,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640922",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q23",
+        "sourceQuestionNo": 23,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640923",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q24",
+        "sourceQuestionNo": 24,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640924",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q25",
+        "sourceQuestionNo": 25,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640925",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q26",
+        "sourceQuestionNo": 26,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640926",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q27",
+        "sourceQuestionNo": 27,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640927",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q28",
+        "sourceQuestionNo": 28,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640928",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q29",
+        "sourceQuestionNo": 29,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640929",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q30",
+        "sourceQuestionNo": 30,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640930",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q31",
+        "sourceQuestionNo": 31,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640931",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q32",
+        "sourceQuestionNo": 32,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640932",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q33",
+        "sourceQuestionNo": 33,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640933",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q34",
+        "sourceQuestionNo": 34,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640934",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q35",
+        "sourceQuestionNo": 35,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640935",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q36",
+        "sourceQuestionNo": 36,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640936",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q37",
+        "sourceQuestionNo": 37,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640937",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q38",
+        "sourceQuestionNo": 38,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640938",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q39",
+        "sourceQuestionNo": 39,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640939",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q40",
+        "sourceQuestionNo": 40,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640940",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q41",
+        "sourceQuestionNo": 41,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640941",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q42",
+        "sourceQuestionNo": 42,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640942",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q43",
+        "sourceQuestionNo": 43,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640943",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q44",
+        "sourceQuestionNo": 44,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640944",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q45",
+        "sourceQuestionNo": 45,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640945",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q46",
+        "sourceQuestionNo": 46,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": null,
+        "optionsEn": [],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_options_not_reliably_extracted_from_image_export",
+          "manual_transcription_required",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": null,
+        "externalQuestionId": "1640946",
+        "sourcePages": null
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q47",
+        "sourceQuestionNo": 47,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Liability”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Money"
+          },
+          {
+            "id": "opt-B",
+            "text": "Property"
+          },
+          {
+            "id": "opt-C",
+            "text": "Asset"
+          },
+          {
+            "id": "opt-D",
+            "text": "Debt"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Liability”\n(a) Money\n(b) Property\n(c) Asset\n(d) Debt",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          19
+        ],
+        "externalQuestionId": "1640947"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q48",
+        "sourceQuestionNo": 48,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Stringent”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Vehement"
+          },
+          {
+            "id": "opt-B",
+            "text": "Severe"
+          },
+          {
+            "id": "opt-C",
+            "text": "General"
+          },
+          {
+            "id": "opt-D",
+            "text": "Lenient (d) Common |"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Stringent”\n(a) Vehement\n(b) Severe\n(c) General\n(d) Lenient\n(d) Common |",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          19
+        ],
+        "externalQuestionId": "1640948"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q49",
+        "sourceQuestionNo": 49,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Conscientious”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Mutual"
+          },
+          {
+            "id": "opt-B",
+            "text": "Scrupulous"
+          },
+          {
+            "id": "opt-C",
+            "text": "Irresponsible"
+          },
+          {
+            "id": "opt-D",
+            "text": "Meticulous"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Conscientious”\n(a) Mutual\n(b) Scrupulous\n(c) Irresponsible\n(d) Meticulous",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          19
+        ],
+        "externalQuestionId": "1640949"
+      },
+      {
+        "id": "cuet-ug-english-2022-09-16-shift-1-q50",
+        "sourceQuestionNo": 50,
+        "subjectId": "REPLACE-WITH-SUBJECT-ID",
+        "type": "MCQ",
+        "stemEn": "From the given options, select the OPPOSITE in meaning to the given word: “Perennial”",
+        "optionsEn": [
+          {
+            "id": "opt-A",
+            "text": "Incessant"
+          },
+          {
+            "id": "opt-B",
+            "text": "Seasonal"
+          },
+          {
+            "id": "opt-C",
+            "text": "Frequent |"
+          }
+        ],
+        "correctAnswer": null,
+        "explanationEn": null,
+        "year": 2022,
+        "examDate": "2022-09-16",
+        "source": "English_2022-09-16_Shift_1.pdf",
+        "difficulty": null,
+        "marks": null,
+        "negativeMarks": null,
+        "passageId": null,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "reviewFlags": [
+          "question_text_visually_matches_2022_08_06_candidate_verify_before_publish",
+          "ocr_content_requires_human_review",
+          "options_need_manual_review",
+          "answer_key_not_in_sep16_source"
+        ],
+        "sourceText": "From the given options, select the OPPOSITE in\nmeaning to the given word: “Perennial”\n(a) Incessant\n(b) Seasonal\n(c) Frequent\n\n|",
+        "contentOrigin": "matched_candidate_from_2022-08-06_visual_comparison",
+        "sourcePages": [
+          19
+        ],
+        "externalQuestionId": "1640950"
+      }
+    ],
+    "answerKeySourcePages": [],
+    "extractionSummary": {
+      "questionBlocksInSource": 50,
+      "questionsWithTextMatchedForReview": 10,
+      "questionsNeedingManualTranscription": 40,
+      "answerKeysIncluded": 0,
+      "expectedQuestions": 50,
+      "sourceMethod": "structured PDF metadata plus OCR/visual inspection of embedded table images"
+    },
+    "sourceRelationship": {
+      "type": "possible_duplicate_question_set",
+      "comparedWith": "cuet-ug-english-2022-08-06-shift-1",
+      "evidence": "Opening tree passage and questions, plus Q47-Q50, visually match the 6 Aug paper. Remaining questions were not exhaustively compared.",
+      "note": "Only the visually matching first six and last four questions are included as match candidates. The other 40 questions are blank review records; no answers were copied."
+    },
+    "publicationStatus": "draft",
+    "reviewRequired": true
+  }
+}

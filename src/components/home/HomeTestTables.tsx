@@ -19,6 +19,10 @@ import {
 
 function TestRow({ test, alt }: { test: HomeTest; alt: boolean }) {
   const { questions, duration } = getTestMeta(test);
+  const recovered = test.recoveredQuestionCount ?? questions;
+  const sourceTotal = test.sourceQuestionCount;
+  const pending = test.pendingReviewCount ?? 0;
+  const isPracticeOnly = test.localPaper === true && test.scorableQuestionCount === 0;
 
   return (
     <Link
@@ -31,13 +35,22 @@ function TestRow({ test, alt }: { test: HomeTest; alt: boolean }) {
         <span className="home-table-badges">
           {test.subject ? <span className="badge badge-primary">{test.subject.name}</span> : null}
           <span className="badge badge-neutral">{getTestTypeLabel(test.type)}</span>
+          {test.draft ? <span className="badge badge-warning">Draft OCR</span> : null}
+          {isPracticeOnly ? <span className="badge badge-warning">Practice only</span> : null}
         </span>
       </span>
       <span className="home-table-side">
         <span className="home-table-primary">
-          {questions > 0 ? `${questions} questions` : "Question set"}
+          {questions > 0
+            ? test.localPaper && sourceTotal
+              ? `${recovered} of ${sourceTotal} questions`
+              : `${questions} questions`
+            : "Question set"}
         </span>
-        <span className="home-table-secondary">{duration > 0 ? `${duration} min` : "Timed"}</span>
+        <span className="home-table-secondary">
+          {duration > 0 ? `${duration} min` : "Timed"}
+          {pending > 0 ? ` · ${pending} pending key` : ""}
+        </span>
       </span>
       <ChevronRight className="home-table-chevron" aria-hidden="true" />
     </Link>

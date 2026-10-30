@@ -11,12 +11,25 @@ import { ChevronLeft, ChevronRight, Clock, RefreshCw, Flag, CheckCircle, XCircle
 // the submit response.
 interface Question {
   id: string;
+  number: number;
   stemEn: string;
   optionsEn: { id: string; text: string }[];
   type: string;
   marks: number;
   subject: string;
   topic: string;
+  passage: { title: string; content: string } | null;
+  scorable: boolean;
+}
+
+interface ReviewItem {
+  questionId: string;
+  selectedOption: string | null;
+  isCorrect: boolean | null;
+  status?: "correct" | "incorrect" | "unattempted" | "pending";
+  correctOption?: string | null;
+  correctOptionText?: string | null;
+  explanation?: string | null;
 }
 
 interface SubmitResult {
@@ -29,7 +42,18 @@ interface SubmitResult {
   incorrect: number;
   attempted: number;
   unattempted: number;
-  review: { questionId: string; selectedOption: string | null; isCorrect: boolean }[];
+  pending?: number;
+  review: ReviewItem[];
+}
+
+/** Metadata for repo-backed draft papers. No answer-key data is included. */
+export interface LocalPaperNotice {
+  draft: boolean;
+  sourceQuestionCount: number;
+  recoveredQuestionCount: number;
+  omittedQuestionCount: number;
+  scorableQuestionCount: number;
+  pendingReviewCount: number;
 }
 
 interface TestConfig {
@@ -48,6 +72,9 @@ interface LoadedQuestionLink {
     marks: number;
     subject?: { name: string } | null;
     chapter?: { name: string } | null;
+    number?: number;
+    passage?: { title: string; content?: string | null } | null;
+    scorable?: boolean;
   };
 }
 
@@ -59,18 +86,25 @@ interface TakeTestClientProps {
     questions: LoadedQuestionLink[];
   };
   slug: string;
+  localPaper?: LocalPaperNotice;
 }
 
-export function TakeTestClient({ test, slug }: TakeTestClientProps) {
+export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) {
   const config = useMemo(() => JSON.parse(test.config) as TestConfig, [test.config]);
-  const questions: Question[] = (test.questions || []).map((l) => ({
+  const questions: Question[] = (test.questions || []).map((l, index) => ({
     id: l.question.id,
+    number: l.question.number ?? index + 1,
     stemEn: l.question.stemEn,
     optionsEn: typeof l.question.optionsEn === "string" ? JSON.parse(l.question.optionsEn) : l.question.optionsEn,
     type: l.question.type,
     marks: l.question.marks,
     subject: l.question.subject?.name ?? "",
     topic: l.question.chapter?.name ?? "",
+    passage:
+      l.question.passage?.content && l.question.passage.title
+        ? { title: l.question.passage.title, content: l.question.passage.content }
+        : null,
+    scorable: l.question.scorable !== false,
   }));
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -83,8 +117,8 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
   const [showResult, setShowResult] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [error] = useState("");
+  const [loading] = useState(false);
   const [attemptId, setAttemptId] = useState<string | null>(null);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -96,7 +130,11 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
     setSubmitting(true);
     try {
       const answerArray = Object.entries(answers).map(([questionId, selectedOption]) => ({ questionId, selectedOption }));
-      const res = await fetch("/api/attempts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ slug, attemptId: attemptId ?? undefined, answers: answerArray, timeSpentSec: config.durationMinutes * 60 - timeLeft }) });
+      const endpoint = localPaper ? `/api/local-mocks/${encodeURIComponent(slug)}/submit` : "/api/attempts";
+      const body = localPaper
+        ? { answers: answerArray, timeSpentSec: config.durationMinutes * 60 - timeLeft }
+        : { slug, attemptId: attemptId ?? undefined, answers: answerArray, timeSpentSec: config.durationMinutes * 60 - timeLeft };
+      const res = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       if (!res.ok) throw new Error((await res.json().catch(() => ({})))?.error || "Submit failed");
       const data = (await res.json()) as SubmitResult;
       setResult(data);
@@ -106,10 +144,12 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
       try { localStorage.removeItem(`cuet_answers_${slug}`); } catch {}
     } catch (e) { alert(e instanceof Error ? e.message : "Submit failed"); }
     finally { setSubmitting(false); }
-  }, [answers, attemptId, timeLeft, submitted, submitting, config, slug]);
+  }, [answers, attemptId, timeLeft, submitted, submitting, config, slug, localPaper]);
 
-  // Open the attempt server-side (records START; resumed automatically).
+  // Local papers are graded in-memory by their own route; they have no D1
+  // attempt row, so the generic start-attempt call is intentionally skipped.
   useEffect(() => {
+    if (localPaper) return;
     let cancelled = false;
     (async () => {
       try {
@@ -125,7 +165,7 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [slug]);
+  }, [slug, localPaper]);
 
   // Restore saved answers asynchronously: setState in a timeout avoids a
   // cascading synchronous re-render out of the effect itself.
@@ -172,7 +212,12 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
 
   const selectOption = (optionId: string) => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: optionId }));
   const clearResponse = () => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: null }));
-  const toggleReview = () => setMarkedForReview(prev => { const n = new Set(prev); n.has(currentQuestion!.id) ? n.delete(currentQuestion!.id) : n.add(currentQuestion!.id); return n; });
+  const toggleReview = () => setMarkedForReview(prev => {
+    const n = new Set(prev);
+    if (n.has(currentQuestion!.id)) n.delete(currentQuestion!.id);
+    else n.add(currentQuestion!.id);
+    return n;
+  });
   const goTo = (i: number) => { if (i >= 0 && i < questions.length) setCurrentIndex(i); };
 
   if (loading) return <section className="py-12 container-page"><div className="card text-center py-20"><div className="animate-spin mx-auto h-12 w-12 border-4 border-primary-200 border-t-primary-600 rounded-full" /><p className="mt-6 text-neutral-600 dark:text-neutral-400">Loading test…</p></div></section>;
@@ -180,29 +225,46 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
   if (!questions.length) return <section className="py-12 container-page"><div className="card text-center py-20 max-w-xl mx-auto"><h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">No questions</h2><p className="text-neutral-600 dark:text-neutral-400">This test has no questions yet.</p><Button onClick={() => window.history.back()} variant="brand">Back</Button></div></section>;
 
   if (showResult && submitted && result) {
-    const correct = result.correct, incorrect = result.incorrect, attempted = result.attempted;
+    const correct = result.correct, incorrect = result.incorrect;
     const rawScore = result.score, maxScore = result.maxScore, accuracy = result.accuracy, percentage = result.percentage;
+    const pending = result.pending ?? 0;
     const reviewMap = new Map(result.review.map((r) => [r.questionId, r]));
     if (showReview) {
       return (
         <section className="py-8 container-page">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <h2 className="text-xl font-bold text-neutral-900 dark:text-white">Answer Review</h2>
             <Button variant="outline" onClick={() => setShowReview(false)}>Back to summary</Button>
           </div>
+          {pending > 0 ? (
+            <p className="mb-4 rounded-lg border border-accent-200 bg-accent-50 p-3 text-sm text-accent-800 dark:border-accent-900 dark:bg-accent-900/20 dark:text-accent-200">
+              {pending} {pending === 1 ? "question has" : "questions have"} no answer key in the source paper and {pending === 1 ? "is" : "are"} shown as pending review. {pending === 1 ? "It is" : "They are"} excluded from scoring.
+            </p>
+          ) : null}
           <div className="space-y-4">
-            {questions.map((q, i) => {
+            {questions.map((q) => {
               const rv = reviewMap.get(q.id);
               const sel = answers[q.id];
+              const status = rv?.status ?? (rv?.isCorrect ? "correct" : sel && sel !== "" ? "incorrect" : "unattempted");
+              const isCorrect = status === "correct";
+              const isPending = status === "pending";
               return (
                 <Card key={q.id} data-testid="review-item">
                   <CardContent className="pt-5">
                     <div className="flex items-start gap-3">
-                      <div className="shrink-0 mt-1">{rv?.isCorrect ? <CheckCircle className="h-5 w-5 text-secondary-600 dark:text-secondary-400" /> : rv?.selectedOption == null || rv?.selectedOption === "" ? <MinusCircle className="h-5 w-5 text-neutral-400" /> : <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" />}</div>
+                      <div className="shrink-0 mt-1">{isCorrect ? <CheckCircle className="h-5 w-5 text-secondary-600 dark:text-secondary-400" /> : isPending ? <MinusCircle className="h-5 w-5 text-accent-600 dark:text-accent-400" /> : sel && sel !== "" ? <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" /> : <MinusCircle className="h-5 w-5 text-neutral-400" />}</div>
                       <div className="min-w-0">
-                        <p className="font-medium text-neutral-900 dark:text-white">Q{i + 1}. {q.stemEn}</p>
+                        <p className="font-medium text-neutral-900 dark:text-white">Q{q.number}. {q.stemEn}</p>
                         <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Your answer:</span> {sel && sel !== "" ? q.optionsEn?.find(o => o.id === sel)?.text ?? sel : "Not answered"}</p>
-                        <p className="mt-1 text-sm"><span className={cn("font-semibold", rv?.isCorrect ? "text-secondary-700 dark:text-secondary-300" : sel && sel !== "" ? "text-red-700 dark:text-red-300" : "text-neutral-500")} >{rv?.isCorrect ? "Correct" : sel && sel !== "" ? "Incorrect" : "Unattempted"}</span></p>
+                        {isPending ? (
+                          <p className="mt-1 text-sm font-semibold text-accent-700 dark:text-accent-300">Answer key unavailable — pending review (not scored)</p>
+                        ) : (
+                          <>
+                            <p className="mt-1 text-sm"><span className={cn("font-semibold", isCorrect ? "text-secondary-700 dark:text-secondary-300" : sel && sel !== "" ? "text-red-700 dark:text-red-300" : "text-neutral-500")} >{isCorrect ? "Correct" : sel && sel !== "" ? "Incorrect" : "Unattempted"}</span></p>
+                            {rv?.correctOption ? <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Correct answer:</span> {rv.correctOption}. {rv.correctOptionText}</p> : null}
+                            {rv?.explanation ? <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Explanation:</span> {rv.explanation}</p> : null}
+                          </>
+                        )}
                       </div>
                     </div>
                   </CardContent>
@@ -216,14 +278,15 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
     return (
       <section className="py-12 container-page max-w-2xl mx-auto">
         <div className="card text-center p-8 animate-scale-in">
-          <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{Math.round(rawScore)}</div>
-          <div className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">Score out of {maxScore}</div>
+          <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{maxScore > 0 ? Math.round(rawScore) : "—"}</div>
+          <div className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">{maxScore > 0 ? `Score out of ${maxScore}` : "Not scored — no answer key available"}</div>
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50"><div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{correct}</div><div className="text-xs text-neutral-500 dark:text-neutral-400">Correct</div></div>
             <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50"><div className="text-2xl font-bold text-red-600 dark:text-red-400">{incorrect}</div><div className="text-xs text-neutral-500 dark:text-neutral-400">Incorrect</div></div>
-            <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50"><div className="text-2xl font-bold text-neutral-600 dark:text-neutral-400">{questions.length - attempted}</div><div className="text-xs text-neutral-500 dark:text-neutral-400">Unattempted</div></div>
+            <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50"><div className="text-2xl font-bold text-neutral-600 dark:text-neutral-400">{result.unattempted}</div><div className="text-xs text-neutral-500 dark:text-neutral-400">Unattempted</div></div>
           </div>
-          <div className="mb-6"><div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2 mb-1"><div className="h-2 rounded-full bg-primary-600 dark:bg-primary-400 transition-all duration-700" style={{ width: `${percentage}%` }} /></div><div className="text-sm text-neutral-600 dark:text-neutral-400">Accuracy: {accuracy.toFixed(1)}%</div></div>
+          {maxScore > 0 ? <div className="mb-6"><div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2 mb-1"><div className="h-2 rounded-full bg-primary-600 dark:bg-primary-400 transition-all duration-700" style={{ width: `${Math.max(0, Math.min(100, percentage))}%` }} /></div><div className="text-sm text-neutral-600 dark:text-neutral-400">Accuracy: {accuracy.toFixed(1)}%</div></div> : null}
+          {pending > 0 ? <p className="mb-6 rounded-lg border border-accent-200 bg-accent-50 p-3 text-sm text-accent-800 dark:border-accent-900 dark:bg-accent-900/20 dark:text-accent-200">{pending} {pending === 1 ? "question is" : "questions are"} pending answer-key review and {pending === 1 ? "is" : "are"} not included in the score.</p> : null}
           <p className="text-neutral-600 dark:text-neutral-300 mb-6">Time taken: {Math.floor((config.durationMinutes * 60 - timeLeft) / 60)}:{String((config.durationMinutes * 60 - timeLeft) % 60).padStart(2, "0")}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button variant="brand" onClick={() => { window.location.reload(); }}>Retry Test</Button>
@@ -253,12 +316,34 @@ export function TakeTestClient({ test, slug }: TakeTestClientProps) {
         </div>
       </div>
 
+      {localPaper?.draft ? (
+        <div className="mb-6 rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm dark:border-accent-900 dark:bg-accent-900/20">
+          <p className="font-semibold text-accent-900 dark:text-accent-200">Draft OCR paper</p>
+          <p className="mt-1 text-accent-800 dark:text-accent-300">
+            {localPaper.recoveredQuestionCount} of {localPaper.sourceQuestionCount} source questions were recovered.{" "}
+            {localPaper.omittedQuestionCount > 0 ? `${localPaper.omittedQuestionCount} records could not be recovered and were omitted. ` : ""}
+            {localPaper.scorableQuestionCount > 0 ? `${localPaper.scorableQuestionCount} questions have an answer key.` : "No answer key is available in the source."}{" "}
+            {localPaper.pendingReviewCount > 0 ? `${localPaper.pendingReviewCount} ${localPaper.pendingReviewCount === 1 ? "is" : "are"} pending review and not scored.` : ""}
+          </p>
+        </div>
+      ) : null}
+
       <Card className="mb-6">
         <CardHeader>
-          <div className="mb-2 flex flex-wrap items-center justify-between gap-2"><CardTitle className="text-lg">Question {currentIndex + 1} of {questions.length}</CardTitle><div className="flex items-center gap-2"><span className={cn("text-xs font-medium rounded-full px-2.5 py-1", isMarked ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300" : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400")}>{isMarked ? "Marked for review" : "Not marked"}</span><button type="button" onClick={toggleReview} className={cn("rounded-lg p-1.5 transition hover:bg-neutral-100 dark:hover:bg-neutral-800", isMarked ? "text-amber-600 dark:text-amber-400" : "text-neutral-400")} aria-label={isMarked ? "Remove review mark" : "Mark for review"} aria-pressed={isMarked}><Flag className={cn("h-4 w-4", isMarked && "fill-current")} /></button></div></div>
-          <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400"><span className={cn("font-medium", isAnswered ? "text-secondary-600 dark:text-secondary-400" : "text-neutral-500")}>{isAnswered ? "Answered" : "Not answered"}</span><span className="badge badge-neutral">{attemptedCount} attempted</span>{currentQuestion?.subject && <span className="badge badge-neutral">{currentQuestion.subject}</span>}{currentQuestion?.topic && <span className="badge badge-neutral">{currentQuestion.topic}</span>}</div>
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-2"><CardTitle className="text-lg">Question {currentIndex + 1} of {questions.length}{currentQuestion && currentQuestion.number !== currentIndex + 1 ? <span className="ml-2 text-xs font-normal text-neutral-500 dark:text-neutral-400">Source Q{currentQuestion.number}</span> : null}</CardTitle><div className="flex items-center gap-2"><span className={cn("text-xs font-medium rounded-full px-2.5 py-1", isMarked ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300" : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400")}>{isMarked ? "Marked for review" : "Not marked"}</span><button type="button" onClick={toggleReview} className={cn("rounded-lg p-1.5 transition hover:bg-neutral-100 dark:hover:bg-neutral-800", isMarked ? "text-amber-600 dark:text-amber-400" : "text-neutral-400")} aria-label={isMarked ? "Remove review mark" : "Mark for review"} aria-pressed={isMarked}><Flag className={cn("h-4 w-4", isMarked && "fill-current")} /></button></div></div>
+          <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400"><span className={cn("font-medium", isAnswered ? "text-secondary-600 dark:text-secondary-400" : "text-neutral-500")}>{isAnswered ? "Answered" : "Not answered"}</span><span className="badge badge-neutral">{attemptedCount} attempted</span>{currentQuestion?.subject && <span className="badge badge-neutral">{currentQuestion.subject}</span>}{currentQuestion?.topic && <span className="badge badge-neutral">{currentQuestion.topic}</span>}{currentQuestion?.scorable === false ? <span className="badge badge-warning">Pending answer key</span> : null}</div>
         </CardHeader>
         <CardContent>
+          {currentQuestion?.passage ? (
+            <details className="mb-5 rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-800/40">
+              <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-neutral-800 dark:text-neutral-200">
+                Reading passage — {currentQuestion.passage.title}
+              </summary>
+              <div className="max-h-72 overflow-y-auto whitespace-pre-wrap break-words border-t border-neutral-200 px-4 py-3 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:text-neutral-300">
+                {currentQuestion.passage.content}
+              </div>
+            </details>
+          ) : null}
           <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6">{currentQuestion?.stemEn}</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{currentQuestion?.optionsEn.map(opt => { const selected = answers[currentQuestion!.id] === opt.id; return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span>{opt.text}</button>; })}</div>
           <div className="mt-4 flex flex-wrap gap-3"><Button variant="outline" size="sm" onClick={clearResponse} disabled={!isAnswered || submitting}><RefreshCw className="h-4 w-4 mr-2" />Clear</Button><Button variant="outline" size="sm" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0}><ChevronLeft className="h-4 w-4 mr-2" />Previous</Button>{currentIndex < questions.length - 1 ? <Button variant="brand" size="sm" onClick={() => goTo(currentIndex + 1)} disabled={submitting}>Next <ChevronRight className="h-4 w-4 ml-2" /></Button> : <Button variant="brand" size="sm" onClick={submitTest} disabled={submitting || submitted}>Submit Test</Button>}</div>
