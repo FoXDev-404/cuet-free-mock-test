@@ -65,14 +65,13 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <p className="home-eyebrow mb-6">
               <span className="home-eyebrow-dot" aria-hidden="true" />
-              CUET UG preparation, made clearer
+              NTA Pattern CUET Mock Tests
             </p>
             <h1 className="max-w-xl text-4xl font-extrabold leading-[1.08] tracking-[-0.045em] text-neutral-950 dark:text-white sm:text-5xl lg:text-[3.75rem]">
-              Prepare Smarter.
-              <span className="mt-2 block text-gradient">Practice with purpose.</span>
+              Practice FREE Online CUET 2027 Mock Tests for UG.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-8">
-              Make your next study session count with CUET mock tests, focused practice, previous year questions, and useful progress reviews—all in one place.
+              NTA Pattern Practice Papers, Previous Year Questions (PYQs), and Time-Bound Full-Length Test Series for CUET UG. Start practicing today!
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
