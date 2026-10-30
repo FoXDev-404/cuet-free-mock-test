@@ -101,7 +101,6 @@ export async function PATCH(req: Request, { params }: Ctx) {
     if (fields.status === "PUBLISHED" && !can(((g.session.user as { role?: string })?.role) ?? "", "TEST_PUBLISH")) {
       return NextResponse.json({ error: "TEST_PUBLISH permission required to publish" }, { status: 403 });
     }
-
     let finalQuestionIds = questionIds;
     let shortfallNote: string | null = null;
     if (autoSelect) {
@@ -109,6 +108,21 @@ export async function PATCH(req: Request, { params }: Ctx) {
       finalQuestionIds = result.questionIds;
       const short = result.shortfalls.easy + result.shortfalls.medium + result.shortfalls.hard;
       shortfallNote = short > 0 ? `Question pool had ${short} fewer approved questions than requested` : null;
+    }
+
+    // A test can never be published with zero questions — an empty published
+    // test is a dead start target for students (P1QA 2026-10-30: found via
+    // the /english-pyq-40 fixture card in browser QA).
+    if (fields.status === "PUBLISHED") {
+      const finalCount = finalQuestionIds
+        ? finalQuestionIds.length
+        : await prisma.testQuestionLink.count({ where: { testId: id } });
+      if (finalCount === 0) {
+        return NextResponse.json(
+          { error: "Cannot publish a test with no questions. Add or auto-select at least one question first." },
+          { status: 400 },
+        );
+      }
     }
 
     const test = await prisma.test.update({

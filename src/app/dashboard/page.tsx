@@ -140,9 +140,27 @@ export default function DashboardPage() {
                 <div className="h-64 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RechartsBarChart data={submitted.slice().reverse()}>
-                      <XAxis dataKey="startedAt" tick={{ fontSize: 12 }} />
+                      <XAxis
+                        dataKey="startedAt"
+                        tick={{ fontSize: 12 }}
+                        tickFormatter={(v) =>
+                          new Date(String(v)).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                          })
+                        }
+                      />
                       <YAxis tickFormatter={(v) => String(Math.round(v))} />
-                      <RechartsTooltip />
+                      <RechartsTooltip
+                        labelFormatter={(v) =>
+                          new Date(String(v)).toLocaleString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                        }
+                      />
                       <Bar dataKey="score" fill="#4f46e5" radius={[4, 4, 0, 0]} />
                     </RechartsBarChart>
                   </ResponsiveContainer>

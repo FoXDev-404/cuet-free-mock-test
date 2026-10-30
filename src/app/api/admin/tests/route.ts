@@ -88,6 +88,16 @@ export async function POST(req: Request) {
         : null;
     }
 
+    // Publishing requires at least one question (P1QA 2026-10-30): an empty
+    // published test is a dead start target for students. Re-publishing an
+    // already-empty published test returns 400 until questions are added.
+    if (t.status === "PUBLISHED" && questionIds.length === 0) {
+      return NextResponse.json(
+        { error: "Cannot publish a test with no questions. Add or auto-select at least one question first." },
+        { status: 400 },
+      );
+    }
+
     const existing = await prisma.test.findUnique({ where: { slug: t.slug } });
     if (existing) {
       return NextResponse.json({ error: "A test with this slug already exists" }, { status: 409 });

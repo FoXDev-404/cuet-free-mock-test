@@ -7,6 +7,11 @@ import { Input } from "@/components/ui/input";
 import { ChevronLeft, ChevronRight, Clock, Flag, RefreshCw, SlidersHorizontal, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Visible option labels. The stored option id is internal
+// (opt-<questionId>-<order>) and must never be shown to students
+// (P1QA 2026-10-30: raw ids were rendering as the option label).
+const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F"];
+
 interface Question {
   id: string;
   stemEn: string;
@@ -251,9 +256,9 @@ export default function PracticePage() {
         <CardContent>
           <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6">{currentQuestion?.stemEn}</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {currentQuestion?.optionsEn.map(opt => {
+            {currentQuestion?.optionsEn.map((opt, optIndex) => {
               const selected = answers[currentQuestion!.id] === opt.id;
-              return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span>{opt.text}</button>;
+              return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}</span>{opt.text}</button>;
             })}
           </div>
           <div className="mt-4 flex flex-wrap gap-3">

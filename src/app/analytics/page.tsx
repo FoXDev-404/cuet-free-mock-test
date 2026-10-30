@@ -142,9 +142,28 @@ export default function AnalyticsPage() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={submitted.slice().reverse()}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                    <XAxis dataKey="startedAt" tick={{ fontSize: 12 }} stroke="#94a3b8" />
+                    <XAxis
+                      dataKey="startedAt"
+                      tick={{ fontSize: 12 }}
+                      stroke="#94a3b8"
+                      tickFormatter={(v) =>
+                        new Date(String(v)).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                        })
+                      }
+                    />
                     <YAxis tickFormatter={(v) => String(Math.round(v))} stroke="#94a3b8" />
-                    <Tooltip />
+                    <Tooltip
+                      labelFormatter={(v) =>
+                        new Date(String(v)).toLocaleString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
+                      }
+                    />
                     <Bar dataKey="score" fill="#4f46e5" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>

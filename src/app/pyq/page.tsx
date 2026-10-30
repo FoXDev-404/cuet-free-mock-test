@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Search, Filter, ChevronLeft, ChevronRight, Download, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Visible option labels. The stored option id is internal
+// (opt-<questionId>-<order>) and must never be shown (P1QA 2026-10-30,
+// same defect as the practice page).
+const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F"];
+
 interface PYQ {
   id: string;
   stemEn: string;
@@ -129,8 +134,8 @@ export default function PYQPage() {
                   </div>
                   <p className="text-neutral-900 dark:text-white mb-3">{q.stemEn}</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
-                    {q.optionsEn.map(opt => (
-                      <span key={opt.id} className={cn("text-sm px-3 py-2 rounded-lg border", opt.id === q.correctAnswer ? "bg-secondary-50 border-secondary-200 text-secondary-700 dark:bg-secondary-900/30 dark:border-secondary-800 dark:text-secondary-300" : "bg-neutral-50 border-neutral-200 text-neutral-600 dark:bg-neutral-800/50 dark:border-neutral-700 dark:text-neutral-300")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span>{opt.text}</span>
+                    {q.optionsEn.map((opt, optIndex) => (
+                      <span key={opt.id} className={cn("text-sm px-3 py-2 rounded-lg border", opt.id === q.correctAnswer ? "bg-secondary-50 border-secondary-200 text-secondary-700 dark:bg-secondary-900/30 dark:border-secondary-800 dark:text-secondary-300" : "bg-neutral-50 border-neutral-200 text-neutral-600 dark:bg-neutral-800/50 dark:border-neutral-700 dark:text-neutral-300")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}</span>{opt.text}</span>
                     ))}
                   </div>
                   {q.explanationEn && (

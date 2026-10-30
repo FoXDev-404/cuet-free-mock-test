@@ -36,10 +36,12 @@ interface ResultsData {
 function loadStoredResults(): ResultsData | null {
   try {
     const stored = sessionStorage.getItem("cuet_english_mock_results");
+    // P1QA 2026-10-30: this read must NOT consume the entry. The previous
+    // version removed it on first read, so any re-mount — a refresh, an HMR
+    // recompile, or React StrictMode's double mount — left the page stuck on
+    // "Loading results…" forever. The entry is cleared by "New Attempt".
     if (stored) {
-      const parsed: ResultsData = JSON.parse(stored);
-      sessionStorage.removeItem("cuet_english_mock_results");
-      return parsed;
+      return JSON.parse(stored) as ResultsData;
     }
   } catch {}
   return null;
@@ -56,7 +58,15 @@ export default function EnglishMockResultsPage() {
         <p className="mt-2 text-neutral-600 dark:text-neutral-400">
           CUET UG English - 20 May 2025 Shift 1
         </p>
-        <p className="mt-4 text-neutral-500 dark:text-neutral-400">Loading results…</p>
+        <p className="mt-4 text-neutral-500 dark:text-neutral-400">
+          No results stored in this browser session. Start (or finish) an attempt and your
+          verified score will appear here.
+        </p>
+        <div className="mt-6">
+          <Button variant="brand" onClick={() => router.push("/english-mock/intro")}>
+            Go to the mock test
+          </Button>
+        </div>
       </section>
     );
   }
@@ -133,7 +143,7 @@ export default function EnglishMockResultsPage() {
             </h3>
             <p className="text-sm text-amber-700 dark:text-amber-300">
               Questions {REVIEW_FLAGGED_QUESTIONS.join(", ")} are flagged for manual review. Your answers
-              for these questions are not counted as correct or incorrect. Verified score is out of
+              for these questions are not counted as correct or incorrect. Verified score is out of{" "}
               {data.verifiedMaxScore} until these are verified.
             </p>
           </div>
@@ -231,7 +241,17 @@ export default function EnglishMockResultsPage() {
       </div>
 
       <div className="mt-8 flex gap-3 justify-center">
-        <Button variant="brand" onClick={() => router.push("/english-mock/intro")}>
+        <Button
+          variant="brand"
+          onClick={() => {
+            // Starting fresh: the previous attempt's results must not linger
+            // for the next one (P1QA 2026-10-30).
+            try {
+              sessionStorage.removeItem("cuet_english_mock_results");
+            } catch {}
+            router.push("/english-mock/intro");
+          }}
+        >
           <RefreshCw className="h-4 w-4 mr-2" /> New Attempt
         </Button>
       </div>

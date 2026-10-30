@@ -14,6 +14,11 @@ import {
 } from "lucide-react";
 
 const REVIEW_FLAGGED_QUESTIONS = [8, 32, 41];
+// Paper size for the seeded CUET UG English paper (matches intro config).
+// P1QA 2026-10-30: unanswered counts must be measured against the whole
+// paper — questions are loaded into `questions` one page at a time, so any
+// count filtered over that array only sees questions the student visited.
+const TOTAL_QUESTIONS = 50;
 const STORAGE_KEY = "cuet_english_mock_answers";
 const TIMER_STORAGE_KEY = "cuet_english_mock_timer";
 
@@ -39,12 +44,6 @@ export interface QuestionData {
   passage?: PassageData;
 }
 
-interface StoredAnswers {
-  answers: Record<string, string | null>;
-  markedForReview: string[];
-  startedAt: number;
-}
-
 interface TimerState {
   startTime: number;
   durationSeconds: number;
@@ -59,6 +58,53 @@ interface IntroData {
 
 const ORDER_TO_LABEL = ["A", "B", "C", "D"];
 
+/**
+ * P1QA 2026-10-30: restore-on-load persistence helpers.
+ *
+ * The previous implementation restored via a mount effect that ran after the
+ * autosave effect had already written an empty snapshot (and under React
+ * StrictMode the double mount then re-read the already-clobbered storage),
+ * so every reload silently wiped the attempt. State is now initialized
+ * lazily at first render — before any effect can save — so the autosave
+ * effect only ever writes real, current state.
+ */
+function readPersistedAnswers(): Record<string, string | null> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    return JSON.parse(raw).answers || {};
+  } catch {
+    return {};
+  }
+}
+
+function readPersistedMarked(): string[] {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    return JSON.parse(raw).markedForReview || [];
+  } catch {
+    return [];
+  }
+}
+
+function readPersistedTimer(): TimerState | null {
+  try {
+    const raw = localStorage.getItem(TIMER_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed: TimerState = JSON.parse(raw);
+    if (
+      typeof parsed?.startTime !== "number" ||
+      typeof parsed?.durationSeconds !== "number"
+    ) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
 interface EnglishMockTakeProps {
   initialQuestion: QuestionData;
 }
@@ -67,11 +113,26 @@ export default function EnglishMockTake({
   initialQuestion,
 }: EnglishMockTakeProps) {
   const router = useRouter();
+  const autoSubmitFiredRef = useRef(false);
   const [questions, setQuestions] = useState<QuestionData[]>(() => [initialQuestion]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string | null>>({});
-  const [markedForReview, setMarkedForReview] = useState<Set<string>>(new Set());
-  const [timeLeft, setTimeLeft] = useState(3600);
+  const [answers, setAnswers] = useState<Record<string, string | null>>(() =>
+    readPersistedAnswers(),
+  );
+  const [markedForReview, setMarkedForReview] = useState<Set<string>>(() =>
+    new Set(readPersistedMarked()),
+  );
+  const [timeLeft, setTimeLeft] = useState(() => {
+    // Lazy initializer (StrictMode-safe): read the persisted timer before any
+    // effect can clobber localStorage with an empty state. Pure render — the
+    // boot effect below re-reads localStorage itself instead of using a ref
+    // written during render (react-hooks: cannot access refs during render).
+    const persisted = readPersistedTimer();
+    if (!persisted) return 3600;
+    const elapsed =
+      Math.floor((Date.now() - persisted.startTime) / 1000) - persisted.pausedTime;
+    return Math.max(0, persisted.durationSeconds - elapsed);
+  });
   const [timerRunning, setTimerRunning] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -115,9 +176,13 @@ export default function EnglishMockTake({
     if (submitted || submitting) return;
 
     if (!auto) {
-      const unansweredCountLocal = questions.filter(
-        (q) => !answers[q.id] || answers[q.id] === ""
+      // P1QA 2026-10-30: count against the whole paper. The previous filter
+      // over `questions` (lazily filled, visited-only) made the confirm step
+      // silently skip whenever every visited question had been answered.
+      const answeredCountLocal = Object.values(answers).filter(
+        (v) => v !== null && v !== ""
       ).length;
+      const unansweredCountLocal = TOTAL_QUESTIONS - answeredCountLocal;
       const markedCountLocal = markedForReview.size;
       if (unansweredCountLocal > 0 || markedCountLocal > 0) {
         setConfirmSubmit(true);
@@ -182,58 +247,56 @@ export default function EnglishMockTake({
     await submitTest(true);
   };
 
-  // Load exam config for timer duration
+  // Load exam config for timer duration. A persisted timer always wins over
+  // the config default so a page reload continues the SAME attempt clock
+  // (P1QA 2026-10-30). An already-expired persisted attempt auto-submits.
   useEffect(() => {
     let cancelled = false;
-    const startTimer = () => {
-      timerStateRef.current.startTime = Date.now();
+    let autoSubmitScheduled = false;
+    // Re-read localStorage here (effect time — refs-free) rather than seeding
+    // a ref during render (P1QA 2026-10-30).
+    const persisted = readPersistedTimer();
+
+    const startTimer = (persisted: TimerState | null) => {
+      if (persisted) {
+        timerStateRef.current = {
+          startTime: persisted.startTime,
+          durationSeconds: persisted.durationSeconds,
+          pausedTime: persisted.pausedTime,
+        };
+        autoSubmitScheduled = persisted.durationSeconds - (Math.floor((Date.now() - persisted.startTime) / 1000) - persisted.pausedTime) <= 0;
+      } else {
+        timerStateRef.current.startTime = Date.now();
+      }
       setTimerRunning(true);
+      if (autoSubmitScheduled && !autoSubmitFiredRef.current) {
+        // Timer effect skips === 0; honour expiry exactly once.
+        autoSubmitFiredRef.current = true;
+        void Promise.resolve().then(() => void autoSubmit());
+      }
     };
 
     fetch("/api/english-mock/intro", { cache: "no-store" })
       .then((r) => r.json())
       .then((data: IntroData) => {
         if (cancelled) return;
-        setTimeLeft(data.config.durationMinutes * 60);
-        timerStateRef.current.durationSeconds = data.config.durationMinutes * 60;
-        startTimer();
+        if (!persisted) {
+          setTimeLeft(data.config.durationMinutes * 60);
+          timerStateRef.current.durationSeconds = data.config.durationMinutes * 60;
+        }
+        startTimer(persisted);
         setLoading(false);
       })
       .catch(() => {
         // Timer defaults to 60 minutes if config fetch fails
-        startTimer();
+        startTimer(persisted);
         setLoading(false);
       });
     return () => { cancelled = true; };
   }, []);
 
-  // Load persisted answers and timer
-  useEffect(() => {
-    const restoreState = () => {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          const parsed: StoredAnswers = JSON.parse(stored);
-          setAnswers(parsed.answers || {});
-          setMarkedForReview(new Set(parsed.markedForReview || []));
-        }
-      } catch {}
-
-      try {
-        const storedTimer = localStorage.getItem(TIMER_STORAGE_KEY);
-        if (storedTimer) {
-          const parsed: TimerState = JSON.parse(storedTimer);
-          const elapsed = Math.floor((Date.now() - parsed.startTime) / 1000) - parsed.pausedTime;
-          const remaining = Math.max(0, parsed.durationSeconds - elapsed);
-          setTimeLeft(remaining);
-          timerStateRef.current = { ...parsed, startTime: parsed.startTime };
-          setTimerRunning(true);
-        }
-      } catch {}
-    };
-
-    restoreState();
-  }, []);
+  // Timer state is initialized lazily at first render — nothing left to race
+  // with the autosave effect below (P1QA 2026-10-30).
 
   // Save answers to localStorage
   useEffect(() => {
@@ -284,9 +347,12 @@ export default function EnglishMockTake({
   const isMarked = currentQuestion ? markedForReview.has(currentQuestion.id) : false;
   const isFlagged = currentQuestion ? REVIEW_FLAGGED_QUESTIONS.includes(currentQuestion.questionNumber) : false;
 
-  const unansweredCount = questions.filter(
-    (q) => !answers[q.id] || answers[q.id] === ""
+  // Unanswered spans the whole paper (the `questions` array only ever holds
+  // visited pages — see TOTAL_QUESTIONS note at the top, P1QA 2026-10-30).
+  const answeredCount = Object.values(answers).filter(
+    (v) => v !== null && v !== ""
   ).length;
+  const unansweredCount = TOTAL_QUESTIONS - answeredCount;
   const markedCount = markedForReview.size;
 
   const formatTime = (seconds: number) => {
@@ -388,7 +454,7 @@ export default function EnglishMockTake({
             CUET UG English Mock Test
           </h1>
           <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-            Question {currentIndex + 1} of 50
+            Question {currentIndex + 1} of {TOTAL_QUESTIONS}
           </p>
         </div>
         <div className="flex items-center gap-2">

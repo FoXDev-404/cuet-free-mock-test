@@ -30,7 +30,11 @@ function shuffle<T>(arr: T[], seed: number): T[] {
     let t = s;
     t = Math.imul(t ^ (t >>> 15), t | 1);
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    s = t ^ (t >>> 22);
+    // Canonical mulberry32 finalization — `>>> 0` is mandatory here: it keeps
+    // `s` in uint32 so `j = s % (i + 1)` can never go negative. Without it `j`
+    // may index the out-of-bounds negative range, and the swap writes
+    // `undefined` into `out`, silently dropping elements (P1QA 2026-10-30).
+    s = (t ^ (t >>> 22)) >>> 0;
     const j = s % (i + 1);
     [out[i], out[j]] = [out[j], out[i]];
   }
