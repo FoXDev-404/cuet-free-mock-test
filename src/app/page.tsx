@@ -67,7 +67,7 @@ export default function HomePage() {
               <span className="home-eyebrow-dot" aria-hidden="true" />
               NTA Pattern CUET Mock Tests
             </p>
-            <h1 className="max-w-xl text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-neutral-950 dark:text-white sm:text-4xl lg:text-[3rem]">
+            <h1 className="max-w-xl text-2xl font-extrabold leading-[1.12] tracking-[-0.035em] text-neutral-950 dark:text-white sm:text-3xl lg:text-[2.5rem]">
               Practice FREE Online CUET 2027 Mock Tests
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-8">
