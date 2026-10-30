@@ -7,9 +7,10 @@ import {
   Menu, X, Sun, Moon, BookOpen, LayoutDashboard,
   FlaskConical, History, FolderOpen, Bookmark, XCircle,
   TrendingUp, Settings, LogOut, User, ChevronDown, GraduationCap,
-  Target, Shield,
+  Target, Shield, MessageSquare, CalendarDays, Scale,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { isAdminRole } from "@/lib/auth/permissions";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
@@ -26,9 +27,12 @@ const drawerNav = [
   { href: "/mock-tests", label: "Mock Tests", icon: FlaskConical },
   { href: "/practice", label: "Practice", icon: BookOpen },
   { href: "/pyq", label: "Previous Year Questions", icon: History },
+  { href: "/discussions", label: "Discussions", icon: MessageSquare },
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/mock-history", label: "Mock History", icon: History },
   { href: "/categories", label: "Categories", icon: FolderOpen },
+  { href: "/cuet-important-dates", label: "Important Dates", icon: CalendarDays },
+  { href: "/cuet-marking-scheme", label: "Marking Scheme", icon: Scale },
   { href: "/bookmarks", label: "Bookmarks", icon: Bookmark },
   { href: "/incorrect", label: "Incorrect Bank", icon: XCircle },
   { href: "/analytics", label: "Analytics", icon: TrendingUp },
@@ -40,6 +44,7 @@ const userMenuItems = [
   { href: "/mock-history", label: "Mock History", icon: History },
   { href: "/bookmarks", label: "Bookmarks", icon: Bookmark },
   { href: "/incorrect", label: "Incorrect Bank", icon: XCircle },
+  { href: "/dashboard/discussions", label: "My Discussions", icon: MessageSquare },
   { href: "/analytics", label: "Analytics", icon: TrendingUp },
   { href: "/settings", label: "Settings", icon: Settings },
 ] as const;
@@ -287,7 +292,7 @@ export function Navbar() {
                             {item.label}
                           </Link>
                         ))}
-                        {(session?.user as { role?: string } | undefined)?.role === "ADMIN" && (
+                        {isAdminRole((session?.user as { role?: string } | undefined)?.role) && (
                           <Link
                             href="/admin"
                             onClick={() => setUserMenuOpen(false)}

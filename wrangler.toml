@@ -14,6 +14,19 @@ database_id = "1248d1b3-e3d4-4815-99dc-1587a26d25f7"
 migrations_dir = "prisma/migrations"
 migrations_pattern = "prisma/migrations/*/migration.sql"
 
+# Question-diagram bytes live in R2; D1 stores only metadata and the object key.
+# The bucket stays private and is served through /api/media/[id] with immutable
+# cache headers. Set MEDIA_PUBLIC_BASE_URL only if you later attach a custom
+# public domain to the bucket.
+#
+# R2 must be enabled once in the Cloudflare dashboard for this account. Until
+# then the app falls back to a small inline data URL so uploads stay testable.
+# Enable R2, create the bucket, then uncomment this block and redeploy:
+#
+# [[r2_buckets]]
+# binding = "MEDIA"
+# bucket_name = "cuet-media"
+
 [vars]
 NEXTAUTH_URL = "https://cuet-free-mock-test.cuet-platform.workers.dev"
 NEXT_PUBLIC_APP_URL = "https://cuet-free-mock-test.cuet-platform.workers.dev"

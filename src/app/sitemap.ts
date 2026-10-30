@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { getLocalPaperSummaries } from "@/lib/local-papers";
+import { BLOG_POSTS } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 
 // Tests change as editors publish; generate the sitemap on request rather than
@@ -18,6 +19,9 @@ const PUBLIC_ROUTES: Array<{
   { path: "/pyq", changeFrequency: "monthly", priority: 0.8 },
   { path: "/cuet-syllabus", changeFrequency: "monthly", priority: 0.7 },
   { path: "/cuet-exam-pattern", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/cuet-important-dates", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/cuet-marking-scheme", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/discussions", changeFrequency: "daily", priority: 0.6 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   { path: "/categories", changeFrequency: "weekly", priority: 0.6 },
   { path: "/leaderboards", changeFrequency: "daily", priority: 0.5 },
@@ -43,6 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(paper.createdAt),
     changeFrequency: "monthly",
     priority: 0.7,
+  }));
+
+  const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.updated),
+    changeFrequency: "monthly",
+    priority: 0.5,
   }));
 
   let testEntries: MetadataRoute.Sitemap = [];
@@ -77,5 +88,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("sitemap: failed to load published tests", error);
   }
 
-  return [...staticEntries, ...testEntries, ...localEntries];
+  return [...staticEntries, ...testEntries, ...localEntries, ...blogEntries];
 }

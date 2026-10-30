@@ -15,11 +15,16 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  username      String?   @unique
   email         String    @unique
   emailVerified DateTime?
   image         String?
   passwordHash  String?
   role          String    @default("USER")
+  bio           String?
+  isProfilePublic Boolean @default(false)
+  mutedUntil    DateTime?
+  lastActiveAt  DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -28,6 +33,11 @@ model User {
   attempts   Attempt[]
   bookmarks  Bookmark[]
   reviews    QuestionReview[]
+  discussions Discussion[]
+  discussionVotes DiscussionVote[]
+  discussionReports DiscussionReport[]
+  questionReports QuestionReport[]
+  badges     UserBadge[]
 }
 
 model Account {
@@ -205,6 +215,8 @@ model Question {
   reviews   QuestionReview[]
   bookmarks Bookmark[]
   testLinks TestQuestionLink[]
+  discussions Discussion[]
+  reports   QuestionReport[]
 
   @@index([subjectId])
   @@index([chapterId])
@@ -278,6 +290,7 @@ model Test {
   questions TestQuestionLink[]
   attempts  Attempt[]
   versions  TestVersion[]
+  discussions Discussion[]
 
   @@index([subjectId])
 }
@@ -302,6 +315,8 @@ model Attempt {
   sessionId      String   @unique
   status         String   @default("IN_PROGRESS") // IN_PROGRESS | SUBMITTED | AUTO_SUBMITTED | ABANDONED
   startedAt      DateTime @default(now())
+  deadlineAt     DateTime?
+  lastSavedAt    DateTime?
   submittedAt    DateTime?
   timeSpentSec   Int      @default(0)
   score          Int      @default(0)
@@ -311,19 +326,23 @@ model Attempt {
   attemptedCount Int      @default(0)
   percentile     Float?
   configSnapshot String   // JSON string
+  versionId      String?
   flagged        Boolean @default(false) // suspicious attempt, pending manual review
   flaggedReason  String?
   practice       Boolean @default(false) // practice attempts do not count for leaderboards by default
 
   user     User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
   test     Test    @relation(fields: [testId], references: [id], onDelete: Cascade)
+  version  TestVersion? @relation(fields: [versionId], references: [id], onDelete: SetNull)
   answers  QuestionAttempt[]
   events   AttemptEvent[]
+  reports  QuestionReport[]
 
   @@index([userId])
   @@index([testId])
   @@index([sessionId])
   @@index([status])
+  @@index([deadlineAt])
 }
 
 model QuestionAttempt {
@@ -409,6 +428,8 @@ model TestVersion {
   createdAt  DateTime @default(now())
 
   test Test @relation(fields: [testId], references: [id], onDelete: Cascade)
+
+  attempts Attempt[]
 
   @@unique([testId, versionNo])
   @@index([testId])
@@ -563,4 +584,170 @@ model LeaderboardExclusion {
   createdAt DateTime @default(now())
 
   @@index([userId])
+}
+
+// ---- Blueprint completion: reports, community, editorial, privacy ----
+
+model QuestionReport {
+  id             String   @id @default(cuid())
+  questionId     String
+  userId         String?
+  attemptId      String?
+  reason         String   // WRONG_ANSWER | TYPO | AMBIGUOUS | MISSING_IMAGE | OTHER
+  details        String?
+  status         String   @default("OPEN") // OPEN | REVIEWING | RESOLVED | DISMISSED
+  resolutionNote String?
+  resolvedBy     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  attempt  Attempt? @relation(fields: [attemptId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@index([questionId])
+  @@index([userId])
+}
+
+model Discussion {
+  id           String   @id @default(cuid())
+  testId       String?
+  questionId   String?
+  userId       String
+  parentId     String?
+  body         String
+  status       String   @default("VISIBLE") // VISIBLE | PENDING | HIDDEN | DELETED
+  isPinned     Boolean  @default(false)
+  isBestAnswer Boolean  @default(false)
+  upvotes      Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  test     Test?      @relation(fields: [testId], references: [id], onDelete: Cascade)
+  question Question?  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent   Discussion? @relation("DiscussionReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies  Discussion[] @relation("DiscussionReplies")
+  votes    DiscussionVote[]
+  reports  DiscussionReport[]
+
+  @@index([testId, status, createdAt])
+  @@index([questionId, status, createdAt])
+  @@index([parentId])
+  @@index([userId])
+}
+
+model DiscussionVote {
+  id           String   @id @default(cuid())
+  discussionId String
+  userId       String
+  value        Int      @default(1)
+  createdAt    DateTime @default(now())
+
+  discussion Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([discussionId, userId])
+  @@index([userId])
+}
+
+model DiscussionReport {
+  id           String   @id @default(cuid())
+  discussionId String
+  userId       String
+  reason       String
+  details      String?
+  status       String   @default("OPEN") // OPEN | REVIEWED | DISMISSED
+  createdAt    DateTime @default(now())
+
+  discussion Discussion @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([discussionId, userId])
+  @@index([status, createdAt])
+}
+
+model Announcement {
+  id        String    @id @default(cuid())
+  title     String
+  body      String
+  startsAt  DateTime?
+  endsAt    DateTime?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([isActive, startsAt, endsAt])
+}
+
+model PageSeo {
+  id           String   @id @default(cuid())
+  path         String   @unique
+  title        String?
+  description  String?
+  introContent String?
+  faqJson      String?
+  updatedBy    String?
+  updatedAt    DateTime @updatedAt
+
+  @@index([updatedAt])
+}
+
+model ExamInfo {
+  id           String    @id @default(cuid())
+  key          String    @unique
+  label        String
+  value        String
+  sourceUrl    String?
+  lastVerified DateTime?
+  updatedBy    String?
+  updatedAt    DateTime  @updatedAt
+
+  @@index([key])
+}
+
+model UserBadge {
+  id        String   @id @default(cuid())
+  userId    String
+  badgeKey  String
+  earnedAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeKey])
+  @@index([userId])
+}
+
+model RateLimitBucket {
+  key         String   @id
+  windowStart DateTime
+  count       Int      @default(0)
+  updatedAt   DateTime @updatedAt
+
+  @@index([windowStart])
+}
+
+/// Small, audited key/value store for operational feature switches and
+/// editorial configuration (registration, community, exam countdown).
+model PlatformSetting {
+  key       String   @id
+  value     String
+  updatedBy String?
+  updatedAt DateTime @updatedAt
+}
+
+model MediaAsset {
+  id         String   @id @default(cuid())
+  key        String   @unique
+  url        String
+  alt        String
+  mimeType   String
+  width      Int?
+  height     Int?
+  sizeBytes  Int
+  uploadedBy String
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
 }

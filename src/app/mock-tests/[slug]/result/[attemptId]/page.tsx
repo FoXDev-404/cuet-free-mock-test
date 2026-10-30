@@ -1,6 +1,9 @@
 import { prisma } from "@/lib/prisma";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
+import { getSessionUser } from "@/lib/session-user";
+import { canAccessAttempt } from "@/lib/attempt-access";
+import { can } from "@/lib/auth/permissions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CheckCircle, XCircle, Clock, Award, TrendingUp, ChevronDown, ChevronUp, Download, BookOpen } from "lucide-react";
@@ -21,6 +24,18 @@ export default async function ResultPage({ params }: ResultPageProps) {
   });
 
   if (!attempt) notFound();
+  if (attempt.test.slug !== slug) notFound();
+
+  // Results reveal answer keys, so only the owner, the guest holding the
+  // signed attempt cookie, or a student-viewing admin may read them.
+  const { userId, role } = await getSessionUser();
+  const isOwner = attempt.userId
+    ? attempt.userId === userId
+    : await canAccessAttempt(attempt);
+  if (!isOwner && !can(role, "STUDENT_READ")) notFound();
+  if (attempt.status === "IN_PROGRESS") {
+    redirect(`/mock-tests/${encodeURIComponent(slug)}/take`);
+  }
 
   const config = typeof attempt.test.config === "string" ? JSON.parse(attempt.test.config) : attempt.test.config;
   const marksCorrect = config.markingScheme?.correct ?? 5;

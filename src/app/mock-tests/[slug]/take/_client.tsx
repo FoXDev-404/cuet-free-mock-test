@@ -4,7 +4,9 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, Clock, RefreshCw, Flag, CheckCircle, XCircle, MinusCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, RefreshCw, Flag, CheckCircle, XCircle, MinusCircle, Cloud, CloudOff, Loader2 } from "lucide-react";
+import { MathText } from "@/components/ui/math-text";
+import { QuestionReportButton } from "@/components/questions/question-report-button";
 
 // Keyless question contract — the server strips answer keys before this
 // component mounts; grading and per-question correctness arrive only from
@@ -120,8 +122,21 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
   const [error] = useState("");
   const [loading] = useState(false);
   const [attemptId, setAttemptId] = useState<string | null>(null);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [savedAt, setSavedAt] = useState<Date | null>(null);
+  const [resumed, setResumed] = useState(false);
+  const [startError, setStartError] = useState("");
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const deadlineRef = useRef<number | null>(null);
+  const serverOffsetRef = useRef(0);
+  const answersRef = useRef(answers);
+  const markedRef = useRef(markedForReview);
+  const questionsRef = useRef<Question[]>([]);
+  const submitRef = useRef<() => Promise<void>>(async () => {});
+  const dirtyRef = useRef(false);
+  const changeSeqRef = useRef(0);
+  const [dirty, setDirty] = useState(false);
 
   // Declared up front so the auto-submit hook below can depend on the latest
   // closure instead of reading a variable before it is declared.
@@ -146,8 +161,76 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
     finally { setSubmitting(false); }
   }, [answers, attemptId, timeLeft, submitted, submitting, config, slug, localPaper]);
 
-  // Local papers are graded in-memory by their own route; they have no D1
-  // attempt row, so the generic start-attempt call is intentionally skipped.
+  useEffect(() => {
+    answersRef.current = answers;
+    markedRef.current = markedForReview;
+    questionsRef.current = questions;
+  }, [answers, markedForReview, questions]);
+
+  useEffect(() => {
+    submitRef.current = submitTest;
+  }, [submitTest]);
+
+  const saveNow = useCallback(async (options?: { silent?: boolean }) => {
+    if (!attemptId || localPaper || submitted) return;
+    const answersNow = answersRef.current;
+    const markedNow = markedRef.current;
+    const rows = questionsRef.current
+      .filter(
+        (q) =>
+          Object.prototype.hasOwnProperty.call(answersNow, q.id) || markedNow.has(q.id),
+      )
+      .map((q) => ({
+        questionId: q.id,
+        selectedOption: answersNow[q.id] ?? null,
+        markedForReview: markedNow.has(q.id),
+      }));
+    if (!rows.length) {
+      dirtyRef.current = false;
+      setDirty(false);
+      return;
+    }
+
+    const seq = changeSeqRef.current;
+    if (!options?.silent) setSaveState("saving");
+    try {
+      const res = await fetch(`/api/attempts/${encodeURIComponent(attemptId)}/answers`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers: rows }),
+        keepalive: true,
+      });
+      if (res.status === 409) {
+        const data = await res.json().catch(() => ({}));
+        if (data?.expired) {
+          dirtyRef.current = false;
+          setDirty(false);
+          void submitRef.current();
+          return;
+        }
+      }
+      if (!res.ok) throw new Error("save failed");
+      const data = await res.json();
+      if (data?.deadlineAt) deadlineRef.current = Date.parse(data.deadlineAt);
+      setSavedAt(data?.savedAt ? new Date(data.savedAt) : new Date());
+      setSaveState("saved");
+      if (changeSeqRef.current === seq) {
+        dirtyRef.current = false;
+        setDirty(false);
+      }
+    } catch {
+      setSaveState("error");
+    }
+  }, [attemptId, localPaper, submitted]);
+
+  const touchAnswer = useCallback(() => {
+    changeSeqRef.current += 1;
+    dirtyRef.current = true;
+    setDirty(true);
+  }, []);
+
+  // Start (or resume) the server attempt, then hydrate the autosaved sheet.
+  // Local papers have no D1 row and skip this entirely.
   useEffect(() => {
     if (localPaper) return;
     let cancelled = false;
@@ -158,11 +241,67 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ slug }),
         });
-        if (res.ok) {
-          const data = await res.json();
-          if (!cancelled) setAttemptId(data.attemptId);
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(typeof data?.error === "string" ? data.error : "Could not start the test.");
         }
-      } catch {}
+        const started = await res.json();
+        if (cancelled) return;
+        setAttemptId(started.attemptId);
+        setResumed(Boolean(started.resumed));
+        serverOffsetRef.current = Date.parse(started.serverNow) - Date.now();
+        if (started.deadlineAt) {
+          deadlineRef.current = Date.parse(started.deadlineAt);
+          const remaining = Math.max(
+            0,
+            Math.ceil((deadlineRef.current - (Date.now() + serverOffsetRef.current)) / 1000),
+          );
+          setTimeLeft(remaining);
+        }
+
+        const detail = await fetch(`/api/attempts/${encodeURIComponent(started.attemptId)}?resume=1`);
+        if (!detail.ok) {
+          if (detail.status === 401) {
+            setStartError("This attempt belongs to another device. Start a new test to continue.");
+          }
+          return;
+        }
+        const data = await detail.json();
+        if (cancelled) return;
+        if (data.status && data.status !== "IN_PROGRESS") {
+          window.location.href = `/mock-tests/${encodeURIComponent(slug)}/result/${encodeURIComponent(started.attemptId)}`;
+          return;
+        }
+        if (data.deadlineAt) {
+          deadlineRef.current = Date.parse(data.deadlineAt);
+          const remaining = Math.max(
+            0,
+            Math.ceil((deadlineRef.current - (Date.now() + serverOffsetRef.current)) / 1000),
+          );
+          setTimeLeft(remaining);
+        }
+        const savedAnswers = Array.isArray(data.answers) ? data.answers : [];
+        if (savedAnswers.length) {
+          setAnswers((prev) => {
+            const next = { ...prev };
+            for (const row of savedAnswers) {
+              if (typeof row.questionId === "string" && row.selectedOption !== undefined) {
+                next[row.questionId] = row.selectedOption;
+              }
+            }
+            return next;
+          });
+          setMarkedForReview(
+            new Set(
+              savedAnswers
+                .filter((row: { markedForReview?: boolean }) => row.markedForReview)
+                .map((row: { questionId: string }) => row.questionId),
+            ),
+          );
+        }
+      } catch (e) {
+        if (!cancelled) setStartError(e instanceof Error ? e.message : "Could not start the test.");
+      }
     })();
     return () => { cancelled = true; };
   }, [slug, localPaper]);
@@ -191,11 +330,45 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
 
   useEffect(() => {
     if (!timerRunning) return;
-    timerRef.current = setInterval(() => {
-      setTimeLeft(t => (t <= 1 ? 0 : t - 1));
-    }, 1000);
+    const tick = () => {
+      if (deadlineRef.current) {
+        const remaining = Math.max(
+          0,
+          Math.ceil((deadlineRef.current - (Date.now() + serverOffsetRef.current)) / 1000),
+        );
+        setTimeLeft(remaining);
+      } else {
+        setTimeLeft((t) => (t <= 1 ? 0 : t - 1));
+      }
+    };
+    tick();
+    timerRef.current = setInterval(tick, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [timerRunning]);
+
+  // Debounced autosave: every answer/mark change is persisted to D1 shortly
+  // after the learner stops clicking. The timer also keeps the server copy
+  // fresh on slow sessions.
+  useEffect(() => {
+    if (localPaper || !attemptId || submitted || !dirty) return;
+    const id = setTimeout(() => { void saveNow(); }, 1200);
+    return () => clearTimeout(id);
+  }, [answers, markedForReview, dirty, attemptId, submitted, localPaper, saveNow]);
+
+  useEffect(() => {
+    if (localPaper || !attemptId || submitted) return;
+    const id = setInterval(() => {
+      if (dirtyRef.current) void saveNow({ silent: true });
+    }, 15_000);
+    const flush = () => {
+      if (dirtyRef.current) void saveNow({ silent: true });
+    };
+    document.addEventListener("visibilitychange", flush);
+    return () => {
+      clearInterval(id);
+      document.removeEventListener("visibilitychange", flush);
+    };
+  }, [attemptId, submitted, localPaper, saveNow]);
 
   // Auto-submit once the clock reaches zero — deferred out of the timer's
   // state updater so each tick stays a pure state change.
@@ -210,14 +383,23 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
   const isAnswered = answers[currentQuestion?.id] != null && answers[currentQuestion?.id] !== "";
   const isMarked = markedForReview.has(currentQuestion?.id ?? "");
 
-  const selectOption = (optionId: string) => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: optionId }));
-  const clearResponse = () => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: null }));
-  const toggleReview = () => setMarkedForReview(prev => {
-    const n = new Set(prev);
-    if (n.has(currentQuestion!.id)) n.delete(currentQuestion!.id);
-    else n.add(currentQuestion!.id);
-    return n;
-  });
+  const selectOption = (optionId: string) => {
+    setAnswers(prev => ({ ...prev, [currentQuestion!.id]: optionId }));
+    touchAnswer();
+  };
+  const clearResponse = () => {
+    setAnswers(prev => ({ ...prev, [currentQuestion!.id]: null }));
+    touchAnswer();
+  };
+  const toggleReview = () => {
+    setMarkedForReview(prev => {
+      const n = new Set(prev);
+      if (n.has(currentQuestion!.id)) n.delete(currentQuestion!.id);
+      else n.add(currentQuestion!.id);
+      return n;
+    });
+    touchAnswer();
+  };
   const goTo = (i: number) => { if (i >= 0 && i < questions.length) setCurrentIndex(i); };
 
   if (loading) return <section className="py-12 container-page"><div className="card text-center py-20"><div className="animate-spin mx-auto h-12 w-12 border-4 border-primary-200 border-t-primary-600 rounded-full" /><p className="mt-6 text-neutral-600 dark:text-neutral-400">Loading test…</p></div></section>;
@@ -254,15 +436,18 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
                     <div className="flex items-start gap-3">
                       <div className="shrink-0 mt-1">{isCorrect ? <CheckCircle className="h-5 w-5 text-secondary-600 dark:text-secondary-400" /> : isPending ? <MinusCircle className="h-5 w-5 text-accent-600 dark:text-accent-400" /> : sel && sel !== "" ? <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" /> : <MinusCircle className="h-5 w-5 text-neutral-400" />}</div>
                       <div className="min-w-0">
-                        <p className="font-medium text-neutral-900 dark:text-white">Q{q.number}. {q.stemEn}</p>
-                        <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Your answer:</span> {sel && sel !== "" ? q.optionsEn?.find(o => o.id === sel)?.text ?? sel : "Not answered"}</p>
+                        <p className="font-medium text-neutral-900 dark:text-white">Q{q.number}. <MathText text={q.stemEn} /></p>
+                        <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Your answer:</span> {sel && sel !== "" ? <MathText text={q.optionsEn?.find(o => o.id === sel)?.text ?? sel} /> : "Not answered"}</p>
                         {isPending ? (
                           <p className="mt-1 text-sm font-semibold text-accent-700 dark:text-accent-300">Answer key unavailable — pending review (not scored)</p>
                         ) : (
                           <>
                             <p className="mt-1 text-sm"><span className={cn("font-semibold", isCorrect ? "text-secondary-700 dark:text-secondary-300" : sel && sel !== "" ? "text-red-700 dark:text-red-300" : "text-neutral-500")} >{isCorrect ? "Correct" : sel && sel !== "" ? "Incorrect" : "Unattempted"}</span></p>
-                            {rv?.correctOption ? <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Correct answer:</span> {rv.correctOption}. {rv.correctOptionText}</p> : null}
-                            {rv?.explanation ? <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Explanation:</span> {rv.explanation}</p> : null}
+                            {rv?.correctOption ? <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Correct answer:</span> {rv.correctOption}. <MathText text={rv.correctOptionText} /></p> : null}
+                            {rv?.explanation ? <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Explanation:</span> <MathText text={rv.explanation} /></p> : null}
+                            <div className="mt-2">
+                              <QuestionReportButton questionId={q.id} attemptId={attemptId} />
+                            </div>
                           </>
                         )}
                       </div>
@@ -305,9 +490,41 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
         <div>
           <button type="button" onClick={() => window.history.back()} className="mb-2 inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"><ChevronLeft className="h-4 w-4" />Back to test</button>
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">{test?.title || "Mock Test"}</h1>
-          <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Test in progress — answers are saved on this device.</p>
+          <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+            {localPaper
+              ? "Test in progress — answers are saved on this device."
+              : resumed
+                ? "Resumed where you left off — your answers autosave."
+                : "Test in progress — your answers autosave."}
+          </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {!localPaper ? (
+            <span
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-2 text-xs font-medium",
+                saveState === "error"
+                  ? "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-300"
+                  : "border-neutral-200 bg-white text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400",
+              )}
+              aria-live="polite"
+            >
+              {saveState === "saving" ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+              ) : saveState === "error" ? (
+                <CloudOff className="h-3.5 w-3.5" aria-hidden="true" />
+              ) : (
+                <Cloud className="h-3.5 w-3.5" aria-hidden="true" />
+              )}
+              {saveState === "saving"
+                ? "Saving…"
+                : saveState === "error"
+                  ? "Not saved — retrying"
+                  : saveState === "saved"
+                    ? `Saved${savedAt ? ` ${savedAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}` : ""}`
+                    : "Autosave on"}
+            </span>
+          ) : null}
           <div className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 dark:border-neutral-800 dark:bg-neutral-900" aria-label="Time remaining">
             <Clock className="h-4 w-4 text-primary-600 dark:text-primary-400" aria-hidden="true" />
             <span className={cn("font-mono text-sm font-bold", timeLeft <= 300 ? "text-danger-600 dark:text-danger-400" : "text-neutral-900 dark:text-white")}>{formatTime(timeLeft)}</span>
@@ -315,6 +532,13 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
           <Button variant="brand" size="sm" onClick={submitTest} disabled={submitting || submitted}>{submitting ? "Submitting…" : "Submit Test"}</Button>
         </div>
       </div>
+
+      {startError ? (
+        <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800 dark:border-red-900 dark:bg-red-900/20 dark:text-red-200" role="alert">
+          <p className="font-semibold">Could not resume this attempt</p>
+          <p className="mt-1">{startError}</p>
+        </div>
+      ) : null}
 
       {localPaper?.draft ? (
         <div className="mb-6 rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm dark:border-accent-900 dark:bg-accent-900/20">
@@ -340,12 +564,12 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
                 Reading passage — {currentQuestion.passage.title}
               </summary>
               <div className="max-h-72 overflow-y-auto whitespace-pre-wrap break-words border-t border-neutral-200 px-4 py-3 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:text-neutral-300">
-                {currentQuestion.passage.content}
+                <MathText text={currentQuestion.passage.content} />
               </div>
             </details>
           ) : null}
-          <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6">{currentQuestion?.stemEn}</div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{currentQuestion?.optionsEn.map(opt => { const selected = answers[currentQuestion!.id] === opt.id; return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span>{opt.text}</button>; })}</div>
+          <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6"><MathText text={currentQuestion?.stemEn} /></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{currentQuestion?.optionsEn.map(opt => { const selected = answers[currentQuestion!.id] === opt.id; return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span><MathText text={opt.text} /></button>; })}</div>
           <div className="mt-4 flex flex-wrap gap-3"><Button variant="outline" size="sm" onClick={clearResponse} disabled={!isAnswered || submitting}><RefreshCw className="h-4 w-4 mr-2" />Clear</Button><Button variant="outline" size="sm" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0}><ChevronLeft className="h-4 w-4 mr-2" />Previous</Button>{currentIndex < questions.length - 1 ? <Button variant="brand" size="sm" onClick={() => goTo(currentIndex + 1)} disabled={submitting}>Next <ChevronRight className="h-4 w-4 ml-2" /></Button> : <Button variant="brand" size="sm" onClick={submitTest} disabled={submitting || submitted}>Submit Test</Button>}</div>
         </CardContent>
       </Card>

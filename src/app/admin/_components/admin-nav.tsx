@@ -7,9 +7,14 @@ import {
   Database,
   FileStack,
   GraduationCap,
+  Image as ImageIcon,
   LayoutDashboard,
   ListTree,
   LogOut,
+  Megaphone,
+  MessageSquare,
+  Settings,
+  ShieldAlert,
   ShieldCheck,
   Sigma,
   Trophy,
@@ -33,6 +38,11 @@ const NAV: NavItem[] = [
   { href: "/admin/leaderboards", label: "Leaderboards", icon: Trophy, permission: "LEADERBOARD_READ" },
   { href: "/admin/students", label: "Students", icon: Users, permission: "STUDENT_READ" },
   { href: "/admin/analytics", label: "Analytics", icon: Sigma, permission: "ANALYTICS_READ" },
+  { href: "/admin/reports", label: "Reports", icon: ShieldAlert, permission: "MODERATION_READ" },
+  { href: "/admin/discussions", label: "Discussions", icon: MessageSquare, permission: "MODERATION_READ" },
+  { href: "/admin/content", label: "Site Content", icon: Megaphone, permission: "CONTENT_WRITE" },
+  { href: "/admin/media", label: "Media Library", icon: ImageIcon, permission: "CONTENT_WRITE" },
+  { href: "/admin/settings", label: "Platform Settings", icon: Settings, permission: "SETTINGS_WRITE" },
   { href: "/admin/audit", label: "Audit Log", icon: ShieldCheck, permission: "AUDIT_READ" },
   { href: "/admin/database", label: "Database Tools", icon: Database, permission: "DATABASE_TOOLS" },
 ];
@@ -77,7 +87,10 @@ export function AdminNav({
         <p className="text-xs text-neutral-400">{role}</p>
       </div>
       {visible.map((item) => {
-        const active = pathname === item.href;
+        const active =
+          item.href === "/admin"
+            ? pathname === "/admin"
+            : pathname === item.href || pathname.startsWith(`${item.href}/`);
         return (
           <Link
             key={item.href}

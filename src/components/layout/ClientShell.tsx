@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toast";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AnnouncementBanner } from "@/components/layout/AnnouncementBanner";
 
 export function ClientShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -24,6 +25,7 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
             Skip to main content
           </a>
           {!isExamTake && <Navbar />}
+          <AnnouncementBanner />
           <main id="main" className="flex-1">
             {children}
           </main>

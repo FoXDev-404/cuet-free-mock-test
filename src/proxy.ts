@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
+import { isAdminRole } from "@/lib/auth/permissions";
 
 // Next.js 16 replaced the middleware convention with proxy.ts (the function
 // must be exported as `proxy`, even alongside a default export).
@@ -19,7 +20,7 @@ export async function proxy(req: NextRequest) {
     login.searchParams.set("callbackUrl", `${pathname}${req.nextUrl.search}`);
     return NextResponse.redirect(login);
   }
-  if ((token as { role?: string }).role !== "ADMIN") {
+  if (!isAdminRole((token as { role?: string }).role)) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
   return NextResponse.next();

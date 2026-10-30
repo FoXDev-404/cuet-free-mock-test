@@ -6,6 +6,7 @@ import { Clock, CheckCircle, Users, Award, Target, AlertTriangle } from "lucide-
 import { Badge } from "@/components/ui/badge";
 import { getLocalPaperSummary, type LocalPaperSummary } from "@/lib/local-papers";
 import { publicPageMetadata } from "@/lib/seo";
+import { DiscussionThread } from "@/components/discussions/discussion-thread";
 
 interface TestPageProps {
   params: Promise<{ slug: string }>;
@@ -193,6 +194,13 @@ export default async function TestDetailPage({ params }: TestPageProps) {
           <Link href={`/mock-tests/${test.slug}/take`} className="btn-brand w-full sm:w-auto flex-1 justify-center">Start Test</Link>
           <Link href="/mock-tests" className="btn-outline w-full sm:w-auto flex-1 justify-center">Back to Tests</Link>
         </div>
+      </div>
+
+      <div className="mt-6">
+        <DiscussionThread
+          target={{ testId: test.id }}
+          title={`${test.title} discussion`}
+        />
       </div>
     </section>
   );

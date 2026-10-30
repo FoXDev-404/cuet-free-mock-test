@@ -12,6 +12,7 @@ import { TestsManager } from "./_components/tests-manager";
 import { PyqCardManager } from "./_components/pyq-card-manager";
 import { ImportManager } from "./_components/import-manager";
 import { BookOpen, ClipboardCheck, FlaskConical, LayoutDashboard, Loader2, ShieldAlert, Upload } from "lucide-react";
+import { isAdminRole } from "@/lib/auth/permissions";
 
 interface Stats {
   subjects: number;
@@ -55,7 +56,7 @@ export default function AdminPage() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loadingData, setLoadingData] = useState(true);
   const role = (session?.user as { role?: string } | undefined)?.role;
-  const isLord = role === "ADMIN";
+  const isLord = isAdminRole(role);
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login");

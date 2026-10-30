@@ -54,7 +54,11 @@ export type AdminAction =
   | "ADMIN_USERS"
   | "AUDIT_READ"
   | "SETTINGS_WRITE"
-  | "DATABASE_TOOLS"; // export / backup
+  | "DATABASE_TOOLS"
+  // community & editorial moderation
+  | "MODERATION_READ"
+  | "MODERATION_WRITE"
+  | "CONTENT_WRITE";
 
 const MATRIX: Record<Role, readonly AdminAction[]> = {
   SUPER_ADMIN: [
@@ -66,6 +70,7 @@ const MATRIX: Record<Role, readonly AdminAction[]> = {
     "IMPORT_RUN", "IMPORT_READ",
     "ANALYTICS_READ",
     "ADMIN_USERS", "AUDIT_READ", "SETTINGS_WRITE", "DATABASE_TOOLS",
+    "MODERATION_READ", "MODERATION_WRITE", "CONTENT_WRITE",
   ],
   ADMIN: [
     "ACADEMIC_READ", "ACADEMIC_WRITE",
@@ -76,6 +81,7 @@ const MATRIX: Record<Role, readonly AdminAction[]> = {
     "IMPORT_RUN", "IMPORT_READ",
     "ANALYTICS_READ",
     "ADMIN_USERS", "AUDIT_READ", "SETTINGS_WRITE", "DATABASE_TOOLS",
+    "MODERATION_READ", "MODERATION_WRITE", "CONTENT_WRITE",
   ],
   CONTENT_MANAGER: [
     "ACADEMIC_READ", "ACADEMIC_WRITE",
@@ -84,11 +90,13 @@ const MATRIX: Record<Role, readonly AdminAction[]> = {
     "IMPORT_RUN", "IMPORT_READ",
     "LEADERBOARD_READ",
     "ANALYTICS_READ", "STUDENT_READ",
+    "MODERATION_READ", "CONTENT_WRITE",
   ],
   REVIEWER: [
     "ACADEMIC_READ",
     "QUESTION_READ", "QUESTION_REVIEW",
     "LEADERBOARD_READ", "ANALYTICS_READ", "STUDENT_READ",
+    "MODERATION_READ", "MODERATION_WRITE",
   ],
   TEST_MANAGER: [
     "ACADEMIC_READ",

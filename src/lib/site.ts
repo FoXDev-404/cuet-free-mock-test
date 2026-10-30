@@ -35,4 +35,6 @@ export const PRIVATE_ROUTE_PREFIXES = [
   "/verify-email",
   "/english-mock/take",
   "/english-mock/results",
+  "/maintenance",
+  "/500",
 ] as const;

@@ -15,6 +15,7 @@ interface IncorrectItem {
   subject: string;
   topic: string;
   testId?: string;
+  testSlug?: string;
   selectedOption?: string;
   createdAt: string;
 }
@@ -89,8 +90,8 @@ export default function IncorrectPage() {
                     {q.explanationEn && (
                       <details className="group"><summary className="text-sm font-medium text-primary-600 dark:text-primary-400 cursor-pointer flex items-center gap-1">Show Explanation <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" /></summary><div className="mt-2 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-sm text-neutral-700 dark:text-neutral-300">{q.explanationEn}</div></details>
                     )}
-                    {q.testId && (
-                      <Link href={"/mock-tests/" + q.testId + "/take"} className="mt-3 inline-flex items-center gap-1 text-sm text-primary-600 hover:underline dark:text-primary-400"><RefreshCw className="h-4 w-4" />Retry in Test</Link>
+                    {q.testSlug && (
+                      <Link href={`/mock-tests/${q.testSlug}/take`} className="mt-3 inline-flex items-center gap-1 text-sm text-primary-600 hover:underline dark:text-primary-400"><RefreshCw className="h-4 w-4" />Retry in Test</Link>
                     )}
                   </div>
                 ))}

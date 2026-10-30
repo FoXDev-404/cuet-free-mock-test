@@ -29,6 +29,8 @@ const PRIVATE_ROUTES = [
   "/mock-tests/:slug/result/:path*",
   "/english-mock/take",
   "/english-mock/results",
+  "/maintenance",
+  "/500",
 ];
 
 const nextConfig: NextConfig = {

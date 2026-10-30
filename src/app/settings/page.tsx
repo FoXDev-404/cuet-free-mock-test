@@ -8,6 +8,7 @@ import {
   Moon, Sun, Monitor, Shield, Bell, Palette, Check, RotateCcw,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AccountPrivacy } from "./account-privacy";
 
 type Prefs = {
   compactCards: boolean;
@@ -139,6 +140,8 @@ export default function SettingsPage() {
           Changes saved
         </span>
       </div>
+
+      <AccountPrivacy />
 
       <Card className="mb-6">
         <CardHeader>

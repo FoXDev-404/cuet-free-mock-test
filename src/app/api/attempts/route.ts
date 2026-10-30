@@ -5,10 +5,11 @@
 //    answer keys before submission (take/practice pages pass keyless props).
 //  - isCorrect per question is revealed in the submit response (safe: that is
 //    the moment the paper ends).
+//  - The server owns the deadline; a paused tab cannot buy extra time.
+//  - Guests must present the signed attempt cookie issued at start.
+//  - Submitted attempts are immutable; a replay returns 409.
 //  - GET /api/attempts requires a session and returns the caller's (or admin's)
 //    attempts without embedded question objects (keys never leak via history).
-//  - Practice and suspicious attempts are never silently fabricated: they are
-//    recorded with truthful fields (practice flag, flagged reason).
 
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
@@ -16,6 +17,9 @@ import { can } from "@/lib/auth/permissions";
 import { recalculateLeaderboard, scopeWhereFor } from "@/lib/leaderboard";
 import { ensureSyntheticTest } from "@/lib/attempts";
 import { getSessionUser } from "@/lib/session-user";
+import { canAccessAttempt } from "@/lib/attempt-access";
+import { awardBadges } from "@/lib/badges";
+import { enforceRateLimit, forbiddenOrigin, isSameOrigin, logApiError } from "@/lib/http";
 import { z } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -48,9 +52,6 @@ function isCorrectAnswer(
   return false;
 }
 
-/** Reserved non-public tests so every attempt has a FK target. */
-// (moved to src/lib/attempts.ts so /start and /submit share one helper)
-
 const submitSchema = z.object({
   attemptId: z.string().optional(),
   sessionId: z.string().optional(),
@@ -66,32 +67,66 @@ const submitSchema = z.object({
   timeSpentSec: z.number().min(0).max(24 * 60 * 60).default(0),
 });
 
+type AttemptRow = {
+  id: string;
+  userId: string | null;
+  sessionId: string;
+  testId: string;
+  status: string;
+  configSnapshot: string;
+  startedAt: Date;
+  deadlineAt: Date | null;
+  versionId: string | null;
+  practice: boolean;
+};
+
 export async function POST(req: Request) {
   try {
+    if (!isSameOrigin(req)) return forbiddenOrigin();
+    const limited = await enforceRateLimit(req, {
+      bucket: "attempts:submit",
+      limit: 20,
+      windowSec: 10 * 60,
+    });
+    if (limited) return limited;
+
     const body = await req.json();
     const parsed = submitSchema.parse(body);
     const { userId } = await getSessionUser();
 
     // Resolve the attempt: an explicit attemptId (from /start) or fallback
     // resolution by test (creates the attempt right here for legacy clients).
-    let attempt: { id: string; userId: string | null; sessionId: string; testId: string; status: string; configSnapshot: string; startedAt: Date } | null = null;
+    let attempt: AttemptRow | null = null;
     if (parsed.attemptId && parsed.attemptId.length > 10) {
       const found = await prisma.attempt.findUnique({
         where: { id: parsed.attemptId },
-        select: { id: true, userId: true, sessionId: true, testId: true, status: true, configSnapshot: true, startedAt: true },
+        select: {
+          id: true,
+          userId: true,
+          sessionId: true,
+          testId: true,
+          status: true,
+          configSnapshot: true,
+          startedAt: true,
+          deadlineAt: true,
+          versionId: true,
+          practice: true,
+        },
       });
-      // Attempt ids are unguessable, but never let a different signed-in
-      // account submit or replay someone else's paper.
-      if (found && found.userId && found.userId !== userId) {
+      if (!found) return NextResponse.json({ error: "Attempt not found" }, { status: 404 });
+
+      if (!(await canAccessAttempt(found))) {
+        // Do not reveal whether another learner's attempt exists.
         return NextResponse.json({ error: "Attempt not found" }, { status: 404 });
       }
-      if (found && found.status === "IN_PROGRESS") attempt = found;
-      if (found && found.status !== "IN_PROGRESS") {
+
+      if (found.status !== "IN_PROGRESS") {
         return NextResponse.json(
           { error: `Attempt already ${found.status.toLowerCase()}`, attemptId: found.id },
           { status: 409 },
         );
       }
+      attempt = found;
     }
 
     // Resolve the test for grading + fallback attempt creation. The link
@@ -111,6 +146,12 @@ export async function POST(req: Request) {
     if (!test) return NextResponse.json({ error: "Test not found" }, { status: 404 });
 
     if (!attempt) {
+      const deadlineAt = new Date(Date.now() + Math.max(1, test.durationMinutes || 60) * 60_000);
+      const version = await prisma.testVersion.findFirst({
+        where: { testId: test.id },
+        orderBy: { versionNo: "desc" },
+        select: { id: true },
+      });
       attempt = await prisma.attempt.create({
         data: {
           sessionId: parsed.sessionId ?? `legacy-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -118,10 +159,23 @@ export async function POST(req: Request) {
           userId,
           status: "IN_PROGRESS",
           startedAt: new Date(),
+          deadlineAt,
+          versionId: version?.id ?? null,
           configSnapshot: typeof test.config === "string" ? test.config : JSON.stringify(test.config ?? {}),
           practice: parsed.practice ?? Boolean(parsed.slug && parsed.slug === "practice-arena"),
         },
-        select: { id: true, userId: true, sessionId: true, testId: true, status: true, configSnapshot: true, startedAt: true },
+        select: {
+          id: true,
+          userId: true,
+          sessionId: true,
+          testId: true,
+          status: true,
+          configSnapshot: true,
+          startedAt: true,
+          deadlineAt: true,
+          versionId: true,
+          practice: true,
+        },
       });
     }
 
@@ -129,15 +183,35 @@ export async function POST(req: Request) {
     const marksCorrect = config.markingScheme?.correct ?? 1;
     const marksIncorrect = config.markingScheme?.incorrect ?? 0;
 
-    // The browser displays the countdown, but the server owns the deadline.
-    // Submissions that arrive after it are accepted once and recorded as
-    // AUTO_SUBMITTED, so a paused tab cannot buy extra time.
+    // Server-owned deadline. Late submissions are still accepted once so the
+    // learner keeps their answers, but they are recorded as AUTO_SUBMITTED.
     const configuredDuration = Number(config.durationMinutes ?? test.durationMinutes ?? 60);
     const durationMinutes = Number.isFinite(configuredDuration) && configuredDuration > 0 ? configuredDuration : 60;
+    const deadlineAt =
+      attempt.deadlineAt ?? new Date(attempt.startedAt.getTime() + durationMinutes * 60_000);
     const deadlineSec = Math.round(durationMinutes * 60);
     const serverElapsedSec = Math.max(0, Math.floor((Date.now() - attempt.startedAt.getTime()) / 1000));
-    const deadlineExceeded = serverElapsedSec > deadlineSec + 30;
+    const deadlineExceeded = Date.now() > deadlineAt.getTime() + 30_000;
     const reportedTimeSec = Math.min(Math.max(parsed.timeSpentSec, 0), deadlineSec);
+
+    // Grade against the pinned version when the snapshot carries its ordered
+    // question ids. Fall back to the current paper order for older snapshots
+    // or attempts started before version pinning existed.
+    let paperQuestions = test.questions;
+    if (attempt.versionId) {
+      const version = await prisma.testVersion.findUnique({
+        where: { id: attempt.versionId },
+        select: { snapshot: true },
+      });
+      const snapshot = safeParseSnapshot(version?.snapshot);
+      if (snapshot?.questionIds?.length) {
+        const byId = new Map(test.questions.map((row) => [row.questionId, row]));
+        const pinned = snapshot.questionIds
+          .map((id) => byId.get(id))
+          .filter((row): row is (typeof test.questions)[number] => Boolean(row));
+        if (pinned.length) paperQuestions = pinned;
+      }
+    }
 
     const answerMap = new Map(parsed.answers.map((a) => [a.questionId, a.selectedOption]));
 
@@ -145,8 +219,15 @@ export async function POST(req: Request) {
     let incorrect = 0;
     let attempted = 0;
 
-    const questionAttempts = [];
-    for (const q of test.questions) {
+    const questionAttempts: Array<{
+      questionId: string;
+      selectedOption: string | null;
+      isCorrect: boolean;
+      timeSpentSec: number;
+      markedForReview: boolean;
+      cleared: boolean;
+    }> = [];
+    for (const q of paperQuestions) {
       const selected = answerMap.get(q.questionId) ?? null;
       const isCorrect = isCorrectAnswer(selected, q.question);
       if (selected !== null && selected !== "") {
@@ -164,14 +245,13 @@ export async function POST(req: Request) {
       });
     }
 
-    const unattempted = test.questions.length - attempted;
+    const unattempted = paperQuestions.length - attempted;
     const rawScore = correct * marksCorrect - incorrect * marksIncorrect;
-    const maxScore = test.questions.length * marksCorrect;
+    const maxScore = paperQuestions.length * marksCorrect;
     const accuracy = attempted === 0 ? 0 : (correct / (correct + incorrect || 1)) * 100;
 
-    // Replay-with-same-attempt-id is rejected above; duration heuristics flag
-    // likely bots (never silently discard results — flagged for human review).
-    const suspicious = attempted > 0 && reportedTimeSec < 15 && test.questions.length >= 10;
+    // Duration heuristics flag likely bots (never silently discard results).
+    const suspicious = attempted > 0 && reportedTimeSec < 15 && paperQuestions.length >= 10;
     const configSnapshot = JSON.stringify({
       ...config,
       scoredAt: new Date().toISOString(),
@@ -179,15 +259,18 @@ export async function POST(req: Request) {
       marksIncorrect,
       serverElapsedSec,
       deadlineExceeded,
+      versionId: attempt.versionId,
     });
 
     const finalStatus = deadlineExceeded ? "AUTO_SUBMITTED" : "SUBMITTED";
+    const isPractice = attempt.practice || test.slug === "practice-arena" || Boolean(parsed.practice);
 
     const saved = await prisma.attempt.update({
       where: { id: attempt.id },
       data: {
         status: finalStatus,
         submittedAt: new Date(),
+        lastSavedAt: new Date(),
         timeSpentSec: reportedTimeSec,
         score: Math.round(rawScore),
         maxScore: Math.round(maxScore),
@@ -196,7 +279,7 @@ export async function POST(req: Request) {
         attemptedCount: attempted,
         flagged: suspicious,
         flaggedReason: suspicious ? "impossible duration for question count" : null,
-        practice: Boolean(attempt && (parsed.practice ?? false)) || test.slug === "practice-arena",
+        practice: isPractice,
         configSnapshot,
         answers: { deleteMany: {}, create: questionAttempts },
         events: {
@@ -209,13 +292,44 @@ export async function POST(req: Request) {
               maxScore: Math.round(maxScore),
               serverElapsedSec,
               deadlineExceeded,
-              via: "api/attempts@v2",
+              versionId: attempt.versionId,
+              via: "api/attempts@v3",
             }),
           },
         },
       },
       select: { id: true, sessionId: true, score: true },
     });
+
+    // Percentile across comparable submitted attempts on the same paper.
+    let percentile: number | null = null;
+    if (userId && !suspicious && !isPractice && maxScore > 0) {
+      try {
+        const [total, lower] = await Promise.all([
+          prisma.attempt.count({
+            where: {
+              testId: test.id,
+              status: { in: ["SUBMITTED", "AUTO_SUBMITTED"] },
+              practice: false,
+              userId: { not: null },
+            },
+          }),
+          prisma.attempt.count({
+            where: {
+              testId: test.id,
+              status: { in: ["SUBMITTED", "AUTO_SUBMITTED"] },
+              practice: false,
+              userId: { not: null },
+              score: { lt: Math.round(rawScore) },
+            },
+          }),
+        ]);
+        percentile = total <= 1 ? 100 : Math.round((lower / (total - 1)) * 1000) / 10;
+        await prisma.attempt.update({ where: { id: saved.id }, data: { percentile } });
+      } catch (percentileError) {
+        console.error("percentile computation failed", percentileError);
+      }
+    }
 
     // Leaderboard hooks: global + this test's scope-linked active configs.
     // Practice & flagged attempts are skipped (the engine also filters them).
@@ -234,6 +348,14 @@ export async function POST(req: Request) {
         }
       } catch (lbError) {
         console.error("leaderboard recalc after submit", lbError);
+      }
+    }
+
+    if (userId && !isPractice && !suspicious) {
+      try {
+        await awardBadges(userId);
+      } catch (badgeError) {
+        console.error("badge award failed", badgeError);
       }
     }
 
@@ -258,22 +380,39 @@ export async function POST(req: Request) {
       flagged: suspicious,
       status: finalStatus,
       autoSubmitted: deadlineExceeded,
+      percentile,
+      versionId: attempt.versionId,
       review,
     });
   } catch (e: unknown) {
     if (e && typeof e === "object" && "issues" in e) {
       return NextResponse.json({ error: e.issues }, { status: 400 });
     }
-    console.error("attempts POST error", e);
+    logApiError("attempts/submit", e, req);
     return NextResponse.json({ error: "Failed to submit attempt" }, { status: 500 });
   }
 }
 
-function safeParseConfig(raw: string | null): { markingScheme?: { correct?: number; incorrect?: number; unattempted?: number }; durationMinutes?: number } {
+function safeParseConfig(raw: string | null): {
+  markingScheme?: { correct?: number; incorrect?: number; unattempted?: number };
+  durationMinutes?: number;
+} {
   try {
     return typeof raw === "string" ? JSON.parse(raw) : {};
   } catch {
     return {};
+  }
+}
+
+function safeParseSnapshot(raw: string | null | undefined): { questionIds?: string[] } | null {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as { questionIds?: unknown };
+    return Array.isArray(parsed.questionIds)
+      ? { questionIds: parsed.questionIds.filter((id): id is string => typeof id === "string") }
+      : null;
+  } catch {
+    return null;
   }
 }
 

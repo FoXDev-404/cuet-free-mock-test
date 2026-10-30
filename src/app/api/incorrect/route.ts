@@ -11,7 +11,7 @@ export async function GET() {
     const attempts = await prisma.attempt.findMany({
       where: { userId: session.user.id, status: { in: ["SUBMITTED", "AUTO_SUBMITTED"] } },
       include: {
-        test: true,
+        test: { select: { slug: true } },
         answers: {
           include: { question: { include: { subject: true, topic: true } } },
           where: { isCorrect: false },
@@ -29,6 +29,7 @@ export async function GET() {
       subject: ans.question.subject?.name || ans.question.subjectId,
       topic: ans.question.topic?.name || null,
       testId: a.testId,
+      testSlug: a.test.slug,
       selectedOption: ans.selectedOption,
       createdAt: a.submittedAt?.toISOString() || a.startedAt.toISOString(),
     })));

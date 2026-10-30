@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 import { ClientShell } from "@/components/layout/ClientShell";
 import { AdSenseLoader } from "@/components/ads/AdSenseLoader";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
