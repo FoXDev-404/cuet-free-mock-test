@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "Terms & Conditions",
+  description:
+    "The terms that govern use of CUETFreeMockTest, including acceptable use, accounts and content.",
+  path: "/terms",
+});
+
 export default function TermsPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">

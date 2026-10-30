@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,6 +14,10 @@ import {
 } from "lucide-react";
 import { HomePopularTests } from "@/components/home/HomePopularTests";
 import { HomeTestTables } from "@/components/home/HomeTestTables";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const studySteps = [
   {

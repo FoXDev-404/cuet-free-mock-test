@@ -56,7 +56,7 @@ export default function DashboardPage() {
     return () => { cancelled = true; };
   }, []);
 
-  const submitted = attempts.filter((a) => a.status === "SUBMITTED");
+  const submitted = attempts.filter((a) => a.status === "SUBMITTED" || a.status === "AUTO_SUBMITTED");
   const totalAttempts = attempts.length;
   const avgScore = submitted.length > 0 ? Math.round(submitted.reduce((sum, a) => sum + (a.score || 0), 0) / submitted.length) : 0;
   const avgAccuracy = submitted.length > 0 ? Math.round(submitted.reduce((sum, a) => { const att = a.attemptedCount || 0; const cor = a.correctCount || 0; return sum + (att > 0 ? (cor / att) * 100 : 0); }, 0) / submitted.length) : 0;

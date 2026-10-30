@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "About CUETFreeMockTest",
+  description:
+    "CUETFreeMockTest is a free, independent CUET (UG) mock-test and practice platform with instant scoring. Not affiliated with NTA.",
+  path: "/about",
+});
+
 export default function AboutPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">

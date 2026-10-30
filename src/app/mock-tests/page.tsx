@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Clock, ArrowRight, BarChart3, BookOpen, Target, Zap, FlaskConical, AlertTriangle } from "lucide-react";
 import { getLocalPaperSummaries } from "@/lib/local-papers";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "CUET Mock Tests — Full Length, Subject-wise & PYQ Papers",
+  description:
+    "Browse free CUET (UG) mock tests: full-length papers, subject-wise practice, chapter-wise sets and previous year English papers with instant scoring.",
+  path: "/mock-tests",
+});
 
 export default async function MockTestsPage() {
   const localPapers = getLocalPaperSummaries();

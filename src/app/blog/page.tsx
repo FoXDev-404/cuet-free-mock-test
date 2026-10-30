@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { AdSlot } from "@/components/ads/AdSlot";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "CUET Preparation Blog — Strategy & Exam Guides",
+  description:
+    "Original CUET (UG) preparation guides: mock-test strategy, the marking scheme, subject selection and revision plans.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const posts = [

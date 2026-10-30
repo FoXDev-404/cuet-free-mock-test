@@ -12,11 +12,10 @@
 
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth/config";
-import { can, normalizeRole } from "@/lib/auth/permissions";
+import { can } from "@/lib/auth/permissions";
 import { recalculateLeaderboard, scopeWhereFor } from "@/lib/leaderboard";
 import { ensureSyntheticTest } from "@/lib/attempts";
+import { getSessionUser } from "@/lib/session-user";
 import { z } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -49,18 +48,6 @@ function isCorrectAnswer(
   return false;
 }
 
-async function currentUserId(): Promise<{ userId: string | null; role: string; email: string | null }> {
-  const session = await getServerSession(authOptions);
-  const user = session?.user as
-    | { id?: string; email?: string; role?: string }
-    | undefined;
-  return {
-    userId: user?.id ?? null,
-    role: normalizeRole(user?.role),
-    email: user?.email ?? null,
-  };
-}
-
 /** Reserved non-public tests so every attempt has a FK target. */
 // (moved to src/lib/attempts.ts so /start and /submit share one helper)
 
@@ -83,16 +70,21 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const parsed = submitSchema.parse(body);
-    const { userId } = await currentUserId();
+    const { userId } = await getSessionUser();
 
     // Resolve the attempt: an explicit attemptId (from /start) or fallback
     // resolution by test (creates the attempt right here for legacy clients).
-    let attempt: { id: string; sessionId: string; testId: string; status: string; configSnapshot: string; startedAt: Date } | null = null;
+    let attempt: { id: string; userId: string | null; sessionId: string; testId: string; status: string; configSnapshot: string; startedAt: Date } | null = null;
     if (parsed.attemptId && parsed.attemptId.length > 10) {
       const found = await prisma.attempt.findUnique({
         where: { id: parsed.attemptId },
-        select: { id: true, sessionId: true, testId: true, status: true, configSnapshot: true, startedAt: true },
+        select: { id: true, userId: true, sessionId: true, testId: true, status: true, configSnapshot: true, startedAt: true },
       });
+      // Attempt ids are unguessable, but never let a different signed-in
+      // account submit or replay someone else's paper.
+      if (found && found.userId && found.userId !== userId) {
+        return NextResponse.json({ error: "Attempt not found" }, { status: 404 });
+      }
       if (found && found.status === "IN_PROGRESS") attempt = found;
       if (found && found.status !== "IN_PROGRESS") {
         return NextResponse.json(
@@ -107,8 +99,8 @@ export async function POST(req: Request) {
     // align with the numbered paper the student actually answered.
     const test = await (async () => {
       if (attempt) return prisma.test.findUnique({ where: { id: attempt.testId }, include: { questions: { orderBy: { order: "asc" }, include: { question: true } } } });
-      if (parsed.slug) return prisma.test.findUnique({ where: { slug: parsed.slug }, include: { questions: { orderBy: { order: "asc" }, include: { question: true } } } });
-      if (parsed.testId) return prisma.test.findUnique({ where: { id: parsed.testId }, include: { questions: { orderBy: { order: "asc" }, include: { question: true } } } });
+      if (parsed.slug) return prisma.test.findUnique({ where: { slug: parsed.slug, status: "PUBLISHED" }, include: { questions: { orderBy: { order: "asc" }, include: { question: true } } } });
+      if (parsed.testId) return prisma.test.findUnique({ where: { id: parsed.testId, status: "PUBLISHED" }, include: { questions: { orderBy: { order: "asc" }, include: { question: true } } } });
       // Keyless practice/graders without a test row practice on the arena.
       const arena = await ensureSyntheticTest("practice-arena", "Practice Arena", {
         markingScheme: { correct: 5, incorrect: 1, unattempted: 0 },
@@ -129,13 +121,23 @@ export async function POST(req: Request) {
           configSnapshot: typeof test.config === "string" ? test.config : JSON.stringify(test.config ?? {}),
           practice: parsed.practice ?? Boolean(parsed.slug && parsed.slug === "practice-arena"),
         },
-        select: { id: true, sessionId: true, testId: true, status: true, configSnapshot: true, startedAt: true },
+        select: { id: true, userId: true, sessionId: true, testId: true, status: true, configSnapshot: true, startedAt: true },
       });
     }
 
     const config = safeParseConfig(attempt.configSnapshot);
     const marksCorrect = config.markingScheme?.correct ?? 1;
     const marksIncorrect = config.markingScheme?.incorrect ?? 0;
+
+    // The browser displays the countdown, but the server owns the deadline.
+    // Submissions that arrive after it are accepted once and recorded as
+    // AUTO_SUBMITTED, so a paused tab cannot buy extra time.
+    const configuredDuration = Number(config.durationMinutes ?? test.durationMinutes ?? 60);
+    const durationMinutes = Number.isFinite(configuredDuration) && configuredDuration > 0 ? configuredDuration : 60;
+    const deadlineSec = Math.round(durationMinutes * 60);
+    const serverElapsedSec = Math.max(0, Math.floor((Date.now() - attempt.startedAt.getTime()) / 1000));
+    const deadlineExceeded = serverElapsedSec > deadlineSec + 30;
+    const reportedTimeSec = Math.min(Math.max(parsed.timeSpentSec, 0), deadlineSec);
 
     const answerMap = new Map(parsed.answers.map((a) => [a.questionId, a.selectedOption]));
 
@@ -169,22 +171,24 @@ export async function POST(req: Request) {
 
     // Replay-with-same-attempt-id is rejected above; duration heuristics flag
     // likely bots (never silently discard results — flagged for human review).
-    const suspicious = attempted > 0 && parsed.timeSpentSec < 15 && test.questions.length >= 10;
+    const suspicious = attempted > 0 && reportedTimeSec < 15 && test.questions.length >= 10;
     const configSnapshot = JSON.stringify({
       ...config,
       scoredAt: new Date().toISOString(),
       marksCorrect,
       marksIncorrect,
+      serverElapsedSec,
+      deadlineExceeded,
     });
 
-    const finalStatus = "SUBMITTED";
+    const finalStatus = deadlineExceeded ? "AUTO_SUBMITTED" : "SUBMITTED";
 
     const saved = await prisma.attempt.update({
       where: { id: attempt.id },
       data: {
         status: finalStatus,
         submittedAt: new Date(),
-        timeSpentSec: parsed.timeSpentSec,
+        timeSpentSec: reportedTimeSec,
         score: Math.round(rawScore),
         maxScore: Math.round(maxScore),
         correctCount: correct,
@@ -203,6 +207,8 @@ export async function POST(req: Request) {
               correct,
               score: Math.round(rawScore),
               maxScore: Math.round(maxScore),
+              serverElapsedSec,
+              deadlineExceeded,
               via: "api/attempts@v2",
             }),
           },
@@ -250,6 +256,8 @@ export async function POST(req: Request) {
       attempted,
       unattempted,
       flagged: suspicious,
+      status: finalStatus,
+      autoSubmitted: deadlineExceeded,
       review,
     });
   } catch (e: unknown) {
@@ -272,7 +280,7 @@ function safeParseConfig(raw: string | null): { markingScheme?: { correct?: numb
 // Authenticated history: own attempts for students, all for ADMIN/ANALYST.
 // Question objects are never embedded — the score rows are summary only.
 export async function GET(req: Request) {
-  const { userId, role } = await currentUserId();
+  const { userId, role } = await getSessionUser();
   if (!userId) {
     return NextResponse.json(
       { error: "Sign in to view your attempt history." },

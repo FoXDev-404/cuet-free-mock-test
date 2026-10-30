@@ -1,12 +1,48 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Clock, CheckCircle, Users, Award, Target, AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { getLocalPaperSummary, type LocalPaperSummary } from "@/lib/local-papers";
+import { publicPageMetadata } from "@/lib/seo";
 
 interface TestPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: TestPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const localPaper = getLocalPaperSummary(slug);
+  if (localPaper) {
+    return publicPageMetadata({
+      title: `${localPaper.title} — CUET 2022 English PYQ`,
+      description: `Attempt the CUET UG English ${localPaper.dateLabel} 2022 paper: ${localPaper.recoveredQuestionCount} recovered questions, ${localPaper.durationMinutes} minutes, +5/-1 marking and answer review.`,
+      path: `/mock-tests/${localPaper.slug}`,
+    });
+  }
+
+  const test = await prisma.test.findUnique({
+    where: { slug, status: "PUBLISHED" },
+    select: {
+      title: true,
+      type: true,
+      durationMinutes: true,
+      totalQuestions: true,
+      subject: { select: { name: true } },
+      _count: { select: { questions: true } },
+    },
+  });
+  if (!test) return {};
+
+  const questionCount = test._count.questions || test.totalQuestions;
+  const label = test.type.replace(/_/g, " ").toLowerCase();
+  return publicPageMetadata({
+    title: `${test.title} — Free CUET Mock Test`,
+    description: `Take the ${test.title}${test.subject ? ` (${test.subject.name})` : ""}: a free ${test.durationMinutes}-minute ${label} mock test with ${questionCount} questions, instant scoring and answer review.`,
+    path: `/mock-tests/${slug}`,
+  });
 }
 
 function LocalPaperDetail({ paper }: { paper: LocalPaperSummary }) {

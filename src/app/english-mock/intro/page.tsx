@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Flag } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "CUET UG English 2025 Previous Year Paper — 20 May Shift 1",
+  description:
+    "Attempt the CUET UG English 2025 Shift 1 question paper in an exam-style interface with a timer, question palette and answer review after submission.",
+  path: "/english-mock/intro",
+});
 
 export const dynamic = "force-dynamic";
 

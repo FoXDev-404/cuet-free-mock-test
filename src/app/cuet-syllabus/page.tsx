@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "CUET (UG) Syllabus — Section-wise Overview",
+  description:
+    "A clear overview of the CUET (UG) syllabus sections: languages, domain subjects and the General Test, with the topics used in our practice sets.",
+  path: "/cuet-syllabus",
+});
+
 export default function SyllabusPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">

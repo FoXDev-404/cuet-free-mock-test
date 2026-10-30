@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/config";
 import { actionsFor, normalizeRole, type AdminAction } from "@/lib/auth/permissions";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
 import { AdminNav } from "./_components/admin-nav";
+
+export const metadata: Metadata = {
+  title: "Admin Studio",
+  robots: NOINDEX_ROBOTS,
+};
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);

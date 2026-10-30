@@ -45,7 +45,9 @@ export async function GET(req: Request) {
       flaggedCount: u.attempts.filter((a) => a.flagged).length,
       practiceCount: u.attempts.filter((a) => a.practice).length,
       avgScorePct: (() => {
-        const scored = u.attempts.filter((a) => a.status === "SUBMITTED" && a.maxScore > 0);
+        const scored = u.attempts.filter(
+          (a) => (a.status === "SUBMITTED" || a.status === "AUTO_SUBMITTED") && a.maxScore > 0,
+        );
         if (!scored.length) return null;
         return Math.round(
           (scored.reduce((sum, a) => sum + (a.score / a.maxScore) * 100, 0) / scored.length) * 10,

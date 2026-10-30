@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     const userId = user?.id ?? null;
 
     // Resolve the test (or the practice arena for keyless practice runs).
-    let test: { id: string; title: string; slug: string; config: string } | null = null;
+    let test: { id: string; title: string; slug: string; config: string; durationMinutes: number } | null = null;
     if (input.practice) {
       const arena = await ensureSyntheticTest("practice-arena", "Practice Arena", {
         markingScheme: { correct: 5, incorrect: 1, unattempted: 0 },
@@ -36,31 +36,49 @@ export async function POST(req: Request) {
       });
       test = await prisma.test.findUnique({
         where: { id: arena.id },
-        select: { id: true, title: true, slug: true, config: true },
+        select: { id: true, title: true, slug: true, config: true, durationMinutes: true },
       });
     } else if (input.slug) {
       test = await prisma.test.findUnique({
-        where: { slug: input.slug },
-        select: { id: true, title: true, slug: true, config: true },
+        where: { slug: input.slug, status: "PUBLISHED" },
+        select: { id: true, title: true, slug: true, config: true, durationMinutes: true },
       });
     } else if (input.testId) {
       test = await prisma.test.findUnique({
-        where: { id: input.testId },
-        select: { id: true, title: true, slug: true, config: true },
+        where: { id: input.testId, status: "PUBLISHED" },
+        select: { id: true, title: true, slug: true, config: true, durationMinutes: true },
       });
     }
     if (!test) return NextResponse.json({ error: "Test not found" }, { status: 404 });
 
-    // Resume: reuse an open attempt for the same signed-in user + test.
-    let attempt = await prisma.attempt.findFirst({
+    // Resume: reuse an open attempt for the same learner + test. A null userId
+    // now matches only guest attempts instead of every open attempt.
+    const openAttempt = await prisma.attempt.findFirst({
       where: {
         testId: test.id,
         status: "IN_PROGRESS",
-        userId: userId ?? undefined,
+        userId,
       },
       orderBy: { startedAt: "desc" },
       select: { id: true, sessionId: true, startedAt: true },
     });
+
+    let attempt = openAttempt;
+    if (openAttempt) {
+      const config = safeParseConfig(test.config);
+      const configuredDuration = Number(config.durationMinutes ?? test.durationMinutes ?? 60);
+      const durationMinutes =
+        Number.isFinite(configuredDuration) && configuredDuration > 0 ? configuredDuration : 60;
+      const elapsedSec = Math.floor((Date.now() - openAttempt.startedAt.getTime()) / 1000);
+      if (elapsedSec > durationMinutes * 60 + 30) {
+        // Drop an expired paper instead of resuming it with a negative timer.
+        await prisma.attempt.update({
+          where: { id: openAttempt.id },
+          data: { status: "ABANDONED", submittedAt: new Date() },
+        });
+        attempt = null;
+      }
+    }
 
     if (!attempt) {
       attempt = await prisma.attempt.create({
@@ -96,5 +114,13 @@ export async function POST(req: Request) {
     }
     console.error("attempts/start error", e);
     return NextResponse.json({ error: "Failed to start attempt" }, { status: 500 });
+  }
+}
+
+function safeParseConfig(raw: string | null): { durationMinutes?: number } {
+  try {
+    return typeof raw === "string" ? JSON.parse(raw) : {};
+  } catch {
+    return {};
   }
 }

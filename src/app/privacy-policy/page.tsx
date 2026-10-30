@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "Privacy Policy",
+  description:
+    "How CUETFreeMockTest collects, uses and protects account and attempt data, and the choices available to you.",
+  path: "/privacy-policy",
+});
+
 export default function PrivacyPolicyPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">

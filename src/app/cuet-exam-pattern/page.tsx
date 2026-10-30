@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "CUET (UG) Exam Pattern — Sections, Duration & Marking",
+  description:
+    "Understand the CUET (UG) exam pattern used on this platform: sections, question counts, duration and the +5 / -1 / 0 marking scheme.",
+  path: "/cuet-exam-pattern",
+});
+
 export default function ExamPatternPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">

@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { publicPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = publicPageMetadata({
+  title: "Disclaimer",
+  description:
+    "CUETFreeMockTest is independent and not affiliated with the National Testing Agency or any university. Practice content is for study only.",
+  path: "/disclaimer",
+});
+
 export default function DisclaimerPage() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
