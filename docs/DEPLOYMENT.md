@@ -93,21 +93,29 @@ Local admin (SQLite, uses `.env` `ADMIN_EMAIL`/`ADMIN_PASSWORD` or args):
 npx tsx scripts/create-admin.ts admin@example.com SomePassword1!
 ```
 
-Production (remote D1) — the script can print a bcrypt hash without touching
+Production (remote D1) — the script can print a PBKDF2 hash without touching
 any database, then you insert it with wrangler:
 
 ```powershell
 npx tsx scripts/create-admin.ts --hash-only "YourPassword1!"
-# -> $2b$12$... (bcrypt, cost 12)
+# -> pbkdf2$2048$<salt-b64url>$<hash-b64url>
 
 # id can be any unique string; store it so future rotations can target the row
 INSERT INTO "User" ("id","name","email","emailVerified","image","passwordHash","role","createdAt","updatedAt")
-VALUES ('admin-prod-0001-20261030','Admin','admin@example.com',NULL,NULL,'$2b$12$...','ADMIN','2026-10-30T06:44:25.000Z','2026-10-30T06:44:25.000Z');
+VALUES ('admin-prod-0001-20261030','Admin','admin@example.com',NULL,NULL,'pbkdf2$2048$…','ADMIN','2026-10-30T07:10:00.000Z','2026-10-30T07:10:00.000Z');
 npx wrangler d1 execute cuet-mock-db --remote --file admin-insert.sql
 
 # verify
 npx wrangler d1 execute cuet-mock-db --remote --command 'SELECT id, email, role FROM "User"'
 ```
+
+Password hashes use the WebCrypto PBKDF2-SHA256 scheme
+(`src/lib/auth/password.ts`, format `pbkdf2$<iterations>$<salt>$<hash>`).
+bcrypt was removed from the runtime entirely: a pure-JS bcrypt comparison
+costs ~300ms of CPU, which the free Workers plan (~10ms/request) kills with a
+trust `1102`. The worker factor is stored per hash, so bump
+`AUTH_PBKDF2_ITERATIONS` (e.g. to ≥310000) when moving to a paid plan and
+re-run the hash step for every user.
 
 Verify the live login round-trip (200 + session cookie = success; a 401 with
 `…/api/auth/error?error=CredentialsSignin` means bad credentials):
@@ -124,23 +132,30 @@ curl.exe -s -b jar.txt -c jar.txt -X POST "$base/api/auth/callback/credentials" 
   --data-urlencode "password=…" --data-urlencode "redirect=false" --data-urlencode "json=true"
 ```
 
-## 6. Workers plan CPU budget — read before hot-fixing 503s
+## 6. Workers plan CPU budget — the free-plan reality
 
 On the **Workers Free plan the runtime caps every request at ~10ms of CPU**
-(tail shows `outcome: "exceededCpu", cpuTime: 10`). In practice the platform
-still sometimes serves requests from already-initialized isolates, which makes
-free-plan deployments *appear* to work and then fail intermittently
-(`1102` pages, 403/500/503 mix) the moment they'd truly need CPU:
+(tail shows `outcome: "exceededCpu", cpuTime: 10`). The whole OpenNext stack
+(UIServer rendering, Prisma WASM, next-auth) cannot reliably run inside that
+budget; requests either die with `1102`/503 the moment they truly need CPU, or
+intermittently keep working on already-initialized isolates. Symptom triage via
+`npx wrangler tail <script> --format json` (`outcome`, `cpuTime`, endpoint).
 
-- bcrypt‑JS password verification (cost 12 ≈ 300ms CPU on Node, and as much on
-  workerd — it **cannot** fit in 10ms),
-- Prisma's WASM engine initialization (cold isolates even reported
-  "runtime canceled… code had hung"),
-- the OpenNext server core itself (Next.js SSR) regularly exceeds the cap.
+Re-engineered for the free cap so far:
 
-Currently deployed stack therefore needs **Workers Paid** ($5/mo; CPU limit
-configurable via `limits.cpu_ms` in `wrangler.toml`) for reliable production.
-If staying on Free is mandatory, the auth data path must be re-engineered to
-stay within ~10ms per request: no WASM Prisma in the hot path (raw D1 binding
-queries), and password verification must move to a Workflows/cron-style eval
-or a native-crypto scheme — both are larger refactors than the current scope.
+- **Password hashing:** bcrypt → WebCrypto PBKDF2-SHA256
+  (`src/lib/auth/password.ts`). A correct/incorrect verify now costs ~1-2ms
+  instead of ~300ms. Legacy bcrypt rows are rejected — re-hash user rows with
+  `scripts/create-admin.ts --hash-only` + `wrangler d1 execute --remote`.
+- **Sign-in data path:** `authorize` reads the D1 binding directly
+  (`getCloudflareContext().env.DB`, single prepared SELECT) instead of
+  instantiating Prisma's WASM engine; Prisma remains the fallback for local
+  Node runs (`src/lib/auth/config.ts`).
+
+Still outside the free budget (accepted risk while staying on Free):
+
+- next-auth JWT signing (AES-GCM via jose) **fits**, but `next build` SSR of
+  dynamic pages each burn more than the cap on cold isolates: expect
+  intermittent `503`/`1102` on dynamic routes and Prisma-backed APIs under
+  bursty cold traffic. The stable path for full reliability remains Workers
+  Paid ($5/mo) or moving the SSR/API workload off Workers.

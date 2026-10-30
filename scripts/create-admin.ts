@@ -1,13 +1,12 @@
 import { prisma } from "../src/lib/prisma";
-import bcrypt from "bcryptjs";
+import { hashPassword } from "../src/lib/auth/password";
 
 // Create or refresh an ADMIN user from env vars (ADMIN_EMAIL / ADMIN_PASSWORD).
-// - Local: run `npx tsx scripts/create-admin.ts` (uses .env DATABASE_URL)
+// - Local: run `npx tsx scripts/create-admin.ts <email> <password>` (uses .env DATABASE_URL)
 // - Production (D1): run locally WITHOUT ADMIN_EMAIL to print a hash for the
 //   given password, then insert via `wrangler d1 execute --remote`.
-//   (Remote D1 should never receive raw application-level auth from this
-//   script's bcrypt runtime — Prisma WASM on Workers is fine, but a plain SQL
-//   insert is simpler and audit-friendly.)
+//   Passwords use the WebCrypto PBKDF2 scheme from src/lib/auth/password.ts
+//   (bcrypt is unusable inside the free Workers 10ms CPU budget).
 
 interface Options {
   email: string;
@@ -31,7 +30,7 @@ export async function createAdmin({ email, password, name = "Admin" }: Options) 
       "ADMIN_EMAIL and ADMIN_PASSWORD (min 8 characters) must be provided (env or args)."
     );
   }
-  const passwordHash = await bcrypt.hash(password, 12);
+  const passwordHash = await hashPassword(password);
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
     await prisma.user.update({
@@ -51,7 +50,8 @@ const arg = parseArgs();
 
 if ("hashOnly" in arg) {
   if (!arg.hashOnly) throw new Error("Usage: tsx scripts/create-admin.ts --hash-only <password>");
-  mainHashOnly(arg.hashOnly).then((hash) => console.log(hash));
+  hashPassword(arg.hashOnly)
+    .then((hash) => console.log(hash));
 } else if (process.argv[1] && process.argv[1].endsWith("create-admin.ts")) {
   createAdmin(arg)
     .catch((e) => {
@@ -61,8 +61,4 @@ if ("hashOnly" in arg) {
     .finally(async () => {
       await prisma.$disconnect();
     });
-}
-
-async function mainHashOnly(password: string) {
-  return bcrypt.hash(password, 12);
 }

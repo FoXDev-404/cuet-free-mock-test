@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import bcrypt from "bcryptjs";
+import { hashPassword } from "@/lib/auth/password";
 import { z } from "zod";
 
 const resetSchema = z.object({
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     const user = await prisma.user.findUnique({ where: { email: verification.identifier } });
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
-    const passwordHash = await bcrypt.hash(parsed.password, 12);
+    const passwordHash = await hashPassword(parsed.password);
     await prisma.user.update({ where: { id: user.id }, data: { passwordHash } });
     await prisma.verificationToken.delete({ where: { token: parsed.token } });
 
