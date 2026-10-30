@@ -27,7 +27,7 @@ export async function GET(req: Request) {
       orderBy: { createdAt: "desc" },
       include: {
         subject: true,
-        _count: { select: { questions: true } },
+        _count: { select: { questions: true, attempts: true } },
       },
     });
     return NextResponse.json(tests);

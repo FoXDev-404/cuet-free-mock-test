@@ -8,10 +8,11 @@ import {
   ChevronRight,
   Clock3,
   GraduationCap,
-  Sparkles,
   Target,
   Timer,
 } from "lucide-react";
+import { HomePopularTests } from "@/components/home/HomePopularTests";
+import { HomeTestTables } from "@/components/home/HomeTestTables";
 
 const studySteps = [
   {
@@ -61,14 +62,14 @@ export default function HomePage() {
     <>
       <section className="home-hero relative overflow-hidden">
         <div className="home-hero-grid" aria-hidden="true" />
-        <div className="container-page relative z-10 grid items-center gap-12 py-14 sm:py-20 lg:min-h-[650px] lg:grid-cols-[1.02fr_0.98fr] lg:gap-14 lg:py-24">
+        <div className="container-page relative z-10 grid items-center gap-10 py-14 sm:py-20 lg:min-h-[640px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:py-24 xl:gap-16">
           <div className="max-w-2xl">
             <p className="home-eyebrow mb-6">
               <span className="home-eyebrow-dot" aria-hidden="true" />
-              NTA Pattern CUET Mock Tests
+              NTA PATTERN CUET MOCK TESTS
             </p>
-            <h1 className="max-w-xl text-2xl font-extrabold leading-[1.12] tracking-[-0.035em] text-neutral-950 dark:text-white sm:text-3xl lg:text-[2.5rem]">
-              Practice FREE Online CUET 2027 Mock Tests
+            <h1 className="max-w-xl text-[1.7rem] font-extrabold leading-[1.12] tracking-[-0.035em] text-neutral-950 dark:text-white sm:text-4xl lg:text-[2.65rem]">
+              Practice FREE Online CUET 2027 Mock Tests for UG
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-8">
               NTA Pattern Practice Papers, Previous Year Questions (PYQs), and Time-Bound Full-Length Test Series for CUET UG. Start practicing today!
@@ -88,65 +89,40 @@ export default function HomePage() {
             <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-neutral-600 dark:text-neutral-300">
               <span className="inline-flex items-center gap-2">
                 <Check className="h-4 w-4 text-secondary-600 dark:text-secondary-400" aria-hidden="true" />
-                Learn at your own pace
+                Learn at your own pace.
               </span>
               <span className="inline-flex items-center gap-2">
                 <Check className="h-4 w-4 text-secondary-600 dark:text-secondary-400" aria-hidden="true" />
-                Pick up where you left off
+                Pick up where you left off.
               </span>
             </div>
           </div>
 
-          <div className="home-preview-wrap mx-auto w-full max-w-[560px] lg:ml-auto">
-            <div className="home-preview-glow" aria-hidden="true" />
-            <div className="home-preview-card card">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex min-w-0 items-center gap-3">
-                  <span className="home-preview-mark">
-                    <GraduationCap className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">Practice preview</p>
-                    <p className="mt-0.5 truncate text-sm font-semibold text-neutral-900 dark:text-white">Computer Science</p>
-                  </div>
-                </div>
-                <span className="badge badge-primary shrink-0">Sample</span>
-              </div>
-
-              <div className="home-preview-rule my-5" />
-
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">SAMPLE QUESTION</span>
-                <span className="text-xs font-medium text-neutral-400 dark:text-neutral-500">Concept check</span>
-              </div>
-              <h2 className="mt-3 text-lg font-bold leading-7 text-neutral-900 dark:text-white sm:text-xl">
-                In a stack, which item is removed first?
-              </h2>
-
-              <div className="mt-5 space-y-2.5" aria-label="Sample answer choices">
-                <div className="home-preview-option"><span className="home-option-letter">A</span><span>The oldest item</span></div>
-                <div className="home-preview-option"><span className="home-option-letter">B</span><span>A randomly chosen item</span></div>
-                <div className="home-preview-option home-preview-option-correct">
-                  <span className="home-option-letter">C</span>
-                  <span className="flex-1">The most recently added item</span>
-                  <span className="home-option-check"><Check className="h-3.5 w-3.5" aria-hidden="true" /></span>
-                </div>
-                <div className="home-preview-option"><span className="home-option-letter">D</span><span>The highest-priority item</span></div>
-              </div>
-
-              <div className="home-preview-feedback mt-5 flex items-start gap-2.5">
-                <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary-600 dark:text-primary-300" aria-hidden="true" />
-                <p className="text-xs leading-5 text-neutral-600 dark:text-neutral-300">
-                  A quick example of the focused, question-by-question practice experience.
-                </p>
-              </div>
-            </div>
-            <p className="mt-3 text-center text-xs text-neutral-500 dark:text-neutral-400">Illustrative preview · not a live test</p>
+          <div className="mx-auto w-full max-w-[560px] lg:ml-auto">
+            <HomePopularTests />
           </div>
         </div>
       </section>
 
-      <section className="container-page -mt-1 pb-16 pt-8 sm:pb-20 lg:pt-12" aria-label="Study tools">
+      <section className="home-library-section" aria-labelledby="home-library-title">
+        <div className="container-page">
+          <div className="home-library-intro">
+            <div className="max-w-2xl">
+              <p className="home-section-kicker">Explore the library</p>
+              <h2 id="home-library-title" className="home-library-title">
+                Popular mock tests and subject-wise practice.
+              </h2>
+            </div>
+            <p className="home-library-copy">
+              Browse published NTA-pattern tests or go straight to a subject. Every row opens the matching test or practice set.
+            </p>
+          </div>
+
+          <HomeTestTables />
+        </div>
+      </section>
+
+      <section className="container-page pb-16 pt-8 sm:pb-20 lg:pt-12" aria-label="Study tools">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {quickLinks.map((item) => (
             <Link key={item.label} href={item.href} className="home-quick-link group">
