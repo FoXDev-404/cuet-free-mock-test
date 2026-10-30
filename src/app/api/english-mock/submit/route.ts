@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 
-const REVIEW_FLAGGED_QUESTIONS = [8, 32, 41];
-
 const submitSchema = z.object({
   answers: z.array(
     z.object({
@@ -15,6 +13,23 @@ const submitSchema = z.object({
 });
 
 export const dynamic = "force-dynamic";
+
+// Option ids are generated as `opt-<questionId>-<order>` (see seed script).
+// The answer key is stored as the source label (A/B/C/D) and order (1..4),
+// so scoring parses the order out of the selected option id.
+const OPTION_LABELS = ["A", "B", "C", "D", "E", "F"];
+
+function optionOrderFromId(optionId: string): number | null {
+  const last = optionId.split("-").pop();
+  if (!last) return null;
+  const order = parseInt(last, 10);
+  return Number.isNaN(order) ? null : order;
+}
+
+function labelForOrder(order: number | null): string | null {
+  if (order === null) return null;
+  return OPTION_LABELS[order - 1] ?? String(order);
+}
 
 export async function POST(req: Request) {
   try {
@@ -37,6 +52,8 @@ export async function POST(req: Request) {
         answerReviewStatus: true,
         explanationEn: true,
         dataQualityNote: true,
+        sourceCorrectOptionOrder: true,
+        sourceAnswerLabel: true,
         marks: true,
         negativeMarks: true,
         passage: {
@@ -62,8 +79,10 @@ export async function POST(req: Request) {
     const results = questions.map((q) => {
       const selected = answerMap.get(q.id);
       const isAnswered = selected !== null && selected !== undefined && selected !== "";
-      const isCorrect = isAnswered && selected === q.correctAnswer;
-      const isFlagged = REVIEW_FLAGGED_QUESTIONS.includes(q.questionNumber ?? 0);
+      const selectedOrder = isAnswered ? optionOrderFromId(selected) : null;
+      const selectedLabel = isAnswered ? (labelForOrder(selectedOrder) ?? selected) : null;
+      const isCorrect = isAnswered && selectedOrder !== null && selectedOrder === q.sourceCorrectOptionOrder;
+      const isFlagged = q.answerReviewStatus === "needs_manual_review";
 
       if (isAnswered) totalAttempted++;
       if (isCorrect) totalCorrect++;
@@ -78,7 +97,8 @@ export async function POST(req: Request) {
       return {
         questionNumber: q.questionNumber,
         questionId: q.id,
-        selectedOption: selected ?? null,
+        selectedOption: selectedLabel,
+        selectedOptionId: selected ?? null,
         isCorrect: isFlagged ? null : isCorrect,
         isPendingReview: isFlagged,
         correctAnswer: isFlagged ? null : q.correctAnswer,
@@ -91,16 +111,19 @@ export async function POST(req: Request) {
 
     const marksCorrect = 1;
     const marksIncorrect = 0;
-    const verifiedMaxScore = 47;
+    const pendingReviewCount = questions.filter(
+      (q) => q.answerReviewStatus === "needs_manual_review"
+    ).length;
+    const verifiedMaxScore = questions.length - pendingReviewCount;
     const verifiedRawScore = verifiedCorrect * marksCorrect - verifiedIncorrect * marksIncorrect;
 
     const attemptData = {
-      totalQuestions: 50,
+      totalQuestions: questions.length,
       attempted: totalAttempted,
-      unanswered: 50 - totalAttempted,
+      unanswered: questions.length - totalAttempted,
       correct: totalCorrect,
       incorrect: totalIncorrect,
-      reviewFlagged: REVIEW_FLAGGED_QUESTIONS.length,
+      reviewFlagged: pendingReviewCount,
       verifiedCorrect,
       verifiedIncorrect,
       verifiedUnattempted,

@@ -43,42 +43,11 @@ test.describe("CUETFreeMockTest main flows", () => {
     expect(manifest.start_url).toBe("/");
   });
 
-  test("mock tests list page shows published tests", async ({ page }) => {
+  test("mock tests page shows the real PYQ paper", async ({ page }) => {
     await page.goto("/mock-tests");
     await expect(page.getByRole("heading", { name: /Mock Tests/ })).toBeVisible();
-    // Should show at least one published test card
-    await expect(page.locator("a[href*='/mock-tests/']").first()).toBeVisible();
-  });
-
-  test("test detail page shows instructions and start button", async ({ page }) => {
-    await page.goto("/mock-tests/cs-full-mock");
-    await expect(page.getByRole("heading", { name: /Computer Science Full-Length Mock/ })).toBeVisible();
-    await expect(page.getByRole("link", { name: /Start Test/ })).toBeVisible();
-  });
-
-  test("full test flow: take test, answer, submit, view result", async ({ page }) => {
-    await page.goto("/mock-tests/cs-full-mock/take");
-    await page.waitForLoadState("networkidle");
-    // Wait for questions to load
-    await expect(page.getByRole("heading", { name: /Question 1 of/ })).toBeVisible({ timeout: 15000 });
-
-    // Select an option on question 1
-    const firstOption = page.locator("button").filter({ hasText: /^A/ }).first();
-    if ((await firstOption.count()) > 0) {
-      await firstOption.click();
-    }
-
-    // Navigate to next question
-    const nextBtn = page.getByRole("button", { name: /^Next/ });
-    if ((await nextBtn.count()) > 0) {
-      await nextBtn.click();
-    }
-
-    // Submit test (click the bottom submit button on the last question)
-    await page.getByRole("button", { name: /^Submit Test$/ }).last().click();
-    await page.waitForLoadState("networkidle");
-    // Should leave the test-taking view after submit
-    await expect(page.getByRole("heading", { name: /Question 1 of/ })).not.toBeVisible({ timeout: 10000 });
+    // Demo/sample tests removed; the real English PYQ paper is the only offering.
+    await expect(page.getByRole("link", { name: /CUET UG English/ })).toBeVisible();
   });
 
   test("dashboard page loads", async ({ page }) => {

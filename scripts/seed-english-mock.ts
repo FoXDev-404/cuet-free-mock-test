@@ -33,7 +33,7 @@ async function loadExamJson() {
   return JSON.parse(raw);
 }
 
-async function main() {
+export async function main() {
   const examData = await loadExamJson();
   const { exam, passages, questions } = examData;
 
@@ -98,6 +98,7 @@ async function main() {
         sourceAnswerLabel: q.sourceAnswerLabel,
         sourcePageStart: q.sourcePageStart ?? null,
         sourcePageEnd: q.sourcePageEnd ?? null,
+        sourcePdfFilename: q.sourcePdfFilename,
         source: "CUET UG English 2025 Shift 1",
         year: 2025,
         marks: 1,
@@ -123,6 +124,7 @@ async function main() {
         sourceAnswerLabel: q.sourceAnswerLabel,
         sourcePageStart: q.sourcePageStart ?? null,
         sourcePageEnd: q.sourcePageEnd ?? null,
+        sourcePdfFilename: q.sourcePdfFilename,
         source: "CUET UG English 2025 Shift 1",
         year: 2025,
         marks: 1,
@@ -162,7 +164,12 @@ async function main() {
   console.log(`   Review flags: ${reviewFlags.map((q: { questionNumber: number }) => q.questionNumber).join(", ")}`);
 }
 
-main().catch((e) => {
-  console.error("Seed failed:", e);
-  process.exit(1);
-});
+// Seed the real CUET UG English PYQ dataset (the only question bank in this repo).
+// Auto-runs when invoked directly (tsx scripts/seed-english-mock.ts);
+// also importable so prisma/seed.ts can reset the database with real data only.
+if (process.argv[1] && process.argv[1].endsWith("seed-english-mock.ts")) {
+  main().catch((e) => {
+    console.error("Seed failed:", e);
+    process.exit(1);
+  });
+}

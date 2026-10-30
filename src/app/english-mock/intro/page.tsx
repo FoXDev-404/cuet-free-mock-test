@@ -3,82 +3,78 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Flag } from "lucide-react";
+import { prisma } from "@/lib/prisma";
 
-interface IntroData {
-  exam: {
-    id: string;
-    name: string;
-    examCode: string;
-    subject: string;
-    examDate: string;
-    shift: string | number;
-    sourceFile: string;
-    sourcePageCount: number;
-    sourceQuestionCount: number;
-  };
-  config: {
-    durationMinutes: number;
-    marksCorrect: number;
-    marksIncorrect: number;
-    totalQuestions: number;
-  };
-  passages: Array<{
-    id: string;
-    passageKey: string;
-    title: string;
-    content: string;
-    sourcePageStart: number | null;
-    sourcePageEnd: number | null;
-  }>;
-  questionCount: number;
-  reviewPendingCount: number;
-  reviewPendingQuestionNumbers: number[];
-  verifiedMaxScore: number;
-}
+export const dynamic = "force-dynamic";
 
 export default async function EnglishMockIntro() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/english-mock/intro`, {
-    cache: "no-store",
+  // Read the DB directly — no internal self-fetch (fails on the deployed Worker).
+  const config = await prisma.englishMockConfig.findFirst({
+    where: { isActive: true },
   });
 
-  if (!res.ok) {
+  if (!config) {
     notFound();
   }
 
-  const data: IntroData = await res.json();
+  const passages = await prisma.passage.findMany({
+    where: { examId: config.examId },
+    select: {
+      passageKey: true,
+      title: true,
+      sourcePageStart: true,
+      sourcePageEnd: true,
+    },
+    orderBy: { passageKey: "asc" },
+  });
+
+  // Review flags are data-driven (seeded from exam.json answerReviewStatus).
+  const [questionCount, pendingReviews] = await Promise.all([
+    prisma.question.count({ where: { subject: { code: "ENG" }, isActive: true } }),
+    prisma.question.findMany({
+      where: {
+        subject: { code: "ENG" },
+        isActive: true,
+        answerReviewStatus: "needs_manual_review",
+      },
+      orderBy: { questionNumber: "asc" },
+      select: { questionNumber: true },
+    }),
+  ]);
+  const reviewPendingQuestionNumbers = pendingReviews.map((q) => q.questionNumber);
 
   return (
     <section className="py-12 container-page max-w-3xl mx-auto">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-neutral-900 dark:text-white">
-            {data.exam.name}
+            CUET UG English - 20 May 2025 Shift 1
           </CardTitle>
           <div className="mt-2 flex flex-wrap gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-            <span>{data.exam.subject}</span>
+            <span>English</span>
             <span>•</span>
-            <span>{data.exam.examDate} Shift {data.exam.shift}</span>
+            <span>2025-05-20 Shift 1</span>
             <span>•</span>
-            <span>{data.questionCount} questions</span>
+            <span>{questionCount} questions</span>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
               <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                {data.questionCount}
+                {questionCount}
               </div>
               <div className="text-xs text-neutral-500 dark:text-neutral-400">Questions</div>
             </div>
             <div className="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
               <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                {data.config.durationMinutes}m
+                {config.durationMinutes}m
               </div>
               <div className="text-xs text-neutral-500 dark:text-neutral-400">Duration</div>
             </div>
             <div className="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
               <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                +{data.config.marksCorrect} / –{data.config.marksIncorrect}
+                +{config.marksCorrect} / –{config.marksIncorrect}
               </div>
               <div className="text-xs text-neutral-500 dark:text-neutral-400">Marking</div>
             </div>
@@ -92,8 +88,8 @@ export default async function EnglishMockIntro() {
                   Answer-key review pending
                 </h3>
                 <p className="text-sm text-amber-700 dark:text-amber-300">
-                  Questions {data.reviewPendingQuestionNumbers.join(", ")} are flagged for manual answer-key review.
-                  Verified score is calculated out of {data.verifiedMaxScore} until these are confirmed.
+                  Questions {reviewPendingQuestionNumbers.join(", ")} are flagged for manual answer-key review.
+                  Verified score is calculated out of {questionCount - reviewPendingQuestionNumbers.length} until these are confirmed.
                 </p>
               </div>
             </div>
@@ -102,10 +98,10 @@ export default async function EnglishMockIntro() {
           <div className="space-y-3">
             <h3 className="font-semibold text-neutral-900 dark:text-white">Instructions</h3>
             <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-300">
-              <li>Answer all {data.questionCount} questions. One question at a time.</li>
+              <li>Answer all {questionCount} questions. One question at a time.</li>
               <li>Use Previous/Next or the question palette to navigate.</li>
               <li>Mark questions for review if you want to revisit them.</li>
-              <li>Timer starts when you begin. It runs for {data.config.durationMinutes} minutes.</li>
+              <li>Timer starts when you begin. It runs for {config.durationMinutes} minutes.</li>
               <li>If time expires, the test is auto-submitted.</li>
               <li>You can change answers before submitting.</li>
             </ul>
@@ -114,10 +110,10 @@ export default async function EnglishMockIntro() {
           <div className="space-y-3">
             <h3 className="font-semibold text-neutral-900 dark:text-white">Passages</h3>
             <p className="text-sm text-neutral-600 dark:text-neutral-300">
-              {data.passages.length} shared reading passage(s) are linked to relevant questions.
+              {passages.length} shared reading passage(s) are linked to relevant questions.
             </p>
             <ul className="text-sm text-neutral-500 dark:text-neutral-400 space-y-1">
-              {data.passages.map((p) => (
+              {passages.map((p) => (
                 <li key={p.passageKey}>
                   {p.title} (pp. {p.sourcePageStart}–{p.sourcePageEnd})
                 </li>

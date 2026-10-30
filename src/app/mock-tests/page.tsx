@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Clock, ArrowRight, BarChart3, BookOpen, Target, Zap, FlaskConical } from "lucide-react";
 
 export default async function MockTestsPage() {
@@ -10,6 +8,13 @@ export default async function MockTestsPage() {
     orderBy: { createdAt: "desc" },
     include: { subject: true, _count: { select: { questions: true } } },
   });
+
+  // Previous Year Question (PYQ) papers are separate from Test rows — they run
+  // through the dedicated English mock flow with their own config.
+  const pyqConfig = await prisma.englishMockConfig.findFirst({ where: { isActive: true } });
+  const pyqQuestionCount = pyqConfig
+    ? await prisma.question.count({ where: { subject: { code: "ENG" }, isActive: true } })
+    : 0;
 
   const grouped = tests.reduce((acc, t) => {
     const key = t.type.replace("_", " ") || "Full Length";
@@ -48,6 +53,43 @@ export default async function MockTestsPage() {
           </Link>
         ))}
       </div>
+
+      {/* Previous Year Papers (PYQ) — real exam papers via the dedicated mock flow */}
+      {pyqConfig && (
+        <div className="mb-12">
+          <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Previous Year Papers (PYQ)</h2>
+          <Link href="/english-mock/intro" className="group card p-6 card-hover max-w-xl">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <span className="badge badge-primary mb-2">PYQ · Real Exam Paper</span>
+                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  CUET UG English — 20 May 2025 Shift 1
+                </h3>
+                <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Actual CUET UG 2025 question paper, full feel of the real shift.</p>
+              </div>
+              <ArrowRight className="h-5 w-5 text-neutral-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" />
+            </div>
+            <div className="grid grid-cols-3 gap-4 mb-4 p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{pyqQuestionCount || pyqConfig.totalQuestions}</div>
+                <div className="text-xs text-neutral-500 dark:text-neutral-400">Questions</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 flex items-center justify-center gap-1"><Clock className="h-4 w-4" />{pyqConfig.durationMinutes}m</div>
+                <div className="text-xs text-neutral-500 dark:text-neutral-400">Duration</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">+1/-0</div>
+                <div className="text-xs text-neutral-500 dark:text-neutral-400">Marking</div>
+              </div>
+            </div>
+            <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-neutral-800">
+              <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Start Paper</span>
+              <ArrowRight className="h-4 w-4 text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+        </div>
+      )}
 
       {/* All Tests */}
       <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">All Published Tests</h2>

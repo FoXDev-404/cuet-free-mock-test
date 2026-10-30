@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS "EnglishMockConfig" (
 );
 
 -- Add English mock test fields to Question table
+ALTER TABLE "Question" ADD COLUMN "questionNumber" INTEGER;
 ALTER TABLE "Question" ADD COLUMN "passageId" TEXT;
 ALTER TABLE "Question" ADD COLUMN "passageKey" TEXT;
 ALTER TABLE "Question" ADD COLUMN "sourceCorrectOptionOrder" INTEGER;
@@ -38,6 +39,7 @@ ALTER TABLE "Question" ADD COLUMN "answerReviewStatus" TEXT NOT NULL DEFAULT 'so
 ALTER TABLE "Question" ADD COLUMN "dataQualityNote" TEXT;
 ALTER TABLE "Question" ADD COLUMN "sourcePageStart" INTEGER;
 ALTER TABLE "Question" ADD COLUMN "sourcePageEnd" INTEGER;
+ALTER TABLE "Question" ADD COLUMN "sourcePdfFilename" TEXT;
 
 -- Add indexes
 CREATE INDEX IF NOT EXISTS "Question_passageId_idx" ON "Question"("passageId");
