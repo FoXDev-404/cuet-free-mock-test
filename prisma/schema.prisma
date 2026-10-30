@@ -74,8 +74,10 @@ model Subject {
   description String?
   isActive    Boolean  @default(true)
   order       Int      @default(0)
+  examId      String?
   createdAt   DateTime @default(now())
 
+  exam       Exam?     @relation(fields: [examId], references: [id], onDelete: SetNull)
   chapters   Chapter[]
   tests      Test[]
   questions  Question[]
@@ -91,28 +93,91 @@ model Chapter {
 
   subject    Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   questions  Question[]
+  topics     Topic[]
 
   @@index([subjectId])
+}
+
+model Topic {
+  id          String   @id @default(cuid())
+  chapterId   String
+  name        String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  chapter   Chapter   @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  questions Question[]
+
+  @@index([chapterId])
+}
+
+model Exam {
+  id                    String   @id @default(cuid())
+  code                  String   @unique
+  name                  String
+  category              String   @default("CUET_UG") // CUET_UG | CUET_PG | OTHER
+  description           String?
+  logoUrl               String?
+  coverImageUrl         String?
+  syllabusVersion       String?
+  instructions          String?
+  defaultDurationMinutes Int     @default(60)
+  defaultMarksCorrect   Int      @default(5)
+  defaultMarksNegative  Int      @default(1)
+  status                String   @default("DRAFT") // DRAFT | PUBLISHED | ARCHIVED
+  visibility            String   @default("PUBLIC") // PUBLIC | UNLISTED | PRIVATE
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  years     ExamYear[]
+  subjects  Subject[]
+  questions Question[]
+}
+
+model ExamYear {
+  id              String   @id @default(cuid())
+  examId          String
+  year            Int
+  syllabusVersion String?
+  description     String?
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+
+  exam Exam @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@unique([examId, year])
+  @@index([examId])
 }
 
 model Question {
   id                   String   @id @default(cuid())
   subjectId            String
   chapterId            String?
-  type                 String   @default("MCQ")
+  topicId              String?
+  examId               String?
+  externalId           String?
+  type                 String   @default("MCQ") // MCQ | MCQ_MULTI | NUMERIC | ASSERTION_REASON | MATCH_FOLLOWING | PASSAGE | FILL_BLANK
   stemEn               String
   stemHi               String?
-  optionsEn            String   // JSON string: [{id, text}]
+  richTextEn           String?  // rich HTML/LaTeX body
+  optionsEn            String   // JSON string: [{id, text}] (denormalized cache; canonical = QuestionOption)
   optionsHi            String?  // JSON string: [{id, text}]
   correctAnswer        String
+  stemHash             String?  // sha-256 of normalized stem+options for content-duplicate detection (imports)
   explanationEn        String?
   explanationHi        String?
+  questionImages       String?  // JSON string: [{url, alt}]
+  language             String   @default("EN")
+  status               String   @default("PUBLISHED") // DRAFT | PENDING_VALIDATION | UNDER_REVIEW | APPROVED | PUBLISHED | ARCHIVED | REJECTED
   year                 Int?
   source               String   @default("sample")
+  paperShift           String?
   difficulty           String   @default("medium")
   marks                Int      @default(5)
   negativeMarks        Int      @default(1)
   isActive             Boolean  @default(true)
+  version              Int      @default(1)
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
@@ -130,7 +195,12 @@ model Question {
 
   subject   Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   chapter   Chapter?  @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  topic     Topic?    @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  exam      Exam?     @relation(fields: [examId], references: [id], onDelete: SetNull)
   passage   Passage?  @relation(fields: [passageId], references: [id], onDelete: SetNull)
+  options   QuestionOption[]
+  tags      QuestionTag[]
+  versions  QuestionVersion[]
   attempts  QuestionAttempt[]
   reviews   QuestionReview[]
   bookmarks Bookmark[]
@@ -138,9 +208,54 @@ model Question {
 
   @@index([subjectId])
   @@index([chapterId])
+  @@index([topicId])
+  @@index([examId])
   @@index([year])
   @@index([source])
   @@index([passageId])
+  @@index([status])
+  @@index([stemHash])
+}
+
+model QuestionOption {
+  id         String  @id @default(cuid())
+  questionId String
+  optionId   String  // stable per-question option key, e.g. "opt-q12-1"
+  label      String  // A, B, C, ...
+  text       String
+  sortOrder  Int
+  isCorrect  Boolean @default(false)
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, optionId])
+  @@index([questionId])
+}
+
+model QuestionTag {
+  id         String @id @default(cuid())
+  questionId String
+  label      String
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, label])
+  @@index([label])
+}
+
+model QuestionVersion {
+  id         String   @id @default(cuid())
+  questionId String
+  versionNo  Int
+  snapshot   String   // full JSON snapshot of the question row at this version
+  reason     String?
+  actorEmail String?
+  createdAt  DateTime @default(now())
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, versionNo])
+  @@index([questionId])
 }
 
 model Test {
@@ -150,6 +265,7 @@ model Test {
   type          String   @default("FULL_LENGTH") // FULL_LENGTH | SUBJECT_WISE | CHAPTER_WISE | PYQ_YEAR_WISE | GENERAL_TEST
   status        String   @default("DRAFT") // DRAFT | PUBLISHED | ARCHIVED
   subjectId     String?
+  examId        String?
   year          Int?
   config        String   // JSON string: test config
   totalQuestions Int      @default(0)
@@ -161,6 +277,7 @@ model Test {
   subject   Subject?       @relation(fields: [subjectId], references: [id], onDelete: SetNull)
   questions TestQuestionLink[]
   attempts  Attempt[]
+  versions  TestVersion[]
 
   @@index([subjectId])
 }
@@ -194,10 +311,14 @@ model Attempt {
   attemptedCount Int      @default(0)
   percentile     Float?
   configSnapshot String   // JSON string
+  flagged        Boolean @default(false) // suspicious attempt, pending manual review
+  flaggedReason  String?
+  practice       Boolean @default(false) // practice attempts do not count for leaderboards by default
 
   user     User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
   test     Test    @relation(fields: [testId], references: [id], onDelete: Cascade)
   answers  QuestionAttempt[]
+  events   AttemptEvent[]
 
   @@index([userId])
   @@index([testId])
@@ -274,4 +395,172 @@ model EnglishMockConfig {
   isActive       Boolean  @default(true)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+}
+
+// ---- Admin Studio foundation tables ----
+
+model TestVersion {
+  id         String   @id @default(cuid())
+  testId     String
+  versionNo  Int
+  snapshot   String   // JSON: config + ordered question ids at publish time
+  note       String?
+  actorEmail String?
+  createdAt  DateTime @default(now())
+
+  test Test @relation(fields: [testId], references: [id], onDelete: Cascade)
+
+  @@unique([testId, versionNo])
+  @@index([testId])
+}
+
+model AdminAuditLog {
+  id         String   @id @default(cuid())
+  actorEmail String
+  actorRole  String?
+  action     String   // e.g. QUESTION_UPDATE, TEST_PUBLISH, LEADERBOARD_EXCLUDE
+  entityType String   // QUESTION | TEST | SUBJECT | TOPIC | USER | SETTINGS | IMPORT | LEADERBOARD
+  entityId   String?
+  beforeData String?
+  afterData  String?
+  reason     String?
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([actorEmail])
+  @@index([createdAt])
+}
+
+model AttemptEvent {
+  id        String   @id @default(cuid())
+  attemptId String
+  type      String   // START | SAVE | RESUME | SUBMIT | AUTO_SUBMIT | EXPIRE
+  payload   String?
+  createdAt DateTime @default(now())
+
+  attempt Attempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@index([attemptId])
+}
+
+model ImportJob {
+  id             String   @id @default(cuid())
+  filename       String
+  checksum       String?
+  source         String   @default("MANUAL") // MANUAL | API | ROLLBACK
+  format         String   @default("JSON")   // JSON | CSV | PASTE
+  mode           String   @default("COMMIT") // DRY_RUN | COMMIT
+  status         String   @default("PENDING") // PENDING | PARSING | VALIDATING | IMPORTING | COMPLETED | FAILED | ROLLED_BACK
+  totalRecords   Int      @default(0)
+  insertedCount  Int      @default(0)
+  updatedCount   Int      @default(0)
+  skippedCount   Int      @default(0)
+  duplicateCount Int      @default(0)
+  failedCount    Int      @default(0)
+  errorDetails   String?
+  stagedData     String?  // normalized payload for resumable processing
+  processedUpTo  Int      @default(0) // resumable pointer
+  actorEmail     String?
+  createdAt      DateTime @default(now())
+  startedAt      DateTime?
+  finishedAt     DateTime?
+  updatedAt      DateTime @updatedAt
+
+  errors ImportError[]
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model ImportError {
+  id        String  @id @default(cuid())
+  jobId     String
+  rowNumber Int?
+  field     String?
+  code      String  // MISSING_TEXT | INVALID_TYPE | DUPLICATE_ID | ...
+  message   String
+  raw       String?
+
+  job ImportJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
+}
+
+model LeaderboardConfig {
+  id          String   @id @default(cuid())
+  name        String
+  scope       String   // GLOBAL | EXAM | SUBJECT | TEST | COMPETITION
+  periodType  String   @default("ALL_TIME") // ALL_TIME | WEEKLY | MONTHLY
+  examId      String?
+  subjectId   String?
+  testId      String?
+  rules       String   @default("{}") // JSON: {bestAttempt, excludePractice, minAttempts, tieBreakers}
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  entries    LeaderboardEntry[]
+  snapshots  LeaderboardSnapshot[]
+
+  @@index([scope])
+}
+
+model LeaderboardEntry {
+  id             String   @id @default(cuid())
+  configId       String
+  userId         String
+  testId         String?
+  bestScore      Float    @default(0)
+  maxScore       Float    @default(1)
+  percentage     Float    @default(0)
+  accuracy       Float    @default(0)
+  attemptsCount  Int      @default(0)
+  bestTimeSec    Int      @default(0)
+  lastSubmittedAt DateTime @default(now())
+  rank           Int      @default(0)
+
+  config LeaderboardConfig @relation(fields: [configId], references: [id], onDelete: Cascade)
+
+  @@unique([configId, userId])
+  @@index([configId, rank])
+}
+
+model LeaderboardSnapshot {
+  id         String   @id @default(cuid())
+  configId   String
+  periodKey  String
+  data       String
+  createdAt  DateTime @default(now())
+
+  config LeaderboardConfig @relation(fields: [configId], references: [id], onDelete: Cascade)
+
+  @@unique([configId, periodKey])
+  @@index([configId, periodKey])
+}
+
+model LeaderboardCompetition {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  examId      String?
+  testId      String?
+  startsAt    DateTime
+  endsAt      DateTime
+  rules       String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+}
+
+model LeaderboardExclusion {
+  id        String   @id @default(cuid())
+  userId    String
+  attemptId String?
+  reason    String
+  excludedBy String   // actor email
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }

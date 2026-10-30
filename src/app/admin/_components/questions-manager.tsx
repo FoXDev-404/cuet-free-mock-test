@@ -76,7 +76,7 @@ function emptyForm(subjectId = ""): QuestionForm {
   };
 }
 
-export function QuestionsManager({ subjects }: { subjects: Subject[] }) {
+export function QuestionsManager({ subjects }: { subjects?: Subject[] }) {
   const [rows, setRows] = useState<AdminQuestion[]>([]);
   const [total, setTotal] = useState(0);
   const [pages, setPages] = useState(1);
@@ -89,6 +89,20 @@ export function QuestionsManager({ subjects }: { subjects: Subject[] }) {
   const [banner, setBanner] = useState<{ ok: boolean; message: string } | null>(null);
   const [editing, setEditing] = useState<QuestionForm | null>(null);
   const [saving, setSaving] = useState(false);
+  const [loadedSubjects, setLoadedSubjects] = useState<Subject[]>([]);
+
+  // Standalone usage (e.g. /admin/question-bank) loads its own subject list.
+  useEffect(() => {
+    if (subjects?.length) return;
+    (async () => {
+      const res = await fetch("/api/admin/subjects");
+      if (res.ok) {
+        const data = await res.json();
+        setLoadedSubjects(Array.isArray(data) ? data : []);
+      }
+    })();
+  }, [subjects?.length]);
+  const subjectList = subjects?.length ? subjects : loadedSubjects;
 
   // List is fetched from the effect; mutations bump `reloadKey` to refetch.
   useEffect(() => {
@@ -258,7 +272,7 @@ export function QuestionsManager({ subjects }: { subjects: Subject[] }) {
             }}
           >
             <option value="">All subjects</option>
-            {subjects.map((s) => (
+            {subjectList.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.name} ({s.code})
               </option>
@@ -377,7 +391,7 @@ export function QuestionsManager({ subjects }: { subjects: Subject[] }) {
           <QuestionFormModal
             editing={editing}
             setEditing={setEditing}
-            subjects={subjects}
+            subjects={subjectList}
             saving={saving}
             onSave={save}
           />

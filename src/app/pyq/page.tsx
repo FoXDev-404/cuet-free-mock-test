@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -32,12 +31,24 @@ export default function PYQPage() {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch("/api/questions?source=pyq&limit=200");
+        // Study mode keeps answer keys visible for the PYQ study UI (recorded
+        // keys only). Anonymous visitors silently fall back to the keyless feed.
+        const res = await fetch("/api/questions?source=pyq&limit=200&study=1");
         if (!res.ok) throw new Error("Failed to load PYQs");
         const data = await res.json();
         const q = Array.isArray(data) ? data : data.questions || [];
-        setQuestions(q);
-      } catch {}
+        if (!cancelled) setQuestions(q);
+      } catch {
+        try {
+          const res = await fetch("/api/questions?source=pyq&limit=200");
+          if (!res.ok) throw new Error("Failed to load PYQs");
+          const data = await res.json();
+          const q = Array.isArray(data) ? data : data.questions || [];
+          if (!cancelled) setQuestions(q);
+        } catch {
+          // leave both failures silent — the empty state renders below
+        }
+      } finally {}
       setLoading(false);
     })();
     return () => { cancelled = true; };

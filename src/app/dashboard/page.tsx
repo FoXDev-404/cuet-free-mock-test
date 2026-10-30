@@ -16,6 +16,21 @@ import {
 import { cn } from "@/lib/utils";
 import { computeScore } from "@/lib/utils";
 
+// Shape of rows returned by /api/attempts (only the fields this page uses).
+type AttemptRow = {
+  id: string;
+  status: string;
+  score: number;
+  maxScore?: number;
+  attemptedCount?: number;
+  correctCount?: number;
+  startedAt?: string;
+  answers?: Array<{
+    isCorrect?: boolean | null;
+    question?: { subject?: { name?: string } | null; subjectId?: string | null } | null;
+  }>;
+};
+
 const achievements = [
   { id: "first", label: "First Question", icon: "🐣", desc: "Complete your first question", unlocked: true },
   { id: "champion", label: "Champion", icon: "🏆", desc: "Get 10 answers correct", unlocked: false },
@@ -24,7 +39,7 @@ const achievements = [
 ];
 
 export default function DashboardPage() {
-  const [attempts, setAttempts] = useState<any[]>([]);
+  const [attempts, setAttempts] = useState<AttemptRow[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -50,7 +65,7 @@ export default function DashboardPage() {
   for (const a of submitted) {
     for (const ans of (a.answers || [])) {
       if (ans.isCorrect === false && ans.question) {
-        const subj = (ans.question as any).subject?.name || (ans.question as any).subjectId || "unknown";
+        const subj = (ans.question)?.subject?.name || (ans.question)?.subjectId || "unknown";
         wrongCounts[subj] = (wrongCounts[subj] || 0) + 1;
       }
     }
@@ -172,7 +187,7 @@ export default function DashboardPage() {
                     </div>
                   </div>
                   <p className="text-sm text-neutral-600 dark:text-neutral-400">🌟 Complete daily goal to earn <strong>+50 Bonus XP</strong>!</p>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400 italic">"The work you do today makes tomorrow easier."</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 italic">&quot;The work you do today makes tomorrow easier.&quot;</p>
                 </div>
               </CardContent>
             </Card>

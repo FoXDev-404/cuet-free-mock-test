@@ -1,15 +1,11 @@
 "use client";
 
-import { useToast, Toast, ToastType } from "@/hooks/useToast";
+import { useToast } from "@/hooks/useToast";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
 export function Toaster() {
-  const { toasts, dismiss, toast } = useToast();
-
-  if (typeof window !== "undefined") {
-    (window as any).__cuetToast = (type: ToastType, message: string) => toast(type, message);
-  }
+  const { toasts, dismiss } = useToast();
 
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-50 flex flex-col gap-2">

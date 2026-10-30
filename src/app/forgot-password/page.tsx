@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
     <section className="py-12 container-page max-w-md mx-auto">
       <div className="card p-6 lg:p-8">
         <h1 className="text-2xl font-bold text-neutral-900 dark:text-white mb-1">Forgot Password</h1>
-        <p className="text-neutral-600 dark:text-neutral-400 mb-6">Enter your email and we'll send you a link to reset your password.</p>
+        <p className="text-neutral-600 dark:text-neutral-400 mb-6">Enter your email and we&apos;ll send you a link to reset your password.</p>
         {message && (
           <div className={`mb-4 p-3 rounded-lg text-sm border ${messageType === "success" ? "bg-green-50 text-green-700 border-green-100 dark:bg-green-900/30 dark:text-green-300 dark:border-green-900" : "bg-red-50 text-red-700 border-red-100 dark:bg-red-900/30 dark:text-red-300 dark:border-red-900"}`}>
             {message}

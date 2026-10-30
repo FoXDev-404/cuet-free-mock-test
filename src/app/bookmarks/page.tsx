@@ -9,9 +9,8 @@ interface BookmarkItem {
   id: string;
   stemEn: string;
   subject: string;
-  topic: string;
+  topic: string | null;
   testId?: string;
-  createdAt: string;
 }
 
 export default function BookmarksPage() {
@@ -69,8 +68,7 @@ export default function BookmarksPage() {
                     <p className="text-sm font-medium text-neutral-900 dark:text-white line-clamp-2">{b.stemEn}</p>
                     <div className="mt-1 flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
                       <span className="flex items-center gap-1"><BookOpen className="h-3 w-3" />{b.subject}</span>
-                      <span>{b.topic}</span>
-                      <span className="text-neutral-400">{new Date(b.createdAt).toLocaleDateString()}</span>
+                      {b.topic && <span>{b.topic}</span>}
                     </div>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">

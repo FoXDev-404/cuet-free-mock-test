@@ -10,17 +10,16 @@ export async function GET() {
 
     const bookmarks = await prisma.bookmark.findMany({
       where: { userId: session.user.id },
-      include: { question: { include: { subject: true, testLinks: true } } },
+      include: { question: { include: { subject: true, topic: true, testLinks: true } } },
       orderBy: { id: "desc" },
     });
 
-    const formatted = bookmarks.map((b: any) => ({
+    const formatted = bookmarks.map((b) => ({
       id: b.id,
       stemEn: b.question.stemEn,
       subject: b.question.subject?.name || b.question.subjectId,
-      topic: b.question.topic,
+      topic: b.question.topic?.name || null,
       testId: b.question.testLinks?.[0]?.testId,
-      createdAt: b.createdAt.toISOString(),
     }));
 
     return NextResponse.json(formatted);

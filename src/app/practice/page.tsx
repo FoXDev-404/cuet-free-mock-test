@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,12 +11,24 @@ interface Question {
   id: string;
   stemEn: string;
   optionsEn: { id: string; text: string }[];
-  correctAnswer: string;
   explanationEn?: string;
   type: string;
   marks: number;
   subject: string;
   topic: string;
+}
+
+interface SubmitResult {
+  attemptId: string;
+  score: number;
+  maxScore: number;
+  accuracy: number;
+  percentage: number;
+  correct: number;
+  incorrect: number;
+  attempted: number;
+  unattempted: number;
+  review: { questionId: string; selectedOption: string | null; isCorrect: boolean }[];
 }
 
 interface TestConfig {
@@ -36,10 +48,14 @@ export default function PracticePage() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [showReview, setShowReview] = useState(false);
+  const [result, setResult] = useState<SubmitResult | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [filters, setFilters] = useState({ mainCategory: "All", topic: "All", status: "All", source: "All" });
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [attemptId, setAttemptId] = useState<string | null>(null);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -56,22 +72,53 @@ export default function PracticePage() {
         setConfig(cfg);
         setTimeLeft(cfg.durationMinutes * 60);
         setTimerRunning(true);
-      } catch (e: any) { setError(e.message || "Failed to load questions"); }
+        // Open a practice attempt server-side (START event + persistence).
+        const startRes = await fetch("/api/attempts/start", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ practice: true }),
+        });
+        if (startRes.ok) {
+          const startData = await startRes.json();
+          if (!cancelled) setAttemptId(startData.attemptId);
+        }
+      } catch (e) { setError(e instanceof Error ? e.message : "Failed to load questions"); }
       finally { setLoading(false); }
     })();
     return () => { cancelled = true; };
   }, []);
 
+  // Declared before the timer hooks so the auto-submit hook can depend on the
+  // latest closure instead of reading a variable before it is declared.
+  const submitTest = useCallback(async () => {
+    if (submitted || submitting) return;
+    setSubmitting(true);
+    try {
+      const answerArray = Object.entries(answers).map(([questionId, selectedOption]) => ({ questionId, selectedOption }));
+      const res = await fetch("/api/attempts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ practice: true, attemptId: attemptId ?? undefined, answers: answerArray, timeSpentSec: config!.durationMinutes * 60 - timeLeft }) });
+      if (!res.ok) throw new Error((await res.json().catch(() => ({})))?.error || "Submit failed");
+      const data = (await res.json()) as SubmitResult;
+      setResult(data);
+      setSubmitted(true); setShowResult(true);
+    } catch (e) { alert(e instanceof Error ? e.message : "Submit failed"); }
+    finally { setSubmitting(false); }
+  }, [answers, attemptId, timeLeft, submitted, submitting, config]);
+
   useEffect(() => {
     if (!timerRunning || !config) return;
     timerRef.current = setInterval(() => {
-      setTimeLeft(t => {
-        if (t <= 1) { setTimerRunning(false); autoSubmit(); return 0; }
-        return t - 1;
-      });
+      setTimeLeft(t => (t <= 1 ? 0 : t - 1));
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [timerRunning, config]);
+
+  // Auto-submit once the clock reaches zero — deferred out of the timer's
+  // state updater so each tick stays a pure state change.
+  useEffect(() => {
+    if (!timerRunning || timeLeft > 0) return;
+    const id = setTimeout(() => { void submitTest(); }, 0);
+    return () => clearTimeout(id);
+  }, [timeLeft, timerRunning, submitTest]);
 
   const formatTime = (seconds: number) => { const m = Math.floor(seconds / 60); const s = seconds % 60; return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`; };
   const currentQuestion = questions[currentIndex];
@@ -82,31 +129,45 @@ export default function PracticePage() {
   const clearResponse = () => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: null }));
   const toggleReview = () => setMarkedForReview(prev => { const n = new Set(prev); n.has(currentQuestion!.id) ? n.delete(currentQuestion!.id) : n.add(currentQuestion!.id); return n; });
   const goTo = (i: number) => { if (i >= 0 && i < questions.length) setCurrentIndex(i); };
-  const autoSubmit = async () => await submitTest();
-  const submitTest = async () => {
-    if (submitted || submitting) return;
-    setSubmitting(true);
-    try {
-      const answerArray = Object.entries(answers).map(([questionId, selectedOption]) => ({ questionId, selectedOption }));
-      const res = await fetch("/api/attempts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: answerArray, timeSpentSec: config!.durationMinutes * 60 - timeLeft }) });
-      if (!res.ok) throw new Error("Submit failed");
-      setSubmitted(true); setShowResult(true);
-    } catch (e: any) { alert(e.message || "Submit failed"); }
-    finally { setSubmitting(false); }
-  };
 
   if (loading) return <section className="py-12 container-page"><div className="card text-center py-20"><div className="animate-spin mx-auto h-12 w-12 border-4 border-primary-200 border-t-primary-600 rounded-full" /><p className="mt-6 text-neutral-600 dark:text-neutral-400">Loading practice questions…</p></div></section>;
   if (error) return <section className="py-12 container-page"><div className="card text-center py-20 max-w-xl mx-auto"><h2 className="text-lg font-semibold text-red-700 dark:text-red-400">Error</h2><p className="mt-2 text-neutral-600 dark:text-neutral-400">{error}</p><Button onClick={() => window.location.reload()} variant="brand" className="mt-4">Retry</Button></div></section>;
   if (!questions.length) return <section className="py-12 container-page"><div className="card text-center py-20 max-w-xl mx-auto"><h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">No questions available</h2><p className="text-neutral-600 dark:text-neutral-400">No practice questions available at the moment.</p></div></section>;
 
-  if (showResult && submitted) {
-    let correct = 0, incorrect = 0, attempted = 0;
-    for (const q of questions) { const sel = answers[q.id]; if (sel != null && sel !== "") { attempted++; if (sel === q.correctAnswer) correct++; else incorrect++; } }
-    const { rawScore, maxScore, accuracy, percentage } = (() => { const marksCorrect = config!.markingScheme.correct, marksIncorrect = config!.markingScheme.incorrect; const raw = correct * marksCorrect - incorrect * marksIncorrect; const max = (correct + incorrect + (questions.length - attempted)) * marksCorrect; const acc = correct + incorrect === 0 ? 0 : (correct / (correct + incorrect)) * 100; const pct = max === 0 ? 0 : (raw / max) * 100; return { rawScore: raw, maxScore: max, accuracy: acc, percentage: pct }; })();
+  if (showResult && submitted && result) {
+    const { rawScore, maxScore, accuracy, percentage } = { rawScore: result.score, maxScore: result.maxScore, accuracy: result.accuracy, percentage: result.percentage };
+    if (showReview) {
+      const reviewMap = new Map(result.review.map((r) => [r.questionId, r]));
+      return (
+        <section className="py-8 container-page">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold text-neutral-900 dark:text-white">Answer Review</h2>
+            <Button variant="outline" onClick={() => setShowReview(false)}>Back to summary</Button>
+          </div>
+          <div className="space-y-4">
+            {questions.map((q, i) => {
+              const rv = reviewMap.get(q.id);
+              const sel = answers[q.id];
+              const answered = sel != null && sel !== "";
+              return (
+                <Card key={q.id}>
+                  <CardContent className="pt-5">
+                    <p className="font-medium text-neutral-900 dark:text-white">Q{i + 1}. {q.stemEn}</p>
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Your answer:</span> {answered ? q.optionsEn?.find(o => o.id === sel)?.text ?? sel : "Not answered"}</p>
+                    <p className={cn("mt-1 text-sm font-semibold", rv?.isCorrect ? "text-secondary-700 dark:text-secondary-300" : answered ? "text-red-700 dark:text-red-300" : "text-neutral-500")}>{rv?.isCorrect ? "Correct" : answered ? "Incorrect" : "Unattempted"}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </section>
+      );
+    }
+    const correct = result.correct, incorrect = result.incorrect, attempted = result.attempted;
     return (
       <section className="py-12 container-page max-w-2xl mx-auto">
         <div className="card text-center p-8 animate-scale-in">
-          <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{rawScore}</div>
+          <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{Math.round(rawScore)}</div>
           <div className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">Score out of {maxScore}</div>
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50"><div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{correct}</div><div className="text-xs text-neutral-500 dark:text-neutral-400">Correct</div></div>
@@ -116,8 +177,8 @@ export default function PracticePage() {
           <div className="mb-6"><div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2 mb-1"><div className="h-2 rounded-full bg-primary-600 dark:bg-primary-400 transition-all duration-700" style={{ width: `${percentage}%` }} /></div><div className="text-sm text-neutral-600 dark:text-neutral-400">Accuracy: {accuracy.toFixed(1)}%</div></div>
           <p className="text-neutral-600 dark:text-neutral-300 mb-6">Time taken: {Math.floor((config!.durationMinutes * 60 - timeLeft) / 60)}:{String((config!.durationMinutes * 60 - timeLeft) % 60).padStart(2, "0")}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button variant="brand" onClick={() => { setShowResult(false); setSubmitted(false); setAnswers({}); setMarkedForReview(new Set()); setCurrentIndex(0); setTimeLeft(config!.durationMinutes * 60); setTimerRunning(true); }}>Retry Test</Button>
-            <Button variant="outline" onClick={() => setShowResult(false)} className="w-full sm:w-auto">Review Answers</Button>
+            <Button variant="brand" onClick={() => window.location.reload()}>Retry Test</Button>
+            <Button variant="outline" onClick={() => setShowReview(true)} className="w-full sm:w-auto">Review Answers</Button>
           </div>
         </div>
       </section>
@@ -182,8 +243,8 @@ export default function PracticePage() {
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
             <span className={cn("font-medium", isAnswered ? "text-secondary-600 dark:text-secondary-400" : "text-neutral-500")}>{isAnswered ? "Answered" : "Not answered"}</span>
-            {(currentQuestion as any)?.subject && <span className="badge badge-neutral">{(currentQuestion as any).subject}</span>}
-            {(currentQuestion as any)?.topic && <span className="badge badge-neutral">{(currentQuestion as any).topic}</span>}
+            {currentQuestion?.subject ? <span className="badge badge-neutral">{currentQuestion.subject}</span> : null}
+            {currentQuestion?.topic ? <span className="badge badge-neutral">{currentQuestion.topic}</span> : null}
             {currentQuestion?.type && <span className="badge badge-primary">{currentQuestion.type}</span>}
           </div>
         </CardHeader>

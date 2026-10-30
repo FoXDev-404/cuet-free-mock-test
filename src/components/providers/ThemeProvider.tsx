@@ -34,10 +34,12 @@ export function ThemeProvider({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored) setThemeState(stored);
-    else if (enableSystem) setThemeState("system");
+    void (async () => {
+      setMounted(true);
+      const stored = localStorage.getItem("theme") as Theme | null;
+      if (stored) setThemeState(stored);
+      else if (enableSystem) setThemeState("system");
+    })();
   }, [enableSystem]);
 
   useEffect(() => {

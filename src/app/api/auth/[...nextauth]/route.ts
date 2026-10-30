@@ -1,9 +1,8 @@
 import NextAuth from "next-auth";
 import { authOptions } from "@/lib/auth/config";
 
-// Note: next-auth v4 cookie decoding for Next.js 16 happens in middleware.ts
-// (request header rewrite for /api/auth/*); do not strip it without reading
-// the comment there.
+// Note: Next.js 16 renamed the middleware convention to src/proxy.ts; it
+// gates /admin only. /api/auth/* is handled entirely by next-auth here.
 const handler = NextAuth(authOptions);
 
 export const GET = handler;

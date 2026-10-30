@@ -93,19 +93,23 @@ export default function SettingsPage() {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) setPrefs({ ...defaultPrefs, ...JSON.parse(stored) });
-    } catch {}
-    setLoaded(true);
+    void (async () => {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) setPrefs({ ...defaultPrefs, ...JSON.parse(stored) });
+      } catch {}
+      setLoaded(true);
+    })();
   }, []);
 
   useEffect(() => {
     if (!loaded) return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
-    } catch {}
-    setSaved(true);
+    void (async () => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+      } catch {}
+      setSaved(true);
+    })();
     const t = setTimeout(() => setSaved(false), 1800);
     return () => clearTimeout(t);
   }, [prefs, loaded]);

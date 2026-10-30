@@ -16,7 +16,7 @@ export default async function ResultPage({ params }: ResultPageProps) {
     where: { id: attemptId },
     include: {
       test: { include: { subject: true } },
-      answers: { include: { question: { include: { subject: true } } }, orderBy: { id: "asc" } },
+      answers: { include: { question: { include: { subject: true, topic: true } } }, orderBy: { id: "asc" } },
     },
   });
 
@@ -107,7 +107,7 @@ export default async function ResultPage({ params }: ResultPageProps) {
         <CardContent>
           <div className="space-y-4">
             {(attempt.answers || []).map((ans) => {
-              const q: any = ans.question;
+              const q = ans.question;
               const isCorrect = ans.isCorrect;
               return (
                 <details key={ans.id} className="group">
@@ -121,7 +121,7 @@ export default async function ResultPage({ params }: ResultPageProps) {
                       </div>
                       <div className="text-xs text-neutral-500 dark:text-neutral-400 flex flex-wrap gap-3">
                         {q?.subject && <span><BookOpen className="h-3 w-3 inline mr-1" />{q.subject.name}</span>}
-                        {q?.topic && <span>{q.topic}</span>}
+                        {q?.topic?.name && <span>{q.topic?.name}</span>}
                       </div>
                     </div>
                     <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />

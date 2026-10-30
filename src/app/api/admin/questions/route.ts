@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireAdmin } from "@/lib/auth/guard";
+import { requireAdmin, requirePermission, writeAudit } from "@/lib/auth/guard";
+import { syncQuestionOptions, setCorrectOptions, snapshotQuestionVersion, isCorrectChoice, actorEmailOf, type OptionInput } from "@/lib/admin/question-sync";
 import { z } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -23,20 +24,29 @@ const questionCreateSchema = z
   .object({
     subjectId: z.string().min(1),
     chapterId: z.string().optional().nullable(),
+    topicId: z.string().optional().nullable(),
+    externalId: z.string().max(120).optional().nullable(),
     type: z.string().default("MCQ"),
     stemEn: z.string().min(1),
     stemHi: z.string().optional().nullable(),
+    richTextEn: z.string().optional().nullable(),
     optionsEn: z.array(z.object({ id: z.string(), text: z.string() })).optional(),
     optionsHi: z.array(z.object({ id: z.string(), text: z.string() })).optional().nullable(),
     correctAnswer: z.string().min(1),
     explanationEn: z.string().optional().nullable(),
     explanationHi: z.string().optional().nullable(),
+    questionImages: z.array(z.object({ url: z.string(), alt: z.string().optional() })).optional(),
+    language: z.enum(["EN", "HI"]).default("EN"),
+    // Workflow status: unverified imports must never auto-publish (spec §6).
+    status: z.enum(["DRAFT", "PENDING_VALIDATION", "UNDER_REVIEW", "APPROVED", "PUBLISHED", "ARCHIVED", "REJECTED"]).default("DRAFT"),
     year: z.number().int().optional().nullable(),
     source: z.string().optional(),
+    paperShift: z.string().optional().nullable(),
     difficulty: z.enum(["easy", "medium", "hard"]).default("easy"),
     marks: z.number().int().default(1),
     negativeMarks: z.number().int().default(0),
     isActive: z.boolean().default(true),
+    tags: z.array(z.string().min(1).max(40)).max(20).optional(),
     ...englishFields,
   })
   .passthrough();
@@ -50,13 +60,27 @@ export async function GET(req: Request) {
     const page = Math.max(parseInt(searchParams.get("page") || "1", 10) || 1, 1);
     const perPage = Math.min(Math.max(parseInt(searchParams.get("perPage") || "20", 10) || 20, 1), 100);
     const subjectId = searchParams.get("subjectId") || undefined;
+    const chapterId = searchParams.get("chapterId") || undefined;
+    const topicId = searchParams.get("topicId") || undefined;
+    const examId = searchParams.get("examId") || undefined;
+    const status = searchParams.get("status") || undefined;
+    const type = searchParams.get("type") || undefined;
+    const difficulty = searchParams.get("difficulty") || undefined;
+    const tag = searchParams.get("tag") || undefined;
     const search = searchParams.get("search") || undefined;
     const reviewStatus = searchParams.get("reviewStatus") || undefined;
     const isActive = searchParams.get("isActive");
 
     const where: Record<string, unknown> = {
       ...(subjectId ? { subjectId } : {}),
-      ...(search ? { stemEn: { contains: search } } : {}),
+      ...(chapterId ? { chapterId } : {}),
+      ...(topicId ? { topicId } : {}),
+      ...(examId ? { examId } : {}),
+      ...(status ? { status } : {}),
+      ...(type ? { type } : {}),
+      ...(difficulty ? { difficulty } : {}),
+      ...(tag ? { tags: { some: { label: tag } } } : {}),
+      ...(search ? { OR: [{ stemEn: { contains: search } }, { externalId: { contains: search } }] } : {}),
       ...(reviewStatus ? { answerReviewStatus: reviewStatus } : {}),
       ...(isActive === "true" ? { isActive: true } : isActive === "false" ? { isActive: false } : {}),
     };
@@ -71,6 +95,9 @@ export async function GET(req: Request) {
         select: {
           id: true,
           questionNumber: true,
+          externalId: true,
+          type: true,
+          status: true,
           stemEn: true,
           optionsEn: true,
           correctAnswer: true,
@@ -81,13 +108,18 @@ export async function GET(req: Request) {
           difficulty: true,
           year: true,
           source: true,
+          paperShift: true,
           marks: true,
           negativeMarks: true,
           isActive: true,
+          version: true,
           explanationEn: true,
+          topicId: true,
           passage: { select: { passageKey: true, title: true } },
           subject: { select: { id: true, name: true, code: true } },
           chapter: { select: { id: true, name: true } },
+          topic: { select: { id: true, name: true } },
+          tags: { select: { label: true } },
         },
       }),
     ]);
@@ -109,31 +141,39 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  const guard = await requireAdmin();
+  const guard = await requirePermission("QUESTION_WRITE");
   if (guard.error) return guard.error;
 
   try {
     const body = await req.json();
     const q = questionCreateSchema.parse(body);
 
-    // Auto-generate option ids when not provided, in the same format the
-    // English mock client uses: opt-<questionId>-<order>
+    // Unreviewed imports route through IMPORT_RUN; UI creates default to DRAFT
+    // and must never silently publish (spec §6).
+    const subject = await prisma.subject.findUnique({ where: { id: q.subjectId }, select: { examId: true } });
+
     const created = await prisma.question.create({
       data: {
         subjectId: q.subjectId,
         chapterId: q.chapterId ?? undefined,
+        topicId: q.topicId ?? undefined,
+        examId: subject?.examId ?? undefined,
+        externalId: q.externalId ?? undefined,
         type: q.type,
         stemEn: q.stemEn,
         stemHi: q.stemHi,
-        optionsEn: q.optionsEn
-          ? JSON.stringify(q.optionsEn)
-          : JSON.stringify([]),
+        richTextEn: q.richTextEn,
+        optionsEn: q.optionsEn ? JSON.stringify(q.optionsEn) : JSON.stringify([]),
         optionsHi: q.optionsHi ? JSON.stringify(q.optionsHi) : null,
         correctAnswer: q.correctAnswer,
         explanationEn: q.explanationEn,
         explanationHi: q.explanationHi,
+        questionImages: q.questionImages ? JSON.stringify(q.questionImages) : null,
+        language: q.language,
+        status: q.status,
         year: q.year,
         source: q.source ?? "admin",
+        paperShift: q.paperShift ?? undefined,
         difficulty: q.difficulty,
         marks: q.marks,
         negativeMarks: q.negativeMarks,
@@ -151,19 +191,32 @@ export async function POST(req: Request) {
       },
     });
 
-    if (!q.optionsEn || q.optionsEn.length === 0) {
-      // Give a bare multiple-choice question 4 placeholder options so the UI
-      // can edit them right away.
-      const options = ["A", "B", "C", "D"].map((label, i) => ({
-        id: `opt-${created.id}-${i + 1}`,
-        text: `Option ${label}`,
-      }));
-      await prisma.question.update({
-        where: { id: created.id },
-        data: { optionsEn: JSON.stringify(options) },
+    // Normalized options + write-through JSON cache.
+    const optionInput: OptionInput[] = q.optionsEn?.length
+      ? q.optionsEn
+      : ["A", "B", "C", "D"].map((label) => ({ id: "", text: `Option ${label}` }));
+    const optionIds = await syncQuestionOptions(created.id, optionInput);
+    const correctIds = optionIds.filter((optionId) => isCorrectChoice(optionId, q.correctAnswer));
+    await setCorrectOptions(created.id, correctIds);
+
+    // Also keep the JSON cache aligned with resolved option ids.
+    const resolvedOptions = optionInput.map((o, i) => ({ id: optionIds[i], text: o.text }));
+    await prisma.question.update({
+      where: { id: created.id },
+      data: {
+        optionsEn: JSON.stringify(resolvedOptions),
+        correctAnswer: correctIds[0] ? correctIds[0] : q.correctAnswer,
+      },
+    });
+
+    if (q.tags?.length) {
+      await prisma.questionTag.createMany({
+        data: q.tags.map((label) => ({ questionId: created.id, label })),
       });
     }
 
+    await snapshotQuestionVersion(created.id, actorEmailOf(guard.session), "created");
+    await writeAudit({ session: guard.session, action: "QUESTION_CREATE", entityType: "QUESTION", entityId: created.id, afterData: { stem: q.stemEn, status: q.status } });
     return NextResponse.json({ id: created.id }, { status: 201 });
   } catch (e) {
     if (e instanceof z.ZodError) {

@@ -1,5 +1,5 @@
 name = "cuet-free-mock-test"
-compatibility_date = "2024-12-01"
+compatibility_date = "2026-09-30"
 compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
 
@@ -12,6 +12,7 @@ binding = "DB"
 database_name = "cuet-mock-db"
 database_id = "1248d1b3-e3d4-4815-99dc-1587a26d25f7"
 migrations_dir = "prisma/migrations"
+migrations_pattern = "prisma/migrations/*/migration.sql"
 
 [vars]
 NEXTAUTH_URL = "https://cuet-free-mock-test.cuet-platform.workers.dev"

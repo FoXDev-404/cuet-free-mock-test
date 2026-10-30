@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface AdSlotProps {
   adSlot: string;
@@ -9,7 +9,6 @@ interface AdSlotProps {
 }
 
 export function AdSlot({ adSlot, adFormat = "auto", style }: AdSlotProps) {
-  const [loaded, setLoaded] = useState(false);
   const enabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
   const isDevOrDisabled = !enabled || !client || client === "pub-XXXXXXXXXXXXXXXXXXXX";
@@ -20,16 +19,13 @@ export function AdSlot({ adSlot, adFormat = "auto", style }: AdSlotProps) {
     leaderboard: "728x90",
   };
 
+  // Register the slot with the AdSense queue once its client script (loaded by
+  // <AdSenseLoader/>) is present; no local state tracking is needed.
   useEffect(() => {
-    if (typeof window === "undefined" || isDevOrDisabled) {
-      setLoaded(false);
-      return;
-    }
-    const win = window as any;
+    if (typeof window === "undefined" || isDevOrDisabled) return;
+    const win = window as unknown as { adsbygoogle?: unknown[] };
     if (!win.adsbygoogle) return;
-    win.adsbygoogle = win.adsbygoogle || [];
     win.adsbygoogle.push({});
-    setLoaded(true);
   }, [adSlot, isDevOrDisabled]);
 
   if (isDevOrDisabled) {

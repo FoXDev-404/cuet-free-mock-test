@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth/config";
+import { ensureSyntheticTest } from "@/lib/attempts";
 import { z } from "zod";
 
 const submitSchema = z.object({
@@ -132,6 +135,57 @@ export async function POST(req: Request) {
       results,
       timeSpentSec: parsed.timeSpentSec,
     };
+
+    // Persist the attempt (previously results were computed but never stored).
+    // Attempts attach to a reserved non-public test so the FK is valid; the
+    // response shape is unchanged for the client.
+    try {
+      const session = await getServerSession(authOptions);
+      const user = session?.user as { id?: string } | undefined;
+      const arena = await ensureSyntheticTest(
+        "english-pyq-40",
+        "English PYQ Mock (CUET UG)",
+        { markingScheme: { correct: 1, incorrect: 0, unattempted: 0 }, englishMock: true },
+        "PYQ_YEAR_WISE",
+      );
+      await prisma.attempt.create({
+        data: {
+          sessionId: `eng-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`,
+          testId: arena.id,
+          userId: user?.id ?? null,
+          status: "SUBMITTED",
+          submittedAt: new Date(),
+          timeSpentSec: parsed.timeSpentSec,
+          score: verifiedRawScore,
+          maxScore: verifiedMaxScore,
+          correctCount: verifiedCorrect,
+          incorrectCount: verifiedIncorrect,
+          attemptedCount: totalAttempted,
+          configSnapshot: JSON.stringify({ englishMock: true, pendingReviewCount, timeSpentSec: parsed.timeSpentSec }),
+          answers: {
+            create: results.map((r) => ({
+              questionId: r.questionId,
+              selectedOption: r.selectedOptionId,
+              // Flagged rows carry null correctness in the response; the row
+              // itself records the raw grading fact (mocking is done via
+              // answerReviewStatus-aware reporting, not by rewriting facts).
+              isCorrect: r.isCorrect ?? false,
+              cleared: false,
+              markedForReview: false,
+            })),
+          },
+          events: {
+            create: {
+              type: "SUBMIT",
+              payload: JSON.stringify({ verifiedRawScore, verifiedMaxScore, pendingReviewCount }),
+            },
+          },
+        },
+      });
+    } catch (persistError) {
+      console.error("english-mock attempt persistence failed", persistError);
+      // Results still return — persistence failure is logged, not hidden.
+    }
 
     return NextResponse.json(attemptData);
   } catch (e: unknown) {

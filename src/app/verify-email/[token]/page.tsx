@@ -8,16 +8,12 @@ export default function VerifyEmailPage() {
   const router = useRouter();
   const params = useParams<{ token: string }>();
   const token = typeof params?.token === "string" ? params.token : Array.isArray(params?.token) ? params.token[0] : "";
-  const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(!token);
+  const [message, setMessage] = useState(token ? "" : "No verification token provided.");
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (!token) {
-      setMessage("No verification token provided.");
-      setLoading(false);
-      return;
-    }
+    if (!token) return;
     fetch("/api/auth/verify-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

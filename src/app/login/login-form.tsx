@@ -23,13 +23,30 @@ export default function LoginForm({ callbackUrl }: { callbackUrl: string }) {
     setError("");
     setLoading(true);
     try {
-      const result = await signIn("credentials", {
+      let result = await signIn("credentials", {
         email,
         password,
         callbackUrl,
         redirect: false,
       });
-      if (result?.error) {
+
+      // next-auth v4 wart: when the CSRF check fails server-side it answers
+      // HTTP 200 with {"url":".../api/auth/signin?csrf=true"} and no `error`
+      // field, so the promise resolves looking like a success (ok:true,
+      // error:null) even though no session was created. In that specific
+      // shape the browser has meanwhile picked up a matching csrf cookie,
+      // so one automatic retry resolves it for real.
+      const rejectedCsrf = (r: Awaited<typeof result>) => !!r?.url && r.url.includes("/api/auth/signin?csrf=true");
+      if (!result?.error && rejectedCsrf(result)) {
+        result = await signIn("credentials", {
+          email,
+          password,
+          callbackUrl,
+          redirect: false,
+        });
+      }
+
+      if (result?.error || rejectedCsrf(result)) {
         setError("Invalid email or password.");
       } else {
         router.push(callbackUrl);

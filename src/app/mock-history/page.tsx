@@ -6,8 +6,21 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Table, TableBody, TableCell, TableHeader, TableRow, TableContainer } from "@/components/ui/table";
 
+// Shape of rows returned by /api/attempts (only the fields this page uses).
+type AttemptRow = {
+  id: string;
+  score?: number;
+  maxScore?: number;
+  attemptedCount?: number;
+  correctCount?: number;
+  timeSpentSec?: number;
+  startedAt: string;
+  testId?: string;
+  test?: { title?: string } | null;
+};
+
 export default function MockHistoryPage() {
-  const [attempts, setAttempts] = useState<any[]>([]);
+  const [attempts, setAttempts] = useState<AttemptRow[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,10 +74,10 @@ export default function MockHistoryPage() {
                 <TableBody>
                   {attempts.map((a) => (
                     <TableRow key={a.id}>
-                      <TableCell>{(a.test as any)?.title || "Mock Test"}</TableCell>
+                      <TableCell>{a.test?.title || "Mock Test"}</TableCell>
                       <TableCell className="text-right">{a.score}/{a.maxScore}</TableCell>
                       <TableCell className="text-right">
-                        {a.attemptedCount > 0 ? ((a.correctCount / a.attemptedCount) * 100).toFixed(1) + "%" : "0%"}
+                        {a.attemptedCount && a.attemptedCount > 0 ? (((a.correctCount ?? 0) / a.attemptedCount) * 100).toFixed(1) + "%" : "0%"}
                       </TableCell>
                       <TableCell className="text-right">
                         {Math.floor((a.timeSpentSec || 0) / 60)}:{String((a.timeSpentSec || 0) % 60).padStart(2, "0")}

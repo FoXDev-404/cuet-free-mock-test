@@ -8,6 +8,32 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area, CartesianGrid
 } from "recharts";
 
+// Shape of rows returned by /api/attempts (only the fields these pages use).
+type AttemptRow = {
+  id: string;
+  status: string;
+  score: number;
+  maxScore?: number;
+  attemptedCount?: number;
+  correctCount?: number;
+  incorrectCount?: number;
+  timeSpentSec?: number;
+  startedAt?: string;
+  testId?: string;
+  test?: { id?: string; title?: string; slug?: string; totalQuestions?: number } | null;
+  answers?: Array<{
+    id?: string;
+    isCorrect?: boolean | null;
+    selectedOption?: number | string | null;
+    question?: {
+      id?: string;
+      stemEn?: string;
+      subject?: { name?: string } | null;
+      subjectId?: string | null;
+    } | null;
+  }>;
+};
+
 function ChartEmpty({ title, description }: { title: string; description: string }) {
   return (
     <div className="flex h-64 flex-col items-center justify-center rounded-xl border border-dashed border-neutral-200 bg-neutral-50/60 px-6 text-center dark:border-neutral-700 dark:bg-neutral-800/30">
@@ -22,7 +48,7 @@ function ChartEmpty({ title, description }: { title: string; description: string
 }
 
 export default function AnalyticsPage() {
-  const [attempts, setAttempts] = useState<any[]>([]);
+  const [attempts, setAttempts] = useState<AttemptRow[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
