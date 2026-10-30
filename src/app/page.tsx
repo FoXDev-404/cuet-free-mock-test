@@ -68,7 +68,7 @@ export default function HomePage() {
               NTA Pattern CUET Mock Tests
             </p>
             <h1 className="max-w-xl text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-neutral-950 dark:text-white sm:text-4xl lg:text-[3rem]">
-              Practice FREE Online CUET 2027 Mock Tests for UG.
+              Practice FREE Online CUET 2027 Mock Tests
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-8">
               NTA Pattern Practice Papers, Previous Year Questions (PYQs), and Time-Bound Full-Length Test Series for CUET UG. Start practicing today!

@@ -12,13 +12,13 @@ const siteName = "CUETFreeMockTest.Com";
 
 export const metadata: Metadata = {
   title: {
-    default: "Free Online CUET Mock Test | NTA Pattern based Practice Papers — CUETFreeMockTest.Com",
+    default: "Free Online CUET Mock Test | NTA Pattern Based Practice Papers",
     template: "%s | CUETFreeMockTest.Com",
   },
   description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking. Not affiliated with NTA.",
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Free Online CUET Mock Test | NTA Pattern based Practice Papers — CUETFreeMockTest.Com",
+    title: "Free Online CUET Mock Test | NTA Pattern Based Practice Papers",
     description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking. Not affiliated with NTA.",
     url: siteUrl,
     siteName: "CUETFreeMockTest.Com",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Online CUET Mock Test | NTA Pattern based Practice Papers — CUETFreeMockTest.Com",
+    title: "Free Online CUET Mock Test | NTA Pattern Based Practice Papers",
     description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking.",
     images: [`${siteUrl}/og-image.png`],
   },
