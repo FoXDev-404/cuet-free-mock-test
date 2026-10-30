@@ -43,10 +43,10 @@ export function Footer() {
       <div className="container-page py-12 sm:py-14 lg:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_repeat(3,1fr)] lg:gap-12">
           <div className="max-w-sm sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="CUETFreeMockTest home">
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="CUETFreeMockTest.Com home">
               <span className="home-brand-mark"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
               <span className="text-base font-bold tracking-tight text-neutral-900 dark:text-white">
-                CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest</span>
+                CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest.Com</span>
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-6 text-neutral-600 dark:text-neutral-400">
@@ -75,7 +75,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-neutral-200 pt-6 dark:border-neutral-800 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} CUETFreeMockTest. All rights reserved.</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} CUETFreeMockTest.Com. All rights reserved.</p>
             <p className="mt-1 text-xs text-neutral-400 dark:text-neutral-500">Independent learning resource · Not affiliated with NTA</p>
           </div>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-5 gap-y-2">

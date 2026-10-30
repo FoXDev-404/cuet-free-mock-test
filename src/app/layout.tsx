@@ -8,25 +8,27 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
+const siteName = "CUETFreeMockTest.Com";
+
 export const metadata: Metadata = {
   title: {
-    default: "CUETFreeMockTest — Free CUET (UG) Mock Tests & Practice",
-    template: "%s | CUETFreeMockTest",
+    default: "Free Online CUET Mock Test | NTA Pattern based Practice Papers — CUETFreeMockTest.Com",
+    template: "%s | CUETFreeMockTest.Com",
   },
   description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking. Not affiliated with NTA.",
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "CUETFreeMockTest — Free CUET (UG) Mock Tests & Practice",
+    title: "Free Online CUET Mock Test | NTA Pattern based Practice Papers — CUETFreeMockTest.Com",
     description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking. Not affiliated with NTA.",
     url: siteUrl,
-    siteName: "CUETFreeMockTest",
+    siteName: "CUETFreeMockTest.Com",
     type: "website",
     locale: "en_IN",
-    images: [{ url: `${siteUrl}/og-image.png`, width: 1200, height: 630, alt: "CUETFreeMockTest - Free CUET UG Mock Tests" }],
+    images: [{ url: `${siteUrl}/og-image.png`, width: 1200, height: 630, alt: "CUETFreeMockTest.Com - Free CUET UG Mock Tests" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CUETFreeMockTest — Free CUET (UG) Mock Tests & Practice",
+    title: "Free Online CUET Mock Test | NTA Pattern based Practice Papers — CUETFreeMockTest.Com",
     description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking.",
     images: [`${siteUrl}/og-image.png`],
   },
@@ -47,10 +49,10 @@ export const viewport: Viewport = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "CUETFreeMockTest",
+  name: "CUETFreeMockTest.Com",
   url: siteUrl,
   description: "Free CUET (UG) mock tests, practice questions, PYQs and performance tracking.",
-  publisher: { "@type": "Organization", name: "CUETFreeMockTest", url: siteUrl },
+  publisher: { "@type": "Organization", name: "CUETFreeMockTest.Com", url: siteUrl },
   potentialAction: {
     "@type": "SearchAction",
     target: { "@type": "EntryPoint", urlTemplate: `${siteUrl}/search?q={search_term_string}` },

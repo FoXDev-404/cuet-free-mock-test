@@ -125,10 +125,10 @@ export function Navbar() {
       >
         <div className="flex h-full flex-col">
           <div className="flex h-[4.5rem] items-center justify-between border-b border-neutral-200 px-5 dark:border-neutral-800">
-            <Link href="/" onClick={() => setDrawerOpen(false)} className="flex min-w-0 items-center gap-2.5" aria-label="CUETFreeMockTest home">
+            <Link href="/" onClick={() => setDrawerOpen(false)} className="flex min-w-0 items-center gap-2.5" aria-label="CUETFreeMockTest.Com home">
               <span className="home-brand-mark"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
               <span className="min-w-0">
-                <span className="block whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white">CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest</span></span>
+                <span className="block whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white">CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest.Com</span></span>
                 <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 dark:text-neutral-500">Practice with purpose</span>
               </span>
             </Link>
@@ -206,10 +206,10 @@ export function Navbar() {
       <header className="sticky top-0 z-30 w-full border-b border-neutral-200/75 bg-white/90 shadow-[0_1px_12px_rgba(15,23,42,0.035)] backdrop-blur-xl dark:border-neutral-800/75 dark:bg-neutral-950/90">
         <div className="container-page">
           <div className="flex h-[4.5rem] items-center justify-between gap-4">
-            <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="CUETFreeMockTest home">
+            <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="CUETFreeMockTest.Com home">
               <span className="home-brand-mark"><GraduationCap className="h-5 w-5" aria-hidden="true" /></span>
               <span className="hidden min-[390px]:block">
-                <span className="block whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white sm:text-base">CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest</span></span>
+                <span className="block whitespace-nowrap text-sm font-bold tracking-tight text-neutral-900 dark:text-white sm:text-base">CUET<span className="font-extrabold text-secondary-600 dark:text-secondary-400">FreeMockTest.Com</span></span>
                 <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 dark:text-neutral-500">Practice with purpose</span>
               </span>
             </Link>
