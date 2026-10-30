@@ -29,7 +29,8 @@ export async function POST(req: Request) {
     await prisma.verificationToken.delete({ where: { token: parsed.token } });
 
     return NextResponse.json({ success: true, message: "Password reset successfully" });
-  } catch (e: any) {
+  } catch (e) {
+    console.error("reset-password API error", e);
     if (e instanceof z.ZodError) return NextResponse.json({ error: e.issues[0]?.message }, { status: 400 });
     return NextResponse.json({ error: "Reset failed" }, { status: 500 });
   }

@@ -7,7 +7,7 @@ import {
   Menu, X, Sun, Moon, BookOpen, LayoutDashboard,
   FlaskConical, History, FolderOpen, Bookmark, XCircle,
   TrendingUp, Settings, LogOut, User, ChevronDown, GraduationCap,
-  Target,
+  Target, Shield,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -287,6 +287,17 @@ export function Navbar() {
                             {item.label}
                           </Link>
                         ))}
+                        {(session?.user as { role?: string } | undefined)?.role === "ADMIN" && (
+                          <Link
+                            href="/admin"
+                            onClick={() => setUserMenuOpen(false)}
+                            role="menuitem"
+                            className="flex items-center gap-2.5 px-3 py-2 text-sm text-primary-700 hover:bg-primary-50 dark:text-primary-300 dark:hover:bg-primary-900/30"
+                          >
+                            <Shield className="h-4 w-4" />
+                            Admin Panel
+                          </Link>
+                        )}
                         <div className="my-1 border-t border-neutral-200 dark:border-neutral-800" />
                         <button
                           type="button"

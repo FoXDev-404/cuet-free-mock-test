@@ -24,7 +24,8 @@ export async function POST(req: Request) {
     console.log(`Password reset token for ${email}: ${token}`);
 
     return NextResponse.json({ success: true, message: "If the email exists, a reset link has been sent" });
-  } catch (e) {
+  } catch (error) {
+    console.error("forgot-password API error", error);
     return NextResponse.json({ error: "Failed to process request" }, { status: 500 });
   }
 }

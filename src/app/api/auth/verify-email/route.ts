@@ -20,7 +20,8 @@ export async function POST(req: Request) {
     await prisma.verificationToken.delete({ where: { token } });
 
     return NextResponse.json({ success: true, message: "Email verified successfully" });
-  } catch (e) {
+  } catch (error) {
+    console.error("verify-email API error", error);
     return NextResponse.json({ error: "Verification failed" }, { status: 500 });
   }
 }

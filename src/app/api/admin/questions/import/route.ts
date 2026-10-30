@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth/config";
+import { requireAdmin } from "@/lib/auth/guard";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 
@@ -23,10 +22,8 @@ const questionSchema = z.object({
 });
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user || (session.user as any).role !== "ADMIN") {
-    return NextResponse.json({ error: "Admin only" }, { status: 403 });
-  }
+  const guard = await requireAdmin();
+  if (guard.error) return guard.error;
 
   try {
     const body = await req.json();
@@ -57,10 +54,13 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ message: `Imported ${imported} questions`, imported });
-  } catch (e: any) {
+  } catch (e) {
     if (e instanceof z.ZodError) {
       return NextResponse.json({ error: e.issues[0]?.message }, { status: 400 });
     }
-    return NextResponse.json({ error: e.message || "Import failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : "Import failed" },
+      { status: 500 }
+    );
   }
 }
