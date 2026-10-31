@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { OptionText } from "@/components/questions/option-text";
+import { QuestionImages } from "@/components/questions/question-images";
 import {
   ChevronLeft,
   ChevronRight,
@@ -25,6 +27,8 @@ const TIMER_STORAGE_KEY = "cuet_english_mock_timer";
 interface QuestionOption {
   id: string;
   text: string;
+  imageUrl?: string | null;
+  imageAlt?: string | null;
 }
 
 export interface PassageData {
@@ -32,6 +36,9 @@ export interface PassageData {
   passageKey: string;
   title: string;
   content: string;
+  imageUrl?: string | null;
+  imageAlt?: string | null;
+  sourceNote?: string | null;
   sourcePageStart: number | null;
   sourcePageEnd: number | null;
 }
@@ -538,6 +545,21 @@ export default function EnglishMockTake({
               <div className="prose prose-sm max-w-none text-neutral-600 dark:text-neutral-300">
                 {currentQuestion.passage.content}
               </div>
+              {currentQuestion.passage.imageUrl ? (
+                <QuestionImages
+                  images={[
+                    {
+                      url: currentQuestion.passage.imageUrl,
+                      alt: currentQuestion.passage.imageAlt || "Passage diagram",
+                    },
+                  ]}
+                />
+              ) : null}
+              {currentQuestion.passage.sourceNote ? (
+                <p className="mt-2 text-xs italic text-neutral-500 dark:text-neutral-400">
+                  {currentQuestion.passage.sourceNote}
+                </p>
+              ) : null}
             </div>
           )}
           <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6">
@@ -560,7 +582,7 @@ export default function EnglishMockTake({
                   <span className="font-bold text-primary-600 dark:text-primary-400 mr-2">
                     {optionLabelFor(opt.id)}
                   </span>
-                  {opt.text}
+                  <OptionText option={opt} />
                 </button>
               );
             })}

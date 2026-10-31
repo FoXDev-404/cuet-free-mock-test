@@ -6,12 +6,15 @@ interface PreloadedQuestion {
   id: string;
   questionNumber: number;
   stemEn: string;
-  optionsEn: Array<{ id: string; text: string }>;
+  optionsEn: Array<{ id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }>;
   passage?: {
     id: string;
     passageKey: string;
     title: string;
     content: string;
+    imageUrl?: string | null;
+    imageAlt?: string | null;
+    sourceNote?: string | null;
     sourcePageStart: number | null;
     sourcePageEnd: number | null;
   } | null;
@@ -31,6 +34,9 @@ export default async function EnglishMockTakePage() {
           passageKey: true,
           title: true,
           content: true,
+          imageUrl: true,
+          imageAlt: true,
+          sourceNote: true,
           sourcePageStart: true,
           sourcePageEnd: true,
         },
@@ -65,6 +71,9 @@ export default async function EnglishMockTakePage() {
           passageKey: firstQuestionRaw.passage.passageKey,
           title: firstQuestionRaw.passage.title,
           content: firstQuestionRaw.passage.content,
+          imageUrl: firstQuestionRaw.passage.imageUrl,
+          imageAlt: firstQuestionRaw.passage.imageAlt,
+          sourceNote: firstQuestionRaw.passage.sourceNote,
           sourcePageStart: firstQuestionRaw.passage.sourcePageStart,
           sourcePageEnd: firstQuestionRaw.passage.sourcePageEnd,
         }

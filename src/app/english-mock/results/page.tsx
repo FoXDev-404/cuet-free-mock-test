@@ -5,20 +5,34 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Flag, RefreshCw } from "lucide-react";
-
-const REVIEW_FLAGGED_QUESTIONS = [8, 32, 41];
+import { MathText } from "@/components/ui/math-text";
+import { QuestionImages } from "@/components/questions/question-images";
+import { QuestionPassage } from "@/components/questions/question-passage";
+import { OptionText } from "@/components/questions/option-text";
+import { OPTION_LETTERS } from "@/lib/question-display";
 
 interface ResultItem {
   questionNumber: number;
   questionId: string;
+  stemEn?: string | null;
+  optionsEn?: Array<{ id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }> | null;
+  questionImages?: unknown;
   selectedOption: string | null;
+  selectedOptionText?: string | null;
   isCorrect: boolean | null;
   isPendingReview: boolean;
   correctAnswer: string | null;
+  correctAnswerText?: string | null;
   explanation: string | null;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
   dataQualityNote: string | null;
   passageKey: string | null;
   passageTitle: string | null;
+  passageContent?: string | null;
+  passageImageUrl?: string | null;
+  passageImageAlt?: string | null;
+  passageSourceNote?: string | null;
 }
 
 interface ResultsData {
@@ -73,6 +87,9 @@ export default function EnglishMockResultsPage() {
 
   const percentage =
     data.verifiedMaxScore > 0 ? (data.verifiedRawScore / data.verifiedMaxScore) * 100 : 0;
+  const flaggedNumbers = data.results
+    .filter((item) => item.isPendingReview)
+    .map((item) => item.questionNumber);
 
   return (
     <section className="py-12 container-page max-w-4xl mx-auto">
@@ -142,7 +159,7 @@ export default function EnglishMockResultsPage() {
               Answer-key review pending
             </h3>
             <p className="text-sm text-amber-700 dark:text-amber-300">
-              Questions {REVIEW_FLAGGED_QUESTIONS.join(", ")} are flagged for manual review. Your answers
+              Questions {flaggedNumbers.length ? flaggedNumbers.join(", ") : "flagged in this paper"} are flagged for manual review. Your answers
               for these questions are not counted as correct or incorrect. Verified score is out of{" "}
               {data.verifiedMaxScore} until these are verified.
             </p>
@@ -156,7 +173,7 @@ export default function EnglishMockResultsPage() {
         </h2>
         <div className="space-y-3">
           {data.results.map((r) => {
-            const isFlagged = REVIEW_FLAGGED_QUESTIONS.includes(r.questionNumber);
+            const isFlagged = r.isPendingReview;
             const isCorrect = r.isCorrect === true;
             const isIncorrect = r.isCorrect === false;
 
@@ -191,17 +208,62 @@ export default function EnglishMockResultsPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
+                  <QuestionPassage
+                    passage={{
+                      title: r.passageTitle,
+                      content: r.passageContent,
+                      imageUrl: r.passageImageUrl,
+                      imageAlt: r.passageImageAlt,
+                      sourceNote: r.passageSourceNote,
+                    }}
+                    className="mb-3"
+                  />
                   <div className="mb-3">
-                    <p className="text-neutral-600 dark:text-neutral-300">
-                      {/* Question text would be here from API */}
-                    </p>
+                    <MathText
+                      text={r.stemEn ?? ""}
+                      className="text-neutral-700 dark:text-neutral-300"
+                    />
                   </div>
-                  <div className="flex items-center gap-3 text-sm">
+                  <QuestionImages images={r.questionImages} />
+                  {r.optionsEn && r.optionsEn.length > 0 ? (
+                    <div className="mb-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {r.optionsEn.map((option, index) => {
+                        const label = OPTION_LETTERS[index] ?? String(index + 1);
+                        const isCorrectOption = !isFlagged && label === r.correctAnswer;
+                        const isSelectedOption = label === r.selectedOption;
+                        return (
+                          <div
+                            key={option.id}
+                            className={cn(
+                              "rounded-lg border px-3 py-2 text-sm",
+                              isCorrectOption
+                                ? "border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-900/20 dark:text-green-300"
+                                : isSelectedOption && !isCorrectOption
+                                  ? "border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300"
+                                  : "border-neutral-200 bg-white text-neutral-700 dark:border-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-300",
+                            )}
+                          >
+                            <span className="mr-2 font-bold text-primary-600 dark:text-primary-400">
+                              {label}.
+                            </span>
+                            <OptionText option={option} />
+                            {isCorrectOption ? (
+                              <span className="ml-2 text-xs font-semibold">Correct</span>
+                            ) : null}
+                            {isSelectedOption ? (
+                              <span className="ml-2 text-xs font-semibold">Your answer</span>
+                            ) : null}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                  <div className="flex flex-wrap items-center gap-3 text-sm">
                     <span className="font-medium text-neutral-700 dark:text-neutral-200">
                       Your answer:
                     </span>
                     <span className={cn(
-                      "font-mono px-2 py-1 rounded border",
+                      "rounded border px-2 py-1",
                       isCorrect
                         ? "bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-300 border-green-200 dark:border-green-700"
                         : isIncorrect
@@ -211,21 +273,42 @@ export default function EnglishMockResultsPage() {
                         : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400 border-neutral-200 dark:border-neutral-700"
                     )}>
                       {isFlagged ? "— (pending review)" : r.selectedOption ?? "Not answered"}
+                      {!isFlagged && r.selectedOptionText ? (
+                        <span className="ml-1 font-sans font-normal">{r.selectedOptionText}</span>
+                      ) : null}
                     </span>
                   </div>
                   {!isFlagged && isIncorrect && r.correctAnswer && (
-                    <div className="mt-2 flex items-center gap-3 text-sm">
+                    <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
                       <span className="font-medium text-neutral-700 dark:text-neutral-200">
                         Correct answer:
                       </span>
-                      <span className="font-mono px-2 py-1 rounded bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-300 border-green-200 dark:border-green-700">
+                      <span className="rounded border border-green-200 bg-green-50 px-2 py-1 text-green-700 dark:border-green-700 dark:bg-green-900/20 dark:text-green-300">
                         {r.correctAnswer}
+                        {r.correctAnswerText ? (
+                          <span className="ml-1 font-sans">{r.correctAnswerText}</span>
+                        ) : null}
                       </span>
                     </div>
                   )}
-                  {!isFlagged && r.explanation && (
-                    <div className="mt-2 text-xs text-neutral-500 dark:text-neutral-400 italic">
-                      {r.explanation}
+                  {!isFlagged && (r.explanation || r.explanationImageUrl) && (
+                    <div className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                      {r.explanation ? (
+                        <>
+                          <span className="font-semibold">Explanation: </span>
+                          <MathText text={r.explanation} />
+                        </>
+                      ) : null}
+                      {r.explanationImageUrl ? (
+                        <QuestionImages
+                          images={[
+                            {
+                              url: r.explanationImageUrl,
+                              alt: r.explanationImageAlt || "Explanation diagram",
+                            },
+                          ]}
+                        />
+                      ) : null}
                     </div>
                   )}
                   {isFlagged && r.dataQualityNote && (

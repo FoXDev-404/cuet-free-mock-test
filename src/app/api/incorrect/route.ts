@@ -13,7 +13,7 @@ export async function GET() {
       include: {
         test: { select: { slug: true } },
         answers: {
-          include: { question: { include: { subject: true, topic: true } } },
+          include: { question: { include: { subject: true, topic: true, passage: true } } },
           where: { isCorrect: false },
         },
       },
@@ -24,8 +24,30 @@ export async function GET() {
       id: ans.id,
       stemEn: ans.question.stemEn,
       optionsEn: typeof ans.question.optionsEn === "string" ? JSON.parse(ans.question.optionsEn) : ans.question.optionsEn,
+      questionImages:
+        typeof ans.question.questionImages === "string"
+          ? (() => {
+              try {
+                return JSON.parse(ans.question.questionImages as string);
+              } catch {
+                return [];
+              }
+            })()
+          : ans.question.questionImages ?? [],
       correctAnswer: ans.question.correctAnswer,
+      sourceCorrectOptionOrder: ans.question.sourceCorrectOptionOrder,
       explanationEn: ans.question.explanationEn,
+      explanationImageUrl: ans.question.explanationImageUrl,
+      explanationImageAlt: ans.question.explanationImageAlt,
+      passage: ans.question.passage
+        ? {
+            title: ans.question.passage.title,
+            content: ans.question.passage.content,
+            imageUrl: ans.question.passage.imageUrl,
+            imageAlt: ans.question.passage.imageAlt,
+            sourceNote: ans.question.passage.sourceNote,
+          }
+        : null,
       subject: ans.question.subject?.name || ans.question.subjectId,
       topic: ans.question.topic?.name || null,
       testId: a.testId,

@@ -20,6 +20,11 @@ import { getSessionUser } from "@/lib/session-user";
 import { canAccessAttempt } from "@/lib/attempt-access";
 import { awardBadges } from "@/lib/badges";
 import { enforceRateLimit, forbiddenOrigin, isSameOrigin, logApiError } from "@/lib/http";
+import {
+  parseQuestionOptions,
+  resolveCorrectOption,
+  resolveSelectedOption,
+} from "@/lib/question-display";
 import { z } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -58,6 +63,7 @@ const submitSchema = z.object({
   slug: z.string().optional(),
   testId: z.string().optional(),
   practice: z.boolean().optional(),
+  questionIds: z.array(z.string().min(1)).max(500).optional(),
   answers: z.array(
     z.object({
       questionId: z.string(),
@@ -78,6 +84,20 @@ type AttemptRow = {
   deadlineAt: Date | null;
   versionId: string | null;
   practice: boolean;
+};
+
+type GradableQuestion = {
+  correctAnswer: string;
+  sourceCorrectOptionOrder: number | null;
+  optionsEn: string;
+  explanationEn: string | null;
+  explanationImageUrl: string | null;
+  explanationImageAlt: string | null;
+};
+
+type GradableRow = {
+  questionId: string;
+  question: GradableQuestion;
 };
 
 export async function POST(req: Request) {
@@ -197,7 +217,20 @@ export async function POST(req: Request) {
     // Grade against the pinned version when the snapshot carries its ordered
     // question ids. Fall back to the current paper order for older snapshots
     // or attempts started before version pinning existed.
-    let paperQuestions = test.questions;
+    const isPractice =
+      attempt.practice || test.slug === "practice-arena" || Boolean(parsed.practice);
+    let paperQuestions: GradableRow[] = test.questions.map((row) => ({
+      questionId: row.questionId,
+      question: {
+        correctAnswer: row.question.correctAnswer,
+        sourceCorrectOptionOrder: row.question.sourceCorrectOptionOrder,
+        optionsEn: row.question.optionsEn,
+        explanationEn: row.question.explanationEn,
+        explanationImageUrl: row.question.explanationImageUrl,
+        explanationImageAlt: row.question.explanationImageAlt,
+      },
+    }));
+
     if (attempt.versionId) {
       const version = await prisma.testVersion.findUnique({
         where: { id: attempt.versionId },
@@ -205,11 +238,59 @@ export async function POST(req: Request) {
       });
       const snapshot = safeParseSnapshot(version?.snapshot);
       if (snapshot?.questionIds?.length) {
-        const byId = new Map(test.questions.map((row) => [row.questionId, row]));
+        const byId = new Map(paperQuestions.map((row) => [row.questionId, row]));
         const pinned = snapshot.questionIds
           .map((id) => byId.get(id))
-          .filter((row): row is (typeof test.questions)[number] => Boolean(row));
+          .filter((row): row is GradableRow => Boolean(row));
         if (pinned.length) paperQuestions = pinned;
+      }
+    }
+
+    // Practice attempts attach to a synthetic test that intentionally has no
+    // question links. Grade the exact feed the browser loaded: the start
+    // request snapshots its ids, with submitted ids as a fallback for older
+    // attempts. Previously this paper was empty, so every practice submission
+    // scored zero.
+    if (isPractice && paperQuestions.length === 0) {
+      const snapshotIds = Array.isArray(config.practiceQuestionIds)
+        ? config.practiceQuestionIds.filter((id): id is string => typeof id === "string")
+        : [];
+      const requestedIds = snapshotIds.length
+        ? snapshotIds
+        : parsed.questionIds?.length
+          ? parsed.questionIds
+          : parsed.answers.map((answer) => answer.questionId);
+      const uniqueIds = Array.from(new Set(requestedIds));
+      if (uniqueIds.length) {
+        const rows = await prisma.question.findMany({
+          where: { id: { in: uniqueIds }, isActive: true },
+          select: {
+            id: true,
+            correctAnswer: true,
+            sourceCorrectOptionOrder: true,
+            optionsEn: true,
+            explanationEn: true,
+            explanationImageUrl: true,
+            explanationImageAlt: true,
+          },
+        });
+        const byId = new Map(rows.map((row) => [row.id, row]));
+        paperQuestions = uniqueIds.flatMap((id) => {
+          const row = byId.get(id);
+          return row
+            ? [{
+                questionId: row.id,
+                question: {
+                  correctAnswer: row.correctAnswer,
+                  sourceCorrectOptionOrder: row.sourceCorrectOptionOrder,
+                  optionsEn: row.optionsEn,
+                  explanationEn: row.explanationEn,
+                  explanationImageUrl: row.explanationImageUrl,
+                  explanationImageAlt: row.explanationImageAlt,
+                },
+              }]
+            : [];
+        });
       }
     }
 
@@ -263,7 +344,6 @@ export async function POST(req: Request) {
     });
 
     const finalStatus = deadlineExceeded ? "AUTO_SUBMITTED" : "SUBMITTED";
-    const isPractice = attempt.practice || test.slug === "practice-arena" || Boolean(parsed.practice);
 
     const saved = await prisma.attempt.update({
       where: { id: attempt.id },
@@ -360,11 +440,34 @@ export async function POST(req: Request) {
     }
 
     // Post-submission review: boards can reveal correctness only AFTER submit.
-    const review = questionAttempts.map((qa) => ({
-      questionId: qa.questionId,
-      selectedOption: qa.selectedOption,
-      isCorrect: qa.isCorrect,
-    }));
+    const questionById = new Map(paperQuestions.map((row) => [row.questionId, row.question]));
+    const review = questionAttempts.map((qa) => {
+      const question = questionById.get(qa.questionId);
+      const options = parseQuestionOptions(question?.optionsEn);
+      const correct = question ? resolveCorrectOption(question, options) : null;
+      const selected = resolveSelectedOption(qa.selectedOption, options);
+      const hasKey = Boolean(correct);
+      return {
+        questionId: qa.questionId,
+        selectedOption: qa.selectedOption,
+        selectedOptionLabel: selected.label,
+        selectedOptionText: selected.text,
+        isCorrect: hasKey ? qa.isCorrect : null,
+        status: !hasKey
+          ? "pending"
+          : qa.selectedOption
+            ? qa.isCorrect
+              ? "correct"
+              : "incorrect"
+            : "unattempted",
+        correctOption: correct?.label ?? null,
+        correctOptionText: correct?.text ?? null,
+        explanation: question?.explanationEn ?? null,
+        explanationImageUrl: question?.explanationImageUrl ?? null,
+        explanationImageAlt: question?.explanationImageAlt ?? null,
+      };
+    });
+    const pending = review.filter((item) => item.status === "pending").length;
 
     return NextResponse.json({
       attemptId: saved.id,
@@ -377,6 +480,7 @@ export async function POST(req: Request) {
       incorrect,
       attempted,
       unattempted,
+      pending,
       flagged: suspicious,
       status: finalStatus,
       autoSubmitted: deadlineExceeded,
@@ -396,6 +500,7 @@ export async function POST(req: Request) {
 function safeParseConfig(raw: string | null): {
   markingScheme?: { correct?: number; incorrect?: number; unattempted?: number };
   durationMinutes?: number;
+  practiceQuestionIds?: unknown;
 } {
   try {
     return typeof raw === "string" ? JSON.parse(raw) : {};

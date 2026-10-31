@@ -6,18 +6,33 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Filter, ChevronLeft, ChevronRight, Download, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MathText } from "@/components/ui/math-text";
+import { QuestionImages } from "@/components/questions/question-images";
+import { QuestionPassage } from "@/components/questions/question-passage";
+import { OptionText } from "@/components/questions/option-text";
+import { OPTION_LETTERS, resolveCorrectOption } from "@/lib/question-display";
 
 // Visible option labels. The stored option id is internal
 // (opt-<questionId>-<order>) and must never be shown (P1QA 2026-10-30,
 // same defect as the practice page).
-const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F"];
 
 interface PYQ {
   id: string;
   stemEn: string;
-  optionsEn: { id: string; text: string }[];
+  optionsEn: { id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }[];
+  questionImages?: unknown;
+  passage?: {
+    title?: string | null;
+    content?: string | null;
+    imageUrl?: string | null;
+    imageAlt?: string | null;
+    sourceNote?: string | null;
+  } | null;
   correctAnswer: string;
+  sourceCorrectOptionOrder?: number | null;
   explanationEn?: string;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
   year: number | null;
   subject: string | null;
   topic: string | null;
@@ -124,7 +139,9 @@ export default function PYQPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {paginated.map((q) => (
+              {paginated.map((q) => {
+                const correct = resolveCorrectOption(q, q.optionsEn);
+                return (
                 <div key={q.id} className="p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-800/50">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     {q.year != null && <span className="badge badge-primary">PYQ {q.year}</span>}
@@ -132,17 +149,20 @@ export default function PYQPage() {
                     {q.topic && <span className="badge badge-neutral">{q.topic}</span>}
                     {q.difficulty && <span className="text-xs capitalize text-neutral-400 dark:text-neutral-500">{q.difficulty}</span>}
                   </div>
-                  <p className="text-neutral-900 dark:text-white mb-3">{q.stemEn}</p>
+                  <QuestionPassage passage={q.passage} />
+                  <p className="text-neutral-900 dark:text-white mb-3"><MathText text={q.stemEn} /></p>
+                  <QuestionImages images={q.questionImages} />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
                     {q.optionsEn.map((opt, optIndex) => (
-                      <span key={opt.id} className={cn("text-sm px-3 py-2 rounded-lg border", opt.id === q.correctAnswer ? "bg-secondary-50 border-secondary-200 text-secondary-700 dark:bg-secondary-900/30 dark:border-secondary-800 dark:text-secondary-300" : "bg-neutral-50 border-neutral-200 text-neutral-600 dark:bg-neutral-800/50 dark:border-neutral-700 dark:text-neutral-300")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}</span>{opt.text}</span>
+                      <span key={opt.id} className={cn("text-sm px-3 py-2 rounded-lg border", opt.id === correct?.id ? "bg-secondary-50 border-secondary-200 text-secondary-700 dark:bg-secondary-900/30 dark:border-secondary-800 dark:text-secondary-300" : "bg-neutral-50 border-neutral-200 text-neutral-600 dark:bg-neutral-800/50 dark:border-neutral-700 dark:text-neutral-300")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}.</span><OptionText option={opt} /></span>
                     ))}
                   </div>
-                  {q.explanationEn && (
-                    <details className="group"><summary className="text-sm font-medium text-primary-600 dark:text-primary-400 cursor-pointer flex items-center gap-1">Show Explanation <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" /></summary><div className="mt-2 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-sm text-neutral-700 dark:text-neutral-300">{q.explanationEn}</div></details>
+                  {(q.explanationEn || q.explanationImageUrl) && (
+                    <details className="group"><summary className="text-sm font-medium text-primary-600 dark:text-primary-400 cursor-pointer flex items-center gap-1">Show Explanation <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" /></summary><div className="mt-2 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-sm text-neutral-700 dark:text-neutral-300">{q.explanationEn ? <MathText text={q.explanationEn} /> : null}{q.explanationImageUrl ? <QuestionImages images={[{ url: q.explanationImageUrl, alt: q.explanationImageAlt || "Explanation diagram" }]} /> : null}</div></details>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
           {totalPages > 1 && (

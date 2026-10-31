@@ -3,6 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/config";
 import { ensureSyntheticTest } from "@/lib/attempts";
+import {
+  parseQuestionOptions,
+  resolveCorrectOption,
+  resolveSelectedOption,
+} from "@/lib/question-display";
 import { z } from "zod";
 
 const submitSchema = z.object({
@@ -51,16 +56,28 @@ export async function POST(req: Request) {
       select: {
         id: true,
         questionNumber: true,
+        stemEn: true,
+        optionsEn: true,
+        questionImages: true,
         correctAnswer: true,
         answerReviewStatus: true,
         explanationEn: true,
+        explanationImageUrl: true,
+        explanationImageAlt: true,
         dataQualityNote: true,
         sourceCorrectOptionOrder: true,
         sourceAnswerLabel: true,
         marks: true,
         negativeMarks: true,
         passage: {
-          select: { passageKey: true, title: true },
+          select: {
+            passageKey: true,
+            title: true,
+            content: true,
+            imageUrl: true,
+            imageAlt: true,
+            sourceNote: true,
+          },
         },
       },
     });
@@ -86,6 +103,15 @@ export async function POST(req: Request) {
       const selectedLabel = isAnswered ? (labelForOrder(selectedOrder) ?? selected) : null;
       const isCorrect = isAnswered && selectedOrder !== null && selectedOrder === q.sourceCorrectOptionOrder;
       const isFlagged = q.answerReviewStatus === "needs_manual_review";
+      const options = parseQuestionOptions(q.optionsEn);
+      const correctOption = resolveCorrectOption(
+        {
+          correctAnswer: q.correctAnswer,
+          sourceCorrectOptionOrder: q.sourceCorrectOptionOrder,
+        },
+        options,
+      );
+      const selectedResolved = resolveSelectedOption(selected ?? null, options);
 
       if (isAnswered) totalAttempted++;
       if (isCorrect) totalCorrect++;
@@ -100,15 +126,26 @@ export async function POST(req: Request) {
       return {
         questionNumber: q.questionNumber,
         questionId: q.id,
+        stemEn: q.stemEn,
+        optionsEn: options,
+        questionImages: q.questionImages,
         selectedOption: selectedLabel,
         selectedOptionId: selected ?? null,
+        selectedOptionText: selectedResolved.text,
         isCorrect: isFlagged ? null : isCorrect,
         isPendingReview: isFlagged,
-        correctAnswer: isFlagged ? null : q.correctAnswer,
+        correctAnswer: isFlagged ? null : correctOption?.label ?? q.correctAnswer,
+        correctAnswerText: isFlagged ? null : correctOption?.text ?? null,
         explanation: isFlagged ? null : q.explanationEn ?? null,
+        explanationImageUrl: isFlagged ? null : q.explanationImageUrl ?? null,
+        explanationImageAlt: isFlagged ? null : q.explanationImageAlt ?? null,
         dataQualityNote: isFlagged ? q.dataQualityNote : null,
         passageKey: q.passage?.passageKey ?? null,
         passageTitle: q.passage?.title ?? null,
+        passageContent: q.passage?.content ?? null,
+        passageImageUrl: q.passage?.imageUrl ?? null,
+        passageImageAlt: q.passage?.imageAlt ?? null,
+        passageSourceNote: q.passage?.sourceNote ?? null,
       };
     });
 

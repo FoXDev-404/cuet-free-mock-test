@@ -69,7 +69,16 @@ export default async function TakeTestPage({
               marks: true,
               subject: { select: { name: true } },
               chapter: { select: { name: true } },
-              passage: { select: { passageKey: true, title: true, content: true } },
+              passage: {
+                select: {
+                  passageKey: true,
+                  title: true,
+                  content: true,
+                  imageUrl: true,
+                  imageAlt: true,
+                  sourceNote: true,
+                },
+              },
             },
           },
         },

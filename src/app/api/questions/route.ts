@@ -9,6 +9,16 @@ export const dynamic = "force-dynamic";
 const questionInclude = {
   subject: { select: { name: true, code: true } },
   chapter: { select: { name: true } },
+  passage: {
+    select: {
+      passageKey: true,
+      title: true,
+      content: true,
+      imageUrl: true,
+      imageAlt: true,
+      sourceNote: true,
+    },
+  },
 } as const;
 
 // Key-bearing fields that must never reach the client before submission.
@@ -18,6 +28,8 @@ const SECRET_FIELDS = [
   "sourceAnswerLabel",
   "explanationEn",
   "explanationHi",
+  "explanationImageUrl",
+  "explanationImageAlt",
   "stemHash",
 ] as const;
 
@@ -121,9 +133,25 @@ export async function GET(req: Request) {
             ? JSON.parse(q.optionsHi)
             : q.optionsHi
           : null,
+        questionImages:
+          typeof q.questionImages === "string"
+            ? (() => {
+                try {
+                  return JSON.parse(q.questionImages as string);
+                } catch {
+                  return [];
+                }
+              })()
+            : q.questionImages ?? [],
         // Present only when legitimately revealed to this caller.
         ...(reviewable
-          ? { correctAnswer: q.correctAnswer, explanationEn: q.explanationEn, explanationHi: q.explanationHi }
+          ? {
+              correctAnswer: q.correctAnswer,
+              explanationEn: q.explanationEn,
+              explanationHi: q.explanationHi,
+              explanationImageUrl: q.explanationImageUrl,
+              explanationImageAlt: q.explanationImageAlt,
+            }
           : {}),
       };
     });

@@ -32,6 +32,7 @@ export async function POST(req: Request) {
         slug: z.string().optional(),
         testId: z.string().optional(),
         practice: z.boolean().optional(),
+        questionIds: z.array(z.string().min(1)).max(500).optional(),
       })
       .parse(body);
 
@@ -116,6 +117,13 @@ export async function POST(req: Request) {
         select: { id: true },
       });
       const deadlineAt = new Date(Date.now() + durationMinutes * 60_000);
+      const practiceQuestionIds = input.questionIds?.length
+        ? Array.from(new Set(input.questionIds))
+        : [];
+      const configSnapshot =
+        input.practice && practiceQuestionIds.length
+          ? JSON.stringify({ ...config, practiceQuestionIds })
+          : test.config ?? "";
       attempt = await prisma.attempt.create({
         data: {
           sessionId: `s-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`,
@@ -124,7 +132,7 @@ export async function POST(req: Request) {
           status: "IN_PROGRESS",
           deadlineAt,
           versionId: version?.id ?? null,
-          configSnapshot: test.config ?? "",
+          configSnapshot,
           practice: Boolean(input.practice) || test.slug === "practice-arena",
         },
         select: {
@@ -179,9 +187,14 @@ export async function POST(req: Request) {
   }
 }
 
-function safeParseConfig(raw: string | null): { durationMinutes?: number } {
+function safeParseConfig(raw: string | null): {
+  durationMinutes?: number;
+  practiceQuestionIds?: unknown;
+  [key: string]: unknown;
+} {
   try {
-    return typeof raw === "string" ? JSON.parse(raw) : {};
+    const parsed = typeof raw === "string" ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === "object" ? parsed : {};
   } catch {
     return {};
   }

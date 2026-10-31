@@ -30,12 +30,14 @@ const questionCreateSchema = z
     stemEn: z.string().min(1),
     stemHi: z.string().optional().nullable(),
     richTextEn: z.string().optional().nullable(),
-    optionsEn: z.array(z.object({ id: z.string(), text: z.string() })).optional(),
+    optionsEn: z.array(z.object({ id: z.string(), text: z.string(), imageUrl: z.string().optional().nullable(), imageAlt: z.string().optional().nullable() })).optional(),
     optionsHi: z.array(z.object({ id: z.string(), text: z.string() })).optional().nullable(),
     correctAnswer: z.string().min(1),
     explanationEn: z.string().optional().nullable(),
     explanationHi: z.string().optional().nullable(),
     questionImages: z.array(z.object({ url: z.string(), alt: z.string().optional() })).optional(),
+    explanationImageUrl: z.string().optional().nullable(),
+    explanationImageAlt: z.string().optional().nullable(),
     language: z.enum(["EN", "HI"]).default("EN"),
     // Workflow status: unverified imports must never auto-publish (spec §6).
     status: z.enum(["DRAFT", "PENDING_VALIDATION", "UNDER_REVIEW", "APPROVED", "PUBLISHED", "ARCHIVED", "REJECTED"]).default("DRAFT"),
@@ -100,6 +102,7 @@ export async function GET(req: Request) {
           status: true,
           stemEn: true,
           optionsEn: true,
+          questionImages: true,
           correctAnswer: true,
           sourceAnswerLabel: true,
           sourceCorrectOptionOrder: true,
@@ -114,8 +117,10 @@ export async function GET(req: Request) {
           isActive: true,
           version: true,
           explanationEn: true,
+          explanationImageUrl: true,
+          explanationImageAlt: true,
           topicId: true,
-          passage: { select: { passageKey: true, title: true } },
+          passage: { select: { id: true, passageKey: true, title: true, imageUrl: true, imageAlt: true, sourceNote: true } },
           subject: { select: { id: true, name: true, code: true } },
           chapter: { select: { id: true, name: true } },
           topic: { select: { id: true, name: true } },
@@ -132,6 +137,16 @@ export async function GET(req: Request) {
       questions: questions.map((q) => ({
         ...q,
         optionsEn: typeof q.optionsEn === "string" ? JSON.parse(q.optionsEn) : q.optionsEn,
+        questionImages:
+          typeof q.questionImages === "string"
+            ? (() => {
+                try {
+                  return JSON.parse(q.questionImages as string);
+                } catch {
+                  return [];
+                }
+              })()
+            : q.questionImages ?? [],
       })),
     });
   } catch (e) {
@@ -169,6 +184,8 @@ export async function POST(req: Request) {
         explanationEn: q.explanationEn,
         explanationHi: q.explanationHi,
         questionImages: q.questionImages ? JSON.stringify(q.questionImages) : null,
+        explanationImageUrl: q.explanationImageUrl ?? undefined,
+        explanationImageAlt: q.explanationImageAlt ?? undefined,
         language: q.language,
         status: q.status,
         year: q.year,
@@ -200,7 +217,11 @@ export async function POST(req: Request) {
     await setCorrectOptions(created.id, correctIds);
 
     // Also keep the JSON cache aligned with resolved option ids.
-    const resolvedOptions = optionInput.map((o, i) => ({ id: optionIds[i], text: o.text }));
+    const resolvedOptions = optionInput.map((o, i) => ({
+      id: optionIds[i],
+      text: o.text,
+      ...(o.imageUrl ? { imageUrl: o.imageUrl, imageAlt: o.imageAlt ?? "Option diagram" } : {}),
+    }));
     await prisma.question.update({
       where: { id: created.id },
       data: {

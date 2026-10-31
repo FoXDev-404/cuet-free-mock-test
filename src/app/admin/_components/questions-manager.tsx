@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input, Textarea } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { AdminModal, ResultBanner } from "./shared";
-import { FileText, Pencil, Plus, Trash2 } from "lucide-react";
+import { MathText } from "@/components/ui/math-text";
+import { OptionText } from "@/components/questions/option-text";
+import { FileText, Pencil, Plus, Trash2, Upload } from "lucide-react";
 
 interface Subject {
   id: string;
@@ -17,7 +19,10 @@ interface AdminQuestion {
   id: string;
   questionNumber: number | null;
   stemEn: string;
-  optionsEn: Array<{ id: string; text: string }>;
+  optionsEn: Array<{ id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }>;
+  questionImages?: Array<{ url: string; alt?: string }> | string | null;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
   correctAnswer: string;
   sourceAnswerLabel: string | null;
   sourceCorrectOptionOrder: number | null;
@@ -30,7 +35,14 @@ interface AdminQuestion {
   negativeMarks: number;
   isActive: boolean;
   explanationEn: string | null;
-  passage: { passageKey: string; title: string } | null;
+  passage: {
+    id: string;
+    passageKey: string;
+    title: string;
+    imageUrl?: string | null;
+    imageAlt?: string | null;
+    sourceNote?: string | null;
+  } | null;
   subject: { id: string; name: string; code: string } | null;
   chapter: { id: string; name: string } | null;
 }
@@ -43,6 +55,15 @@ interface QuestionForm {
   explanationEn: string;
   correctAnswer: string;
   options: string[];
+  optionImages: Array<{ url: string; alt: string }>;
+  images: Array<{ url: string; alt: string }>;
+  explanationImageUrl: string;
+  explanationImageAlt: string;
+  passageId?: string;
+  passageTitle?: string;
+  passageImageUrl: string;
+  passageImageAlt: string;
+  passageSourceNote: string;
   difficulty: string;
   year: string;
   marks: string;
@@ -56,6 +77,23 @@ interface QuestionForm {
 
 const LETTERS = ["A", "B", "C", "D", "E", "F"];
 
+function imageRows(value: AdminQuestion["questionImages"]): Array<{ url: string; alt: string }> {
+  let parsed: unknown = value ?? [];
+  if (typeof value === "string") {
+    try {
+      parsed = JSON.parse(value);
+    } catch {
+      parsed = [];
+    }
+  }
+  if (!Array.isArray(parsed)) return [];
+  return parsed
+    .filter((item): item is { url: string; alt?: string } => {
+      return Boolean(item && typeof item === "object" && typeof (item as { url?: unknown }).url === "string");
+    })
+    .map((item) => ({ url: item.url, alt: item.alt ?? "" }));
+}
+
 function emptyForm(subjectId = ""): QuestionForm {
   return {
     subjectId,
@@ -64,6 +102,13 @@ function emptyForm(subjectId = ""): QuestionForm {
     explanationEn: "",
     correctAnswer: "A",
     options: ["", "", "", ""],
+    optionImages: LETTERS.map(() => ({ url: "", alt: "" })),
+    images: [],
+    explanationImageUrl: "",
+    explanationImageAlt: "",
+    passageImageUrl: "",
+    passageImageAlt: "",
+    passageSourceNote: "",
     difficulty: "easy",
     year: new Date().getFullYear().toString(),
     marks: "1",
@@ -148,6 +193,7 @@ export function QuestionsManager({ subjects }: { subjects?: Subject[] }) {
   const openCreate = () => setEditing(emptyForm(subjectFilter));
 
   const openEdit = (q: AdminQuestion) => {
+    const optionRows = LETTERS.map((_, i) => q.optionsEn.find((o) => o.id.endsWith(`-${i + 1}`)));
     setEditing({
       id: q.id,
       subjectId: q.subject?.id ?? "",
@@ -155,10 +201,19 @@ export function QuestionsManager({ subjects }: { subjects?: Subject[] }) {
       stemEn: q.stemEn,
       explanationEn: q.explanationEn ?? "",
       correctAnswer: q.correctAnswer,
-      options: LETTERS.map(() => "").map((_, i) => {
-        const opt = q.optionsEn.find((o) => o.id.endsWith(`-${i + 1}`));
-        return opt?.text ?? "";
-      }),
+      options: optionRows.map((opt) => opt?.text ?? ""),
+      optionImages: optionRows.map((opt) => ({
+        url: opt?.imageUrl ?? "",
+        alt: opt?.imageAlt ?? "",
+      })),
+      images: imageRows(q.questionImages),
+      explanationImageUrl: q.explanationImageUrl ?? "",
+      explanationImageAlt: q.explanationImageAlt ?? "",
+      passageId: q.passage?.id,
+      passageTitle: q.passage?.title,
+      passageImageUrl: q.passage?.imageUrl ?? "",
+      passageImageAlt: q.passage?.imageAlt ?? "",
+      passageSourceNote: q.passage?.sourceNote ?? "",
       difficulty: q.difficulty,
       year: q.year?.toString() ?? "",
       marks: String(q.marks),
@@ -194,14 +249,30 @@ export function QuestionsManager({ subjects }: { subjects?: Subject[] }) {
         sourceCorrectOptionOrder: editing.sourceCorrectOptionOrder
           ? parseInt(editing.sourceCorrectOptionOrder, 10)
           : null,
+        questionImages: editing.images
+          .filter((image) => image.url.trim())
+          .map((image) => ({ url: image.url.trim(), alt: image.alt.trim() || "Question diagram" })),
+        explanationImageUrl: editing.explanationImageUrl.trim() || null,
+        explanationImageAlt: editing.explanationImageUrl.trim()
+          ? editing.explanationImageAlt.trim() || "Explanation diagram"
+          : null,
       };
 
       // options: rebuild ids as opt-<questionId-or-new>-<order>
       const idBase = editing.id ?? "new";
       payload.optionsEn = editing.options
-        .map((text, i) => ({ text: text.trim(), order: i + 1 }))
-        .filter((o) => o.text)
-        .map((o) => ({ id: `opt-${idBase}-${o.order}`, text: o.text }));
+        .map((text, i) => ({ text: text.trim(), order: i + 1, image: editing.optionImages[i] }))
+        .filter((o) => o.text || o.image?.url.trim())
+        .map((o) => ({
+          id: `opt-${idBase}-${o.order}`,
+          text: o.text,
+          ...(o.image?.url.trim()
+            ? {
+                imageUrl: o.image.url.trim(),
+                imageAlt: o.image.alt.trim() || "Option diagram",
+              }
+            : {}),
+        }));
 
       if (editing.id) {
         const res = await fetch(`/api/admin/questions/${editing.id}`, {
@@ -435,6 +506,105 @@ function QuestionFormModal({
   }, []);
 
   const canSave = editing.subjectId && editing.stemEn.trim() && editing.options.some((o) => o.trim());
+  const [uploadingKind, setUploadingKind] = useState<string | null>(null);
+  const [imageError, setImageError] = useState("");
+  const [savingPassage, setSavingPassage] = useState(false);
+  const [passageStatus, setPassageStatus] = useState("");
+
+  // Inline upload keeps the editor self-service: the media endpoint validates
+  // real bytes and returns the URL that goes into the chosen placement.
+  const uploadToMedia = async (file: File, alt: string) => {
+    const form = new FormData();
+    form.append("file", file);
+    form.append("alt", alt.trim() || "Question diagram");
+    const res = await fetch("/api/admin/media", { method: "POST", body: form });
+    const data = (await res.json().catch(() => ({}))) as {
+      url?: string;
+      alt?: string;
+      error?: string;
+    };
+    if (!res.ok || !data.url) {
+      throw new Error(typeof data.error === "string" ? data.error : "Upload failed");
+    }
+    return { url: data.url as string, alt: data.alt ?? alt };
+  };
+
+  const runUpload = async (kind: string, work: () => Promise<void>) => {
+    setUploadingKind(kind);
+    setImageError("");
+    try {
+      await work();
+    } catch (error) {
+      setImageError(error instanceof Error ? error.message : "Upload failed");
+    } finally {
+      setUploadingKind(null);
+    }
+  };
+
+  const uploadImage = (index: number, file: File) =>
+    runUpload(`stem:${index}`, async () => {
+      const uploaded = await uploadToMedia(file, editing.images[index]?.alt ?? "");
+      setEditing((prev) => {
+        if (!prev) return prev;
+        const images = [...prev.images];
+        images[index] = uploaded;
+        return { ...prev, images };
+      });
+    });
+
+  const uploadOptionImage = (index: number, file: File) =>
+    runUpload(`option:${index}`, async () => {
+      const uploaded = await uploadToMedia(file, editing.optionImages[index]?.alt ?? "");
+      setEditing((prev) => {
+        if (!prev) return prev;
+        const optionImages = [...prev.optionImages];
+        optionImages[index] = uploaded;
+        return { ...prev, optionImages };
+      });
+    });
+
+  const uploadExplanationImage = (file: File) =>
+    runUpload("explanation", async () => {
+      const uploaded = await uploadToMedia(file, editing.explanationImageAlt);
+      setEditing((prev) =>
+        prev
+          ? { ...prev, explanationImageUrl: uploaded.url, explanationImageAlt: uploaded.alt }
+          : prev,
+      );
+    });
+
+  const uploadPassageImage = (file: File) =>
+    runUpload("passage", async () => {
+      const uploaded = await uploadToMedia(file, editing.passageImageAlt);
+      setEditing((prev) =>
+        prev ? { ...prev, passageImageUrl: uploaded.url, passageImageAlt: uploaded.alt } : prev,
+      );
+    });
+
+  const savePassage = async () => {
+    if (!editing.passageId || savingPassage) return;
+    setSavingPassage(true);
+    setPassageStatus("");
+    try {
+      const res = await fetch(`/api/admin/passages/${editing.passageId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          imageUrl: editing.passageImageUrl.trim() || null,
+          imageAlt: editing.passageImageAlt.trim() || null,
+          sourceNote: editing.passageSourceNote.trim() || null,
+          reason: "passage media edit from question editor",
+        }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) throw new Error(data.error ?? "Passage media save failed");
+      setPassageStatus("Passage media saved.");
+    } catch (error) {
+      setPassageStatus(error instanceof Error ? error.message : "Passage media save failed");
+    } finally {
+      setSavingPassage(false);
+    }
+  };
 
   return (
     <form
@@ -465,25 +635,196 @@ function QuestionFormModal({
       <div>
         <label className="label">Question text (English)</label>
         <Textarea value={editing.stemEn} onChange={(e) => set("stemEn", e.target.value)} required className="min-h-[80px]" />
+        {editing.stemEn.trim() ? (
+          <div className="mt-2 rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-300">
+            <p className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+              Live preview (KaTeX)
+            </p>
+            <MathText text={editing.stemEn} />
+          </div>
+        ) : null}
+      </div>
+
+      <div className="rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Question images</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">
+              Upload a PNG, JPEG or WebP up to 500 KB, or paste an existing URL. Alt text is required for accessibility.
+            </p>
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => set("images", [...editing.images, { url: "", alt: "" }])}
+          >
+            <Plus className="mr-2 h-4 w-4" /> Add image
+          </Button>
+        </div>
+        {editing.images.length === 0 ? (
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">No question images attached.</p>
+        ) : (
+          <div className="space-y-2">
+            {editing.images.map((image, index) => (
+              <div key={index} className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_auto_auto]">
+                <Input
+                  value={image.url}
+                  placeholder="/api/media/… or https://…"
+                  aria-label={`Image ${index + 1} URL`}
+                  onChange={(e) => {
+                    const next = [...editing.images];
+                    next[index] = { ...next[index], url: e.target.value };
+                    set("images", next);
+                  }}
+                />
+                <Input
+                  value={image.alt}
+                  placeholder="Describe the image"
+                  aria-label={`Image ${index + 1} alt text`}
+                  onChange={(e) => {
+                    const next = [...editing.images];
+                    next[index] = { ...next[index], alt: e.target.value };
+                    set("images", next);
+                  }}
+                />
+                <label className="inline-flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700">
+                  <Upload className="h-4 w-4" aria-hidden="true" />
+                  <span>{uploadingKind === `stem:${index}` ? "Uploading…" : "Upload"}</span>
+                  <input
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp"
+                    className="sr-only"
+                    disabled={uploadingKind !== null}
+                    onChange={(event) => {
+                      const file = event.target.files?.[0];
+                      event.currentTarget.value = "";
+                      if (file) void uploadImage(index, file);
+                    }}
+                  />
+                </label>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  aria-label={`Remove image ${index + 1}`}
+                  onClick={() => set("images", editing.images.filter((_, i) => i !== index))}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+                {image.url ? (
+                  <div className="sm:col-span-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={image.url}
+                      alt={image.alt || "Question image preview"}
+                      className="max-h-40 rounded-lg border border-neutral-200 object-contain dark:border-neutral-700"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        )}
+        {imageError ? (
+          <p className="mt-2 text-sm text-danger-600 dark:text-danger-400" role="alert">
+            {imageError}
+          </p>
+        ) : null}
       </div>
 
       <div className="space-y-2">
         <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Options</p>
         {editing.options.map((text, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span className="w-6 font-semibold text-neutral-500">{LETTERS[i]}</span>
-            <input
-              className="input"
-              value={text}
-              placeholder={`Option ${LETTERS[i]}`}
-              onChange={(e) => {
-                const next = [...editing.options];
-                next[i] = e.target.value;
-                set("options", next);
-              }}
-            />
+          <div key={i} className="space-y-2 rounded-lg border border-neutral-200 p-3 dark:border-neutral-800">
+            <div className="flex items-center gap-2">
+              <span className="w-6 font-semibold text-neutral-500">{LETTERS[i]}</span>
+              <input
+                className="input"
+                value={text}
+                placeholder={`Option ${LETTERS[i]}`}
+                aria-label={`Option ${LETTERS[i]} text`}
+                onChange={(e) => {
+                  const next = [...editing.options];
+                  next[i] = e.target.value;
+                  set("options", next);
+                }}
+              />
+            </div>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_auto] sm:pl-8">
+              <Input
+                value={editing.optionImages[i]?.url ?? ""}
+                placeholder="Option image URL (optional)"
+                aria-label={`Option ${LETTERS[i]} image URL`}
+                onChange={(e) => {
+                  const next = [...editing.optionImages];
+                  next[i] = { ...next[i], url: e.target.value };
+                  set("optionImages", next);
+                }}
+              />
+              <Input
+                value={editing.optionImages[i]?.alt ?? ""}
+                placeholder="Alt text"
+                aria-label={`Option ${LETTERS[i]} image alt text`}
+                onChange={(e) => {
+                  const next = [...editing.optionImages];
+                  next[i] = { ...next[i], alt: e.target.value };
+                  set("optionImages", next);
+                }}
+              />
+              <label className="inline-flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700">
+                <Upload className="h-4 w-4" aria-hidden="true" />
+                <span>{uploadingKind === `option:${i}` ? "Uploading…" : "Upload"}</span>
+                <input
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp"
+                  className="sr-only"
+                  disabled={uploadingKind !== null}
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    event.currentTarget.value = "";
+                    if (file) void uploadOptionImage(i, file);
+                  }}
+                />
+              </label>
+            </div>
+            {editing.optionImages[i]?.url ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={editing.optionImages[i].url}
+                alt={editing.optionImages[i].alt || "Option image preview"}
+                className="max-h-28 rounded-lg border border-neutral-200 object-contain dark:border-neutral-700"
+                loading="lazy"
+              />
+            ) : null}
           </div>
         ))}
+        {editing.options.some((option) => option.trim()) ? (
+          <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-300">
+            <p className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+              Option preview
+            </p>
+            <ul className="space-y-2">
+              {editing.options.map((option, index) =>
+                option.trim() ? (
+                  <li key={index}>
+                    <span className="mr-2 font-bold text-primary-600 dark:text-primary-400">
+                      {LETTERS[index]}.
+                    </span>
+                    <OptionText
+                      option={{
+                        text: option,
+                        imageUrl: editing.optionImages[index]?.url,
+                        imageAlt: editing.optionImages[index]?.alt,
+                      }}
+                    />
+                  </li>
+                ) : null,
+              )}
+            </ul>
+          </div>
+        ) : null}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -511,7 +852,127 @@ function QuestionFormModal({
       <div>
         <label className="label">Explanation (shown after submit)</label>
         <Textarea value={editing.explanationEn} onChange={(e) => set("explanationEn", e.target.value)} />
+        <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_auto]">
+          <Input
+            value={editing.explanationImageUrl}
+            placeholder="Explanation image URL (optional)"
+            aria-label="Explanation image URL"
+            onChange={(e) => set("explanationImageUrl", e.target.value)}
+          />
+          <Input
+            value={editing.explanationImageAlt}
+            placeholder="Alt text"
+            aria-label="Explanation image alt text"
+            onChange={(e) => set("explanationImageAlt", e.target.value)}
+          />
+          <label className="inline-flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700">
+            <Upload className="h-4 w-4" aria-hidden="true" />
+            <span>{uploadingKind === "explanation" ? "Uploading…" : "Upload"}</span>
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              className="sr-only"
+              disabled={uploadingKind !== null}
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                event.currentTarget.value = "";
+                if (file) void uploadExplanationImage(file);
+              }}
+            />
+          </label>
+        </div>
+        {editing.explanationEn.trim() || editing.explanationImageUrl.trim() ? (
+          <div className="mt-2 rounded-lg border border-neutral-200 bg-primary-50/60 p-3 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-primary-900/20 dark:text-neutral-300">
+            <p className="mb-1 text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+              Explanation preview
+            </p>
+            <MathText text={editing.explanationEn} />
+            {editing.explanationImageUrl.trim() ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={editing.explanationImageUrl}
+                alt={editing.explanationImageAlt || "Explanation image preview"}
+                className="mt-2 max-h-40 rounded-lg border border-neutral-200 object-contain dark:border-neutral-700"
+                loading="lazy"
+              />
+            ) : null}
+          </div>
+        ) : null}
       </div>
+
+      {editing.passageId ? (
+        <div className="rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
+          <div className="mb-3">
+            <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+              Shared passage media
+            </p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400">
+              {editing.passageTitle || "Passage"} · stored once in the passage and reused by every linked question.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_auto]">
+            <Input
+              value={editing.passageImageUrl}
+              placeholder="Passage image URL (optional)"
+              aria-label="Passage image URL"
+              onChange={(e) => set("passageImageUrl", e.target.value)}
+            />
+            <Input
+              value={editing.passageImageAlt}
+              placeholder="Alt text"
+              aria-label="Passage image alt text"
+              onChange={(e) => set("passageImageAlt", e.target.value)}
+            />
+            <label className="inline-flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700">
+              <Upload className="h-4 w-4" aria-hidden="true" />
+              <span>{uploadingKind === "passage" ? "Uploading…" : "Upload"}</span>
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                className="sr-only"
+                disabled={uploadingKind !== null}
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  event.currentTarget.value = "";
+                  if (file) void uploadPassageImage(file);
+                }}
+              />
+            </label>
+          </div>
+          <div className="mt-2">
+            <Input
+              value={editing.passageSourceNote}
+              placeholder="Optional source note shown under the passage"
+              aria-label="Passage source note"
+              onChange={(e) => set("passageSourceNote", e.target.value)}
+            />
+          </div>
+          {editing.passageImageUrl.trim() ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={editing.passageImageUrl}
+              alt={editing.passageImageAlt || "Passage image preview"}
+              className="mt-2 max-h-40 rounded-lg border border-neutral-200 object-contain dark:border-neutral-700"
+              loading="lazy"
+            />
+          ) : null}
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={savePassage}
+              isLoading={savingPassage}
+              disabled={savingPassage}
+            >
+              Save passage media
+            </Button>
+            {passageStatus ? (
+              <span className="text-xs text-neutral-500 dark:text-neutral-400">{passageStatus}</span>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div>

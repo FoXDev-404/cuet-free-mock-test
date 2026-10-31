@@ -6,7 +6,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, Clock, RefreshCw, Flag, CheckCircle, XCircle, MinusCircle, Cloud, CloudOff, Loader2 } from "lucide-react";
 import { MathText } from "@/components/ui/math-text";
+import { QuestionImages } from "@/components/questions/question-images";
+import { QuestionPassage } from "@/components/questions/question-passage";
+import { OptionText } from "@/components/questions/option-text";
 import { QuestionReportButton } from "@/components/questions/question-report-button";
+import { optionLabel } from "@/lib/question-display";
 
 // Keyless question contract — the server strips answer keys before this
 // component mounts; grading and per-question correctness arrive only from
@@ -15,23 +19,34 @@ interface Question {
   id: string;
   number: number;
   stemEn: string;
-  optionsEn: { id: string; text: string }[];
+  optionsEn: { id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }[];
+  questionImages: unknown;
   type: string;
   marks: number;
   subject: string;
   topic: string;
-  passage: { title: string; content: string } | null;
+  passage: {
+    title: string;
+    content: string;
+    imageUrl?: string | null;
+    imageAlt?: string | null;
+    sourceNote?: string | null;
+  } | null;
   scorable: boolean;
 }
 
 interface ReviewItem {
   questionId: string;
   selectedOption: string | null;
+  selectedOptionLabel?: string | null;
+  selectedOptionText?: string | null;
   isCorrect: boolean | null;
   status?: "correct" | "incorrect" | "unattempted" | "pending";
   correctOption?: string | null;
   correctOptionText?: string | null;
   explanation?: string | null;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
 }
 
 interface SubmitResult {
@@ -45,6 +60,7 @@ interface SubmitResult {
   attempted: number;
   unattempted: number;
   pending?: number;
+  percentile?: number | null;
   review: ReviewItem[];
 }
 
@@ -70,12 +86,19 @@ interface LoadedQuestionLink {
     id: string;
     stemEn: string;
     optionsEn: string | { id: string; text: string }[];
+    questionImages?: unknown;
     type: string;
     marks: number;
     subject?: { name: string } | null;
     chapter?: { name: string } | null;
     number?: number;
-    passage?: { title: string; content?: string | null } | null;
+    passage?: {
+      title: string;
+      content?: string | null;
+      imageUrl?: string | null;
+      imageAlt?: string | null;
+      sourceNote?: string | null;
+    } | null;
     scorable?: boolean;
   };
 }
@@ -98,13 +121,20 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
     number: l.question.number ?? index + 1,
     stemEn: l.question.stemEn,
     optionsEn: typeof l.question.optionsEn === "string" ? JSON.parse(l.question.optionsEn) : l.question.optionsEn,
+    questionImages: l.question.questionImages ?? null,
     type: l.question.type,
     marks: l.question.marks,
     subject: l.question.subject?.name ?? "",
     topic: l.question.chapter?.name ?? "",
     passage:
       l.question.passage?.content && l.question.passage.title
-        ? { title: l.question.passage.title, content: l.question.passage.content }
+        ? {
+            title: l.question.passage.title,
+            content: l.question.passage.content,
+            imageUrl: l.question.passage.imageUrl,
+            imageAlt: l.question.passage.imageAlt,
+            sourceNote: l.question.passage.sourceNote,
+          }
         : null,
     scorable: l.question.scorable !== false,
   }));
@@ -427,24 +457,77 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
             {questions.map((q) => {
               const rv = reviewMap.get(q.id);
               const sel = answers[q.id];
+              const selectedIndex = sel ? q.optionsEn.findIndex((option) => option.id === sel) : -1;
+              const selectedLabel =
+                rv?.selectedOptionLabel ??
+                (selectedIndex >= 0 ? optionLabel(selectedIndex) : undefined);
               const status = rv?.status ?? (rv?.isCorrect ? "correct" : sel && sel !== "" ? "incorrect" : "unattempted");
               const isCorrect = status === "correct";
               const isPending = status === "pending";
+              const selectedOptionObj = sel ? q.optionsEn.find((option) => option.id === sel) : undefined;
+              const correctOptionObj = rv?.correctOption
+                ? q.optionsEn.find((_option, index) => optionLabel(index) === rv.correctOption)
+                : undefined;
               return (
                 <Card key={q.id} data-testid="review-item">
                   <CardContent className="pt-5">
                     <div className="flex items-start gap-3">
                       <div className="shrink-0 mt-1">{isCorrect ? <CheckCircle className="h-5 w-5 text-secondary-600 dark:text-secondary-400" /> : isPending ? <MinusCircle className="h-5 w-5 text-accent-600 dark:text-accent-400" /> : sel && sel !== "" ? <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" /> : <MinusCircle className="h-5 w-5 text-neutral-400" />}</div>
                       <div className="min-w-0">
+                        <QuestionPassage passage={q.passage} />
                         <p className="font-medium text-neutral-900 dark:text-white">Q{q.number}. <MathText text={q.stemEn} /></p>
-                        <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Your answer:</span> {sel && sel !== "" ? <MathText text={q.optionsEn?.find(o => o.id === sel)?.text ?? sel} /> : "Not answered"}</p>
+                        <QuestionImages images={q.questionImages} />
+                        <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+                          <span className="font-semibold">Your answer:</span>{" "}
+                          {sel && sel !== "" ? (
+                            <>
+                              {selectedLabel ? <span className="font-semibold">{selectedLabel}. </span> : null}
+                              {selectedOptionObj ? (
+                                <OptionText option={selectedOptionObj} />
+                              ) : (
+                                <MathText text={rv?.selectedOptionText ?? sel} />
+                              )}
+                            </>
+                          ) : (
+                            "Not answered"
+                          )}
+                        </p>
                         {isPending ? (
                           <p className="mt-1 text-sm font-semibold text-accent-700 dark:text-accent-300">Answer key unavailable — pending review (not scored)</p>
                         ) : (
                           <>
                             <p className="mt-1 text-sm"><span className={cn("font-semibold", isCorrect ? "text-secondary-700 dark:text-secondary-300" : sel && sel !== "" ? "text-red-700 dark:text-red-300" : "text-neutral-500")} >{isCorrect ? "Correct" : sel && sel !== "" ? "Incorrect" : "Unattempted"}</span></p>
-                            {rv?.correctOption ? <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Correct answer:</span> {rv.correctOption}. <MathText text={rv.correctOptionText} /></p> : null}
-                            {rv?.explanation ? <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Explanation:</span> <MathText text={rv.explanation} /></p> : null}
+                            {rv?.correctOption ? (
+                              <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                                <span className="font-semibold">Correct answer:</span>{" "}
+                                <span className="font-semibold">{rv.correctOption}.</span>{" "}
+                                {correctOptionObj ? (
+                                  <OptionText option={correctOptionObj} />
+                                ) : (
+                                  <MathText text={rv.correctOptionText} />
+                                )}
+                              </p>
+                            ) : null}
+                            {rv?.explanation || rv?.explanationImageUrl ? (
+                              <div className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+                                {rv.explanation ? (
+                                  <p>
+                                    <span className="font-semibold">Explanation:</span>{" "}
+                                    <MathText text={rv.explanation} />
+                                  </p>
+                                ) : null}
+                                {rv.explanationImageUrl ? (
+                                  <QuestionImages
+                                    images={[
+                                      {
+                                        url: rv.explanationImageUrl,
+                                        alt: rv.explanationImageAlt || "Explanation diagram",
+                                      },
+                                    ]}
+                                  />
+                                ) : null}
+                              </div>
+                            ) : null}
                             <div className="mt-2">
                               <QuestionReportButton questionId={q.id} attemptId={attemptId} />
                             </div>
@@ -473,6 +556,7 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
           {maxScore > 0 ? <div className="mb-6"><div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2 mb-1"><div className="h-2 rounded-full bg-primary-600 dark:bg-primary-400 transition-all duration-700" style={{ width: `${Math.max(0, Math.min(100, percentage))}%` }} /></div><div className="text-sm text-neutral-600 dark:text-neutral-400">Accuracy: {accuracy.toFixed(1)}%</div></div> : null}
           {pending > 0 ? <p className="mb-6 rounded-lg border border-accent-200 bg-accent-50 p-3 text-sm text-accent-800 dark:border-accent-900 dark:bg-accent-900/20 dark:text-accent-200">{pending} {pending === 1 ? "question is" : "questions are"} pending answer-key review and {pending === 1 ? "is" : "are"} not included in the score.</p> : null}
           <p className="text-neutral-600 dark:text-neutral-300 mb-6">Time taken: {Math.floor((config.durationMinutes * 60 - timeLeft) / 60)}:{String((config.durationMinutes * 60 - timeLeft) % 60).padStart(2, "0")}</p>
+          {result.percentile != null ? <p className="mb-6 text-sm font-medium text-secondary-700 dark:text-secondary-300">Percentile: {result.percentile}%</p> : null}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button variant="brand" onClick={() => { window.location.reload(); }}>Retry Test</Button>
             <Button variant="outline" onClick={() => setShowReview(true)} className="w-full sm:w-auto">Review Answers</Button>
@@ -565,11 +649,28 @@ export function TakeTestClient({ test, slug, localPaper }: TakeTestClientProps) 
               </summary>
               <div className="max-h-72 overflow-y-auto whitespace-pre-wrap break-words border-t border-neutral-200 px-4 py-3 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:text-neutral-300">
                 <MathText text={currentQuestion.passage.content} />
+                {currentQuestion.passage.imageUrl ? (
+                  <QuestionImages
+                    images={[
+                      {
+                        url: currentQuestion.passage.imageUrl,
+                        alt: currentQuestion.passage.imageAlt || "Passage diagram",
+                      },
+                    ]}
+                  />
+                ) : null}
+                {currentQuestion.passage.sourceNote ? (
+                  <MathText
+                    text={currentQuestion.passage.sourceNote}
+                    className="mt-2 block text-xs italic text-neutral-500 dark:text-neutral-400"
+                  />
+                ) : null}
               </div>
             </details>
           ) : null}
           <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6"><MathText text={currentQuestion?.stemEn} /></div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{currentQuestion?.optionsEn.map(opt => { const selected = answers[currentQuestion!.id] === opt.id; return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span><MathText text={opt.text} /></button>; })}</div>
+          <QuestionImages images={currentQuestion?.questionImages} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{currentQuestion?.optionsEn.map((opt, optIndex) => { const selected = answers[currentQuestion!.id] === opt.id; return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{optionLabel(optIndex)}.</span><OptionText option={opt} /></button>; })}</div>
           <div className="mt-4 flex flex-wrap gap-3"><Button variant="outline" size="sm" onClick={clearResponse} disabled={!isAnswered || submitting}><RefreshCw className="h-4 w-4 mr-2" />Clear</Button><Button variant="outline" size="sm" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0}><ChevronLeft className="h-4 w-4 mr-2" />Previous</Button>{currentIndex < questions.length - 1 ? <Button variant="brand" size="sm" onClick={() => goTo(currentIndex + 1)} disabled={submitting}>Next <ChevronRight className="h-4 w-4 ml-2" /></Button> : <Button variant="brand" size="sm" onClick={submitTest} disabled={submitting || submitted}>Submit Test</Button>}</div>
         </CardContent>
       </Card>

@@ -23,12 +23,14 @@ const updateSchema = z
     stemEn: z.string().min(1).optional(),
     stemHi: z.string().nullable().optional(),
     richTextEn: z.string().nullable().optional(),
-    optionsEn: z.array(z.object({ id: z.string(), text: z.string() })).optional(),
+    optionsEn: z.array(z.object({ id: z.string(), text: z.string(), imageUrl: z.string().optional().nullable(), imageAlt: z.string().optional().nullable() })).optional(),
     optionsHi: z.array(z.object({ id: z.string(), text: z.string() })).nullable().optional(),
     correctAnswer: z.string().min(1).optional(),
     explanationEn: z.string().nullable().optional(),
     explanationHi: z.string().nullable().optional(),
     questionImages: z.array(z.object({ url: z.string(), alt: z.string().optional() })).nullable().optional(),
+    explanationImageUrl: z.string().nullable().optional(),
+    explanationImageAlt: z.string().nullable().optional(),
     language: z.enum(["EN", "HI"]).optional(),
     status: z
       .enum(["DRAFT", "PENDING_VALIDATION", "UNDER_REVIEW", "APPROVED", "PUBLISHED", "ARCHIVED", "REJECTED"])
@@ -69,7 +71,7 @@ export async function GET(_req: Request, { params }: Ctx) {
       subject: { select: { id: true, name: true, code: true } },
       chapter: { select: { id: true, name: true } },
       topic: { select: { id: true, name: true } },
-      passage: { select: { id: true, title: true, content: true } },
+      passage: { select: { id: true, title: true, content: true, imageUrl: true, imageAlt: true, sourceNote: true } },
     },
   });
   if (!question) return NextResponse.json({ error: "Question not found" }, { status: 404 });
@@ -117,6 +119,12 @@ export async function PATCH(req: Request, { params }: Ctx) {
         ...(data.questionImages !== undefined
           ? { questionImages: data.questionImages ? JSON.stringify(data.questionImages) : null }
           : {}),
+        ...(data.explanationImageUrl !== undefined
+          ? { explanationImageUrl: data.explanationImageUrl }
+          : {}),
+        ...(data.explanationImageAlt !== undefined
+          ? { explanationImageAlt: data.explanationImageAlt }
+          : {}),
         ...(data.language !== undefined ? { language: data.language } : {}),
         ...(data.status !== undefined ? { status: data.status } : {}),
         ...(data.year !== undefined ? { year: data.year } : {}),
@@ -158,6 +166,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
       const options = (data.optionsEn as OptionInput[]).map((o, i) => ({
         id: optionIds[i],
         text: o.text,
+        ...(o.imageUrl ? { imageUrl: o.imageUrl, imageAlt: o.imageAlt ?? "Option diagram" } : {}),
       }));
       await prisma.question.update({
         where: { id },

@@ -177,7 +177,9 @@ model Question {
   stemHash             String?  // sha-256 of normalized stem+options for content-duplicate detection (imports)
   explanationEn        String?
   explanationHi        String?
-  questionImages       String?  // JSON string: [{url, alt}]
+  questionImages       String?  // JSON string: [{url, alt}] (stem diagrams)
+  explanationImageUrl  String?  // diagram for the worked solution
+  explanationImageAlt  String?
   language             String   @default("EN")
   status               String   @default("PUBLISHED") // DRAFT | PENDING_VALIDATION | UNDER_REVIEW | APPROVED | PUBLISHED | ARCHIVED | REJECTED
   year                 Int?
@@ -394,6 +396,9 @@ model Passage {
   passageKey    String
   title         String
   content       String
+  imageUrl      String?
+  imageAlt      String?
+  sourceNote    String?
   sourcePageStart Int?
   sourcePageEnd   Int?
   createdAt     DateTime @default(now())

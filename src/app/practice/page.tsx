@@ -6,21 +6,49 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronLeft, ChevronRight, Clock, Flag, RefreshCw, SlidersHorizontal, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MathText } from "@/components/ui/math-text";
+import { QuestionImages } from "@/components/questions/question-images";
+import { QuestionPassage } from "@/components/questions/question-passage";
+import { OptionText } from "@/components/questions/option-text";
+import { OPTION_LETTERS } from "@/lib/question-display";
 
 // Visible option labels. The stored option id is internal
 // (opt-<questionId>-<order>) and must never be shown to students
 // (P1QA 2026-10-30: raw ids were rendering as the option label).
-const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F"];
 
 interface Question {
   id: string;
   stemEn: string;
-  optionsEn: { id: string; text: string }[];
+  optionsEn: { id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }[];
+  questionImages?: unknown;
+  passage?: {
+    title?: string | null;
+    content?: string | null;
+    imageUrl?: string | null;
+    imageAlt?: string | null;
+    sourceNote?: string | null;
+  } | null;
   explanationEn?: string;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
   type: string;
   marks: number;
   subject: string;
   topic: string;
+}
+
+interface ReviewItem {
+  questionId: string;
+  selectedOption: string | null;
+  selectedOptionLabel?: string | null;
+  selectedOptionText?: string | null;
+  isCorrect: boolean | null;
+  status?: "correct" | "incorrect" | "unattempted" | "pending";
+  correctOption?: string | null;
+  correctOptionText?: string | null;
+  explanation?: string | null;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
 }
 
 interface SubmitResult {
@@ -33,7 +61,7 @@ interface SubmitResult {
   incorrect: number;
   attempted: number;
   unattempted: number;
-  review: { questionId: string; selectedOption: string | null; isCorrect: boolean }[];
+  review: ReviewItem[];
 }
 
 interface TestConfig {
@@ -81,7 +109,10 @@ export default function PracticePage() {
         const startRes = await fetch("/api/attempts/start", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ practice: true }),
+          body: JSON.stringify({
+            practice: true,
+            questionIds: q.map((row: { id?: string }) => row.id).filter(Boolean),
+          }),
         });
         if (startRes.ok) {
           const startData = await startRes.json();
@@ -100,14 +131,14 @@ export default function PracticePage() {
     setSubmitting(true);
     try {
       const answerArray = Object.entries(answers).map(([questionId, selectedOption]) => ({ questionId, selectedOption }));
-      const res = await fetch("/api/attempts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ practice: true, attemptId: attemptId ?? undefined, answers: answerArray, timeSpentSec: config!.durationMinutes * 60 - timeLeft }) });
+      const res = await fetch("/api/attempts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ practice: true, attemptId: attemptId ?? undefined, questionIds: questions.map((question) => question.id), answers: answerArray, timeSpentSec: config!.durationMinutes * 60 - timeLeft }) });
       if (!res.ok) throw new Error((await res.json().catch(() => ({})))?.error || "Submit failed");
       const data = (await res.json()) as SubmitResult;
       setResult(data);
       setSubmitted(true); setShowResult(true);
     } catch (e) { alert(e instanceof Error ? e.message : "Submit failed"); }
     finally { setSubmitting(false); }
-  }, [answers, attemptId, timeLeft, submitted, submitting, config]);
+  }, [answers, attemptId, timeLeft, submitted, submitting, config, questions]);
 
   useEffect(() => {
     if (!timerRunning || !config) return;
@@ -132,7 +163,7 @@ export default function PracticePage() {
 
   const selectOption = (optionId: string) => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: optionId }));
   const clearResponse = () => setAnswers(prev => ({ ...prev, [currentQuestion!.id]: null }));
-  const toggleReview = () => setMarkedForReview(prev => { const n = new Set(prev); n.has(currentQuestion!.id) ? n.delete(currentQuestion!.id) : n.add(currentQuestion!.id); return n; });
+  const toggleReview = () => setMarkedForReview(prev => { const n = new Set(prev); if (n.has(currentQuestion!.id)) n.delete(currentQuestion!.id); else n.add(currentQuestion!.id); return n; });
   const goTo = (i: number) => { if (i >= 0 && i < questions.length) setCurrentIndex(i); };
 
   if (loading) return <section className="py-12 container-page"><div className="card text-center py-20"><div className="animate-spin mx-auto h-12 w-12 border-4 border-primary-200 border-t-primary-600 rounded-full" /><p className="mt-6 text-neutral-600 dark:text-neutral-400">Loading practice questions…</p></div></section>;
@@ -154,12 +185,80 @@ export default function PracticePage() {
               const rv = reviewMap.get(q.id);
               const sel = answers[q.id];
               const answered = sel != null && sel !== "";
+              const selectedIndex = sel ? q.optionsEn.findIndex((option) => option.id === sel) : -1;
+              const selectedLabel =
+                rv?.selectedOptionLabel ??
+                (selectedIndex >= 0 ? OPTION_LETTERS[selectedIndex] : null);
+              const isPending = rv?.status === "pending";
+              const selectedOptionObj = sel
+                ? q.optionsEn.find((option) => option.id === sel)
+                : undefined;
+              const correctIndex = rv?.correctOption
+                ? OPTION_LETTERS.indexOf(rv.correctOption as (typeof OPTION_LETTERS)[number])
+                : -1;
+              const correctOptionObj =
+                correctIndex >= 0 ? q.optionsEn[correctIndex] : undefined;
               return (
                 <Card key={q.id}>
                   <CardContent className="pt-5">
-                    <p className="font-medium text-neutral-900 dark:text-white">Q{i + 1}. {q.stemEn}</p>
-                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400"><span className="font-semibold">Your answer:</span> {answered ? q.optionsEn?.find(o => o.id === sel)?.text ?? sel : "Not answered"}</p>
-                    <p className={cn("mt-1 text-sm font-semibold", rv?.isCorrect ? "text-secondary-700 dark:text-secondary-300" : answered ? "text-red-700 dark:text-red-300" : "text-neutral-500")}>{rv?.isCorrect ? "Correct" : answered ? "Incorrect" : "Unattempted"}</p>
+                    <QuestionPassage passage={q.passage} />
+                    <p className="font-medium text-neutral-900 dark:text-white">Q{i + 1}. <MathText text={q.stemEn} /></p>
+                    <QuestionImages images={q.questionImages} />
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+                      <span className="font-semibold">Your answer:</span>{" "}
+                      {answered ? (
+                        <>
+                          {selectedLabel ? <span className="font-semibold">{selectedLabel}. </span> : null}
+                          {selectedOptionObj ? (
+                            <OptionText option={selectedOptionObj} />
+                          ) : (
+                            <MathText text={rv?.selectedOptionText ?? sel} />
+                          )}
+                        </>
+                      ) : (
+                        "Not answered"
+                      )}
+                    </p>
+                    {isPending ? (
+                      <p className="mt-1 text-sm font-semibold text-accent-700 dark:text-accent-300">
+                        Answer key unavailable — pending review (not scored)
+                      </p>
+                    ) : (
+                      <>
+                        <p className={cn("mt-1 text-sm font-semibold", rv?.isCorrect ? "text-secondary-700 dark:text-secondary-300" : answered ? "text-red-700 dark:text-red-300" : "text-neutral-500")}>{rv?.isCorrect ? "Correct" : answered ? "Incorrect" : "Unattempted"}</p>
+                        {rv?.correctOption ? (
+                          <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                            <span className="font-semibold">Correct answer:</span>{" "}
+                            <span className="font-semibold">{rv.correctOption}.</span>{" "}
+                            {correctOptionObj ? (
+                              <OptionText option={correctOptionObj} />
+                            ) : (
+                              <MathText text={rv.correctOptionText} />
+                            )}
+                          </p>
+                        ) : null}
+                        {rv?.explanation || rv?.explanationImageUrl ? (
+                          <div className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+                            {rv.explanation ? (
+                              <p>
+                                <span className="font-semibold">Explanation:</span>{" "}
+                                <MathText text={rv.explanation} />
+                              </p>
+                            ) : null}
+                            {rv.explanationImageUrl ? (
+                              <QuestionImages
+                                images={[
+                                  {
+                                    url: rv.explanationImageUrl,
+                                    alt: rv.explanationImageAlt || "Explanation diagram",
+                                  },
+                                ]}
+                              />
+                            ) : null}
+                          </div>
+                        ) : null}
+                      </>
+                    )}
                   </CardContent>
                 </Card>
               );
@@ -189,8 +288,6 @@ export default function PracticePage() {
       </section>
     );
   }
-
-  const attemptedCount = Object.values(answers).filter(a => a != null && a !== "").length;
 
   return (
     <section className="container-page max-w-6xl py-8">
@@ -254,11 +351,13 @@ export default function PracticePage() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6">{currentQuestion?.stemEn}</div>
+          <QuestionPassage passage={currentQuestion?.passage} />
+          <div className="prose prose-sm max-w-none text-neutral-700 dark:text-neutral-200 mb-6"><MathText text={currentQuestion?.stemEn} /></div>
+          <QuestionImages images={currentQuestion?.questionImages} />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {currentQuestion?.optionsEn.map((opt, optIndex) => {
               const selected = answers[currentQuestion!.id] === opt.id;
-              return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}</span>{opt.text}</button>;
+              return <button key={opt.id} onClick={() => selectOption(opt.id)} className={cn("w-full text-left p-3 rounded-lg border text-left transition", selected ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300" : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200")}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}.</span><OptionText option={opt} /></button>;
             })}
           </div>
           <div className="mt-4 flex flex-wrap gap-3">

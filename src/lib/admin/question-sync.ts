@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 
 // Shared helpers for the admin question module.
 
-export type OptionInput = { id: string; text: string };
+export type OptionInput = { id: string; text: string; imageUrl?: string | null; imageAlt?: string | null };
 
 /**
  * Keep the normalized QuestionOption table and the legacy JSON cache in sync.

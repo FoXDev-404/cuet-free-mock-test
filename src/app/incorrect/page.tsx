@@ -4,14 +4,30 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { XCircle, RefreshCw, ChevronLeft, ChevronRight, Clock, BookOpen, ChevronDown } from "lucide-react";
+import { XCircle, RefreshCw, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { MathText } from "@/components/ui/math-text";
+import { QuestionImages } from "@/components/questions/question-images";
+import { QuestionPassage } from "@/components/questions/question-passage";
+import { OptionText } from "@/components/questions/option-text";
+import { OPTION_LETTERS, resolveCorrectOption, resolveSelectedOption } from "@/lib/question-display";
 
 interface IncorrectItem {
   id: string;
   stemEn: string;
-  optionsEn: { id: string; text: string }[];
+  optionsEn: { id: string; text: string; imageUrl?: string | null; imageAlt?: string | null }[];
+  questionImages?: unknown;
+  passage?: {
+    title?: string | null;
+    content?: string | null;
+    imageUrl?: string | null;
+    imageAlt?: string | null;
+    sourceNote?: string | null;
+  } | null;
   correctAnswer: string;
+  sourceCorrectOptionOrder?: number | null;
   explanationEn?: string;
+  explanationImageUrl?: string | null;
+  explanationImageAlt?: string | null;
   subject: string;
   topic: string;
   testId?: string;
@@ -74,27 +90,33 @@ export default function IncorrectPage() {
             <CardHeader><CardTitle>Questions to Review ({incorrect.length})</CardTitle></CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {paginated.map((q) => (
+                {paginated.map((q) => {
+                  const correct = resolveCorrectOption(q, q.optionsEn);
+                  const selected = resolveSelectedOption(q.selectedOption, q.optionsEn);
+                  return (
                   <div key={q.id} className="p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-800/50">
                     <div className="flex items-center gap-3 mb-2 flex-wrap">
                       <span className="badge badge-danger">Incorrect</span>
                       <span className="badge badge-neutral">{q.subject}</span>
                       <span className="badge badge-neutral">{q.topic}</span>
                     </div>
-                    <p className="text-neutral-900 dark:text-white mb-3">{q.stemEn}</p>
+                    <QuestionPassage passage={q.passage} />
+                    <p className="text-neutral-900 dark:text-white mb-3"><MathText text={q.stemEn} /></p>
+                    <QuestionImages images={q.questionImages} />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
-                      {q.optionsEn.map(opt => (
-                        <span key={opt.id} className={"text-sm px-3 py-2 rounded-lg border " + optionClass(opt.id, q.correctAnswer, q.selectedOption)}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{opt.id}</span>{opt.text}</span>
+                      {q.optionsEn.map((opt, optIndex) => (
+                        <span key={opt.id} className={"text-sm px-3 py-2 rounded-lg border " + optionClass(opt.id, correct?.id ?? q.correctAnswer, selected.id ?? q.selectedOption)}><span className="font-bold text-primary-600 dark:text-primary-400 mr-2">{OPTION_LETTERS[optIndex] ?? optIndex + 1}.</span><OptionText option={opt} /></span>
                       ))}
                     </div>
-                    {q.explanationEn && (
-                      <details className="group"><summary className="text-sm font-medium text-primary-600 dark:text-primary-400 cursor-pointer flex items-center gap-1">Show Explanation <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" /></summary><div className="mt-2 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-sm text-neutral-700 dark:text-neutral-300">{q.explanationEn}</div></details>
+                    {(q.explanationEn || q.explanationImageUrl) && (
+                      <details className="group"><summary className="text-sm font-medium text-primary-600 dark:text-primary-400 cursor-pointer flex items-center gap-1">Show Explanation <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" /></summary><div className="mt-2 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-sm text-neutral-700 dark:text-neutral-300">{q.explanationEn ? <MathText text={q.explanationEn} /> : null}{q.explanationImageUrl ? <QuestionImages images={[{ url: q.explanationImageUrl, alt: q.explanationImageAlt || "Explanation diagram" }]} /> : null}</div></details>
                     )}
                     {q.testSlug && (
                       <Link href={`/mock-tests/${q.testSlug}/take`} className="mt-3 inline-flex items-center gap-1 text-sm text-primary-600 hover:underline dark:text-primary-400"><RefreshCw className="h-4 w-4" />Retry in Test</Link>
                     )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
               {totalPages > 1 && (
                 <div className="mt-6 flex items-center justify-center gap-2">
