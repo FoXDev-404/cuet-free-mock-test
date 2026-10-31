@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { requirePermission, writeAudit } from "@/lib/auth/guard";
 import { forbiddenOrigin, isSameOrigin, logApiError } from "@/lib/http";
-import { getMediaBucket } from "@/lib/media";
+import { getMediaBucket, getMediaKv } from "@/lib/media";
 import {
   SETTING_KEYS,
   clearSettingsCache,
@@ -56,6 +56,7 @@ function runtimeStatus() {
     runtime: process.env.NODE_ENV,
     hasD1,
     hasR2: Boolean(getMediaBucket()),
+    hasKv: Boolean(getMediaKv()),
     hasAuthSecret,
   };
 }

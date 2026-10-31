@@ -102,9 +102,11 @@ export default function AdminMediaPage() {
         throw new Error(typeof data?.error === "string" ? data.error : "Upload failed");
       }
       setMessage(
-        data.storage === "r2"
-          ? "Uploaded to R2. Copy the URL into a question image field."
-          : "Uploaded with the local inline fallback. Production uses R2.",
+        data.storage === "kv"
+          ? "Uploaded to Workers KV. Copy the URL into a question image field."
+          : data.storage === "r2"
+            ? "Uploaded to R2. Copy the URL into a question image field."
+            : "Uploaded with the local inline fallback. Production uses Workers KV.",
       );
       setFile(null);
       setAlt("");
@@ -148,7 +150,7 @@ export default function AdminMediaPage() {
         </h1>
         <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
           Question diagrams and explanation figures. PNG, JPEG or WebP, up to 500 KB, with mandatory alt text.
-          Production stores bytes in R2 and only metadata in D1.
+          Production stores bytes in Workers KV and only metadata in D1.
         </p>
       </div>
 

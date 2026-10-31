@@ -12,6 +12,7 @@ type Runtime = {
   runtime: string;
   hasD1: boolean;
   hasR2: boolean;
+  hasKv: boolean;
   hasAuthSecret: boolean;
 };
 
@@ -258,7 +259,7 @@ export default function AdminSettingsPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <Status ok={Boolean(runtime?.hasD1)} label="D1 database binding" />
-                <Status ok={Boolean(runtime?.hasR2)} label="R2 media binding" />
+                <Status ok={Boolean(runtime?.hasR2 || runtime?.hasKv)} label="Media storage binding" />
                 <Status ok={Boolean(runtime?.hasAuthSecret)} label="Auth secret" />
                 <p className="pt-1 text-xs text-neutral-500 dark:text-neutral-400">
                   Runtime: {runtime?.runtime ?? "unknown"}
@@ -274,7 +275,7 @@ export default function AdminSettingsPage() {
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-neutral-600 dark:text-neutral-300">
                 <p>· Images: PNG, JPEG or WebP, ≤ 500 KB, mandatory alt text.</p>
-                <p>· Production keeps bytes in R2 and metadata in D1.</p>
+                <p>· Production keeps bytes in Workers KV and metadata in D1.</p>
                 <p>· Local development uses a small inline fallback so uploads remain testable.</p>
               </CardContent>
             </Card>

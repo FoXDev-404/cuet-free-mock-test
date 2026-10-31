@@ -4,10 +4,13 @@ import { prisma } from "@/lib/prisma";
 /**
  * Binary media storage.
  *
- * Production stores bytes in the R2 binding `MEDIA` and keeps only metadata in
- * D1, as the blueprint requires. Local `next dev` has no R2 binding, so small
- * uploads fall back to an inline data URL on the same row; that keeps the admin
- * upload flow testable without pretending D1 is R2 in production.
+ * Production stores bytes in the Workers KV binding `MEDIA_KV` and keeps only
+ * metadata in D1. Workers KV is included in the free Workers plan and does not
+ * require a payment method, unlike R2. An optional R2 `MEDIA` binding is still
+ * honoured when present, so the storage layer can move to R2 later without a
+ * data migration. Local `next dev` has no binding, so small uploads fall back
+ * to an inline data URL on the same row; that keeps the admin upload flow
+ * testable without pretending D1 is object storage in production.
  */
 export const MAX_MEDIA_BYTES = 500 * 1024;
 export const MAX_MEDIA_ALT = 300;
@@ -26,8 +29,30 @@ export interface MediaBucket {
   delete(key: string): Promise<void>;
 }
 
+type MediaKvMetadata = {
+  contentType?: string;
+  cacheControl?: string;
+};
+
+export interface MediaKv {
+  put(
+    key: string,
+    value: ArrayBuffer,
+    options?: { metadata?: MediaKvMetadata },
+  ): Promise<void>;
+  getWithMetadata(
+    key: string,
+    type: "arrayBuffer",
+  ): Promise<{
+    value: ArrayBuffer | null;
+    metadata: MediaKvMetadata | null;
+  }>;
+  delete(key: string): Promise<void>;
+}
+
 export interface MediaEnv {
   MEDIA?: MediaBucket;
+  MEDIA_KV?: MediaKv;
   MEDIA_PUBLIC_BASE_URL?: string;
 }
 
@@ -35,6 +60,15 @@ export function getMediaBucket(): MediaBucket | null {
   try {
     const context = getCloudflareContext();
     return (context.env as unknown as MediaEnv).MEDIA ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export function getMediaKv(): MediaKv | null {
+  try {
+    const context = getCloudflareContext();
+    return (context.env as unknown as MediaEnv).MEDIA_KV ?? null;
   } catch {
     return null;
   }
@@ -68,11 +102,13 @@ function base64ToBytes(value: string): Uint8Array {
   return bytes;
 }
 
+export type MediaStorage = "r2" | "kv" | "inline";
+
 export type StoredMedia = {
   id: string;
   key: string;
   url: string;
-  usedR2: boolean;
+  storage: MediaStorage;
 };
 
 export async function storeMedia(input: {
@@ -88,25 +124,37 @@ export async function storeMedia(input: {
   const key = `q/${month}/${crypto.randomUUID()}.${input.extension}`;
   const id = crypto.randomUUID();
   const bucket = getMediaBucket();
+  const kv = bucket ? null : getMediaKv();
 
+  const cacheMetadata = {
+    contentType: input.mimeType,
+    cacheControl: "public, max-age=31536000, immutable",
+  };
+
+  let storage: MediaStorage;
   let dbUrl: string;
   if (bucket) {
     await bucket.put(key, input.bytes.slice().buffer, {
-      httpMetadata: {
-        contentType: input.mimeType,
-        cacheControl: "public, max-age=31536000, immutable",
-      },
+      httpMetadata: cacheMetadata,
     });
     const base = getMediaPublicBaseUrl();
+    storage = "r2";
     dbUrl = base ? `${base}/${key}` : `/api/media/${id}`;
+  } else if (kv) {
+    await kv.put(key, input.bytes.slice().buffer, { metadata: cacheMetadata });
+    storage = "kv";
+    dbUrl = `/api/media/${id}`;
   } else {
+    storage = "inline";
     dbUrl = `data:${input.mimeType};base64,${bytesToBase64(input.bytes)}`;
   }
+
+  const storedKey = storage === "inline" ? `inline:${id}` : key;
 
   await prisma.mediaAsset.create({
     data: {
       id,
-      key: bucket ? key : `inline:${id}`,
+      key: storedKey,
       url: dbUrl,
       alt: input.alt,
       mimeType: input.mimeType,
@@ -119,9 +167,9 @@ export async function storeMedia(input: {
 
   return {
     id,
-    key: bucket ? key : `inline:${id}`,
+    key: storedKey,
     url: `/api/media/${id}`,
-    usedR2: Boolean(bucket),
+    storage,
   };
 }
 
@@ -155,19 +203,40 @@ export async function readMedia(id: string): Promise<{
     };
   }
 
+  // Prefer R2 when both bindings exist, then fall back to KV so assets written
+  // before a storage change remain readable.
   const bucket = getMediaBucket();
-  if (!bucket) return null;
-  const object = await bucket.get(asset.key);
-  if (!object) return null;
-  const buffer = await object.arrayBuffer();
-  return {
-    asset,
-    object: {
-      bytes: new Uint8Array(buffer),
-      mimeType: object.httpMetadata?.contentType ?? asset.mimeType,
-      etag: null,
-    },
-  };
+  if (bucket) {
+    const object = await bucket.get(asset.key);
+    if (object) {
+      const buffer = await object.arrayBuffer();
+      return {
+        asset,
+        object: {
+          bytes: new Uint8Array(buffer),
+          mimeType: object.httpMetadata?.contentType ?? asset.mimeType,
+          etag: null,
+        },
+      };
+    }
+  }
+
+  const kv = getMediaKv();
+  if (kv) {
+    const stored = await kv.getWithMetadata(asset.key, "arrayBuffer");
+    if (stored.value) {
+      return {
+        asset,
+        object: {
+          bytes: new Uint8Array(stored.value),
+          mimeType: stored.metadata?.contentType ?? asset.mimeType,
+          etag: null,
+        },
+      };
+    }
+  }
+
+  return null;
 }
 
 export async function deleteMedia(id: string): Promise<boolean> {
@@ -184,6 +253,15 @@ export async function deleteMedia(id: string): Promise<boolean> {
         await bucket.delete(asset.key);
       } catch (error) {
         console.error("media: R2 delete failed", error);
+      }
+    }
+
+    const kv = getMediaKv();
+    if (kv) {
+      try {
+        await kv.delete(asset.key);
+      } catch (error) {
+        console.error("media: KV delete failed", error);
       }
     }
   }

@@ -137,7 +137,7 @@ export async function POST(req: Request) {
         alt,
         mimeType: image.mime,
         sizeBytes: bytes.byteLength,
-        storage: stored.usedR2 ? "r2" : "inline-dev",
+        storage: stored.storage,
       },
     });
 
@@ -156,7 +156,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(
-      { ...serialize(asset), storage: stored.usedR2 ? "r2" : "inline-dev" },
+      { ...serialize(asset), storage: stored.storage },
       { status: 201 },
     );
   } catch (error) {
